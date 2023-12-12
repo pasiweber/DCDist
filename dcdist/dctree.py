@@ -179,7 +179,8 @@ class DCTree:
         self.root = self._build_tree(mst_edges)
         del mst_edges
 
-        self._init_fast_index()
+        if not self.no_fastindex:
+            self._init_fast_index()
 
     def _init_fast_index(self):
         n_nodes = 2 * self.n - 1
@@ -187,8 +188,7 @@ class DCTree:
         self.level = [0] * (2 * n_nodes - 1)
         self.f_occur = [-1] * n_nodes
         self._euler_tour(self.root)
-        if not self.no_fastindex:
-            self.level_table = _SparseTable(self.level)
+        self.level_table = _SparseTable(self.level)
 
     def __getitem__(
         self,
@@ -558,7 +558,8 @@ def deserialize(
     dc_tree.n = (len(tree_data_list) + 1) // 2
 
     dc_tree.no_fastindex = no_fastindex
-    dc_tree._init_fast_index()
+    if not dc_tree.no_fastindex:
+        dc_tree._init_fast_index()
     return dc_tree
 
 
