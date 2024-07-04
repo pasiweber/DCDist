@@ -1,0 +1,2 @@
+The files in here are just straight up copied from the git repos with no git history or linkage to their proper repos.
+For the future we might change that - this is just to be able to play with the implementations.
