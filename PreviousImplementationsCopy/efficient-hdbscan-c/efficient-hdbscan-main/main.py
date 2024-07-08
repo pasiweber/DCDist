@@ -99,7 +99,6 @@ clusterer = hdbscan.HDBSCAN(min_cluster_size=k_nearest_neighbors_value,
                             min_samples=k_nearest_neighbors_value, match_reference_implementation=False)
 clusterer.fit(data)
 print('HDBSCAN (sk-learn): ', time() - sh)
-
 st = time()
 n, dim = data.shape
 data_flat = data.flatten().astype(ctypes.c_double)
@@ -110,3 +109,7 @@ c_cluster_labels = graph_extension.calc_mst(n, mutual_reachability_dist,
                                             k_nearest_neighbors_value+1)
 
 print('Efficient-HDBSCAN: ', time() - st)
+print("labels:", clusterer.labels_)
+cluster_labels_list = [c_cluster_labels[i] for i in range(n)]
+
+print("labels2:", np.array(cluster_labels_list))

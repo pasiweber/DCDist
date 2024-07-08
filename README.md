@@ -29,6 +29,8 @@ emst paper: https://www.mlpack.org/papers/emst.pdf
 parallel hdbscan paper: https://people.csail.mit.edu/jshun/emst-hdbscan.pdf
 claimed fast hdbscan (in C): https://github.com/Karthick47v2/efficient-hdbscan
 python fast hdbscan : https://github.com/TutteInstitute/fast_hdbscan?tab=readme-ov-file
+state of the art fast approximate knn : https://arxiv.org/pdf/1609.07228
+state of the art of exact knn : https://www.sciencedirect.com/science/article/pii/S0950705119304678
 
 
 # -----------------------------------
