@@ -820,7 +820,7 @@ def hdbscan(
         elif metric in KDTREE_VALID_METRICS:
             # TO DO: Need heuristic to decide when to go to boruvka;
             # still debugging for now
-            if X.shape[1] > 60:
+            if X.shape[1] > 60: #Number of dimensions
                 (single_linkage_tree, result_min_span_tree) = memory.cache(
                     _hdbscan_prims_kdtree
                 )(

@@ -28,10 +28,20 @@ my thesis code: https://github.com/rsmj1/densitycenter
 emst paper: https://www.mlpack.org/papers/emst.pdf
 parallel hdbscan paper: https://people.csail.mit.edu/jshun/emst-hdbscan.pdf
 claimed fast hdbscan (in C): https://github.com/Karthick47v2/efficient-hdbscan
+- Uses quickselect to find the k-th nearest neighbor for cdists https://www.geeksforgeeks.org/quickselect-algorithm/
+- Is seemingly faster on 100 dimensions but not 10. They completely switch roles on low dimensions.
+- It is basically invariant of the dimensions in its speed while sklearn is not - this slows down quite a lot with higher dimensions. 
+
 python fast hdbscan : https://github.com/TutteInstitute/fast_hdbscan?tab=readme-ov-file
 state of the art fast approximate knn : https://arxiv.org/pdf/1609.07228
-state of the art of exact knn : https://www.sciencedirect.com/science/article/pii/S0950705119304678
+https://www.vldb.org/pvldb/vol12/p461-fu.pdf
+https://arxiv.org/pdf/1807.05614
 
+efanna: https://github.com/ZJULearning/efanna
+
+state of the art of exact knn : https://www.sciencedirect.com/science/article/pii/S0950705119304678
+cover tree knn (has no benchmarks) : https://papers.nips.cc/paper_files/paper/2009/hash/2421fcb1263b9530df88f7f002e78ea5-Abstract.html
+dual tree concept : https://arxiv.org/pdf/1304.4327
 
 # -----------------------------------
 # Dataset loading

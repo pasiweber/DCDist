@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/kcentroids.hpp
+vector
+-
+limits
+-
+iostream
+-
+
+/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/example.cpp
+iostream
+-
+vector
+-
+kcentroids.hpp
+-
+cmath
+-
+
+/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/kcentroids.cpp
+kcentroids.hpp
+-
+vector
+-
+limits
+-
+

@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/MyProject.dir/src/example.cpp.o CMakeFiles/MyProject.dir/src/kcentroids.cpp.o  -o MyProject 

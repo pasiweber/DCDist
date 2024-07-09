@@ -109,7 +109,7 @@ c_cluster_labels = graph_extension.calc_mst(n, mutual_reachability_dist,
                                             k_nearest_neighbors_value+1)
 
 print('Efficient-HDBSCAN: ', time() - st)
-print("labels:", clusterer.labels_)
+#print("labels:", clusterer.labels_)
 cluster_labels_list = [c_cluster_labels[i] for i in range(n)]
 
-print("labels2:", np.array(cluster_labels_list))
+#print("labels2:", np.array(cluster_labels_list))

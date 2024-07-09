@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/src/kcentroids.cpp.dir/src/example.o  -o src/kcentroids.cpp 

@@ -5,6 +5,12 @@
 #include <string.h>
 
 // gcc -shared -o hdb.so hdb_c.c -O3 -march=native -lm -fopenmp -fPIC
+/*
+This code computes the core distances using quickselect, 
+and then computes the mutual reachability matrix from this.
+*/
+
+
 
 int compare_doubles(const void *a, const void *b)
 {

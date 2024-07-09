@@ -12,7 +12,7 @@ from sklearn.utils._testing import (
     assert_array_almost_equal,
     assert_raises,
 )
-from fast_hdbscan import (
+from python_hdbscan import (
     HDBSCAN,
     fast_hdbscan,
 )
