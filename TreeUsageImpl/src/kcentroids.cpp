@@ -47,3 +47,34 @@ int split_detector(std::vector<Annotation*> annotations, int i){
     return ctr;
 
 }
+
+
+
+
+void delete_tree(Node* tree){
+    for (Node* child : tree->children) {
+        delete_tree(child);
+    }
+
+    delete tree;
+
+}
+
+void assign_size(Node* tree){
+    assign_size_helper(tree);
+}
+
+int assign_size_helper(Node* tree){
+    if((tree->children).size() == 0){
+        tree->size = 1;
+        return 1;
+    }{ 
+        int size = 0;
+        for(Node* child : tree->children){
+            size += child->size;
+        }
+        tree->size = size;
+        return size;
+    }
+
+}

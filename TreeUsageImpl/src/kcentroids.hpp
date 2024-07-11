@@ -162,8 +162,7 @@ Node* create_hierarchy(Node& root, CostFunction f){
             node->children.push_back(new_leaf);
         }
     }
-
-
+    assign_size(root_pointer); //Add number of leaves in subtree to each node
     return root_pointer;
 }
 
@@ -242,5 +241,11 @@ std::pair<double, int> annotate_tree_inner(const Node &tree, CostFunction f, std
     }
 }
 
+
+
+
+void delete_tree(Node* tree);
+
+void assign_size(Node* tree);
 
 #endif
