@@ -110,6 +110,8 @@ int main() {
     Node* root = generateTree11();
     std::cout << "Generated Tree:\n";
     std::vector<Annotation*> res = annotate_tree(*root, kmeans);
+    std::cout << "done with annos" << std::endl;
+    print_annotations(res);
     printTree(*root);
 
     Node* rootv2 = create_hierarchy(*root, kmeans);

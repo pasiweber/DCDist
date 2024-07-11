@@ -14,7 +14,6 @@ bool compareByCost(const Annotation* anno1, const Annotation* anno2){
     return anno1->cost_decrease > anno2->cost_decrease;
 }
 
-
 void print_annotations(std::vector<Annotation*> annotations){
     std::cout << "[";
     for(Annotation* anno : annotations){
