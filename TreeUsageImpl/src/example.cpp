@@ -51,6 +51,42 @@ Node* generateTree11() {
     return root;
 }
 
+Node* generateTree12() {
+    Node* root = addNode(nullptr, 13.9, -1, 12);  // Create the root node with an arbitrary cost
+
+    Node* l5 = addNode(root, 0.0, 5);
+    Node* node94 = addNode(root, 9.4, -1, 11);
+
+    Node* node22 = addNode(node94, 2.2, -1, 4);
+    Node* node51 = addNode(node94, 5.1, -1, 7);
+
+    Node* l4 = addNode(node22, 0.0, 4);
+    Node* node20 = addNode(node22, 2.0, -1, 3);
+
+    Node* l2 = addNode(node20, 0.0, 2);
+    Node* node14 = addNode(node20, 1.4, -1, 2);
+
+    Node* l1 = addNode(node14, 0.0, 1);
+    Node* l3 = addNode(node14, 0.0, 3);
+
+    Node* l8 = addNode(node51, 0.0, 8);
+    Node* node45 = addNode(node51, 4.5, -1, 6);
+
+    Node* node30 = addNode(node45, 3.0, -1, 3);
+    Node* node32 = addNode(node45, 3.2, -1, 3);
+
+    Node* l6 = addNode(node30, 0.0, 6);
+    Node* l7 = addNode(node30, 0.0, 7);
+    Node* l9 = addNode(node30, 0.0, 9);
+
+    Node* l10 = addNode(node32, 0.0, 10);
+    Node* l11 = addNode(node32, 0.0, 11);
+    Node* l12 = addNode(node32, 0.0, 12);
+    return root;
+}
+
+
+
 // Function to print the tree (for debugging purposes)
 void printSubtree(const std::string &prefix, const Node& tree) {
     using std::cout;
@@ -107,14 +143,22 @@ double kmeans(double x){
 
 
 int main() {
-    Node* root = generateTree11();
+    Node* root = generateTree12();
     std::cout << "Generated Tree:\n";
     std::vector<Annotation*> res = annotate_tree(*root, kmeans);
     std::cout << "done with annos" << std::endl;
     print_annotations(res);
+
+    // std::vector<Annotation*> res2 = annotate_tree_old(*root, kmeans);
+    // std::cout << "old full annotations" << std::endl;
+    // std::sort(res2.begin(), res2.end(), compareByCost);
+    // print_annotations(res2);
+
     printTree(*root);
 
     Node* rootv2 = create_hierarchy(*root, kmeans);
+    std::cout << "kmeans tree:" << std::endl;
+    printTree(*rootv2);
     // Clean up allocated memory (omitted for brevity but should be done in a real program)
     // ...
 
