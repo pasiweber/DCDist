@@ -130,7 +130,16 @@ void printTree(const Node& tree) {
 }
 
 
+void printLabels(std::vector<int> labels){
+    std::cout << "Labels:" << std::endl;
+    std::cout << "[";
+    for(int label : labels){
+        std::cout << label << ", ";
+    }
 
+    std::cout << "]" << std::endl;
+
+}
 
 
 
@@ -144,23 +153,21 @@ double kmeans(double x){
 
 int main() {
     Node* root = generateTree12();
-    std::cout << "Generated Tree:\n";
+    std::cout << "Generated dc-tree Tree:\n";
     std::vector<Annotation*> res = annotate_tree(*root, kmeans);
-    std::cout << "done with annos" << std::endl;
     print_annotations(res);
-
-    // std::vector<Annotation*> res2 = annotate_tree_old(*root, kmeans);
-    // std::cout << "old full annotations" << std::endl;
-    // std::sort(res2.begin(), res2.end(), compareByCost);
-    // print_annotations(res2);
-
     printTree(*root);
+
+    std::vector<int> labels = kcentroids(*root, kmeans, 4);
+
 
     Node* rootv2 = create_hierarchy(*root, kmeans);
     std::cout << "kmeans tree:" << std::endl;
     printTree(*rootv2);
-    // Clean up allocated memory (omitted for brevity but should be done in a real program)
-    // ...
+
+
+
+
 
     return 0;
 }

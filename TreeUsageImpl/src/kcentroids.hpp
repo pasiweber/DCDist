@@ -14,7 +14,7 @@ Thoughts: An inherent weakness is that we seemingly cannot predefine the size of
 typedef struct Node {
     struct Node* parent;
     double cost;  // For DCTree this is dc-distance, for... 
-    int id; // The id of a potential leaf node
+    int id; // The id of a potential leaf node (this can be used to assign points -> we just make the id in internal nodes the optimal center, we then cap by k in the iterations -> this will be separate from the tree hierarchy construction - O(n) for each k to output the solution.)
     std::vector<struct Node*> children;
     int size;
 } Node;
@@ -27,6 +27,7 @@ typedef struct Annotation {
     Annotation* parent;
     Node* tree_node = nullptr;
     bool has_leaf = true; //This is set to true until a node sets it to false. When we are "done" with the tree, we do another run over the annotations, adding leaves of those set to false, as a child of the node the annotation is currently pointing to
+    Node* orig_node; //This is used to extract a specific k solution efficiently
 } Annotation;
 
 
@@ -35,11 +36,6 @@ bool is_a_root(const Node &tree);
 
 bool compareByCost(const Annotation* anno1, const Annotation* anno2);
 void print_annotations(std::vector<Annotation*> annotations);
-
-
-
-
-
 
 template <typename CostFunction>
 std::vector<Annotation*> annotate_tree_old(const Node &root, CostFunction f){
@@ -98,35 +94,28 @@ std::pair<double, int> annotate_tree_inner_old(const Node &tree, CostFunction f,
 
 
 
-int split_detector(std::vector<Annotation*> annotations, int i);
+
+
+
 
 void assign_sizes(Node* root);
 int assign_size_helper(Node* tree);
-void delete_annotations(std::vector<Annotation*> annotations);
+void delete_annotations(std::vector<Annotation*> &annotations);
 
 template <typename CostFunction>
 Node* create_hierarchy(Node& root, CostFunction f){
     std::vector<Annotation*> annotations = annotate_tree(root, f);
     std::sort(annotations.begin(), annotations.end(), compareByCost);
-    print_annotations(annotations);
+    //print_annotations(annotations);
 
 
     //Create the tree here using the pointers in the annotations.
-    /*
-    TODO: I need a split detector - how many split at once for the same parent center.
-    The code here also needs to then create the extra new nodes corresponding to same old center when split occurs. 
-    I can potentially start by making a nodes cost the id, and then set it to a cost when we detect it is not a leaf.
-    TODO Assign sizes to internal nodes when done
-
-    TODO: Change code to use references instead of pointers for annotations.
-
-    */
-    
     Node* root_pointer = new Node{nullptr, 0.0, annotations[0]->center};
     annotations[0]->tree_node = root_pointer; //Unroll first iteration of loop to avoid an if/else in loop.
 
     Annotation* curr_anno; 
     Annotation* parent_anno;
+    Node* parent_node;
     std::vector<Annotation*> leaves_to_add;
 
     //First loop/pass adding the main structure of the tree
@@ -135,25 +124,25 @@ Node* create_hierarchy(Node& root, CostFunction f){
         Node* new_node = new Node{nullptr, 0.0, curr_anno->center};
         //Fix the linkage
         parent_anno = curr_anno->parent;
-        Node* p_node = parent_anno->tree_node;
-        double cost = p_node->cost;
+        parent_node = parent_anno->tree_node;
+        double cost = parent_node->cost;
         if(parent_anno->has_leaf){ //This parent center will not have a corresponding leaf as we will now be adding stuff below it
             parent_anno->has_leaf = false; //We will now be adding things below this annotation/node -> this will not become a leaf in this pass
             leaves_to_add.push_back(parent_anno);
         }
 
-        if(cost !=0 && cost != curr_anno->cost_decrease){ 
+        if(cost !=0 && cost != curr_anno->cost_decrease){ //If cost is not 0 and not the current annos cost decrease we need to make a new internal node for the parent. 
             //Add new node, replace in annotation
-            Node* new_parent = new Node{p_node, curr_anno->cost_decrease, p_node->id};
+            Node* new_parent = new Node{parent_node, curr_anno->cost_decrease, parent_node->id};
             new_parent->children.push_back(new_node);
             new_node->parent = new_parent;
             parent_anno->tree_node = new_parent;
-            p_node->children.push_back(new_parent); //Link new parent to old parent
+            parent_node->children.push_back(new_parent); //Link new parent to old parent
         } else{
             //Link to current node and update cost in parent(might just rewrite the same value but who cares (not me))
-            p_node->cost = curr_anno->cost_decrease;
-            p_node->children.push_back(new_node);
-            new_node->parent = p_node;
+            parent_node->cost = curr_anno->cost_decrease;
+            parent_node->children.push_back(new_node);
+            new_node->parent = parent_node;
         }
 
         curr_anno->tree_node = new_node;
@@ -186,12 +175,9 @@ Only annotations that have another center (with a different center) annotation a
 We keep the maximal annotations in a list and return a pointer + a center in the recursive call - in that way we can update in place on that location and only add children to one annotation.
 */
 template <typename CostFunction>
-std::vector<Annotation*> annotate_tree(const Node &root, CostFunction f){
-    std::cout << "annotating..." << std::endl;
+std::vector<Annotation*> annotate_tree(Node &root, CostFunction f){
     std::vector<Annotation*> arr;
-    std::cout << "size:" << root.size << std::endl;
     arr.resize(root.size);
-    std::cout << "calling helper" << std::endl;
     annotate_tree_inner(root, f, arr);
     return arr;
 }
@@ -201,9 +187,11 @@ Currently I assume the tree stores sizes - otherwise it makes this code a lot ug
 TODO: Should I somehow already keep track of the corresponding clusters?
 */
 template <typename CostFunction>
-std::pair<double, int> annotate_tree_inner(const Node &tree, CostFunction f, std::vector<Annotation*> &arr){
+std::pair<double, int> annotate_tree_inner(Node &tree, CostFunction f, std::vector<Annotation*> &arr){
     if((tree.children).size() == 0){
         Annotation* anno =  new Annotation{f((tree.parent)->cost), tree.id}; //Removed children as a list in annotations - not needed as previously thought
+        anno->orig_node = &tree;
+        
         arr[tree.id-1] = anno; //The ids are 1-indexed
         std::pair<double, int> result = {0.0, tree.id};
         return result;
@@ -222,7 +210,7 @@ std::pair<double, int> annotate_tree_inner(const Node &tree, CostFunction f, std
         int curr_center = -1;
         std::vector<int> centers;
 
-        for(const Node* child : tree.children){ //Run through the children of the current node and find the lowest
+        for(Node* child : tree.children){ //Run through the children of the current node and find the lowest
             std::pair<double, int> sub_result = annotate_tree_inner(*child, f, arr);
             curr_sub_cost = sub_result.first;
             curr_center = sub_result.second;
@@ -244,15 +232,32 @@ std::pair<double, int> annotate_tree_inner(const Node &tree, CostFunction f, std
             arr[center-1]->parent = arr[best_center-1];
         }
         arr[best_center-1]->cost_decrease = cost_decrease;
+        arr[best_center-1]->orig_node = &tree; //For extracting specific k solutions
+
         std::pair<double, int> result = {best_cost, best_center};
         return result;
     }
 }
 
+void annotate_tree_centers(std::vector<Annotation*> &annotations, int k);
+std::vector<int> assign_points(Node &tree);
+void assign_points_helper(Node &tree, std::vector<int> &arr, int curr_center);
+void delete_tree(Node* tree); // https://stackoverflow.com/questions/4790564/finding-memory-leaks-in-a-c-application-with-visual-studio
+void printLabels(std::vector<int> labels);
+void cleanTree(Node &tree);
 
+template <typename CostFunction>
+std::vector<int> kcentroids(Node& root, CostFunction f, int k){
+    std::vector<Annotation*> annotations = annotate_tree(root, f);
+    std::sort(annotations.begin(), annotations.end(), compareByCost);
 
+    //std::cout << "annotating centers:" << std::endl;
+    annotate_tree_centers(annotations, k);
+    //std::cout << "assigning points:" << std::endl;
 
-void delete_tree(Node* tree);
-
-
+    std::vector<int> res = assign_points(root);
+    cleanTree(root); //We have made some janky annotations that might be annoying to other algorithms.
+    printLabels(res);
+    return res;
+}
 #endif
