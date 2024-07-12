@@ -60,7 +60,7 @@ void delete_tree(Node* tree){
 
 }
 
-void assign_size(Node* tree){
+void assign_sizes(Node* tree){
     assign_size_helper(tree);
 }
 
@@ -77,4 +77,13 @@ int assign_size_helper(Node* tree){
         return size;
     }
 
+}
+
+
+
+void delete_annotations(std::vector<Annotation*> annotations){
+    for(Annotation* anno : annotations){
+        delete anno;
+    }
+    return;
 }

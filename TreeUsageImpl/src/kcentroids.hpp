@@ -100,7 +100,9 @@ std::pair<double, int> annotate_tree_inner_old(const Node &tree, CostFunction f,
 
 int split_detector(std::vector<Annotation*> annotations, int i);
 
-void assign_sizes(const Node* root);
+void assign_sizes(Node* root);
+int assign_size_helper(Node* tree);
+void delete_annotations(std::vector<Annotation*> annotations);
 
 template <typename CostFunction>
 Node* create_hierarchy(Node& root, CostFunction f){
@@ -116,53 +118,59 @@ Node* create_hierarchy(Node& root, CostFunction f){
     I can potentially start by making a nodes cost the id, and then set it to a cost when we detect it is not a leaf.
     TODO Assign sizes to internal nodes when done
 
+    TODO: Change code to use references instead of pointers for annotations.
+
     */
     
-    Node* root_pointer;
+    Node* root_pointer = new Node{nullptr, 0.0, annotations[0]->center};
+    annotations[0]->tree_node = root_pointer; //Unroll first iteration of loop to avoid an if/else in loop.
+
     Annotation* curr_anno; 
-    Annotation* parent;
+    Annotation* parent_anno;
+    std::vector<Annotation*> leaves_to_add;
 
     //First loop/pass adding the main structure of the tree
-    for(int i = 0; i < annotations.size(); i++){
+    for(int i = 1; i < annotations.size(); i++){
         curr_anno = annotations[i];
         Node* new_node = new Node{nullptr, 0.0, curr_anno->center};
-        if(i != 0){
-            //Fix the linkage
-            //New parent if cost != 0 and != cost in curr_anno - otherwise link this node to parent
-            parent = curr_anno->parent;
-            Node* p_node = parent->tree_node;
-            double cost = p_node->cost;
-            parent->has_leaf = false; //We will now be adding things below this annotation/node -> this will not become a leaf in this pass
-            //std::cout << "cost:" << cost << std::endl;
-            if(cost !=0 && cost != curr_anno->cost_decrease){
-                //Add new node, replace in annotation
-                Node* new_parent = new Node{p_node, curr_anno->cost_decrease, p_node->id};
-                new_parent->children.push_back(new_node);
-                new_node->parent = new_parent;
-                parent->tree_node = new_parent;
-                p_node->children.push_back(new_parent); //Link new parent to old parent
-            } else{
-                //Link to current node and update cost in parent(might just rewrite the same value but who cares (not me))
-                p_node->cost = curr_anno->cost_decrease;
-                p_node->children.push_back(new_node);
-                new_node->parent = p_node;
-            }
-        } else{
-            root_pointer = new_node;
+        //Fix the linkage
+        parent_anno = curr_anno->parent;
+        Node* p_node = parent_anno->tree_node;
+        double cost = p_node->cost;
+        if(parent_anno->has_leaf){ //This parent center will not have a corresponding leaf as we will now be adding stuff below it
+            parent_anno->has_leaf = false; //We will now be adding things below this annotation/node -> this will not become a leaf in this pass
+            leaves_to_add.push_back(parent_anno);
         }
+
+        if(cost !=0 && cost != curr_anno->cost_decrease){ 
+            //Add new node, replace in annotation
+            Node* new_parent = new Node{p_node, curr_anno->cost_decrease, p_node->id};
+            new_parent->children.push_back(new_node);
+            new_node->parent = new_parent;
+            parent_anno->tree_node = new_parent;
+            p_node->children.push_back(new_parent); //Link new parent to old parent
+        } else{
+            //Link to current node and update cost in parent(might just rewrite the same value but who cares (not me))
+            p_node->cost = curr_anno->cost_decrease;
+            p_node->children.push_back(new_node);
+            new_node->parent = p_node;
+        }
+
         curr_anno->tree_node = new_node;
     }
 
     //Second loop/pass adding final leaves to the tree
-    for(int i = 0; i < annotations.size(); i++){
-        curr_anno = annotations[i];
+    for(int i = 0; i < leaves_to_add.size(); i++){ 
+        curr_anno = leaves_to_add[i];
         if(!(curr_anno->has_leaf)){
             Node* node = curr_anno->tree_node;
             Node* new_leaf = new Node{node, 0.0, curr_anno->center};
             node->children.push_back(new_leaf);
         }
     }
-    assign_size(root_pointer); //Add number of leaves in subtree to each node
+    assign_sizes(root_pointer); //Add number of leaves in subtree to each node
+    delete_annotations(annotations); //Free the annotations from memory
+
     return root_pointer;
 }
 
@@ -246,6 +254,5 @@ std::pair<double, int> annotate_tree_inner(const Node &tree, CostFunction f, std
 
 void delete_tree(Node* tree);
 
-void assign_size(Node* tree);
 
 #endif
