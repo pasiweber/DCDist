@@ -128,7 +128,8 @@ void test_k_centroids(){
 
 //How do I handle providing a tree in an elegant way?
 void test_hdbscan(){
-    Node* root = generateTree11();
+    Node* root = generateTree12();
+    assign_sizes(root);
     printTree(*root);
     int mpts = 3;
     int mcs = 2;

@@ -39,8 +39,13 @@ class Dc_hdbscan
 
 
     void compute_clustering(Node *tree);
+    //TODO: Create a version without the merge above - this is only here to speed up HDBSCAN's stability specifically. 
+    std::pair<double, double> bottom_up_cluster(Node *tree, bool merge_above); //This signature should be changed depending on how the actual assigning and maintenance of current clusters will be.
 
-    void bottom_up_cluster(Node *tree); //This signature should be changed depending on how the actual assigning and maintenance of current clusters will be.
+    int split_size(Node *tree, int mcs);
+
+    double stability(int size, double pdist, double fallout_sum);
+
 };
 
 

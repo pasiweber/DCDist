@@ -16,7 +16,7 @@ typedef struct Node {
     int id; // The id of a potential leaf node (this can be used to assign points -> we just make the id in internal nodes the optimal center, we then cap by k in the iterations -> this will be separate from the tree hierarchy construction - O(n) for each k to output the solution.)
     std::vector<struct Node*> children;
     int size;
-    bool is_cluster; //Used to extract clusters for optimization algorithm over the tree
+    bool is_cluster = false; //Used to extract clusters for optimization algorithm over the tree
 } Node;
 
 
