@@ -39,6 +39,7 @@ void Dc_hdbscan::fit(Node *tree){
 void Dc_hdbscan::compute_clustering(Node *tree){
     std::cout << "computing clustering on tree with size: " << tree->size << std::endl;
     bottom_up_cluster(tree, true);
+    label_clusters(tree);
 
 }
 /*
@@ -69,9 +70,7 @@ std::pair<double, double> Dc_hdbscan::bottom_up_cluster(Node *tree, bool merge_a
             }
             total_cluster_stability += res.first;
             total_region_contribution += res.second;
-
         }
-
         if(tree->parent == nullptr){ //root node //Here we can implement allowing a singular cluster to be output if want
            return {0.0,0.0}; //Just return default values in parent - nothing left to do
         }
@@ -88,13 +87,11 @@ std::pair<double, double> Dc_hdbscan::bottom_up_cluster(Node *tree, bool merge_a
             }
             return {total_cluster_stability, total_region_contribution};
         } else{
-
             tree->is_cluster = false;
             return {total_cluster_stability, total_region_contribution};
         }
     }
 }
-
 
 /*
     This method ensures that we do not count noise branches in the split size
@@ -107,7 +104,6 @@ int Dc_hdbscan::split_size(Node *tree, int mcs){
                 size++;
             }
         }
-
     } else{ //We might just remove this else branch if we decide to not include mcs=1
         for(Node *child : tree->children){
             if(child->size == 1 && this->cdists[tree->id] == tree->cost){
@@ -122,4 +118,44 @@ int Dc_hdbscan::split_size(Node *tree, int mcs){
 
 double Dc_hdbscan::stability(int size, double pdist, double fallout_sum){
     return fallout_sum - size/pdist; //TODO: check conversion
+}
+
+
+void Dc_hdbscan::label_clusters(Node *tree){
+    int n = tree->size;
+    std::vector<int> arr;
+    arr.resize(n);
+    label_clusters_helper(tree, arr, false, -1);
+    this->labels_ = arr;
+}
+
+/*
+    This labels based on the highest node that is a cluster. The bottom_up_cluster algorithm labels all clusters that win as true bottom up.
+    So we should only increase ctr when it is a topmost cluster. 
+
+*/
+int Dc_hdbscan::label_clusters_helper(Node *tree, std::vector<int> &labels, bool within_cluster, int ctr){
+    if(tree->size == 1){ //leaf
+        //This is not a cluster node itself, however it might be contained in a cluster
+        if(within_cluster){
+            labels[tree->id-1] = ctr;
+        } else{
+            if(tree->is_cluster){ //In the case that mcs = 1 and this actually becomes a cluster (if no clusters seen higher up in recursion)
+                ctr++;
+                labels[tree->id-1] = ctr;
+            } else{ 
+                labels[tree->id-1] = -1;
+            }
+        }
+        return ctr;
+    } else{ //
+        if(!within_cluster && tree->is_cluster){ 
+            within_cluster = true;
+            ctr++;  
+        }
+        for(Node *child : tree->children){//Recurse and update the ctr as we go so that we ensure each cluster gets unique id.
+            ctr = label_clusters_helper(child, labels, within_cluster, ctr);
+        }
+        return ctr;
+    }
 }

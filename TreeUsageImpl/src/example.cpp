@@ -131,12 +131,13 @@ void test_hdbscan(){
     Node* root = generateTree12();
     assign_sizes(root);
     printTree(*root);
-    int mpts = 3;
-    int mcs = 2;
+    int mpts = 3; //TODO: Check whether the algorithm is robust to this parameter when we are able to construct the dc-tree
+    int mcs = 2; //For now we only allow mcs>=2 since we do not have any cdists.
 
     Dc_hdbscan tree(mpts, mcs);
     tree.fit(root);
-
+    std::vector<int> labels = tree.labels_;
+    printLabels(labels);
 
 }
 
