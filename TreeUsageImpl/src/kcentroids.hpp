@@ -6,18 +6,9 @@
 #include <iostream>
 #include <algorithm>
 
+#include <dc_dist.hpp>
 
-//Nodes for the dc-tree
-/*
-Thoughts: An inherent weakness is that we seemingly cannot predefine the size of the children vector
-*/
-typedef struct Node {
-    struct Node* parent;
-    double cost;  // For DCTree this is dc-distance, for... 
-    int id; // The id of a potential leaf node (this can be used to assign points -> we just make the id in internal nodes the optimal center, we then cap by k in the iterations -> this will be separate from the tree hierarchy construction - O(n) for each k to output the solution.)
-    std::vector<struct Node*> children;
-    int size;
-} Node;
+
 
 
 //Cost-decrease annotation structs
@@ -36,63 +27,6 @@ bool is_a_root(const Node &tree);
 
 bool compareByCost(const Annotation* anno1, const Annotation* anno2);
 void print_annotations(std::vector<Annotation*> annotations);
-
-template <typename CostFunction>
-std::vector<Annotation*> annotate_tree_old(const Node &root, CostFunction f){
-    std::vector<Annotation*> arr;
-    int n = 2*root.size; 
-    arr.reserve(n);
-    annotate_tree_inner_old(root, f, arr);
-    return arr;
-}
-
-
-/*
-Inner tree traversal function that computes the actual annotations and appends them to the arr.
-Currently I assume the tree stores sizes - otherwise it makes this code a lot uglier - we really need to store the sizes in advance, otherwise we need to do two traversals of the list of children.
-TODO: Should I somehow already keep track of the corresponding clusters?
-*/
-template <typename CostFunction>
-std::pair<double, int> annotate_tree_inner_old(const Node &tree, CostFunction f, std::vector<Annotation*> &arr){
-    if((tree.children).size() == 0){
-        Annotation* anno =  new Annotation{f((tree.parent)->cost), tree.id};
-        arr.push_back(anno);
-        std::pair<double, int> result = {0.0, tree.id};
-        return result;
-    } else{
-        int size = tree.size;
-        double parent_cost = 0;
-        if(is_a_root(tree)){
-            parent_cost = tree.cost; //If we are in the root we use the distance itself. This will still result in the annotation having the tied highest cost decrease as desired. TODO: Check that this is true.
-        }
-        else {
-            parent_cost = (tree.parent)->cost;
-        }
-        double best_cost = std::numeric_limits<double>::infinity();
-        int best_center = -1;
-        double curr_sub_cost = 0.0;
-        int curr_center = -1;
-        for(const Node* child : tree.children){ //Run through the children of the current node and find the lowest
-            std::pair<double, int> sub_result = annotate_tree_inner_old(*child, f, arr);
-            curr_sub_cost = sub_result.first;
-            curr_center = sub_result.second;
-            int child_size = child->size;
-            double curr_cost = curr_sub_cost + f(tree.cost) * (size-child_size);
-            if(curr_cost <= best_cost){
-                best_cost = curr_cost;
-                best_center = curr_center;
-            }
-        }
-        double cost_decrease = f(parent_cost) * size - best_cost;
-        Annotation* anno = new Annotation{cost_decrease, best_center};
-        arr.push_back(anno);
-        std::pair<double, int> result = {best_cost, best_center};
-        return result;
-    }
-}
-
-
-
 
 
 
@@ -251,12 +185,10 @@ std::vector<int> kcentroids(Node& root, CostFunction f, int k){
     std::vector<Annotation*> annotations = annotate_tree(root, f);
     std::sort(annotations.begin(), annotations.end(), compareByCost);
 
-    //std::cout << "annotating centers:" << std::endl;
-    annotate_tree_centers(annotations, k);
-    //std::cout << "assigning points:" << std::endl;
-
+    annotate_tree_centers(annotations, k); //This puts the center annotation in id of internal nodes and cost of leaf nodes
     std::vector<int> res = assign_points(root);
-    cleanTree(root); //We have made some janky annotations that might be annoying to other algorithms.
+    
+    cleanTree(root); //Reset all internal node ids to -1 and all leaf node costs to 0
     printLabels(res);
     return res;
 }

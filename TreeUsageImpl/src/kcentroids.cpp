@@ -1,6 +1,9 @@
 #include <kcentroids.hpp>
+#include <dc_dist.hpp>
+
 #include <vector>
 #include <limits>
+
 
 bool is_a_root(const Node &tree){
     if(tree.parent == nullptr){
@@ -51,7 +54,6 @@ int split_detector(std::vector<Annotation*> annotations, int i){
 
 
 
-
 void delete_tree(Node* tree){
     for (Node* child : tree->children) {
         delete_tree(child);
@@ -90,7 +92,7 @@ void delete_annotations(std::vector<Annotation*> &annotations){
 }
 
 
-//TODO: Make a reset function for annotations that is called first
+//This puts the center annotation in id of internal nodes and cost of leaf nodes
 void annotate_tree_centers(std::vector<Annotation*> &annotations, int k){
     for(int i = 0; i < k; i++){
         Node* node = annotations[i]->orig_node;
@@ -103,7 +105,6 @@ void annotate_tree_centers(std::vector<Annotation*> &annotations, int k){
     }
     return;
 }
-
 
 
 std::vector<int> assign_points(Node &tree){
@@ -135,7 +136,7 @@ void assign_points_helper(Node &tree, std::vector<int> &arr, int curr_center){
 }
 
 
-
+//Reset all internal node ids to -1 and all leaf node costs to 0
 void cleanTree(Node &tree){
     if(tree.children.size()==0){
         tree.cost = 0.0;
@@ -146,3 +147,6 @@ void cleanTree(Node &tree){
         }
     }
 }
+
+
+

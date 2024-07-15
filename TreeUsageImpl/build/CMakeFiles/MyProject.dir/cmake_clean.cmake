@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/MyProject.dir/src/dc_dist.cpp.o"
+  "CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o"
   "CMakeFiles/MyProject.dir/src/example.cpp.o"
   "CMakeFiles/MyProject.dir/src/kcentroids.cpp.o"
   "MyProject"

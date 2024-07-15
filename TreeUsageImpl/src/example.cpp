@@ -1,7 +1,9 @@
 #include <iostream>
 #include <vector>
-#include <kcentroids.hpp>
 #include <cmath>
+#include <kcentroids.hpp>
+#include <dc_hdbscan.hpp>
+#include <dc_dist.hpp>
 
 // Function to create a new node -
 Node* addNode(Node* parent = nullptr, double cost=0.0, int id = -1, int size=1) {
@@ -86,50 +88,6 @@ Node* generateTree12() {
 }
 
 
-
-// Function to print the tree (for debugging purposes)
-void printSubtree(const std::string &prefix, const Node& tree) {
-    using std::cout;
-    using std::endl;
-    if ((tree.children).size() == 0) return;
-    cout << prefix;
-    size_t n_children = tree.children.size();
-    cout << (n_children > 1 ? "├────" : "");
-
-    for (size_t i = 0; i < n_children; ++i) {
-        Node *c = tree.children[i];
-        if (i < n_children - 1) {
-            if (i > 0) { // added fix
-                cout << prefix<< "├────"; // added fix
-            } // added fix
-            bool printStrand = n_children > 1 && !c->children.empty();
-            std::string newPrefix = prefix + (printStrand ? "│\t" : "\t");
-            if(c->children.empty()){
-                std::cout << "(L" << c->id << ")\n";
-            } else{
-                std::cout << "(" << c->cost << ")\n";
-            }
-            printSubtree(newPrefix, *c);
-        } else {
-            cout << (n_children > 1 ? prefix : "") << "└────";
-            if(c->children.empty()){
-                std::cout << "(L" << c->id << ")\n";
-            } else{
-                std::cout << "(" << c->cost << ")\n";
-            }
-            printSubtree(prefix + "\t", *c);
-        }
-    }
-}
-
-void printTree(const Node& tree) {
-    using std::cout;
-    std::cout << tree.cost << "\n";
-    printSubtree("", tree);
-    cout << "\n";
-}
-
-
 void printLabels(std::vector<int> labels){
     std::cout << "Labels:" << std::endl;
     std::cout << "[";
@@ -142,7 +100,6 @@ void printLabels(std::vector<int> labels){
 }
 
 
-
 double kmedian(double x){
     return x;
 }
@@ -151,14 +108,15 @@ double kmeans(double x){
 }
 
 
-int main() {
+
+void test_k_centroids(){
     Node* root = generateTree12();
     std::cout << "Generated dc-tree Tree:\n";
     std::vector<Annotation*> res = annotate_tree(*root, kmeans);
     print_annotations(res);
     printTree(*root);
 
-    std::vector<int> labels = kcentroids(*root, kmeans, 4);
+    std::vector<int> labels = kcentroids(*root, kmeans, 6);
 
 
     Node* rootv2 = create_hierarchy(*root, kmeans);
@@ -166,8 +124,24 @@ int main() {
     printTree(*rootv2);
 
 
+}
+
+//How do I handle providing a tree in an elegant way?
+void test_hdbscan(){
+    Node* root = generateTree11();
+    printTree(*root);
+    int mpts = 3;
+    int mcs = 2;
+
+    Dc_hdbscan tree(mpts, mcs);
+    tree.fit(root);
 
 
+}
+
+int main() {
+    //test_k_centroids();
+    test_hdbscan();
 
     return 0;
 }

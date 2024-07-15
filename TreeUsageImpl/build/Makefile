@@ -123,6 +123,60 @@ MyProject/fast:
 	$(MAKE) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/build
 .PHONY : MyProject/fast
 
+src/dc_dist.o: src/dc_dist.cpp.o
+
+.PHONY : src/dc_dist.o
+
+# target to build an object file
+src/dc_dist.cpp.o:
+	$(MAKE) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/dc_dist.cpp.o
+.PHONY : src/dc_dist.cpp.o
+
+src/dc_dist.i: src/dc_dist.cpp.i
+
+.PHONY : src/dc_dist.i
+
+# target to preprocess a source file
+src/dc_dist.cpp.i:
+	$(MAKE) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/dc_dist.cpp.i
+.PHONY : src/dc_dist.cpp.i
+
+src/dc_dist.s: src/dc_dist.cpp.s
+
+.PHONY : src/dc_dist.s
+
+# target to generate assembly for a file
+src/dc_dist.cpp.s:
+	$(MAKE) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/dc_dist.cpp.s
+.PHONY : src/dc_dist.cpp.s
+
+src/dc_hdbscan.o: src/dc_hdbscan.cpp.o
+
+.PHONY : src/dc_hdbscan.o
+
+# target to build an object file
+src/dc_hdbscan.cpp.o:
+	$(MAKE) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o
+.PHONY : src/dc_hdbscan.cpp.o
+
+src/dc_hdbscan.i: src/dc_hdbscan.cpp.i
+
+.PHONY : src/dc_hdbscan.i
+
+# target to preprocess a source file
+src/dc_hdbscan.cpp.i:
+	$(MAKE) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.i
+.PHONY : src/dc_hdbscan.cpp.i
+
+src/dc_hdbscan.s: src/dc_hdbscan.cpp.s
+
+.PHONY : src/dc_hdbscan.s
+
+# target to generate assembly for a file
+src/dc_hdbscan.cpp.s:
+	$(MAKE) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.s
+.PHONY : src/dc_hdbscan.cpp.s
+
 src/example.o: src/example.cpp.o
 
 .PHONY : src/example.o
@@ -186,6 +240,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... MyProject"
+	@echo "... src/dc_dist.o"
+	@echo "... src/dc_dist.i"
+	@echo "... src/dc_dist.s"
+	@echo "... src/dc_hdbscan.o"
+	@echo "... src/dc_hdbscan.i"
+	@echo "... src/dc_hdbscan.s"
 	@echo "... src/example.o"
 	@echo "... src/example.i"
 	@echo "... src/example.s"
