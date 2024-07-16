@@ -57,7 +57,7 @@ std::pair<double, double> Dc_hdbscan::bottom_up_cluster(Node *tree, bool merge_a
         return {0,stability_contribution};
 
     } else{ //internal node
-        double total_cluster_stability = 0.0; //This will contain the sum of staabilities of best clusters from below
+        double total_cluster_stability = 0.0; //This will contain the sum of stabilities of best clusters from below
         double total_region_contribution = 0.0; //This will contain the sum of the level points fall out of current cluster region
         int s_size = split_size(tree, this->min_cluster_size); 
 
