@@ -5,6 +5,13 @@
 #include <dc_hdbscan.hpp>
 #include <dc_dist.hpp>
 
+#include<mlpack.hpp>
+#include <mlpack/methods/neighbor_search/neighbor_search.hpp>
+#include <mlpack/core.hpp>
+#include <mlpack/core/tree/binary_space_tree.hpp>
+
+
+
 // Function to create a new node -
 Node* addNode(Node* parent = nullptr, double cost=0.0, int id = -1, int size=1) {
     Node* newNode = new Node;
@@ -19,6 +26,12 @@ Node* addNode(Node* parent = nullptr, double cost=0.0, int id = -1, int size=1) 
 
     return newNode;
 }
+
+
+
+
+
+
 
 // Function to generate a tree with 11 leaf nodes
 Node* generateTree11() {
@@ -141,9 +154,40 @@ void test_hdbscan(){
 
 }
 
+
+void test_mlpack(){
+    using namespace mlpack::metric; // ManhattanDistance
+    using namespace mlpack::tree;
+    using namespace mlpack::neighbor;
+
+    // arma::mat data = {  {1.0, 1.0},
+    //                     {2.0, 2.0},
+    //                     {3.0, 3.0},
+    //                     {1.5, 1.5},
+    //                     {5.5, 5.5},
+    //                     {10.0, 10.0}
+    //                     };
+     
+    arma::mat data2 = {{0.0, 1.0},
+                        {0.0, 2.0},
+                        {0.0, 3.0},
+                        {0.0, 1.5},
+                        {0.0, 5.5},
+                        {0.0, 10.0}
+                        };
+
+
+    //arma::vec query = data.row(0);
+    arma::mat data3 = arma::trans(data2);
+    compute_cdists(data3, 2);
+    
+
+
+}
+
 int main() {
     //test_k_centroids();
-    test_hdbscan();
-
+    //test_hdbscan();
+    test_mlpack();
     return 0;
 }

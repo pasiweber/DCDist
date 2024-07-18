@@ -5,11 +5,42 @@
 #include <string>
 
 
+//mlpack stuff
+#include <mlpack.hpp>
+
 
 //Nodes for the dc-tree
 /*
-Thoughts: An inherent weakness is that we seemingly cannot predefine the size of the children vector
+    Implementation structure:
+    1. Get k'th nearest neighbor for each point
+    1b. Compute mutual reachability graph (explicit or not?)
+    2. Compute the MST over the complete mutual reachability graph
+    3. Compute the dc-tree from the MST
+
+
+    TODO(S): 
+    1. Figure out what specific kd-tree implementation to use. Potentially also a ball-tree implementation. 
+    2. Figure out if this specific implementation has a knn implemented already. If not, this needs to be implemented over the tree. 
+        a) Does not seem too bad - maintain bounded priority queue in traversal over the tree that "prunes" non-useful regions of the tree.
+    3. Adapt the dualtreetraverser dualtree boruvka - it needs to be able to take as input the mutual reachability distance specifically.
+    4. Figure out how to implement the dc-tree over the output of MST. (What does the MST output format look like?)
+    5. Potentially incorporate a base implementation of the dc-tree as well. In general, how should the code be strucured in terms of options as to how to construct it?
+
+    Game plan:
+    1. Download mlpack for the project
+    2. Include it for the cmake
+    3. Make a mututal reachability class, this is both given as input parameter to the KDTree and the DualTreeBoruvka which computes the MST
+        3b. In this we need to compute the KNN, and store the core distances within the mututal reachability class. This means that computing the distance will take constant time. 
+        3c. The class then needs to satisfy the metric policy and can then in theory just be plugged in and we are good to go..?
+    4. Figure out the format of the MST -> whatever it is, the dc-tree should be computed from it - classical sorting the edges and constructing the tree.
+        4b. Should most likely be done using a union find algorithm.
+
+    https://github.com/junjiedong/KDTree/blob/master/src/KDTree.h
+    https://github.com/cdalitz/kdtree-cpp/blob/master/demo_kdtree.cpp
+    
 */
+
+
 typedef struct Node {
     struct Node* parent;
     double cost;  // For DCTree this is dc-distance, for... 
@@ -25,4 +56,9 @@ void printTree(const Node& tree);
 
 Node* construct_dc_tree(const std::vector<std::vector<double>> &points);
 
+
+
+std::vector<double> compute_cdists(arma::mat &data, size_t k);
+
+std::vector<double> extract_cdists(arma::mat distances, size_t k);
 #endif

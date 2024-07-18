@@ -1,19 +1,17 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "CXX"
   )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_CXX
-  "/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/dc_dist.cpp" "/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles/MyProject.dir/src/dc_dist.cpp.o"
-  "/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/dc_hdbscan.cpp" "/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o"
-  "/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/example.cpp" "/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles/MyProject.dir/src/example.cpp.o"
-  "/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/kcentroids.cpp" "/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles/MyProject.dir/src/kcentroids.cpp.o"
-  )
-set(CMAKE_CXX_COMPILER_ID "GNU")
 
-# The include file search paths:
-set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../src"
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/dc_dist.cpp" "CMakeFiles/MyProject.dir/src/dc_dist.cpp.o" "gcc" "CMakeFiles/MyProject.dir/src/dc_dist.cpp.o.d"
+  "/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/dc_hdbscan.cpp" "CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o" "gcc" "CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o.d"
+  "/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/example.cpp" "CMakeFiles/MyProject.dir/src/example.cpp.o" "gcc" "CMakeFiles/MyProject.dir/src/example.cpp.o.d"
+  "/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/kcentroids.cpp" "CMakeFiles/MyProject.dir/src/kcentroids.cpp.o" "gcc" "CMakeFiles/MyProject.dir/src/kcentroids.cpp.o.d"
   )
 
 # Targets to which this target links.

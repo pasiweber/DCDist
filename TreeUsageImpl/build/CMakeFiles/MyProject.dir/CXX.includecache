@@ -30,15 +30,17 @@ algorithm
 dc_dist.hpp
 -
 
-/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/dc_hdbscan.cpp
-dc_hdbscan.hpp
--
-kcentroids.hpp
+/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/example.cpp
+iostream
 -
 vector
 -
-limits
+cmath
 -
-stdexcept
+kcentroids.hpp
+-
+dc_hdbscan.hpp
+-
+dc_dist.hpp
 -
 

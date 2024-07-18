@@ -31,11 +31,15 @@ void HCF::compute_clustering(Node *tree){
 }
 /*
     Skeleton structure of the general HCF structure. 
+
+    Maintain an array of metadata in templated structs/classes with specific fields to the specific objective function. 
+
+    
 */
 double HCF::bottom_up_cluster(Node *tree){
     if((this->min_cluster_size) > (tree->size)){ //noise node
         tree->is_cluster = false;
-        return 0.0;
+        return 0.0; //TODO: Return cluster value rather than just 0 here
 
     } else{ //internal node
         double total_cluster_objective = 0.0; //This will contain the sum of stabilities of best clusters from below
@@ -54,5 +58,6 @@ double HCF::bottom_up_cluster(Node *tree){
         return total_cluster_objective;
     }
 }
+
 
 
