@@ -179,7 +179,7 @@ void test_mlpack(){
 
     //arma::vec query = data.row(0);
     arma::mat data3 = arma::trans(data2);
-    compute_cdists(data3, 2);
+    compute_cdists(data3, 2, "kdtree");
     
 
 

@@ -60,42 +60,36 @@ void printTree(const Node& tree) {
 }
 
 /*
-    Should be two modes - kdTree and brute force / naive.
-    Should be possible to do both with mlpack...
-
-    I need a helper function to extract the cdists from the knn matrix
-
-
     Also createe pybindings so that this method can be tested directly in python alongside current methods there.
-
-
 */
-std::vector<double> compute_cdists(arma::mat &data, size_t k){
+std::vector<double> compute_cdists(arma::mat &data, size_t k, std::string mode){
     using namespace mlpack::metric;
     using namespace mlpack::tree;
     using namespace mlpack::neighbor;
 
-
     //KDTree<EuclideanDistance, DTBStat, arma::mat> tree(data);
     //KDTree<EuclideanDistance, EmptyStatistic, arma::mat> tree(data);
-
-    NeighborSearch<NearestNeighborSort, EuclideanDistance, arma::mat, KDTree> nnSearch(data); 
-    //NeighborSearch<NearestNeighborSort, EuclideanDistance, arma::mat, KDTree> nnSearch2(data, NAIVE_MODE);
+    
+    NeighborSearch<NearestNeighborSort, EuclideanDistance, arma::mat, KDTree> *searcher;
+    if(mode == "naive"){ //Brute force knn search
+        searcher = new NeighborSearch<NearestNeighborSort, EuclideanDistance, arma::mat, KDTree>(data, NAIVE_MODE);
+    } else { //KD tree knn search
+        searcher = new NeighborSearch<NearestNeighborSort, EuclideanDistance, arma::mat, KDTree>(data); 
+    }
     
     arma::Mat<size_t> neighbors;
     arma::mat distances;
 
-    nnSearch.Search(k, neighbors, distances); //This does not include point itself in k, so we should actually do k-1.
-    std::cout << "The neighbors:" << std::endl; 
-    neighbors.print();
+    searcher->Search(k-1, neighbors, distances); //This does not include point itself in k, which is why we do k-1
+    //std::cout << "The neighbors:" << std::endl; 
+    //neighbors.print();
 
-    std::cout << "The distances:" << std::endl; 
-    distances.print();
+    //std::cout << "The distances:" << std::endl; 
+    //distances.print();
 
     std::vector<double> cdists = extract_cdists(distances, k);
 
     return cdists; //This default return value needs to be here, otherwise armadillo becomes confused...
-
 }
 
 
@@ -107,8 +101,8 @@ std::vector<double> extract_cdists(arma::mat distances, size_t k){
     for(size_t i = 0; i < distances.n_cols; i++)
     {
         arma::vec col = distances.col(i);
-
-        std::cout << col(k-1) << std::endl;
+        cdists.push_back(col(k-2));
     }
+    
     return cdists;
 }

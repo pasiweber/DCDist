@@ -58,7 +58,7 @@ Node* construct_dc_tree(const std::vector<std::vector<double>> &points);
 
 
 
-std::vector<double> compute_cdists(arma::mat &data, size_t k);
+std::vector<double> compute_cdists(arma::mat &data, size_t k, std::string mode);
 
 std::vector<double> extract_cdists(arma::mat distances, size_t k);
 #endif
