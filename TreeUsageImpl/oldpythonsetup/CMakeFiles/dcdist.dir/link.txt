@@ -1,0 +1,2 @@
+/usr/bin/ar qc libdcdist.a CMakeFiles/dcdist.dir/src/dc_dist.cpp.o
+/usr/bin/ranlib libdcdist.a

@@ -64,6 +64,8 @@ CMAKE_BINARY_DIR = /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDi
 
 # The main recursive "all" target.
 all: CMakeFiles/MyProject.dir/all
+all: CMakeFiles/dcdist.dir/all
+all: CMakeFiles/dctree.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -72,6 +74,8 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/MyProject.dir/clean
+clean: CMakeFiles/dcdist.dir/clean
+clean: CMakeFiles/dctree.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -81,12 +85,12 @@ clean: CMakeFiles/MyProject.dir/clean
 CMakeFiles/MyProject.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target MyProject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target MyProject"
 .PHONY : CMakeFiles/MyProject.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/MyProject.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/MyProject.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles 0
 .PHONY : CMakeFiles/MyProject.dir/rule
@@ -99,6 +103,58 @@ MyProject: CMakeFiles/MyProject.dir/rule
 CMakeFiles/MyProject.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/clean
 .PHONY : CMakeFiles/MyProject.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/dcdist.dir
+
+# All Build rule for target.
+CMakeFiles/dcdist.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=7,8 "Built target dcdist"
+.PHONY : CMakeFiles/dcdist.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/dcdist.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/dcdist.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles 0
+.PHONY : CMakeFiles/dcdist.dir/rule
+
+# Convenience name for target.
+dcdist: CMakeFiles/dcdist.dir/rule
+.PHONY : dcdist
+
+# clean rule for target.
+CMakeFiles/dcdist.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/clean
+.PHONY : CMakeFiles/dcdist.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/dctree.dir
+
+# All Build rule for target.
+CMakeFiles/dctree.dir/all: CMakeFiles/dcdist.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dctree.dir/build.make CMakeFiles/dctree.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dctree.dir/build.make CMakeFiles/dctree.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=9,10 "Built target dctree"
+.PHONY : CMakeFiles/dctree.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/dctree.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/dctree.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles 0
+.PHONY : CMakeFiles/dctree.dir/rule
+
+# Convenience name for target.
+dctree: CMakeFiles/dctree.dir/rule
+.PHONY : dctree
+
+# clean rule for target.
+CMakeFiles/dctree.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dctree.dir/build.make CMakeFiles/dctree.dir/clean
+.PHONY : CMakeFiles/dctree.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

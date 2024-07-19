@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -flto -shared  -o dctree.cpython-310-x86_64-linux-gnu.so CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o   -L/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/external_libs/mlpack-4.4.0/lib  -Wl,-rpath,/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/external_libs/mlpack-4.4.0/lib: libdcdist.a 

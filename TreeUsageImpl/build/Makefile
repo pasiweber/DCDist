@@ -129,12 +129,39 @@ MyProject/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/build
 .PHONY : MyProject/fast
 
+#=============================================================================
+# Target rules for targets named dcdist
+
+# Build rule for target.
+dcdist: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dcdist
+.PHONY : dcdist
+
+# fast build rule for target.
+dcdist/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/build
+.PHONY : dcdist/fast
+
+#=============================================================================
+# Target rules for targets named dctree
+
+# Build rule for target.
+dctree: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dctree
+.PHONY : dctree
+
+# fast build rule for target.
+dctree/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dctree.dir/build.make CMakeFiles/dctree.dir/build
+.PHONY : dctree/fast
+
 src/dc_dist.o: src/dc_dist.cpp.o
 .PHONY : src/dc_dist.o
 
 # target to build an object file
 src/dc_dist.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/dc_dist.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/src/dc_dist.cpp.o
 .PHONY : src/dc_dist.cpp.o
 
 src/dc_dist.i: src/dc_dist.cpp.i
@@ -143,6 +170,7 @@ src/dc_dist.i: src/dc_dist.cpp.i
 # target to preprocess a source file
 src/dc_dist.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/dc_dist.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/src/dc_dist.cpp.i
 .PHONY : src/dc_dist.cpp.i
 
 src/dc_dist.s: src/dc_dist.cpp.s
@@ -151,7 +179,35 @@ src/dc_dist.s: src/dc_dist.cpp.s
 # target to generate assembly for a file
 src/dc_dist.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/dc_dist.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/src/dc_dist.cpp.s
 .PHONY : src/dc_dist.cpp.s
+
+src/dc_dist_bindings.o: src/dc_dist_bindings.cpp.o
+.PHONY : src/dc_dist_bindings.o
+
+# target to build an object file
+src/dc_dist_bindings.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dctree.dir/build.make CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o
+.PHONY : src/dc_dist_bindings.cpp.o
+
+src/dc_dist_bindings.i: src/dc_dist_bindings.cpp.i
+.PHONY : src/dc_dist_bindings.i
+
+# target to preprocess a source file
+src/dc_dist_bindings.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dctree.dir/build.make CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.i
+.PHONY : src/dc_dist_bindings.cpp.i
+
+src/dc_dist_bindings.s: src/dc_dist_bindings.cpp.s
+.PHONY : src/dc_dist_bindings.s
+
+# target to generate assembly for a file
+src/dc_dist_bindings.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dctree.dir/build.make CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.s
+.PHONY : src/dc_dist_bindings.cpp.s
 
 src/dc_hdbscan.o: src/dc_hdbscan.cpp.o
 .PHONY : src/dc_hdbscan.o
@@ -234,9 +290,14 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... MyProject"
+	@echo "... dcdist"
+	@echo "... dctree"
 	@echo "... src/dc_dist.o"
 	@echo "... src/dc_dist.i"
 	@echo "... src/dc_dist.s"
+	@echo "... src/dc_dist_bindings.o"
+	@echo "... src/dc_dist_bindings.i"
+	@echo "... src/dc_dist_bindings.s"
 	@echo "... src/dc_hdbscan.o"
 	@echo "... src/dc_hdbscan.i"
 	@echo "... src/dc_hdbscan.s"
