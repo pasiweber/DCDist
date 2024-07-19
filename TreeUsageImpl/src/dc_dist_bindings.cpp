@@ -15,6 +15,7 @@ namespace py = pybind11;
 
 
 std::vector<double> compute_cdists_wrapper(py::array_t<double> input_array, size_t k, std::string mode) {
+    std::cout << "compute cdists wrapper called" << std::endl;
     // Convert numpy array to armadillo matrix
     auto buf = input_array.request();
     if (buf.ndim != 2) {
@@ -23,7 +24,7 @@ std::vector<double> compute_cdists_wrapper(py::array_t<double> input_array, size
 
     double *ptr = static_cast<double *>(buf.ptr);
     arma::mat data(ptr, buf.shape[0], buf.shape[1], false, true);
-
+    std::cout << "here" << std::endl;
     // Call the original compute_cdists function
     std::vector<double> result = compute_cdists(data, k, mode);
 

@@ -1,9 +1,0 @@
-/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/oldpythonsetup/CMakeFiles/MyProject.dir
-/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/oldpythonsetup/CMakeFiles/dcdist.dir
-/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/oldpythonsetup/CMakeFiles/dctree.dir
-/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/oldpythonsetup/CMakeFiles/edit_cache.dir
-/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/oldpythonsetup/CMakeFiles/rebuild_cache.dir
-/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/oldpythonsetup/CMakeFiles/list_install_components.dir
-/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/oldpythonsetup/CMakeFiles/install.dir
-/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/oldpythonsetup/CMakeFiles/install/local.dir
-/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/oldpythonsetup/CMakeFiles/install/strip.dir

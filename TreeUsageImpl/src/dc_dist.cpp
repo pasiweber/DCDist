@@ -66,11 +66,12 @@ std::vector<double> compute_cdists(arma::mat &data, size_t k, std::string mode){
     using namespace mlpack::metric;
     using namespace mlpack::tree;
     using namespace mlpack::neighbor;
-
+    std::cout << "compute_cdists called" << std::endl;
     //KDTree<EuclideanDistance, DTBStat, arma::mat> tree(data);
     //KDTree<EuclideanDistance, EmptyStatistic, arma::mat> tree(data);
     
     NeighborSearch<NearestNeighborSort, EuclideanDistance, arma::mat, KDTree> *searcher;
+
     if(mode == "naive"){ //Brute force knn search
         searcher = new NeighborSearch<NearestNeighborSort, EuclideanDistance, arma::mat, KDTree>(data, NAIVE_MODE);
     } else { //KD tree knn search
