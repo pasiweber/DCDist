@@ -41,13 +41,17 @@
 */
 
 
+
+
 typedef struct Node {
     struct Node* parent;
     double cost;  // For DCTree this is dc-distance, for... 
     int id; // The id of a potential leaf node (this can be used to assign points -> we just make the id in internal nodes the optimal center, we then cap by k in the iterations -> this will be separate from the tree hierarchy construction - O(n) for each k to output the solution.)
     std::vector<struct Node*> children;
     int size;
-    bool is_cluster = false; //Used to extract clusters for optimization algorithm over the tree
+    int low; //Fast array indexing low index
+    int high; //Fast array indexing high index
+    bool is_cluster = false; //Used to extract clusters for optimization (HDBSCAN / HCF) algorithm over the tree
 } Node;
 
 
@@ -57,8 +61,19 @@ void printTree(const Node& tree);
 Node* construct_dc_tree(const std::vector<std::vector<double>> &points);
 
 
+void swap(double *const a, double *const b);
+
+unsigned long long partition(std::vector<double> &arr, const unsigned long long low, const unsigned long long high);
+
+double quickSelect(std::vector<double> &arr, const unsigned long long low, const unsigned long long high, const int k);
+
+
+
 
 std::vector<double> compute_cdists(arma::mat &data, size_t k, std::string mode);
 
 std::vector<double> extract_cdists(arma::mat distances, size_t k);
+
+std::vector<double> naive_cdists_efficient(arma::mat &data, size_t k);
+std::vector<double> naive_cdists_efficient2(arma::mat &data, size_t k);
 #endif

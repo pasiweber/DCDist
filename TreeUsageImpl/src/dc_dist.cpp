@@ -17,6 +17,63 @@ Node* construct_dc_tree(const std::vector<std::vector<double>> &points){
 
 
 
+void swap(double *const a, double *const b)
+{
+    double temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+unsigned long long partition(std::vector<double> &arr, const unsigned long long low, const unsigned long long high)
+{
+    const double pivot = arr[high];
+    unsigned long long i = low - 1;
+
+    for (unsigned long long j = low; j < high; j++)
+    {
+        if (arr[j] <= pivot)
+        {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+
+    swap(&arr[i + 1], &arr[high]);
+    return i + 1;
+}
+
+double quickSelect(std::vector<double> &arr, const unsigned long long low, const unsigned long long high, const int k)
+{
+    if (low <= high)
+    {
+        const int pivotIndex = partition(arr, low, high);
+
+        if (pivotIndex == k)
+        {
+            return arr[pivotIndex];
+        }
+        else if (pivotIndex < k)
+        {
+            return quickSelect(arr, pivotIndex + 1, high, k);
+        }
+        else
+        {
+            return quickSelect(arr, low, pivotIndex - 1, k);
+        }
+    }
+
+    return -1.0;
+}
+
+
+
+
+
+
+
+
+
+
 // Function to print the tree (for debugging purposes)
 void printSubtree(const std::string &prefix, const Node& tree) {
     using std::cout;
@@ -72,8 +129,10 @@ std::vector<double> compute_cdists(arma::mat &data, size_t k, std::string mode){
     
     NeighborSearch<NearestNeighborSort, EuclideanDistance, arma::mat, KDTree> *searcher;
 
-    if(mode == "naive"){ //Brute force knn search
+    if(mode == "naive"){ //Brute force knn search QUICKSELECT WRITE IT YOURSELF TODO TODO
         searcher = new NeighborSearch<NearestNeighborSort, EuclideanDistance, arma::mat, KDTree>(data, NAIVE_MODE);
+    } else if(mode == "naive2"){
+        return naive_cdists_efficient(data, k);
     } else { //KD tree knn search
         searcher = new NeighborSearch<NearestNeighborSort, EuclideanDistance, arma::mat, KDTree>(data); 
     }
@@ -107,3 +166,37 @@ std::vector<double> extract_cdists(arma::mat distances, size_t k){
     
     return cdists;
 }
+
+
+
+/*
+Two versions - quickselect and sorting efficiently.
+
+1. Fill up n x n array with distances  
+
+*/
+std::vector<double> naive_cdists_efficient(arma::mat &data, size_t k){
+    int n = data.n_cols;
+    std::vector<std::vector<double>> dist_matrix(n, std::vector<double>(n)); //nxn dist matrix holder
+    std::vector<double> cdists;
+    cdists.resize(n);
+
+    for(size_t i = 0; i < data.n_cols; i++)
+    {
+        const arma::vec &col_i = data.col(i);
+        for(size_t j = i; j < data.n_cols; j++){
+            double res = arma::norm(col_i-data.col(j), 2);
+            dist_matrix[i][j] = res;
+            dist_matrix[j][i] = res;
+        }
+        std::nth_element(dist_matrix[i].begin(), dist_matrix[i].begin() + k-1, dist_matrix[i].end());
+        cdists[i] = dist_matrix[i][k-1];
+    }
+
+    return cdists;
+}
+
+
+
+
+

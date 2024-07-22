@@ -22,7 +22,7 @@ def get_cdists(points, min_pts):
         cdists = cdists[:, min_pts - 1] #These are the core-distances for each point.
         return cdists
 
-@numba.njit(fastmath=True, parallel=True)
+@numba.njit(fastmath=True, parallel=False)
 def get_dist_matrix(points, D, dim, num_points):
     '''
     Returns the Euclidean distance matrix of a 2D set of points. 
@@ -50,7 +50,7 @@ def get_dist_matrix(points, D, dim, num_points):
 k = 3
 n = 10000
 dataset = "blobs"
-points1, _ = create_dataset(num_points=n, datatype=dataset)
+points1, _ = create_dataset(num_points=n, datatype=dataset, num_features=100)
 points1t = np.transpose(points1)
 
 
@@ -98,10 +98,21 @@ cdists3 = get_cdists(points1, k)
 
 t4 = time.time()
 
+cdists4 = dctree.compute_cdists(points1t, k, "naive2")
+
+t5 = time.time()
+
+cdists4 = dctree.compute_cdists(points1t, k, "naive3")
+
+t6 = time.time()
+
 
 
 print("kdtree:", t2-t1)
 print("naive:", t3-t2)
 print("python old", t4-t3)
+print("naive2:", t5-t4)
+print("naive3:", t6-t5)
 
+print(cdists4 - cdists3)
 #print("cdist diff:", cdists-cdists3)

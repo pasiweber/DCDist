@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/usr/include/python3.10 -I/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/external_libs/mlpack-4.4.0/include -I/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src
 
-CXX_FLAGS = -fPIC
+CXX_FLAGS =  -O3 -fPIC
 

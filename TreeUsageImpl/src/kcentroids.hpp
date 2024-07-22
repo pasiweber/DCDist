@@ -7,8 +7,30 @@
 #include <algorithm>
 
 #include <dc_dist.hpp>
+#include <lp_objective.hpp>
 
 
+/*
+Wrapper class for the tree itself to make fast assignments possible. I want to template it with the objective function somehow. 
+
+*/
+template <typename CostFunction> 
+class KCentroidsTree
+{
+
+    //Fields
+   private:
+    std::vector<double> index_order;
+
+    
+   public:
+    Node *tree; //Should be a pointer rather than a reference due to c++ nature.
+
+
+    //Constructors
+    KCentroidsTree(Node& root, int norm); //This should create the tree when the class is constructed
+
+};
 
 
 //Cost-decrease annotation structs
