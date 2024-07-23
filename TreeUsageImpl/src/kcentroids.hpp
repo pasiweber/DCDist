@@ -7,30 +7,7 @@
 #include <algorithm>
 
 #include <dc_dist.hpp>
-#include <lp_objective.hpp>
 
-
-/*
-Wrapper class for the tree itself to make fast assignments possible. I want to template it with the objective function somehow. 
-
-*/
-template <typename CostFunction> 
-class KCentroidsTree
-{
-
-    //Fields
-   private:
-    std::vector<double> index_order;
-
-    
-   public:
-    Node *tree; //Should be a pointer rather than a reference due to c++ nature.
-
-
-    //Constructors
-    KCentroidsTree(Node& root, int norm); //This should create the tree when the class is constructed
-
-};
 
 
 //Cost-decrease annotation structs
@@ -40,6 +17,7 @@ typedef struct Annotation {
     Annotation* parent;
     Node* tree_node = nullptr;
     bool has_leaf = true; //This is set to true until a node sets it to false. When we are "done" with the tree, we do another run over the annotations, adding leaves of those set to false, as a child of the node the annotation is currently pointing to
+    int k; //The next k for this annotation when it becomes a new node / smaller cluster again.
     Node* orig_node; //This is used to extract a specific k solution efficiently
 } Annotation;
 

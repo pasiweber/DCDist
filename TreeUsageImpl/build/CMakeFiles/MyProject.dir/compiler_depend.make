@@ -10035,6 +10035,8 @@ CMakeFiles/MyProject.dir/src/example.cpp.o: ../src/example.cpp \
   /usr/local/include/mlpack/methods/svdplusplus.hpp \
   /usr/local/include/mlpack/methods/svdplusplus/svdplusplus.hpp \
   /usr/local/include/mlpack/namespace_compat.hpp \
+  ../src/kcentroids2.hpp \
+  ../src/lp_objective.hpp \
   ../src/dc_hdbscan.hpp
 
 CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
@@ -12507,6 +12509,10 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
   /usr/local/include/mlpack/methods/svdplusplus/svdplusplus.hpp \
   /usr/local/include/mlpack/namespace_compat.hpp
 
+
+../src/lp_objective.hpp:
+
+../src/kcentroids2.hpp:
 
 ../src/example.cpp:
 

@@ -1,9 +1,7 @@
 #ifndef LP_OJBECTIVE_HPP
 #define LP_OBJECTIVE_HPP
 
-#include <vector>
-#include <string>
-
+#include <cmath>
 
 
 template<int Power>
@@ -12,17 +10,17 @@ class LPObjective
 public:
     LPObjective(){}
 
-    static evalutate(double value){
+    static double Evaluate(double value){
 
         return std::pow(value, Power);
     }
 
 };
 
-typedef LPObjective<1> KMeans;
+typedef LPObjective<1> KMedian;
 
 
-typedef LPObjective<2> KMedian;
+typedef LPObjective<2> KMeans;
 
 
 

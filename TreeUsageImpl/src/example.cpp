@@ -2,9 +2,9 @@
 #include <vector>
 #include <cmath>
 #include <kcentroids.hpp>
+#include <kcentroids2.hpp>
 #include <dc_hdbscan.hpp>
 #include <dc_dist.hpp>
-
 #include<mlpack.hpp>
 #include <mlpack/methods/neighbor_search/neighbor_search.hpp>
 #include <mlpack/core.hpp>
@@ -136,6 +136,14 @@ void test_k_centroids(){
     std::cout << "kmeans tree:" << std::endl;
     printTree(*rootv2);
 
+    // Create an instance of KCentroidsTree
+    KCentroidsTree<KMeans> tree(*root);
+
+    // Use the tree
+    Node* rootv3 = tree.get_tree();
+
+    std::cout << "kmeans tree new:" << std::endl;
+    printTree(*rootv3);
 
 }
 
@@ -186,8 +194,8 @@ void test_mlpack(){
 }
 
 int main() {
-    //test_k_centroids();
+    test_k_centroids();
     //test_hdbscan();
-    test_mlpack();
+    //test_mlpack();
     return 0;
 }

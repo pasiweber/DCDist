@@ -2378,4 +2378,6 @@ CMakeFiles/MyProject.dir/src/example.cpp.o: \
  /usr/local/include/mlpack/methods/svdplusplus.hpp \
  /usr/local/include/mlpack/methods/svdplusplus/svdplusplus.hpp \
  /usr/local/include/mlpack/namespace_compat.hpp \
+ /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/kcentroids2.hpp \
+ /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/lp_objective.hpp \
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/dc_hdbscan.hpp
