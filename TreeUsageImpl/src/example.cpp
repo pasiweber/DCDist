@@ -145,9 +145,12 @@ void test_k_centroids(){
     //printTree(*rootv3);
 
 
-    std::vector<int> res_new = tree.get_k_solution(4);
+    std::vector<int> res_new = tree.get_k_solution(6);
     
-    std::vector<int> labels = kcentroids(*root, kmeans, 4);
+    std::vector<int> labels = kcentroids(*root, kmeans, 6);
+    std::cout << "next k" << std::endl;
+    std::vector<int> labels2 = kcentroids(*root, kmeans, 7);
+    std::vector<int> res_new2 = tree.inc_k_solution();
 }
 
 //How do I handle providing a tree in an elegant way?
