@@ -9,7 +9,13 @@
 #include <dc_dist.hpp>
 #include <lp_objective.hpp>
 
-
+/*
+    TODO: Remember to delete the old internal "fake" pointer nodes when we create a new k solution.
+    Possible TODOs:
+    1. Implement dec_k_solution
+    2. Maintain the labels as a field in the class as well.
+    3. Optimize the actual code even more for efficiency
+*/
 template <typename CostFunction = KMedian> 
 class KCentroidsTree
 {
@@ -63,9 +69,6 @@ class KCentroidsTree
         int k = this->curr_k + 1;
         return k_solution(k, curr_solution);
     }
-
-    std::vector<int> dec_k_solution();
-
 
 
     private:

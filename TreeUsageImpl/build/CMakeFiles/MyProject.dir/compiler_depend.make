@@ -2468,7 +2468,8 @@ CMakeFiles/MyProject.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
   /usr/local/include/mlpack/methods/sparse_coding/sparse_coding.hpp \
   /usr/local/include/mlpack/methods/svdplusplus.hpp \
   /usr/local/include/mlpack/methods/svdplusplus/svdplusplus.hpp \
-  /usr/local/include/mlpack/namespace_compat.hpp
+  /usr/local/include/mlpack/namespace_compat.hpp \
+  ../src/quickselect.hpp
 
 CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
   /usr/include/stdc-predef.h \
@@ -12663,6 +12664,8 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/detail/common.h:
 
 /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/detail/class.h:
+
+../src/quickselect.hpp:
 
 /usr/local/include/mlpack/methods/sparse_coding/sparse_coding_impl.hpp:
 

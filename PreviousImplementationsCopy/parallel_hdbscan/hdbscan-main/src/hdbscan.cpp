@@ -56,13 +56,18 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan(parlay::sequence<pargeo::point
   timer t0;
   t0.start();
 
+  //Build the kd-tree for k nearest neighbors
   nodeT* tree = buildKdt<dim, point<dim>>(S, true, true);
 
   cout << "build-tree-time = " << t0.get_next() << endl;
 
   // todo return distances
-  sequence<size_t> nns = kdTreeKnn<dim, pointT>(S, minPts, tree, true);
 
+  //Get the k nearest neighbors over the tree using the kd-tree from above
+  sequence<size_t> nns = kdTreeKnn<dim, pointT>(S, minPts, tree, true); //parlay::sequence is basically an std::vector optimized for parallelism.
+
+  //It looks like they do it in the same way that we do - first get all k, then take the k'th as the core distance. 
+  //They use some nested indexing - i.e. they get the k'th nearest neighbor and compute the distance to that point from the current point and insert it into their list of core distances.
   sequence<floatT> coreDist = sequence<floatT>(S.size());
   parallel_for (0, S.size(), [&](intT i) {
 			       coreDist[i] = S[nns[i*minPts + minPts-1]].dist(S[i]);
@@ -76,6 +81,9 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan(parlay::sequence<pargeo::point
       cdMin[i] = std::numeric_limits<floatT>::max();
       cdMax[i] = std::numeric_limits<floatT>::lowest();
     });
+
+  //WSPD which produces the edges over which Kruskal's algorithm will be run. 
+  //This is based on their extended notion of things being well-separated that used mutual reachability terminology as well.
   hdbscanInternal::nodeCD(tree, coreDist, cdMin, cdMax, tree, S.data());
 
   floatT rhoLo = -0.1;
@@ -89,6 +97,7 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan(parlay::sequence<pargeo::point
 
   t0.stop();
 
+  //This is the Memo-GFK (GeoFilterKruskal in this while loop)
   while (UF.numEdge() < S.size() - 1) {
 
     t0.start();
@@ -119,12 +128,12 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan(parlay::sequence<pargeo::point
 
     auto base = S.data();
     sequence<wEdge> edges = tabulate(bccps.size(), [&](size_t i) {
-	auto bcp = bccps[i];
-	wEdge e;
-	e.u = get<0>(bcp) - base;
-	e.v = get<1>(bcp) - base;
-	e.weight = get<2>(bcp);
-	return e;
+        auto bcp = bccps[i];
+        wEdge e;
+        e.u = get<0>(bcp) - base;
+        e.v = get<1>(bcp) - base;
+        e.weight = get<2>(bcp);
+        return e;
       });
 
     batchKruskal(edges, S.size(), UF);
