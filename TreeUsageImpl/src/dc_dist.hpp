@@ -65,6 +65,10 @@ typedef struct Node {
 void printSubtree(const std::string &prefix, const Node& tree);
 void printTree(const Node& tree);
 
+
+void printSubtree2(const std::string &prefix, const Node& tree);
+void printTree2(const Node& tree);
+
 Node* construct_dc_tree(const std::vector<std::vector<double>> &points);
 
 

@@ -129,7 +129,6 @@ void test_k_centroids(){
     print_annotations(res);
     printTree(*root);
 
-    std::vector<int> labels = kcentroids(*root, kmeans, 6);
 
 
     Node* rootv2 = create_hierarchy(*root, kmeans);
@@ -142,9 +141,13 @@ void test_k_centroids(){
     // Use the tree
     Node* rootv3 = tree.get_tree();
 
-    std::cout << "kmeans tree new:" << std::endl;
-    printTree(*rootv3);
+    //std::cout << "kmeans tree new:" << std::endl;
+    //printTree(*rootv3);
 
+
+    std::vector<int> res_new = tree.get_k_solution(4);
+    
+    std::vector<int> labels = kcentroids(*root, kmeans, 4);
 }
 
 //How do I handle providing a tree in an elegant way?

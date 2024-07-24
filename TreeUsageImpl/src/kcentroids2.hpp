@@ -23,7 +23,7 @@ class KCentroidsTree
 
     //Fields
    private:
-    std::vector<double> index_order; //Contains the list of point ids in leaves sorted by left to right position in the tree
+    std::vector<int> index_order; //Contains the list of point ids in leaves sorted by left to right position in the tree
     Node *curr_k_solution; //Internal tree nodes representing the current k solution
     int curr_k; //Used for quick increasing / decreasing from a current solution
    public:
@@ -33,7 +33,7 @@ class KCentroidsTree
 
 
     //Constructors //This should create the tree when the class is constructed
-    KCentroidsTree(Node& root) : tree(create_hierarchy(root), curr_k(1)){
+    KCentroidsTree(Node& root) : tree(create_hierarchy(root)), curr_k(1){
         int n = root.size;
         setup_quick_clusters(n, this->tree);
         this->curr_k_solution = this->tree;
@@ -54,24 +54,29 @@ class KCentroidsTree
     std::vector<int> get_k_solution(int k){ //This function will always do it top down for now
         Node *curr_solution = this->tree; //Remember to delete this node when done.
         
-        int n = this->tree.size;
+        int n = this->tree->size;
+        std::cout << "index order:" << std::endl;
+        printLabels(index_order);
+
         if(k>=n || k < 1){
             this->curr_k = n;
             this->curr_k_solution = this->tree;
-            return index_order //Just return each id as a unique point as default for any invalid parameter for now.
+            std::cout << "easy return... "<< std::endl;
+            return index_order; //Just return each id as a unique point as default for any invalid parameter for now.
         } else {
+            std::cout << "advanced return" << std::endl;
             Node *solution_holder = new Node{nullptr, 0.0};
             solution_holder->k = -1; //This has a default k value that should never be part of a solution
+            printTree2(*(this->tree));
             get_k_solution_helper(k, curr_solution, solution_holder);
 
             std::vector<int> res(n);
-            int label = 0;
-            for(Node *child : solution_holder->children){
-                std::cout<< "todo" << std::endl;
-                label++;
-            }
+            extract_labels(res, solution_holder);
             
             this->curr_k_solution = solution_holder;
+            std::cout << "Final result:" << std::endl;
+            printLabels(res);
+            return res;
         }
     }
 
@@ -80,40 +85,74 @@ class KCentroidsTree
     */
     void get_k_solution_helper(int k, Node *tree, Node *new_solution){
         if(tree->size == 1){
+            std::cout << "pushing leaf " << tree->id << std::endl;
             new_solution->children.push_back(tree); // We might end up with leaves part of the solution.
         }
-
-        int curr_k = tree->k;
-        int orig_node_k = -1;
-        int min_child_k = std::numeric_limits<int>::infinity();
-        int max_child_k = curr_k;
-        for(Node *child : tree.children){
+        int min_child_k = std::numeric_limits<int>::max();
+        std::cout << "startval" << min_child_k << std::endl;
+        int max_child_k = tree->k;
+        for(Node *child : tree->children){
             if(max_child_k < child->k){
                 max_child_k = child->k;
             }
             if(child->k < min_child_k){
                 min_child_k = child->k;
             }
-            if(child->is_orig_cluster){
-                orig_node_k = child->k;
-            }
-        }
-        
-        if(max_child_k < k){ //Recurse if no cut detected
-            for(Node *child : tree.children){
+        } 
+        std::cout << "min, max" << min_child_k <<"," << max_child_k << std::endl;
+
+        if(max_child_k <= k){ //Recurse if no cut detected
+            for(Node *child : tree->children){
                     get_k_solution_helper(k, child, new_solution);
             }
         } else{
-
-            if(tree->children.size() < 3){ //Simple cut
-                for(Node *child : tree.children){
-                   new_solution->children.push_back(child);
+            if(min_child_k > k){ //Simple cut
+                new_solution->children.push_back(tree);
+                std::cout << "simple pushing c, id"  << tree->cost << ", " << tree->id << std::endl;
+                
+            } else{ //If some children have larger k and some have smaller, we need to merge things.
+                //First create the merge node:
+                Node* merge_node = new Node{nullptr, 0.0};
+                merge_node->k = -1;
+                merge_node->size = -1; //Just a "flag" value
+                for(Node *child : tree->children){
+                    if(child->is_orig_cluster || child->k > k){
+                        merge_node->children.push_back(child);
+                        std::cout << "merging c,id, k" << child->cost << ", " << child->id<< ", "<< child->k <<std::endl;
+                    } else{
+                        new_solution->children.push_back(child);
+                        std::cout << "pushing c, id"  << child->cost << ", " << child->id << std::endl;
+                    }
+                   new_solution->children.push_back(merge_node);
                 }
-            } else{ //Annoying cut
-
             }
         }
     }
+
+
+
+    void extract_labels(std::vector<int> &res, Node *solution){
+        int label = 0;
+        for(Node *child : solution->children){
+            if(child->size != -1){
+                for(int i = child->low; i <= child->high; i++){
+                    int id = index_order[i];
+                    res[id-1] = label;
+                }
+            } else {
+                for(Node *child_2 : child->children){
+                    for(int i = child->low; i <= child->high; i++){
+                        int id = index_order[i];
+                        res[id-1] = label;
+                    }
+                }
+            }
+            label++;
+        }
+    }
+
+
+
 
 
     std::vector<double> inc_k_solution();
@@ -150,7 +189,6 @@ class KCentroidsTree
                 parent_anno = curr_anno->parent;
                 parent_node = parent_anno->tree_node;
                 double cost = parent_node->cost;
-                parent_anno->k = i+1; //Annotation for getting k solutions quickly (when we eventually do the parent split into a new node, this is then the k used there)
                 if(parent_anno->has_leaf){ //This parent center will not have a corresponding leaf as we will now be adding stuff below it
                     parent_anno->has_leaf = false; //We will now be adding things below this annotation/node -> this will not become a leaf in this pass
                     leaves_to_add.push_back(parent_anno); //TODO: We need to update the k that should be inserted for this leaf somehow
@@ -162,7 +200,6 @@ class KCentroidsTree
                     int new_k = parent_anno->k;
                     new_parent->k = new_k; //Annotation for getting k solutions quickly
                     new_parent->is_orig_cluster = true; //Used to distinguish nodes when getting clusterings out for each k
-
                     parent_anno->k = i+1; //Annotation for getting k solutions quickly
 
                     new_parent->children.push_back(new_node);
@@ -174,6 +211,9 @@ class KCentroidsTree
                     parent_node->cost = curr_anno->cost_decrease;
                     parent_node->children.push_back(new_node);
                     new_node->parent = parent_node;
+                    if(cost == 0){
+                        parent_anno->k = i+1; //Annotation for getting k solutions quickly (when we eventually do the parent split into a new node, this is then the k used there)
+                    }
                 }
 
                 curr_anno->tree_node = new_node;
@@ -263,10 +303,11 @@ class KCentroidsTree
 
 
 
-        void setup_quick_clusters(int n, Tree* centroid_tree){
-            std::vector<double> arr;
+        void setup_quick_clusters(int n, Node* centroid_tree){
+            std::vector<int> arr;
             arr.resize(n);
             quick_clusters_helper(centroid_tree, arr, 0);
+            printLabels(arr);
             this->index_order = arr;
         }
 
@@ -274,8 +315,8 @@ class KCentroidsTree
         Insert the leaf ids in an array based on their ordering in the tree. This creates a continuous array segment for each internal node of its leaves.
         Annotate each inner node with this segment. Also annotates the inner nodes with the size.
         */
-        void quick_clusters_helper(Tree* tree, std::vector<double> &arr, int ctr){
-            if(tree->size == 1){ //leaf
+        int quick_clusters_helper(Node* tree, std::vector<int> &arr, int ctr){
+            if(tree->children.size() == 0){ //leaf
                 tree->size = 1;
                 tree->low = ctr;
                 tree->high = ctr;
@@ -287,12 +328,39 @@ class KCentroidsTree
                     ctr = quick_clusters_helper(child, arr, ctr);
                 }
                 tree->high = ctr-1; //ctr is what was returned by rightmost child (but it used ctr-1 as its own index)
-                tree->size = tree->high - tree->low;
+                tree->size = tree->high - tree->low + 1; //+1 since we include both ends of spectrum
+                //std::cout << "cost " << tree->cost << ", low, high:" << tree->low<<","<<tree->high << ", size " << tree->size << std::endl;
                 return ctr;
             }
         }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        void printLabels(std::vector<int> labels){
+            std::cout << "Labels:" << std::endl;
+            std::cout << "[";
+            for(int label : labels){
+                std::cout << label << ", ";
+            }
+
+            std::cout << "]" << std::endl;
+
+        }
 
 
 };

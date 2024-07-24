@@ -116,6 +116,50 @@ void printTree(const Node& tree) {
     cout << "\n";
 }
 
+
+// Function to print the tree (for debugging purposes)
+void printSubtree2(const std::string &prefix, const Node& tree) {
+    using std::cout;
+    using std::endl;
+    if ((tree.children).size() == 0) return;
+    cout << prefix;
+    size_t n_children = tree.children.size();
+    cout << (n_children > 1 ? "├────" : "");
+
+    for (size_t i = 0; i < n_children; ++i) {
+        Node *c = tree.children[i];
+        if (i < n_children - 1) {
+            if (i > 0) { // added fix
+                cout << prefix<< "├────"; // added fix
+            } // added fix
+            bool printStrand = n_children > 1 && !c->children.empty();
+            std::string newPrefix = prefix + (printStrand ? "│\t" : "\t");
+            if(c->children.empty()){
+                std::cout << "(L" << c->k << ")\n";
+            } else{
+                std::cout << "(" << c->k << ")\n";
+            }
+            printSubtree2(newPrefix, *c);
+        } else {
+            cout << (n_children > 1 ? prefix : "") << "└────";
+            if(c->children.empty()){
+                std::cout << "(L" << c->k << ")\n";
+            } else{
+                std::cout << "(" << c->k << ")\n";
+            }
+            printSubtree2(prefix + "\t", *c);
+        }
+    }
+}
+
+void printTree2(const Node& tree) {
+    using std::cout;
+    cout << tree.k << "\n";
+    printSubtree2("", tree);
+    cout << "\n";
+}
+
+
 /*
     Also createe pybindings so that this method can be tested directly in python alongside current methods there.
 */
