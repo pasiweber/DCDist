@@ -43,7 +43,7 @@ using namespace pargeo::hdbscanInternal;
 
 template<int dim>
 parlay::sequence<pargeo::wghEdge> pargeo::hdbscan(parlay::sequence<pargeo::point<dim>> &S, size_t minPts) {
-  using pointT = point<dim>;
+  using pointT = point<dim>; //pargeo point
   using nodeT = kdNode<dim, point<dim>>;
   using floatT = typename pointT::floatT;
   using pairT = wsp<nodeT>;
@@ -97,7 +97,7 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan(parlay::sequence<pargeo::point
 
   t0.stop();
 
-  //This is the Memo-GFK (GeoFilterKruskal in this while loop)
+  //This is the (parallel) Memo-GFK (GeoFilterKruskal in this while loop)
   while (UF.numEdge() < S.size() - 1) {
 
     t0.start();

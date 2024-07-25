@@ -2468,8 +2468,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
   /usr/local/include/mlpack/methods/sparse_coding/sparse_coding.hpp \
   /usr/local/include/mlpack/methods/svdplusplus.hpp \
   /usr/local/include/mlpack/methods/svdplusplus/svdplusplus.hpp \
-  /usr/local/include/mlpack/namespace_compat.hpp
+  /usr/local/include/mlpack/namespace_compat.hpp \
+  ../src/quickselect.hpp
 
+
+../src/quickselect.hpp:
 
 /usr/local/include/mlpack/methods/sparse_coding/sparse_coding_impl.hpp:
 

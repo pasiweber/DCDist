@@ -462,3 +462,51 @@ gmake[1]: Leaving directory '/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCod
 
 Source file was:
 int main() { return 0; }
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_73be8/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_73be8.dir/build.make CMakeFiles/cmTC_73be8.dir/build
+gmake[1]: Entering directory '/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_73be8.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE -o CMakeFiles/cmTC_73be8.dir/CheckIncludeFile.c.o -c /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_73be8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_73be8.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_73be8.dir/CheckIncludeFile.c.o -o cmTC_73be8 
+gmake[1]: Leaving directory '/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles/CMakeTmp'
+
+
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
+Change Dir: /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_a95f8/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_a95f8.dir/build.make CMakeFiles/cmTC_a95f8.dir/build
+gmake[1]: Entering directory '/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a95f8.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD  -fPIE -o CMakeFiles/cmTC_a95f8.dir/src.c.o -c /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_a95f8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a95f8.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_a95f8.dir/src.c.o -o cmTC_a95f8 
+gmake[1]: Leaving directory '/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+

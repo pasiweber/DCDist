@@ -21,6 +21,17 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+
+
+/*
+  MY THOUGHTS:
+  It seems that this file does not use any pargeo functionality, it simply defines everything within the pargeo namespace.
+  Potentially, the only work that needs to be done is removing the namespaces.
+
+*/
+
+
+
 #pragma once
 
 #include <limits> // numeric_limits
