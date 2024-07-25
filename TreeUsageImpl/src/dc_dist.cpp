@@ -9,6 +9,7 @@
 #include <mlpack/core.hpp>
 #include <mlpack/core/tree/binary_space_tree.hpp>
 
+
 //TODO: Implement
 Node* construct_dc_tree(const std::vector<std::vector<double>> &points){
     return new Node{};

@@ -5,12 +5,11 @@
 #include <kcentroids2.hpp>
 #include <dc_hdbscan.hpp>
 #include <dc_dist.hpp>
-#include<mlpack.hpp>
 #include <mlpack/methods/neighbor_search/neighbor_search.hpp>
 #include <mlpack/core.hpp>
 #include <mlpack/core/tree/binary_space_tree.hpp>
 
-
+#include <../parallel_hdbscan/src/kdTree.h>
 
 // Function to create a new node -
 Node* addNode(Node* parent = nullptr, double cost=0.0, int id = -1, int size=1) {

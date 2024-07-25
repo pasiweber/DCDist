@@ -335,6 +335,9 @@ PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python3
 //Path to a library.
 PYTHON_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libpython3.10.so
 
+//The directory containing a CMake configuration file for Parlay.
+Parlay_DIR:PATH=/usr/local/share/parlay/cmake
+
 //Dependencies for the target
 dctree_LIB_DEPENDS:STATIC=general;dcdist;
 

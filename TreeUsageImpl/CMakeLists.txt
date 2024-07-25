@@ -22,7 +22,8 @@ include_directories(${MLPACK_DIR}/include)
 link_directories(${MLPACK_DIR}/lib)
 
 
-
+find_package(Threads REQUIRED) #Parlay stuff
+find_package(Parlay CONFIG REQUIRED) #Parlay stuff
 
 
 include_directories(src)
@@ -34,10 +35,10 @@ add_executable(MyProject src/example.cpp
                 )
 
 
-target_link_libraries(MyProject mlpack armadillo pybind11::module ${Python3_LIBRARIES})
+target_link_libraries(MyProject mlpack armadillo pybind11::module ${Python3_LIBRARIES} Parlay::parlay) #Parlay::parlay
 
 
-# Add the static library (if needed)
+# Add the static library (if needed) yeah
 add_library(dcdist STATIC src/dc_dist.cpp)
 
 # Add the Python module
