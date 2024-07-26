@@ -19,6 +19,7 @@ template <int _dim, class _objT> class kdNode2 {
   int k;
 
   pointT pMin, pMax;
+  arma::vec pMin2, pMax2;
 
   nodeT *left;
 
@@ -27,6 +28,7 @@ template <int _dim, class _objT> class kdNode2 {
   nodeT *sib;
 
   parlay::slice<_objT **, _objT **> items;
+  parlay::slice<arma::vec **, arma::vec **> items2; //Currently only using ONE pointer here instead of the pointer pointer.
 
   // Methods
 
@@ -40,6 +42,22 @@ template <int _dim, class _objT> class kdNode2 {
       _pMax[i] = max(_pMax[i], p[i]);
   }
 
+    //New
+    inline void minCoords2(arma::vec &_pMin, arma::vec &p) {
+        for (int i = 0; i < _pMin.n_elem; ++i){
+            _pMin[i] = min(_pMin[i], p[i]);
+        }
+    }
+    //New
+    inline void maxCoords2(arma::vec &_pMax, arma::vec &p) {
+        for (int i = 0; i < _pMax.n_elem; ++i){
+            _pMax[i] = max(_pMax[i], p[i]);
+        }
+    }
+
+
+
+
   inline void boundingBoxSerial() {
     pMin = pointT(items[0]->coords());
     pMax = pointT(items[0]->coords());
@@ -48,6 +66,18 @@ template <int _dim, class _objT> class kdNode2 {
       maxCoords(pMax, items[i][0]);
     }
   }
+
+    //New
+    inline void boundingBoxSerial2() {
+        pMin2 = arma::vec(*(items2[0]));
+        pMax2 = arma::vec(*(items2[0]));
+
+        for (intT i = 0; i < size(); ++i) {
+            minCoords2(pMin2, items2[i][0]);
+            maxCoords2(pMax2, items2[i][0]);
+        }
+    }
+
 
   inline void boundingBoxParallel() {
     intT P = parlay::num_workers() * 8;
@@ -73,6 +103,38 @@ template <int _dim, class _objT> class kdNode2 {
       maxCoords(pMax, localMax[p]);
     }
   }
+
+
+
+    inline void boundingBoxParallel2() {
+        intT P = parlay::num_workers() * 8;
+        intT blockSize = (size() + P - 1) / P;
+        pointT localMin[P];
+        pointT localMax[P];
+        for (intT i = 0; i < P; ++i) {
+            localMin[i] = pointT(items[0]->coords());
+            localMax[i] = pointT(items[0]->coords());
+        }
+        parlay::parallel_for(0, P, [&](intT p) {
+            intT s = p * blockSize;
+            intT e = min((intT)(p + 1) * blockSize, size());
+            for (intT j = s; j < e; ++j) {
+            minCoords(localMin[p], items[j][0]);
+            maxCoords(localMax[p], items[j][0]);
+            }
+        });
+        pMin = pointT(items[0]->coords());
+        pMax = pointT(items[0]->coords());
+        for (intT p = 0; p < P; ++p) {
+            minCoords(pMin, localMin[p]);
+            maxCoords(pMax, localMax[p]);
+        }
+    }
+
+
+
+
+
 
   inline intT splitItemSerial(floatT xM) {
     if (size() < 2) {
