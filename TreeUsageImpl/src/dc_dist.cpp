@@ -1,12 +1,9 @@
 #include <dc_dist.hpp>
 #include <quickselect.hpp>
 #include <iostream>
-#include <string>
 
 //mlpack stuff
-#include <mlpack.hpp>
 #include <mlpack/methods/neighbor_search/neighbor_search.hpp>
-#include <mlpack/core.hpp>
 #include <mlpack/core/tree/binary_space_tree.hpp>
 
 
@@ -14,9 +11,6 @@
 Node* construct_dc_tree(const std::vector<std::vector<double>> &points){
     return new Node{};
 }
-
-
-
 
 
 
@@ -110,23 +104,36 @@ void printTree2(const Node& tree) {
     Also createe pybindings so that this method can be tested directly in python alongside current methods there.
 */
 std::vector<double> compute_cdists(arma::mat &data, size_t k, std::string mode){
-    using namespace mlpack::metric;
-    using namespace mlpack::tree;
-    using namespace mlpack::neighbor;
+
     std::cout << "compute_cdists called" << std::endl;
     //KDTree<EuclideanDistance, DTBStat, arma::mat> tree(data);
     //KDTree<EuclideanDistance, EmptyStatistic, arma::mat> tree(data);
     
-    NeighborSearch<NearestNeighborSort, EuclideanDistance, arma::mat, KDTree> *searcher;
+    mlpack::NeighborSearch<mlpack::NearestNeighborSort, mlpack::EuclideanDistance, arma::mat, mlpack::KDTree> *searcher;
 
     if(mode == "naive"){ //Brute force knn search QUICKSELECT WRITE IT YOURSELF TODO TODO
-        searcher = new NeighborSearch<NearestNeighborSort, EuclideanDistance, arma::mat, KDTree>(data, NAIVE_MODE);
+        searcher = new mlpack::NeighborSearch<mlpack::NearestNeighborSort, mlpack::EuclideanDistance, arma::mat, mlpack::KDTree>(data, mlpack::NAIVE_MODE);
     } else if(mode == "naive2"){
         return naive_cdists_efficient(data, k);
-    } else { //KD tree knn search
-        searcher = new NeighborSearch<NearestNeighborSort, EuclideanDistance, arma::mat, KDTree>(data); 
+    } else if(mode == "naive3"){
+        return parallel_cdists(data, k);
+    }else { //KD tree knn search
+        searcher = new mlpack::NeighborSearch<mlpack::NearestNeighborSort, mlpack::EuclideanDistance, arma::mat, mlpack::KDTree>(data); 
     }
     
+
+    int n = data.n_cols;
+    const int dim = 2000; // Example dimension that is hardcoded for testing...
+    const int minPts = k;
+    
+    using Point = pargeo::point<dim>; // Define the type of point
+    using nodeT = pargeo::kdNode<dim, pargeo::point<dim>>;
+
+    parlay::sequence<pargeo::point<dim>> points =  convertArmaMatToParlayPoints<dim>(data);
+    
+    nodeT* tree = pargeo::buildKdt<dim, pargeo::point<dim>>(points, true, true);
+
+
     arma::Mat<size_t> neighbors;
     arma::mat distances;
 
@@ -186,3 +193,50 @@ std::vector<double> naive_cdists_efficient(arma::mat &data, size_t k){
     return cdists;
 }
 
+
+
+std::vector<double> parallel_cdists(arma::mat &data, size_t k){
+    int n = data.n_cols;
+    const int dim = 2000; // Example dimension that is hardcoded for testing...
+    const int minPts = k;
+    
+    using Point = pargeo::point<dim>; // Define the type of point
+    using nodeT = pargeo::kdNode<dim, pargeo::point<dim>>;
+
+    parlay::sequence<pargeo::point<dim>> points =  convertArmaMatToParlayPoints<dim>(data);
+    
+    nodeT* tree = pargeo::buildKdt<dim, pargeo::point<dim>>(points, true, true);
+    parlay::sequence<size_t> nns = pargeo::kdTreeKnn<dim, Point>(points, minPts, tree, true); 
+
+    std::vector<double> coreDist(n);
+
+    for(int i = 0; i< points.size(); i++){
+		coreDist[i] = points[nns[i*minPts + minPts-1]].dist(points[i]);
+    }
+    
+    // parlay::parallel_for (0, points.size(), [&](int i) {
+	// 		       coreDist[i] = points[nns[i*minPts + minPts-1]].dist(points[i]);
+	// 		     });
+
+    return coreDist;
+}
+
+
+
+template<const int dim>
+parlay::sequence<pargeo::point<dim>> convertArmaMatToParlayPoints(const arma::mat& mat) {
+
+    // Create a parlay sequence of points
+    parlay::sequence<pargeo::point<dim>> points(mat.n_cols);
+    std::cout<< "num cols:" << mat.n_cols << std::endl;
+    // Populate the sequence with points created from the matrix columns
+    for (size_t j = 0; j < mat.n_cols; ++j) {
+        double coords[dim];
+        for (size_t i = 0; i < dim; ++i) {
+            coords[i] = mat(i, j);
+        }
+        points[j] = pargeo::point<dim>(coords);
+    }
+
+    return points;
+}

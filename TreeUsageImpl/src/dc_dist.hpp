@@ -3,10 +3,15 @@
 
 #include <vector>
 #include <string>
+#include <key_structs.hpp>
 
+#include <mlpack/core.hpp>
 
-//mlpack stuff
-#include <mlpack.hpp>
+#include "parlay/parallel.h"
+#include "parlay/sequence.h"
+#include <../parallel_hdbscan/src/kdTree.h>
+#include <../parallel_hdbscan/src/kdTreeKnn.h>
+#include <../parallel_hdbscan/include/hdbscan/point.h>
 
 
 //Nodes for the dc-tree
@@ -43,24 +48,6 @@
 
 
 
-typedef struct Node {
-    struct Node* parent;
-    double cost;  // For DCTree this is dc-distance, for... 
-    int id; // The id of a potential leaf node (this can be used to assign points -> we just make the id in internal nodes the optimal center, we then cap by k in the iterations -> this will be separate from the tree hierarchy construction - O(n) for each k to output the solution.)
-    std::vector<struct Node*> children;
-
-    //Structure quick access
-    int size;
-    int low; //Fast array indexing low index
-    int high; //Fast array indexing high index
-    //Kcentroids annotations
-    int k; // The k at which this node was created
-    bool is_orig_cluster; //Used to show that this node is the one corresponding to the parent that gets points taken from it. Basically, it has the same center as the parent node.
-
-    //HDBSCAN annotations
-    bool is_cluster = false; //Used to extract clusters for optimization (HDBSCAN / HCF) algorithm over the tree
-} Node;
-
 
 void printSubtree(const std::string &prefix, const Node& tree);
 void printTree(const Node& tree);
@@ -79,12 +66,13 @@ unsigned long long partition(std::vector<double> &arr, const unsigned long long 
 double quickSelect(std::vector<double> &arr, const unsigned long long low, const unsigned long long high, const int k);
 
 
-
-
 std::vector<double> compute_cdists(arma::mat &data, size_t k, std::string mode);
 
 std::vector<double> extract_cdists(arma::mat distances, size_t k);
 
 std::vector<double> naive_cdists_efficient(arma::mat &data, size_t k);
-std::vector<double> naive_cdists_efficient2(arma::mat &data, size_t k);
+std::vector<double> parallel_cdists(arma::mat &data, size_t k);
+template<const int dim>
+parlay::sequence<pargeo::point<dim>> convertArmaMatToParlayPoints(const arma::mat& mat);
+
 #endif

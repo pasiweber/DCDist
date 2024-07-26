@@ -2,7 +2,7 @@
 #define HCF_HPP
 
 #include <vector>
-#include <kcentroids.hpp>
+#include <key_structs.hpp>
 
 /*
     Generalized implementation of the Hierarchical Clustering Framework.

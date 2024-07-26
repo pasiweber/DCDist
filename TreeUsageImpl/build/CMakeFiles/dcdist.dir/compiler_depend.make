@@ -164,7 +164,9 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
   /usr/include/c++/11/bits/charconv.h \
   /usr/include/c++/11/bits/basic_string.tcc \
-  /usr/local/include/mlpack.hpp \
+  ../src/key_structs.hpp \
+  /usr/local/include/mlpack/core.hpp \
+  /usr/local/include/mlpack/prereqs.hpp \
   /usr/local/include/mlpack/base.hpp \
   /usr/include/c++/11/cmath \
   /usr/include/math.h \
@@ -914,8 +916,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
   /usr/include/armadillo_bits/compiler_setup_post.hpp \
   /usr/local/include/mlpack/core/util/arma_traits.hpp \
   /usr/local/include/mlpack/core/util/deprecated.hpp \
-  /usr/local/include/mlpack/prereqs.hpp \
-  /usr/local/include/mlpack/base.hpp \
   /usr/include/cereal/archives/binary.hpp \
   /usr/include/cereal/cereal.hpp \
   /usr/include/c++/11/memory \
@@ -1012,8 +1012,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
   /usr/local/include/mlpack/core/data/has_serialize.hpp \
   /usr/local/include/mlpack/core/util/sfinae_utility.hpp \
   /usr/local/include/mlpack/core/util/size_checks.hpp \
-  /usr/local/include/mlpack/core.hpp \
-  /usr/local/include/mlpack/prereqs.hpp \
   /usr/local/include/mlpack/core/util/ens_traits.hpp \
   /usr/local/include/mlpack/core/util/sfinae_utility.hpp \
   /usr/local/include/mlpack/core/util/using.hpp \
@@ -1140,7 +1138,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
   /usr/local/include/mlpack/core/data/normalize_labels.hpp \
   /usr/local/include/mlpack/core/data/normalize_labels_impl.hpp \
   /usr/local/include/mlpack/core/data/one_hot_encoding.hpp \
-  /usr/local/include/mlpack/core.hpp \
   /usr/local/include/mlpack/core/data/one_hot_encoding_impl.hpp \
   /usr/local/include/mlpack/core/data/split_data.hpp \
   /usr/local/include/mlpack/core/math/math.hpp \
@@ -1740,1005 +1737,172 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
   /usr/include/ensmallen_bits/wn_grad/wn_grad_impl.hpp \
   /usr/include/ensmallen_bits/wn_grad/wn_grad.hpp \
   /usr/local/include/mlpack/core/hpt/hpt_impl.hpp \
-  /usr/local/include/mlpack/methods/adaboost.hpp \
-  /usr/local/include/mlpack/methods/adaboost/adaboost.hpp \
-  /usr/local/include/mlpack/methods/perceptron/perceptron.hpp \
-  /usr/local/include/mlpack/methods/perceptron/initialization_methods/initialization_methods.hpp \
-  /usr/local/include/mlpack/methods/perceptron/initialization_methods/zero_init.hpp \
-  /usr/local/include/mlpack/methods/perceptron/initialization_methods/random_init.hpp \
-  /usr/local/include/mlpack/methods/perceptron/learning_policies/learning_policies.hpp \
-  /usr/local/include/mlpack/methods/perceptron/learning_policies/simple_weight_update.hpp \
-  /usr/local/include/mlpack/methods/perceptron/perceptron_impl.hpp \
-  /usr/local/include/mlpack/methods/perceptron/perceptron.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/decision_tree.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/gini_gain.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/information_gain.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/mad_gain.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/utils.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/mse_gain.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/best_binary_numeric_split.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/best_binary_numeric_split_impl.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/random_binary_numeric_split.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/random_binary_numeric_split_impl.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/all_categorical_split.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/all_categorical_split_impl.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/all_dimension_select.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/random_dimension_select.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/multiple_random_dimension_select.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/decision_tree_impl.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/decision_tree.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/decision_tree_regressor.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/decision_tree_regressor_impl.hpp \
-  /usr/local/include/mlpack/methods/adaboost/adaboost_impl.hpp \
-  /usr/local/include/mlpack/methods/adaboost/adaboost.hpp \
-  /usr/local/include/mlpack/methods/amf.hpp \
-  /usr/local/include/mlpack/methods/amf/amf.hpp \
-  /usr/local/include/mlpack/methods/amf/update_rules/update_rules.hpp \
-  /usr/local/include/mlpack/methods/amf/update_rules/nmf_mult_dist.hpp \
-  /usr/local/include/mlpack/methods/amf/update_rules/nmf_mult_div.hpp \
-  /usr/local/include/mlpack/methods/amf/update_rules/nmf_als.hpp \
-  /usr/local/include/mlpack/methods/amf/update_rules/svd_batch_learning.hpp \
-  /usr/local/include/mlpack/methods/amf/update_rules/svd_incomplete_incremental_learning.hpp \
-  /usr/local/include/mlpack/methods/amf/update_rules/svd_complete_incremental_learning.hpp \
-  /usr/local/include/mlpack/methods/amf/init_rules/init_rules.hpp \
-  /usr/local/include/mlpack/methods/amf/init_rules/average_init.hpp \
-  /usr/local/include/mlpack/methods/amf/init_rules/given_init.hpp \
-  /usr/local/include/mlpack/methods/amf/init_rules/merge_init.hpp \
-  /usr/local/include/mlpack/methods/amf/init_rules/no_init.hpp \
-  /usr/local/include/mlpack/methods/amf/init_rules/random_acol_init.hpp \
-  /usr/local/include/mlpack/methods/amf/init_rules/random_init.hpp \
-  /usr/local/include/mlpack/methods/amf/termination_policies/termination_policies.hpp \
-  /usr/local/include/mlpack/methods/amf/termination_policies/complete_incremental_termination.hpp \
-  /usr/local/include/mlpack/methods/amf/termination_policies/incomplete_incremental_termination.hpp \
-  /usr/local/include/mlpack/methods/amf/termination_policies/max_iteration_termination.hpp \
-  /usr/local/include/mlpack/methods/amf/termination_policies/simple_residue_termination.hpp \
-  /usr/local/include/mlpack/methods/amf/termination_policies/simple_tolerance_termination.hpp \
-  /usr/local/include/mlpack/methods/amf/termination_policies/validation_rmse_termination.hpp \
-  /usr/local/include/mlpack/methods/amf/amf_impl.hpp \
-  /usr/local/include/mlpack/methods/ann.hpp \
-  /usr/local/include/mlpack/methods/ann/ann.hpp \
-  /usr/local/include/mlpack/methods/ann/forward_decls.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/activation_functions.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/elish_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/elliot_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/gaussian_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/gelu_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/hard_sigmoid_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/hard_swish_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/identity_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/inverse_quadratic_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/lisht_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/logistic_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/mish_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/multi_quadratic_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/poisson1_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/quadratic_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/rectifier_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/silu_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/softplus_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/softsign_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/spline_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/swish_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/tanh_exponential_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/tanh_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/hyper_sinh_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/bipolar_sigmoid_function.hpp \
-  /usr/local/include/mlpack/methods/ann/augmented/augmented.hpp \
-  /usr/local/include/mlpack/methods/ann/augmented/tasks/tasks.hpp \
-  /usr/local/include/mlpack/methods/ann/augmented/tasks/add.hpp \
-  /usr/local/include/mlpack/core/dists/discrete_distribution.hpp \
-  /usr/local/include/mlpack/methods/ann/augmented/tasks/add_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/augmented/tasks/copy.hpp \
-  /usr/local/include/mlpack/methods/ann/augmented/tasks/copy_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/augmented/tasks/score.hpp \
-  /usr/local/include/mlpack/methods/ann/augmented/tasks/score_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/augmented/tasks/sort.hpp \
-  /usr/local/include/mlpack/methods/ann/augmented/tasks/sort_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/convolution_rules/convolution_rules.hpp \
-  /usr/local/include/mlpack/methods/ann/convolution_rules/border_modes.hpp \
-  /usr/local/include/mlpack/methods/ann/convolution_rules/fft_convolution.hpp \
-  /usr/local/include/mlpack/methods/ann/convolution_rules/naive_convolution.hpp \
-  /usr/local/include/mlpack/methods/ann/convolution_rules/svd_convolution.hpp \
-  /usr/local/include/mlpack/methods/ann/dists/dists.hpp \
-  /usr/local/include/mlpack/methods/ann/dists/bernoulli_distribution.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/logistic_function.hpp \
-  /usr/local/include/mlpack/methods/ann/dists/bernoulli_distribution_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/dists/normal_distribution.hpp \
-  /usr/local/include/mlpack/methods/ann/dists/normal_distribution_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/init_rules/init_rules.hpp \
-  /usr/local/include/mlpack/methods/ann/init_rules/const_init.hpp \
-  /usr/local/include/mlpack/methods/ann/init_rules/gaussian_init.hpp \
-  /usr/local/include/mlpack/methods/ann/init_rules/glorot_init.hpp \
-  /usr/local/include/mlpack/methods/ann/init_rules/random_init.hpp \
-  /usr/local/include/mlpack/methods/ann/init_rules/he_init.hpp \
-  /usr/local/include/mlpack/methods/ann/init_rules/init_rules_traits.hpp \
-  /usr/local/include/mlpack/methods/ann/init_rules/kathirvalavakumar_subavathi_init.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/logistic_function.hpp \
-  /usr/local/include/mlpack/methods/ann/init_rules/lecun_normal_init.hpp \
-  /usr/local/include/mlpack/methods/ann/init_rules/network_init.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/layer.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/layer_types.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/multi_layer.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/layer.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/multi_layer_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/multi_layer.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/recurrent_layer.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/recurrent_layer_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/recurrent_layer.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/adaptive_max_pooling.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/max_pooling.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/max_pooling_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/adaptive_max_pooling_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/adaptive_max_pooling.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/adaptive_mean_pooling.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/mean_pooling.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/mean_pooling_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/adaptive_mean_pooling_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/adaptive_mean_pooling.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/add.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/add_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/add.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/add_merge.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/add_merge_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/add_merge.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/alpha_dropout.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/alpha_dropout_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/alpha_dropout.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/base_layer.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/identity_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/rectifier_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/tanh_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/softplus_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/hard_sigmoid_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/swish_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/mish_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/lisht_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/gelu_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/elliot_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/elish_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/gaussian_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/hard_swish_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/tanh_exponential_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/silu_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/hyper_sinh_function.hpp \
-  /usr/local/include/mlpack/methods/ann/activation_functions/bipolar_sigmoid_function.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/batch_norm.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/batch_norm_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/batch_norm.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/celu.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/celu_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/celu.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/c_relu.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/c_relu_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/c_relu.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/concat.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/concat_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/concat.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/concatenate.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/concatenate_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/concatenate.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/convolution.hpp \
-  /usr/local/include/mlpack/methods/ann/convolution_rules/border_modes.hpp \
-  /usr/local/include/mlpack/methods/ann/convolution_rules/naive_convolution.hpp \
-  /usr/local/include/mlpack/methods/ann/convolution_rules/fft_convolution.hpp \
-  /usr/local/include/mlpack/methods/ann/convolution_rules/svd_convolution.hpp \
-  /usr/local/include/mlpack/core/util/to_lower.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/padding.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/padding_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/convolution_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/convolution.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/dropconnect.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/dropconnect_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/dropconnect.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/linear.hpp \
-  /usr/local/include/mlpack/methods/ann/regularizer/no_regularizer.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/linear_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/dropout.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/dropout_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/dropout.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/elu.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/elu_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/elu.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/flexible_relu.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/flexible_relu_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/flexible_relu.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/grouped_convolution.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/grouped_convolution_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/grouped_convolution.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/hard_tanh.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/hard_tanh_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/hard_tanh.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/identity.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/identity_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/identity.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/layer_norm.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/layer_norm_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/layer_norm.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/leaky_relu.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/leaky_relu_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/leaky_relu.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/linear.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/linear_no_bias.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/linear_no_bias_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/linear_no_bias.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/linear3d.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/linear3d_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/linear3d.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/log_softmax.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/log_softmax_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/log_softmax.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/lstm.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/lstm_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/lstm.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/max_pooling.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/mean_pooling.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/multihead_attention.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/softmax.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/softmax_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/softmax.hpp \
-  /usr/local/include/mlpack/methods/ann/init_rules/glorot_init.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/multihead_attention_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/multihead_attention.hpp \
-  /usr/local/include/mlpack/core/math/multiply_slices.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/noisylinear.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/noisylinear_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/noisylinear.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/padding.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/parametric_relu.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/parametric_relu_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/parametric_relu.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/radial_basis_function.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/radial_basis_function_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/radial_basis_function.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/relu6.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/relu6_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/relu6.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/repeat.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/repeat_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/repeat.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/softmin.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/softmin_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/softmin.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/ftswish.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/ftswish_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/ftswish.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/negative_log_likelihood.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/negative_log_likelihood_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/negative_log_likelihood.hpp \
-  /usr/local/include/mlpack/methods/ann/init_rules/nguyen_widrow_init.hpp \
-  /usr/local/include/mlpack/methods/ann/init_rules/oivs_init.hpp \
-  /usr/local/include/mlpack/methods/ann/init_rules/orthogonal_init.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/layer.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/loss_functions.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/binary_cross_entropy_loss.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/binary_cross_entropy_loss_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/cosine_embedding_loss.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/cosine_embedding_loss_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/dice_loss.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/dice_loss_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/earth_mover_distance.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/earth_mover_distance_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/empty_loss.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/empty_loss_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/hinge_embedding_loss.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/hinge_embedding_loss_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/hinge_loss.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/hinge_loss_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/huber_loss.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/huber_loss_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/kl_divergence.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/kl_divergence_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/l1_loss.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/l1_loss_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/log_cosh_loss.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/log_cosh_loss_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/margin_ranking_loss.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/margin_ranking_loss_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/mean_absolute_percentage_error.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/mean_absolute_percentage_error_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/mean_bias_error.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/mean_bias_error_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/mean_squared_error.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/mean_squared_error_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/mean_squared_logarithmic_error.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/mean_squared_logarithmic_error_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/multilabel_softmargin_loss.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/multilabel_softmargin_loss_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/poisson_nll_loss.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/poisson_nll_loss_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/reconstruction_loss.hpp \
-  /usr/local/include/mlpack/methods/ann/dists/bernoulli_distribution.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/reconstruction_loss_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/sigmoid_cross_entropy_error.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/sigmoid_cross_entropy_error_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/soft_margin_loss.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/soft_margin_loss_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/triplet_margin_loss.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/triplet_margin_loss_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/vr_class_reward.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/vr_class_reward_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/regularizer/regularizer.hpp \
-  /usr/local/include/mlpack/methods/ann/regularizer/lregularizer.hpp \
-  /usr/local/include/mlpack/methods/ann/regularizer/lregularizer_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/regularizer/orthogonal_regularizer.hpp \
-  /usr/local/include/mlpack/methods/ann/regularizer/orthogonal_regularizer_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/regularizer/no_regularizer.hpp \
-  /usr/local/include/mlpack/methods/ann/ffn.hpp \
-  /usr/local/include/mlpack/methods/ann/ffn_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/rnn.hpp \
-  /usr/local/include/mlpack/methods/ann/rnn_impl.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/recurrent_layer.hpp \
-  /usr/local/include/mlpack/methods/approx_kfn.hpp \
-  /usr/local/include/mlpack/methods/approx_kfn/approx_kfn.hpp \
-  /usr/local/include/mlpack/methods/approx_kfn/qdafn.hpp \
-  /usr/local/include/mlpack/methods/approx_kfn/qdafn_impl.hpp \
-  /usr/local/include/mlpack/methods/neighbor_search/sort_policies/furthest_neighbor_sort.hpp \
-  /usr/local/include/mlpack/methods/neighbor_search/sort_policies/furthest_neighbor_sort_impl.hpp \
-  /usr/local/include/mlpack/methods/approx_kfn/drusilla_select.hpp \
-  /usr/local/include/mlpack/methods/approx_kfn/drusilla_select_impl.hpp \
-  /usr/local/include/mlpack/methods/neighbor_search/neighbor_search_rules.hpp \
-  /usr/local/include/mlpack/core/tree/traversal_info.hpp \
-  /usr/local/include/mlpack/methods/neighbor_search/neighbor_search_rules_impl.hpp \
-  /usr/local/include/mlpack/methods/neighbor_search/neighbor_search_rules.hpp \
-  /usr/local/include/mlpack/core/tree/spill_tree/is_spill_tree.hpp \
-  /usr/local/include/mlpack/core/tree/binary_space_tree.hpp \
-  /usr/local/include/mlpack/methods/bayesian_linear_regression.hpp \
-  /usr/local/include/mlpack/methods/bayesian_linear_regression/bayesian_linear_regression.hpp \
-  /usr/local/include/mlpack/methods/bayesian_linear_regression/bayesian_linear_regression_impl.hpp \
-  /usr/local/include/mlpack/methods/bayesian_linear_regression/bayesian_linear_regression.hpp \
-  /usr/local/include/mlpack/methods/bias_svd.hpp \
-  /usr/local/include/mlpack/methods/bias_svd/bias_svd.hpp \
-  /usr/local/include/mlpack/methods/bias_svd/bias_svd_function.hpp \
-  /usr/local/include/mlpack/core/math/make_alias.hpp \
-  /usr/local/include/mlpack/methods/bias_svd/bias_svd_function_impl.hpp \
-  /usr/local/include/mlpack/methods/bias_svd/bias_svd_impl.hpp \
-  /usr/local/include/mlpack/methods/block_krylov_svd.hpp \
-  /usr/local/include/mlpack/methods/block_krylov_svd/block_krylov_svd.hpp \
-  /usr/local/include/mlpack/methods/block_krylov_svd/randomized_block_krylov_svd.hpp \
-  /usr/local/include/mlpack/methods/block_krylov_svd/randomized_block_krylov_svd_impl.hpp \
-  /usr/local/include/mlpack/methods/cf.hpp \
-  /usr/local/include/mlpack/methods/cf/cf.hpp \
+  /usr/local/include/parlay/parallel.h \
+  /usr/local/include/parlay/scheduler.h \
+  /usr/local/include/parlay/internal/work_stealing_deque.h \
+  /usr/local/include/parlay/internal/work_stealing_job.h \
+  /usr/local/include/parlay/internal/atomic_wait.h \
+  /usr/local/include/parlay/type_traits.h \
+  /usr/include/c++/11/forward_list \
+  /usr/include/c++/11/bits/forward_list.h \
+  /usr/include/c++/11/bits/forward_list.tcc \
+  /usr/include/c++/11/variant \
+  /usr/include/linux/futex.h \
+  /usr/include/linux/types.h \
+  /usr/include/x86_64-linux-gnu/asm/types.h \
+  /usr/include/asm-generic/types.h \
+  /usr/include/asm-generic/int-ll64.h \
+  /usr/include/x86_64-linux-gnu/asm/bitsperlong.h \
+  /usr/include/asm-generic/bitsperlong.h \
+  /usr/include/linux/posix_types.h \
+  /usr/include/linux/stddef.h \
+  /usr/include/x86_64-linux-gnu/asm/posix_types.h \
+  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
+  /usr/include/asm-generic/posix_types.h \
+  /usr/include/x86_64-linux-gnu/sys/syscall.h \
+  /usr/include/x86_64-linux-gnu/asm/unistd.h \
+  /usr/include/x86_64-linux-gnu/asm/unistd_64.h \
+  /usr/include/x86_64-linux-gnu/bits/syscall.h \
+  /usr/local/include/parlay/sequence.h \
+  /usr/local/include/parlay/alloc.h \
+  /usr/local/include/parlay/type_traits.h \
+  /usr/local/include/parlay/utilities.h \
+  /usr/local/include/parlay/portability.h \
+  /usr/local/include/parlay/internal/debug_uninitialized.h \
+  /usr/local/include/parlay/internal/block_allocator.h \
+  /usr/local/include/parlay/utilities.h \
+  /usr/local/include/parlay/thread_specific.h \
+  /usr/local/include/parlay/internal/thread_id_pool.h \
+  /usr/local/include/parlay/range.h \
+  /usr/local/include/parlay/internal/concurrency/hazptr_stack.h \
+  /usr/local/include/parlay/internal/concurrency/acquire_retire.h \
+  /usr/local/include/parlay/portability.h \
+  /usr/local/include/parlay/thread_specific.h \
+  /usr/local/include/parlay/internal/memory_size.h \
+  /usr/include/x86_64-linux-gnu/sys/param.h \
+  /usr/include/signal.h \
+  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
+  /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
+  /usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h \
+  /usr/include/x86_64-linux-gnu/bits/siginfo-arch.h \
+  /usr/include/x86_64-linux-gnu/bits/siginfo-consts.h \
+  /usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h \
+  /usr/include/x86_64-linux-gnu/bits/types/sigval_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h \
+  /usr/include/x86_64-linux-gnu/bits/sigevent-consts.h \
+  /usr/include/x86_64-linux-gnu/bits/sigaction.h \
+  /usr/include/x86_64-linux-gnu/bits/sigcontext.h \
+  /usr/include/x86_64-linux-gnu/bits/types/stack_t.h \
+  /usr/include/x86_64-linux-gnu/sys/ucontext.h \
+  /usr/include/x86_64-linux-gnu/bits/sigstack.h \
+  /usr/include/x86_64-linux-gnu/bits/sigstksz.h \
+  /usr/include/x86_64-linux-gnu/bits/ss_flags.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
+  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
+  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
+  /usr/include/x86_64-linux-gnu/bits/param.h \
+  /usr/include/linux/param.h \
+  /usr/include/x86_64-linux-gnu/asm/param.h \
+  /usr/include/asm-generic/param.h \
+  /usr/local/include/parlay/internal/pool_allocator.h \
+  /usr/local/include/parlay/portability.h \
+  /usr/local/include/parlay/internal/block_allocator.h \
+  /usr/local/include/parlay/parallel.h \
+  /usr/local/include/parlay/slice.h \
+  /usr/local/include/parlay/internal/sequence_base.h \
+  /usr/local/include/parlay/parallel.h \
+  /usr/local/include/parlay/relocation.h \
+  ../parallel_hdbscan/src/kdTree.h \
+  ../parallel_hdbscan/include/hdbscan/point.h \
+  /usr/local/include/parlay/primitives.h \
+  /usr/local/include/parlay/internal/counting_sort.h \
+  /usr/local/include/parlay/internal/sequence_ops.h \
+  /usr/local/include/parlay/delayed_sequence.h \
+  /usr/local/include/parlay/monoid.h \
+  /usr/local/include/parlay/range.h \
+  /usr/local/include/parlay/sequence.h \
+  /usr/local/include/parlay/slice.h \
+  /usr/local/include/parlay/internal/uninitialized_sequence.h \
+  /usr/local/include/parlay/alloc.h \
+  /usr/local/include/parlay/internal/debug_uninitialized.h \
+  /usr/local/include/parlay/internal/integer_sort.h \
+  /usr/local/include/parlay/internal/counting_sort.h \
+  /usr/local/include/parlay/internal/get_time.h \
+  /usr/local/include/parlay/internal/group_by.h \
+  /usr/local/include/parlay/internal/block_delayed.h \
+  /usr/local/include/parlay/internal/stream_delayed.h \
+  /usr/local/include/parlay/internal/collect_reduce.h \
+  /usr/local/include/parlay/internal/integer_sort.h \
+  /usr/local/include/parlay/internal/sample_sort.h \
+  /usr/local/include/parlay/internal/bucket_sort.h \
+  /usr/local/include/parlay/internal/merge_sort.h \
+  /usr/local/include/parlay/internal/merge.h \
+  /usr/local/include/parlay/internal/binary_search.h \
+  /usr/local/include/parlay/internal/quicksort.h \
+  /usr/local/include/parlay/internal/uninitialized_storage.h \
+  /usr/local/include/parlay/internal/transpose.h \
+  /usr/local/include/parlay/internal/heap_tree.h \
+  /usr/local/include/parlay/internal/merge.h \
+  /usr/local/include/parlay/internal/merge_sort.h \
+  /usr/local/include/parlay/internal/sequence_ops.h \
+  /usr/local/include/parlay/internal/sample_sort.h \
+  /usr/local/include/parlay/delayed.h \
+  /usr/local/include/parlay/internal/delayed/filter.h \
+  /usr/local/include/parlay/range.h \
+  /usr/local/include/parlay/relocation.h \
+  /usr/local/include/parlay/sequence.h \
+  /usr/local/include/parlay/utilities.h \
+  /usr/local/include/parlay/internal/sequence_ops.h \
+  /usr/local/include/parlay/internal/uninitialized_sequence.h \
+  /usr/local/include/parlay/internal/delayed/common.h \
+  /usr/local/include/parlay/internal/delayed/flatten.h \
+  /usr/local/include/parlay/monoid.h \
+  /usr/local/include/parlay/parallel.h \
+  /usr/local/include/parlay/slice.h \
+  /usr/local/include/parlay/type_traits.h \
+  /usr/local/include/parlay/internal/delayed/map.h \
+  /usr/local/include/parlay/internal/delayed/terminal.h \
+  /usr/local/include/parlay/internal/delayed/filter_op.h \
+  /usr/local/include/parlay/internal/delayed/flatten.h \
+  /usr/local/include/parlay/internal/delayed/map.h \
+  /usr/local/include/parlay/internal/delayed/scan.h \
+  /usr/local/include/parlay/internal/delayed/terminal.h \
+  /usr/local/include/parlay/internal/delayed/zip.h \
+  /usr/local/include/parlay/delayed_sequence.h \
+  /usr/local/include/parlay/monoid.h \
+  /usr/local/include/parlay/random.h \
+  /usr/local/include/parlay/sequence.h \
+  /usr/local/include/parlay/relocation.h \
+  ../parallel_hdbscan/src/kdTreeKnn.h \
+  ../src/quickselect.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/neighbor_search.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/neighbor_search_stat.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/sort_policies/nearest_neighbor_sort.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/sort_policies/nearest_neighbor_sort_impl.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/sort_policies/furthest_neighbor_sort.hpp \
+  /usr/local/include/mlpack/methods/neighbor_search/sort_policies/furthest_neighbor_sort_impl.hpp \
+  /usr/local/include/mlpack/methods/neighbor_search/neighbor_search_rules.hpp \
+  /usr/local/include/mlpack/core/tree/traversal_info.hpp \
+  /usr/local/include/mlpack/methods/neighbor_search/neighbor_search_rules_impl.hpp \
+  /usr/local/include/mlpack/core/tree/spill_tree/is_spill_tree.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/unmap.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/unmap_impl.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/neighbor_search_impl.hpp \
   /usr/local/include/mlpack/core/tree/greedy_single_tree_traverser.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/typedef.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/neighbor_search.hpp \
-  /usr/local/include/mlpack/methods/amf/amf.hpp \
-  /usr/local/include/mlpack/methods/cf/normalization/normalization.hpp \
-  /usr/local/include/mlpack/methods/cf/normalization/combined_normalization.hpp \
-  /usr/local/include/mlpack/methods/cf/normalization/item_mean_normalization.hpp \
-  /usr/local/include/mlpack/methods/cf/normalization/no_normalization.hpp \
-  /usr/local/include/mlpack/methods/cf/normalization/overall_mean_normalization.hpp \
-  /usr/local/include/mlpack/methods/cf/normalization/user_mean_normalization.hpp \
-  /usr/local/include/mlpack/methods/cf/normalization/z_score_normalization.hpp \
-  /usr/local/include/mlpack/methods/cf/decomposition_policies/decomposition_policies.hpp \
-  /usr/local/include/mlpack/methods/cf/decomposition_policies/batch_svd_method.hpp \
-  /usr/local/include/mlpack/methods/amf/update_rules/nmf_als.hpp \
-  /usr/local/include/mlpack/methods/amf/termination_policies/simple_residue_termination.hpp \
-  /usr/local/include/mlpack/methods/amf/termination_policies/max_iteration_termination.hpp \
-  /usr/local/include/mlpack/methods/cf/decomposition_policies/bias_svd_method.hpp \
-  /usr/local/include/mlpack/methods/bias_svd/bias_svd.hpp \
-  /usr/local/include/mlpack/methods/cf/decomposition_policies/nmf_method.hpp \
-  /usr/local/include/mlpack/methods/cf/decomposition_policies/randomized_svd_method.hpp \
-  /usr/local/include/mlpack/methods/randomized_svd/randomized_svd.hpp \
-  /usr/local/include/mlpack/methods/randomized_svd/randomized_svd_impl.hpp \
-  /usr/local/include/mlpack/methods/randomized_svd/randomized_svd.hpp \
-  /usr/local/include/mlpack/methods/cf/decomposition_policies/regularized_svd_method.hpp \
-  /usr/local/include/mlpack/methods/regularized_svd/regularized_svd.hpp \
-  /usr/local/include/mlpack/methods/regularized_svd/regularized_svd_function.hpp \
-  /usr/local/include/mlpack/methods/regularized_svd/regularized_svd_function_impl.hpp \
-  /usr/local/include/mlpack/methods/regularized_svd/regularized_svd_impl.hpp \
-  /usr/local/include/mlpack/methods/cf/decomposition_policies/svd_complete_method.hpp \
-  /usr/local/include/mlpack/methods/cf/decomposition_policies/svd_incomplete_method.hpp \
-  /usr/local/include/mlpack/methods/cf/decomposition_policies/svdplusplus_method.hpp \
-  /usr/local/include/mlpack/methods/svdplusplus/svdplusplus.hpp \
-  /usr/local/include/mlpack/methods/svdplusplus/svdplusplus_function.hpp \
-  /usr/local/include/mlpack/methods/svdplusplus/svdplusplus_function_impl.hpp \
-  /usr/local/include/mlpack/methods/svdplusplus/svdplusplus_impl.hpp \
-  /usr/local/include/mlpack/methods/cf/decomposition_policies/quic_svd_method.hpp \
-  /usr/local/include/mlpack/methods/quic_svd/quic_svd.hpp \
-  /usr/local/include/mlpack/methods/quic_svd/quic_svd_impl.hpp \
-  /usr/local/include/mlpack/methods/quic_svd/quic_svd.hpp \
-  /usr/local/include/mlpack/methods/cf/decomposition_policies/block_krylov_svd_method.hpp \
-  /usr/local/include/mlpack/methods/block_krylov_svd/block_krylov_svd.hpp \
-  /usr/local/include/mlpack/methods/cf/neighbor_search_policies/neighbor_search_policies.hpp \
-  /usr/local/include/mlpack/methods/cf/neighbor_search_policies/cosine_search.hpp \
-  /usr/local/include/mlpack/methods/cf/neighbor_search_policies/lmetric_search.hpp \
-  /usr/local/include/mlpack/methods/cf/neighbor_search_policies/pearson_search.hpp \
-  /usr/local/include/mlpack/methods/cf/interpolation_policies/interpolation_policies.hpp \
-  /usr/local/include/mlpack/methods/cf/interpolation_policies/average_interpolation.hpp \
-  /usr/local/include/mlpack/methods/cf/interpolation_policies/regression_interpolation.hpp \
-  /usr/local/include/mlpack/methods/cf/interpolation_policies/similarity_interpolation.hpp \
-  /usr/local/include/mlpack/methods/cf/cf_impl.hpp \
-  /usr/local/include/mlpack/methods/cf/cf.hpp \
-  /usr/local/include/mlpack/methods/dbscan.hpp \
-  /usr/local/include/mlpack/methods/dbscan/dbscan.hpp \
-  /usr/local/include/mlpack/methods/range_search/range_search.hpp \
-  /usr/local/include/mlpack/methods/range_search/range_search_stat.hpp \
-  /usr/local/include/mlpack/methods/range_search/range_search_impl.hpp \
-  /usr/local/include/mlpack/methods/range_search/range_search.hpp \
-  /usr/local/include/mlpack/methods/range_search/range_search_rules.hpp \
-  /usr/local/include/mlpack/methods/range_search/range_search_rules_impl.hpp \
-  /usr/local/include/mlpack/methods/emst/union_find.hpp \
-  /usr/local/include/mlpack/methods/dbscan/random_point_selection.hpp \
-  /usr/local/include/mlpack/methods/dbscan/ordered_point_selection.hpp \
-  /usr/local/include/mlpack/methods/dbscan/dbscan_impl.hpp \
-  /usr/local/include/mlpack/methods/dbscan/dbscan.hpp \
-  /usr/local/include/mlpack/methods/decision_tree.hpp \
-  /usr/local/include/mlpack/methods/decision_tree/decision_tree.hpp \
-  /usr/local/include/mlpack/methods/det.hpp \
-  /usr/local/include/mlpack/methods/det/det.hpp \
-  /usr/local/include/mlpack/methods/det/dtree.hpp \
-  /usr/local/include/mlpack/methods/det/dtree_impl.hpp \
-  /usr/local/include/mlpack/methods/det/dt_utils.hpp \
-  /usr/local/include/mlpack/methods/det/dt_utils_impl.hpp \
-  /usr/local/include/mlpack/core/tree/enumerate_tree.hpp \
-  /usr/local/include/mlpack/methods/emst.hpp \
-  /usr/local/include/mlpack/methods/emst/emst.hpp \
-  /usr/local/include/mlpack/methods/emst/union_find.hpp \
-  /usr/local/include/mlpack/methods/emst/edge_pair.hpp \
-  /usr/local/include/mlpack/methods/emst/dtb.hpp \
-  /usr/local/include/mlpack/methods/emst/dtb_stat.hpp \
-  /usr/local/include/mlpack/methods/emst/dtb_impl.hpp \
-  /usr/local/include/mlpack/methods/emst/dtb_rules.hpp \
-  /usr/local/include/mlpack/methods/emst/dtb_rules_impl.hpp \
-  /usr/local/include/mlpack/methods/fastmks.hpp \
-  /usr/local/include/mlpack/methods/fastmks/fastmks.hpp \
-  /usr/local/include/mlpack/methods/fastmks/fastmks_stat.hpp \
-  /usr/local/include/mlpack/methods/fastmks/fastmks_impl.hpp \
-  /usr/local/include/mlpack/methods/fastmks/fastmks.hpp \
-  /usr/local/include/mlpack/methods/fastmks/fastmks_rules.hpp \
-  /usr/local/include/mlpack/core/tree/cover_tree/cover_tree.hpp \
-  /usr/local/include/mlpack/methods/fastmks/fastmks_rules_impl.hpp \
-  /usr/local/include/mlpack/methods/gmm.hpp \
-  /usr/local/include/mlpack/methods/gmm/gmm.hpp \
-  /usr/local/include/mlpack/methods/gmm/diagonal_constraint.hpp \
-  /usr/local/include/mlpack/methods/gmm/eigenvalue_ratio_constraint.hpp \
-  /usr/local/include/mlpack/methods/gmm/no_constraint.hpp \
-  /usr/local/include/mlpack/methods/gmm/positive_definite_constraint.hpp \
-  /usr/local/include/mlpack/methods/gmm/em_fit.hpp \
-  /usr/local/include/mlpack/methods/kmeans/kmeans.hpp \
-  /usr/local/include/mlpack/methods/kmeans/sample_initialization.hpp \
-  /usr/local/include/mlpack/methods/kmeans/kmeans_plus_plus_initialization.hpp \
-  /usr/local/include/mlpack/methods/kmeans/random_partition.hpp \
-  /usr/local/include/mlpack/methods/kmeans/max_variance_new_cluster.hpp \
-  /usr/local/include/mlpack/methods/kmeans/max_variance_new_cluster_impl.hpp \
-  /usr/local/include/mlpack/methods/kmeans/kill_empty_clusters.hpp \
-  /usr/local/include/mlpack/methods/kmeans/allow_empty_clusters.hpp \
-  /usr/local/include/mlpack/methods/kmeans/naive_kmeans.hpp \
-  /usr/local/include/mlpack/methods/kmeans/naive_kmeans_impl.hpp \
-  /usr/local/include/mlpack/methods/kmeans/dual_tree_kmeans.hpp \
-  /usr/local/include/mlpack/core/tree/cover_tree.hpp \
-  /usr/local/include/mlpack/methods/kmeans/dual_tree_kmeans_statistic.hpp \
-  /usr/local/include/mlpack/methods/neighbor_search/neighbor_search_stat.hpp \
-  /usr/local/include/mlpack/methods/kmeans/dual_tree_kmeans_impl.hpp \
-  /usr/local/include/mlpack/methods/kmeans/dual_tree_kmeans_rules.hpp \
-  /usr/local/include/mlpack/methods/kmeans/dual_tree_kmeans_rules_impl.hpp \
-  /usr/local/include/mlpack/methods/kmeans/elkan_kmeans.hpp \
-  /usr/local/include/mlpack/methods/kmeans/elkan_kmeans_impl.hpp \
-  /usr/local/include/mlpack/methods/kmeans/hamerly_kmeans.hpp \
-  /usr/local/include/mlpack/methods/kmeans/hamerly_kmeans_impl.hpp \
-  /usr/local/include/mlpack/methods/kmeans/pelleg_moore_kmeans.hpp \
-  /usr/local/include/mlpack/methods/kmeans/pelleg_moore_kmeans_statistic.hpp \
-  /usr/local/include/mlpack/methods/kmeans/pelleg_moore_kmeans_impl.hpp \
-  /usr/local/include/mlpack/methods/kmeans/pelleg_moore_kmeans_rules.hpp \
-  /usr/local/include/mlpack/methods/kmeans/pelleg_moore_kmeans_rules_impl.hpp \
-  /usr/local/include/mlpack/methods/kmeans/kmeans_impl.hpp \
-  /usr/local/include/mlpack/methods/kmeans/kmeans.hpp \
-  /usr/local/include/mlpack/methods/kmeans/refined_start.hpp \
-  /usr/local/include/mlpack/methods/kmeans/refined_start_impl.hpp \
-  /usr/local/include/mlpack/methods/gmm/em_fit_impl.hpp \
-  /usr/local/include/mlpack/core/math/log_add.hpp \
-  /usr/local/include/mlpack/methods/gmm/gmm_impl.hpp \
-  /usr/local/include/mlpack/methods/gmm/gmm.hpp \
-  /usr/local/include/mlpack/methods/gmm/diagonal_gmm.hpp \
-  /usr/local/include/mlpack/core/dists/diagonal_gaussian_distribution.hpp \
-  /usr/local/include/mlpack/methods/gmm/diagonal_gmm_impl.hpp \
-  /usr/local/include/mlpack/methods/hmm.hpp \
-  /usr/local/include/mlpack/methods/hmm/hmm.hpp \
-  /usr/local/include/mlpack/methods/hmm/hmm_impl.hpp \
-  /usr/local/include/mlpack/methods/hmm/hmm.hpp \
-  /usr/local/include/mlpack/methods/hoeffding_trees.hpp \
-  /usr/local/include/mlpack/methods/hoeffding_trees/hoeffding_trees.hpp \
-  /usr/local/include/mlpack/methods/hoeffding_trees/hoeffding_tree.hpp \
-  /usr/local/include/mlpack/methods/hoeffding_trees/categorical_split_info.hpp \
-  /usr/local/include/mlpack/methods/hoeffding_trees/numeric_split_info.hpp \
-  /usr/local/include/mlpack/methods/hoeffding_trees/gini_impurity.hpp \
-  /usr/local/include/mlpack/methods/hoeffding_trees/information_gain.hpp \
-  /usr/local/include/mlpack/methods/hoeffding_trees/hoeffding_numeric_split.hpp \
-  /usr/local/include/mlpack/methods/hoeffding_trees/hoeffding_numeric_split_impl.hpp \
-  /usr/local/include/mlpack/methods/hoeffding_trees/binary_numeric_split.hpp \
-  /usr/local/include/mlpack/methods/hoeffding_trees/binary_numeric_split_info.hpp \
-  /usr/local/include/mlpack/methods/hoeffding_trees/binary_numeric_split_impl.hpp \
-  /usr/local/include/mlpack/methods/hoeffding_trees/hoeffding_categorical_split.hpp \
-  /usr/local/include/mlpack/methods/hoeffding_trees/hoeffding_categorical_split_impl.hpp \
-  /usr/local/include/mlpack/methods/hoeffding_trees/hoeffding_tree_impl.hpp \
-  /usr/local/include/mlpack/methods/kde.hpp \
-  /usr/local/include/mlpack/methods/kde/kde.hpp \
-  /usr/local/include/mlpack/methods/kde/kde_stat.hpp \
-  /usr/local/include/mlpack/methods/kde/kde_impl.hpp \
-  /usr/local/include/mlpack/methods/kde/kde.hpp \
-  /usr/local/include/mlpack/methods/kde/kde_rules.hpp \
-  /usr/local/include/mlpack/methods/kde/kde_rules_impl.hpp \
-  /usr/local/include/mlpack/methods/kernel_pca.hpp \
-  /usr/local/include/mlpack/methods/kernel_pca/kernel_pca.hpp \
-  /usr/local/include/mlpack/methods/kernel_pca/kernel_rules/naive_method.hpp \
-  /usr/local/include/mlpack/methods/kernel_pca/kernel_rules/nystroem_method.hpp \
-  /usr/local/include/mlpack/methods/nystroem_method/kmeans_selection.hpp \
-  /usr/local/include/mlpack/methods/nystroem_method/nystroem_method.hpp \
-  /usr/local/include/mlpack/methods/nystroem_method/kmeans_selection.hpp \
-  /usr/local/include/mlpack/methods/nystroem_method/ordered_selection.hpp \
-  /usr/local/include/mlpack/methods/nystroem_method/random_selection.hpp \
-  /usr/local/include/mlpack/methods/nystroem_method/nystroem_method_impl.hpp \
-  /usr/local/include/mlpack/methods/nystroem_method/nystroem_method.hpp \
-  /usr/local/include/mlpack/methods/kernel_pca/kernel_pca_impl.hpp \
-  /usr/local/include/mlpack/methods/kernel_pca/kernel_pca.hpp \
-  /usr/local/include/mlpack/methods/kmeans.hpp \
-  /usr/local/include/mlpack/methods/kmeans/kmeans.hpp \
-  /usr/local/include/mlpack/methods/lars.hpp \
-  /usr/local/include/mlpack/methods/lars/lars.hpp \
-  /usr/local/include/mlpack/methods/lars/lars_impl.hpp \
-  /usr/local/include/mlpack/methods/lars/lars.hpp \
-  /usr/local/include/mlpack/methods/linear_regression.hpp \
-  /usr/local/include/mlpack/methods/linear_regression/linear_regression.hpp \
-  /usr/local/include/mlpack/methods/linear_svm.hpp \
-  /usr/local/include/mlpack/methods/linear_svm/linear_svm.hpp \
-  /usr/local/include/mlpack/methods/linear_svm/linear_svm_function.hpp \
-  /usr/local/include/mlpack/methods/linear_svm/linear_svm_function_impl.hpp \
-  /usr/local/include/mlpack/core/math/shuffle_data.hpp \
-  /usr/local/include/mlpack/methods/linear_svm/linear_svm_impl.hpp \
-  /usr/local/include/mlpack/methods/linear_svm/linear_svm.hpp \
-  /usr/local/include/mlpack/methods/lmnn.hpp \
-  /usr/local/include/mlpack/methods/lmnn/lmnn.hpp \
-  /usr/local/include/mlpack/methods/lmnn/constraints.hpp \
-  /usr/local/include/mlpack/methods/lmnn/constraints_impl.hpp \
-  /usr/local/include/mlpack/methods/lmnn/lmnn_function.hpp \
-  /usr/local/include/mlpack/methods/lmnn/lmnn_function_impl.hpp \
-  /usr/local/include/mlpack/methods/lmnn/lmnn_impl.hpp \
-  /usr/local/include/mlpack/methods/lmnn/lmnn.hpp \
-  /usr/local/include/mlpack/methods/local_coordinate_coding.hpp \
-  /usr/local/include/mlpack/methods/local_coordinate_coding/local_coordinate_coding.hpp \
-  /usr/local/include/mlpack/methods/local_coordinate_coding/lcc.hpp \
-  /usr/local/include/mlpack/methods/lars/lars.hpp \
-  /usr/local/include/mlpack/methods/sparse_coding/nothing_initializer.hpp \
-  /usr/local/include/mlpack/methods/sparse_coding/data_dependent_random_initializer.hpp \
-  /usr/local/include/mlpack/methods/sparse_coding/random_initializer.hpp \
-  /usr/local/include/mlpack/methods/local_coordinate_coding/lcc_impl.hpp \
-  /usr/local/include/mlpack/methods/logistic_regression.hpp \
-  /usr/local/include/mlpack/methods/logistic_regression/logistic_regression.hpp \
-  /usr/local/include/mlpack/methods/logistic_regression/logistic_regression_function.hpp \
-  /usr/local/include/mlpack/methods/logistic_regression/logistic_regression_function_impl.hpp \
-  /usr/local/include/mlpack/methods/logistic_regression/logistic_regression_impl.hpp \
-  /usr/local/include/mlpack/methods/logistic_regression/logistic_regression.hpp \
-  /usr/local/include/mlpack/methods/lsh.hpp \
-  /usr/local/include/mlpack/methods/lsh/lsh.hpp \
-  /usr/local/include/mlpack/methods/lsh/lsh_search.hpp \
-  /usr/local/include/mlpack/methods/neighbor_search/sort_policies/nearest_neighbor_sort.hpp \
-  /usr/local/include/mlpack/methods/lsh/lsh_search_impl.hpp \
-  /usr/local/include/mlpack/methods/matrix_completion.hpp \
-  /usr/local/include/mlpack/methods/matrix_completion/matrix_completion.hpp \
-  /usr/local/include/mlpack/methods/matrix_completion/matrix_completion_impl.hpp \
-  /usr/local/include/mlpack/methods/matrix_completion/matrix_completion.hpp \
-  /usr/local/include/mlpack/methods/mean_shift.hpp \
-  /usr/local/include/mlpack/methods/mean_shift/mean_shift.hpp \
-  /usr/local/include/mlpack/methods/mean_shift/mean_shift_impl.hpp \
-  /usr/local/include/mlpack/core/kernels/gaussian_kernel.hpp \
-  /usr/local/include/mlpack/methods/mean_shift/mean_shift.hpp \
-  /usr/local/include/mlpack/methods/naive_bayes.hpp \
-  /usr/local/include/mlpack/methods/naive_bayes/naive_bayes.hpp \
-  /usr/local/include/mlpack/methods/naive_bayes/naive_bayes_classifier.hpp \
-  /usr/local/include/mlpack/methods/naive_bayes/naive_bayes_classifier_impl.hpp \
-  /usr/local/include/mlpack/methods/nca.hpp \
-  /usr/local/include/mlpack/methods/nca/nca.hpp \
-  /usr/local/include/mlpack/methods/nca/nca_softmax_error_function.hpp \
-  /usr/local/include/mlpack/methods/nca/nca_softmax_error_function_impl.hpp \
-  /usr/local/include/mlpack/methods/nca/nca_impl.hpp \
-  /usr/local/include/mlpack/methods/nca/nca.hpp \
-  /usr/local/include/mlpack/methods/neighbor_search.hpp \
-  /usr/local/include/mlpack/methods/neighbor_search/neighbor_search.hpp \
-  /usr/local/include/mlpack/methods/nmf.hpp \
-  /usr/local/include/mlpack/methods/nmf/nmf.hpp \
-  /usr/local/include/mlpack/methods/nystroem_method.hpp \
-  /usr/local/include/mlpack/methods/nystroem_method/nystroem_method.hpp \
-  /usr/local/include/mlpack/methods/pca.hpp \
-  /usr/local/include/mlpack/methods/pca/pca.hpp \
-  /usr/local/include/mlpack/methods/pca/decomposition_policies/decomposition_policies.hpp \
-  /usr/local/include/mlpack/methods/pca/decomposition_policies/exact_svd_method.hpp \
-  /usr/local/include/mlpack/methods/pca/decomposition_policies/quic_svd_method.hpp \
-  /usr/local/include/mlpack/methods/pca/decomposition_policies/randomized_block_krylov_method.hpp \
-  /usr/local/include/mlpack/methods/block_krylov_svd/randomized_block_krylov_svd.hpp \
-  /usr/local/include/mlpack/methods/pca/decomposition_policies/randomized_svd_method.hpp \
-  /usr/local/include/mlpack/methods/pca/pca_impl.hpp \
-  /usr/local/include/mlpack/methods/pca/pca.hpp \
-  /usr/local/include/mlpack/methods/perceptron.hpp \
-  /usr/local/include/mlpack/methods/perceptron/perceptron.hpp \
-  /usr/local/include/mlpack/methods/preprocess.hpp \
-  /usr/local/include/mlpack/methods/preprocess/preprocess.hpp \
-  /usr/local/include/mlpack/methods/preprocess/scaling_model.hpp \
-  /usr/local/include/mlpack/core/data/scaler_methods/max_abs_scaler.hpp \
-  /usr/local/include/mlpack/core/data/scaler_methods/mean_normalization.hpp \
-  /usr/local/include/mlpack/core/data/scaler_methods/min_max_scaler.hpp \
-  /usr/local/include/mlpack/core/data/scaler_methods/zca_whitening.hpp \
-  /usr/local/include/mlpack/core/data/scaler_methods/standard_scaler.hpp \
-  /usr/local/include/mlpack/methods/preprocess/scaling_model_impl.hpp \
-  /usr/local/include/mlpack/methods/quic_svd.hpp \
-  /usr/local/include/mlpack/methods/quic_svd/quic_svd.hpp \
-  /usr/local/include/mlpack/methods/radical.hpp \
-  /usr/local/include/mlpack/methods/radical/radical.hpp \
-  /usr/local/include/mlpack/methods/radical/radical_impl.hpp \
-  /usr/local/include/mlpack/methods/radical/radical.hpp \
-  /usr/local/include/mlpack/methods/random_forest.hpp \
-  /usr/local/include/mlpack/methods/random_forest/random_forest.hpp \
-  /usr/local/include/mlpack/methods/random_forest/bootstrap.hpp \
-  /usr/local/include/mlpack/methods/random_forest/random_forest_impl.hpp \
-  /usr/local/include/mlpack/methods/random_forest/random_forest.hpp \
-  /usr/local/include/mlpack/methods/randomized_svd.hpp \
-  /usr/local/include/mlpack/methods/randomized_svd/randomized_svd.hpp \
-  /usr/local/include/mlpack/methods/range_search.hpp \
-  /usr/local/include/mlpack/methods/range_search/range_search.hpp \
-  /usr/local/include/mlpack/methods/rann.hpp \
-  /usr/local/include/mlpack/methods/rann/rann.hpp \
-  /usr/local/include/mlpack/methods/rann/ra_search.hpp \
-  /usr/local/include/mlpack/methods/rann/ra_query_stat.hpp \
-  /usr/local/include/mlpack/methods/rann/ra_util.hpp \
-  /usr/local/include/mlpack/methods/rann/ra_util_impl.hpp \
-  /usr/local/include/mlpack/methods/rann/ra_search_impl.hpp \
-  /usr/local/include/mlpack/methods/rann/ra_search_rules.hpp \
-  /usr/local/include/mlpack/methods/rann/ra_search_rules_impl.hpp \
-  /usr/local/include/mlpack/methods/rann/ra_typedef.hpp \
-  /usr/local/include/mlpack/methods/regularized_svd.hpp \
-  /usr/local/include/mlpack/methods/regularized_svd/regularized_svd.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/reinforcement_learning.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/environment/environment.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/environment/env_type.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/environment/acrobot.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/environment/cart_pole.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/environment/cont_double_pole_cart.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/environment/continuous_mountain_car.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/environment/double_pole_cart.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/environment/ftn.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/environment/ftn_param.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/environment/mountain_car.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/environment/pendulum.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/environment/reward_clipping.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/policy/policy.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/policy/aggregated_policy.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/policy/greedy_policy.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/q_networks/q_networks.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/q_networks/simple_dqn.hpp \
-  /usr/local/include/mlpack/methods/ann/ffn.hpp \
-  /usr/local/include/mlpack/methods/ann/init_rules/gaussian_init.hpp \
-  /usr/local/include/mlpack/methods/ann/layer/layer_types.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/mean_squared_error.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/q_networks/categorical_dqn.hpp \
-  /usr/local/include/mlpack/methods/ann/loss_functions/empty_loss.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/training_config.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/q_networks/dueling_dqn.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/replay/replay.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/replay/random_replay.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/replay/prioritized_replay.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/replay/sumtree.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/worker/worker.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/worker/one_step_q_learning_worker.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/training_config.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/worker/one_step_sarsa_worker.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/worker/n_step_q_learning_worker.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/noise/noise.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/noise/ornstein_uhlenbeck.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/noise/gaussian.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/training_config.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/async_learning.hpp \
-  /usr/local/include/mlpack/methods/ann/ann.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/async_learning_impl.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/q_learning.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/q_learning_impl.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/ddpg.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/ddpg_impl.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/td3.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/td3_impl.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/sac.hpp \
-  /usr/local/include/mlpack/methods/reinforcement_learning/sac_impl.hpp \
-  /usr/local/include/mlpack/methods/softmax_regression.hpp \
-  /usr/local/include/mlpack/methods/softmax_regression/softmax_regression.hpp \
-  /usr/local/include/mlpack/methods/softmax_regression/softmax_regression_function.hpp \
-  /usr/local/include/mlpack/methods/softmax_regression/softmax_regression_function_impl.hpp \
-  /usr/local/include/mlpack/methods/softmax_regression/softmax_regression_impl.hpp \
-  /usr/local/include/mlpack/methods/softmax_regression/softmax_regression.hpp \
-  /usr/local/include/mlpack/methods/sparse_autoencoder.hpp \
-  /usr/local/include/mlpack/methods/sparse_autoencoder/sparse_autoencoder.hpp \
-  /usr/local/include/mlpack/methods/sparse_autoencoder/maximal_inputs.hpp \
-  /usr/local/include/mlpack/methods/sparse_autoencoder/maximal_inputs_impl.hpp \
-  /usr/local/include/mlpack/methods/sparse_autoencoder/sparse_autoencoder_function.hpp \
-  /usr/local/include/mlpack/methods/sparse_autoencoder/sparse_autoencoder_function_impl.hpp \
-  /usr/local/include/mlpack/methods/sparse_autoencoder/sparse_autoencoder_impl.hpp \
-  /usr/local/include/mlpack/methods/sparse_autoencoder/sparse_autoencoder.hpp \
-  /usr/local/include/mlpack/methods/sparse_coding.hpp \
-  /usr/local/include/mlpack/methods/sparse_coding/sparse_coding.hpp \
-  /usr/local/include/mlpack/methods/sparse_coding/nothing_initializer.hpp \
-  /usr/local/include/mlpack/methods/sparse_coding/data_dependent_random_initializer.hpp \
-  /usr/local/include/mlpack/methods/sparse_coding/random_initializer.hpp \
-  /usr/local/include/mlpack/methods/sparse_coding/sparse_coding_impl.hpp \
-  /usr/local/include/mlpack/methods/sparse_coding/sparse_coding.hpp \
-  /usr/local/include/mlpack/methods/svdplusplus.hpp \
-  /usr/local/include/mlpack/methods/svdplusplus/svdplusplus.hpp \
-  /usr/local/include/mlpack/namespace_compat.hpp \
-  ../src/quickselect.hpp
+  /usr/local/include/mlpack/core/tree/binary_space_tree.hpp
 
-
-../src/quickselect.hpp:
-
-/usr/local/include/mlpack/methods/sparse_coding/sparse_coding_impl.hpp:
-
-/usr/local/include/mlpack/methods/sparse_coding/sparse_coding.hpp:
-
-/usr/local/include/mlpack/methods/sparse_autoencoder/maximal_inputs_impl.hpp:
-
-/usr/local/include/mlpack/methods/sparse_autoencoder/sparse_autoencoder.hpp:
-
-/usr/local/include/mlpack/methods/softmax_regression/softmax_regression_impl.hpp:
-
-/usr/local/include/mlpack/methods/softmax_regression/softmax_regression_function.hpp:
-
-/usr/local/include/mlpack/methods/softmax_regression.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/td3_impl.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/async_learning_impl.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/worker/worker.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/replay/replay.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/q_networks/dueling_dqn.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/training_config.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/q_networks/simple_dqn.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/q_networks/q_networks.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/policy/aggregated_policy.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/policy/policy.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/environment/pendulum.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/environment/mountain_car.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/environment/ftn_param.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/environment/env_type.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/reinforcement_learning.hpp:
-
-/usr/local/include/mlpack/methods/rann/ra_search_rules_impl.hpp:
-
-/usr/local/include/mlpack/methods/rann/ra_search_impl.hpp:
-
-/usr/local/include/mlpack/methods/rann/ra_util_impl.hpp:
-
-/usr/local/include/mlpack/methods/rann/ra_query_stat.hpp:
-
-/usr/local/include/mlpack/methods/rann/ra_search.hpp:
-
-/usr/local/include/mlpack/methods/random_forest/random_forest_impl.hpp:
-
-/usr/local/include/mlpack/methods/random_forest/bootstrap.hpp:
-
-/usr/local/include/mlpack/methods/random_forest/random_forest.hpp:
-
-/usr/local/include/mlpack/methods/random_forest.hpp:
-
-/usr/local/include/mlpack/methods/radical/radical_impl.hpp:
-
-/usr/local/include/mlpack/methods/radical/radical.hpp:
-
-/usr/local/include/mlpack/methods/radical.hpp:
-
-/usr/local/include/mlpack/methods/preprocess/scaling_model_impl.hpp:
-
-/usr/local/include/mlpack/methods/preprocess/scaling_model.hpp:
-
-/usr/local/include/mlpack/methods/preprocess/preprocess.hpp:
-
-/usr/local/include/mlpack/methods/perceptron.hpp:
-
-/usr/local/include/mlpack/methods/pca/decomposition_policies/randomized_svd_method.hpp:
-
-/usr/local/include/mlpack/methods/pca/decomposition_policies/quic_svd_method.hpp:
-
-/usr/local/include/mlpack/methods/pca.hpp:
-
-/usr/local/include/mlpack/methods/nca/nca_impl.hpp:
-
-/usr/local/include/mlpack/methods/nca/nca_softmax_error_function.hpp:
-
-/usr/local/include/mlpack/methods/matrix_completion.hpp:
-
-/usr/local/include/mlpack/methods/lsh/lsh_search_impl.hpp:
-
-/usr/local/include/mlpack/methods/lsh/lsh.hpp:
-
-/usr/local/include/mlpack/methods/logistic_regression/logistic_regression_impl.hpp:
-
-/usr/local/include/mlpack/methods/logistic_regression.hpp:
-
-/usr/local/include/mlpack/methods/rann/ra_util.hpp:
-
-/usr/local/include/mlpack/methods/sparse_coding/data_dependent_random_initializer.hpp:
-
-/usr/local/include/mlpack/methods/local_coordinate_coding.hpp:
-
-/usr/local/include/mlpack/methods/lmnn/lmnn_function.hpp:
-
-/usr/local/include/mlpack/methods/lmnn/constraints.hpp:
-
-/usr/local/include/mlpack/methods/linear_svm/linear_svm_function_impl.hpp:
-
-/usr/local/include/mlpack/methods/linear_svm.hpp:
-
-/usr/local/include/mlpack/methods/linear_regression.hpp:
-
-/usr/local/include/mlpack/methods/lars/lars.hpp:
-
-/usr/local/include/mlpack/methods/lars.hpp:
-
-/usr/local/include/mlpack/methods/kernel_pca/kernel_pca_impl.hpp:
-
-/usr/local/include/mlpack/methods/nystroem_method/random_selection.hpp:
-
-/usr/local/include/mlpack/methods/nystroem_method/ordered_selection.hpp:
-
-/usr/local/include/mlpack/methods/kernel_pca/kernel_pca.hpp:
-
-/usr/local/include/mlpack/methods/kde/kde_rules_impl.hpp:
-
-/usr/local/include/mlpack/methods/kde/kde.hpp:
-
-/usr/local/include/mlpack/methods/kde.hpp:
-
-/usr/local/include/mlpack/methods/hoeffding_trees/hoeffding_tree_impl.hpp:
-
-/usr/local/include/mlpack/methods/hoeffding_trees/hoeffding_categorical_split.hpp:
-
-/usr/local/include/mlpack/methods/hoeffding_trees/binary_numeric_split_impl.hpp:
-
-/usr/local/include/mlpack/methods/hoeffding_trees/hoeffding_numeric_split_impl.hpp:
-
-/usr/local/include/mlpack/methods/hoeffding_trees/information_gain.hpp:
-
-/usr/local/include/mlpack/methods/hoeffding_trees/gini_impurity.hpp:
-
-/usr/local/include/mlpack/methods/hoeffding_trees/numeric_split_info.hpp:
-
-/usr/local/include/mlpack/methods/hoeffding_trees.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/sac.hpp:
-
-/usr/local/include/mlpack/methods/hmm/hmm_impl.hpp:
-
-/usr/local/include/mlpack/methods/hmm.hpp:
-
-/usr/local/include/mlpack/methods/nca/nca_softmax_error_function_impl.hpp:
-
-/usr/local/include/mlpack/methods/gmm/diagonal_gmm_impl.hpp:
-
-/usr/local/include/mlpack/methods/gmm/diagonal_gmm.hpp:
-
-/usr/local/include/mlpack/methods/gmm/gmm_impl.hpp:
-
-/usr/local/include/mlpack/methods/kmeans/refined_start_impl.hpp:
-
-/usr/local/include/mlpack/methods/kmeans/pelleg_moore_kmeans_impl.hpp:
-
-/usr/local/include/mlpack/methods/kmeans/hamerly_kmeans_impl.hpp:
-
-/usr/local/include/mlpack/methods/kmeans/dual_tree_kmeans_rules.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning.hpp:
-
-/usr/local/include/mlpack/methods/kmeans/naive_kmeans.hpp:
-
-/usr/local/include/mlpack/methods/kmeans/max_variance_new_cluster_impl.hpp:
-
-/usr/local/include/mlpack/methods/kmeans/max_variance_new_cluster.hpp:
-
-/usr/local/include/mlpack/methods/kmeans/random_partition.hpp:
-
-/usr/local/include/mlpack/methods/kmeans/kmeans_plus_plus_initialization.hpp:
-
-/usr/local/include/mlpack/methods/gmm.hpp:
-
-/usr/local/include/mlpack/methods/fastmks/fastmks_rules_impl.hpp:
-
-/usr/local/include/mlpack/methods/fastmks/fastmks_rules.hpp:
-
-/usr/local/include/mlpack/methods/emst/dtb_rules_impl.hpp:
-
-/usr/local/include/mlpack/methods/emst/dtb_impl.hpp:
-
-/usr/local/include/mlpack/methods/emst/dtb_stat.hpp:
-
-/usr/local/include/mlpack/methods/emst/dtb.hpp:
-
-/usr/local/include/mlpack/methods/emst/edge_pair.hpp:
-
-/usr/local/include/mlpack/methods/emst.hpp:
-
-/usr/local/include/mlpack/methods/det/dt_utils_impl.hpp:
-
-/usr/local/include/mlpack/methods/det/dtree.hpp:
-
-/usr/local/include/mlpack/methods/det/det.hpp:
-
-/usr/local/include/mlpack/methods/range_search/range_search_rules_impl.hpp:
-
-/usr/local/include/mlpack/methods/range_search/range_search_rules.hpp:
-
-/usr/local/include/mlpack/methods/range_search/range_search_stat.hpp:
-
-/usr/local/include/mlpack/methods/dbscan/dbscan.hpp:
-
-/usr/local/include/mlpack/methods/dbscan.hpp:
-
-/usr/local/include/mlpack/methods/cf/cf_impl.hpp:
-
-/usr/local/include/mlpack/methods/cf/interpolation_policies/interpolation_policies.hpp:
-
-/usr/local/include/mlpack/methods/cf/neighbor_search_policies/cosine_search.hpp:
-
-/usr/local/include/mlpack/methods/quic_svd/quic_svd_impl.hpp:
-
-/usr/local/include/mlpack/methods/quic_svd/quic_svd.hpp:
-
-/usr/local/include/mlpack/methods/dbscan/ordered_point_selection.hpp:
-
-/usr/local/include/mlpack/methods/svdplusplus/svdplusplus_impl.hpp:
-
-/usr/local/include/mlpack/methods/svdplusplus/svdplusplus.hpp:
-
-/usr/local/include/mlpack/methods/cf/decomposition_policies/svd_incomplete_method.hpp:
-
-/usr/local/include/mlpack/methods/regularized_svd/regularized_svd_impl.hpp:
-
-/usr/local/include/mlpack/methods/regularized_svd/regularized_svd_function_impl.hpp:
-
-/usr/local/include/mlpack/methods/regularized_svd/regularized_svd_function.hpp:
-
-/usr/local/include/mlpack/methods/regularized_svd/regularized_svd.hpp:
-
-/usr/local/include/mlpack/methods/cf/decomposition_policies/regularized_svd_method.hpp:
-
-/usr/local/include/mlpack/methods/randomized_svd/randomized_svd_impl.hpp:
-
-/usr/local/include/mlpack/methods/randomized_svd/randomized_svd.hpp:
-
-/usr/local/include/mlpack/methods/cf/decomposition_policies/randomized_svd_method.hpp:
-
-/usr/local/include/mlpack/methods/cf/decomposition_policies/nmf_method.hpp:
-
-/usr/local/include/mlpack/methods/cf/decomposition_policies/bias_svd_method.hpp:
-
-/usr/local/include/mlpack/methods/kmeans/dual_tree_kmeans_statistic.hpp:
-
-/usr/local/include/mlpack/methods/cf/decomposition_policies/batch_svd_method.hpp:
-
-/usr/local/include/mlpack/methods/cf/normalization/overall_mean_normalization.hpp:
-
-/usr/local/include/mlpack/methods/cf/normalization/combined_normalization.hpp:
-
-/usr/local/include/mlpack/methods/cf/normalization/normalization.hpp:
 
 /usr/local/include/mlpack/methods/neighbor_search/typedef.hpp:
 
 /usr/local/include/mlpack/methods/neighbor_search/neighbor_search_impl.hpp:
+
+/usr/local/include/mlpack/methods/neighbor_search/unmap_impl.hpp:
+
+/usr/local/include/mlpack/methods/neighbor_search/sort_policies/furthest_neighbor_sort_impl.hpp:
 
 /usr/local/include/mlpack/methods/neighbor_search/sort_policies/nearest_neighbor_sort_impl.hpp:
 
@@ -2746,313 +1910,103 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/methods/neighbor_search/neighbor_search.hpp:
 
-/usr/local/include/mlpack/methods/cf/cf.hpp:
+../src/quickselect.hpp:
 
-/usr/local/include/mlpack/methods/block_krylov_svd/block_krylov_svd.hpp:
+/usr/local/include/parlay/internal/delayed/scan.h:
 
-/usr/local/include/mlpack/methods/fastmks/fastmks_impl.hpp:
+/usr/local/include/parlay/internal/delayed/terminal.h:
 
-/usr/local/include/mlpack/methods/block_krylov_svd.hpp:
+/usr/local/include/parlay/internal/delayed/filter.h:
 
-/usr/local/include/mlpack/methods/bias_svd/bias_svd_function_impl.hpp:
+/usr/local/include/parlay/internal/uninitialized_storage.h:
 
-/usr/local/include/mlpack/methods/bias_svd.hpp:
+/usr/local/include/parlay/internal/merge_sort.h:
 
-/usr/local/include/mlpack/methods/bayesian_linear_regression/bayesian_linear_regression_impl.hpp:
+/usr/local/include/parlay/internal/bucket_sort.h:
 
-/usr/local/include/mlpack/methods/neighbor_search/sort_policies/furthest_neighbor_sort_impl.hpp:
+/usr/local/include/parlay/internal/sample_sort.h:
 
-/usr/local/include/mlpack/methods/approx_kfn/qdafn.hpp:
+/usr/local/include/parlay/internal/collect_reduce.h:
 
-/usr/local/include/mlpack/methods/approx_kfn.hpp:
+/usr/local/include/parlay/internal/block_delayed.h:
 
-/usr/local/include/mlpack/methods/ann/rnn.hpp:
+/usr/local/include/parlay/internal/get_time.h:
 
-/usr/local/include/mlpack/methods/mean_shift.hpp:
+/usr/local/include/parlay/delayed_sequence.h:
 
-/usr/local/include/mlpack/methods/ann/regularizer/lregularizer_impl.hpp:
+../parallel_hdbscan/include/hdbscan/point.h:
 
-/usr/local/include/mlpack/methods/ann/regularizer/regularizer.hpp:
+/usr/local/include/parlay/relocation.h:
 
-/usr/local/include/mlpack/methods/lars/lars_impl.hpp:
+/usr/local/include/parlay/internal/sequence_base.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/soft_margin_loss_impl.hpp:
+/usr/include/x86_64-linux-gnu/asm/param.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/reconstruction_loss.hpp:
+/usr/include/linux/param.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/mean_squared_error.hpp:
+/usr/include/x86_64-linux-gnu/bits/param.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/l1_loss_impl.hpp:
+/usr/include/x86_64-linux-gnu/bits/signal_ext.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/l1_loss.hpp:
+/usr/include/x86_64-linux-gnu/bits/sigstksz.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/kl_divergence_impl.hpp:
+/usr/include/x86_64-linux-gnu/bits/sigstack.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/kl_divergence.hpp:
+/usr/include/x86_64-linux-gnu/bits/types/stack_t.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/huber_loss_impl.hpp:
+/usr/local/include/parlay/internal/transpose.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/earth_mover_distance_impl.hpp:
+/usr/include/x86_64-linux-gnu/bits/sigcontext.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/dice_loss.hpp:
+/usr/include/x86_64-linux-gnu/bits/sigaction.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/binary_cross_entropy_loss.hpp:
+/usr/include/x86_64-linux-gnu/bits/sigevent-consts.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/loss_functions.hpp:
+/usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h:
 
-/usr/local/include/mlpack/methods/ann/init_rules/oivs_init.hpp:
+/usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/negative_log_likelihood.hpp:
+/usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h:
 
-/usr/local/include/mlpack/methods/ann/layer/ftswish_impl.hpp:
+/usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h:
 
-/usr/local/include/mlpack/methods/ann/layer/softmin_impl.hpp:
+/usr/include/x86_64-linux-gnu/bits/signum-arch.h:
 
-/usr/local/include/mlpack/methods/ann/layer/relu6_impl.hpp:
+/usr/local/include/parlay/internal/concurrency/acquire_retire.h:
 
-/usr/local/include/mlpack/methods/ann/layer/parametric_relu_impl.hpp:
+/usr/local/include/parlay/portability.h:
 
-/usr/local/include/mlpack/methods/ann/layer/parametric_relu.hpp:
+/usr/local/include/parlay/alloc.h:
 
-/usr/local/include/mlpack/methods/ann/layer/softmax.hpp:
+/usr/local/include/parlay/sequence.h:
 
-/usr/local/include/mlpack/methods/ann/layer/multihead_attention.hpp:
+/usr/include/x86_64-linux-gnu/bits/syscall.h:
 
-/usr/local/include/mlpack/methods/range_search/range_search_impl.hpp:
+/usr/include/x86_64-linux-gnu/asm/unistd.h:
 
-/usr/local/include/mlpack/methods/ann/layer/log_softmax_impl.hpp:
+/usr/include/x86_64-linux-gnu/sys/syscall.h:
 
-/usr/local/include/mlpack/methods/ann/layer/log_softmax.hpp:
+/usr/include/asm-generic/posix_types.h:
 
-/usr/local/include/mlpack/methods/ann/layer/linear_no_bias_impl.hpp:
+/usr/include/linux/stddef.h:
 
-/usr/local/include/mlpack/methods/ann/layer/leaky_relu_impl.hpp:
+/usr/include/linux/posix_types.h:
 
-/usr/local/include/mlpack/methods/ann/layer/leaky_relu.hpp:
+/usr/include/linux/types.h:
 
-/usr/local/include/mlpack/methods/ann/layer/layer_norm_impl.hpp:
+/usr/include/linux/futex.h:
 
-/usr/local/include/mlpack/methods/randomized_svd.hpp:
+/usr/include/c++/11/variant:
 
-/usr/local/include/mlpack/methods/cf/neighbor_search_policies/pearson_search.hpp:
+/usr/include/c++/11/bits/forward_list.tcc:
 
-/usr/local/include/mlpack/methods/ann/layer/identity_impl.hpp:
+/usr/include/c++/11/bits/forward_list.h:
 
-/usr/local/include/mlpack/methods/ann/layer/hard_tanh_impl.hpp:
+/usr/local/include/parlay/type_traits.h:
 
-/usr/local/include/mlpack/methods/ann/layer/elu_impl.hpp:
+/usr/local/include/parlay/internal/work_stealing_job.h:
 
-/usr/local/include/mlpack/methods/ann/layer/linear_impl.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/async_learning.hpp:
-
-/usr/local/include/mlpack/methods/ann/regularizer/no_regularizer.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/dropconnect_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/dropconnect.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/convolution_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/init_rules/nguyen_widrow_init.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/padding_impl.hpp:
-
-/usr/local/include/mlpack/core/util/to_lower.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/concatenate.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/c_relu_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/c_relu.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/celu.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/add_merge_impl.hpp:
-
-/usr/local/include/mlpack/methods/neighbor_search/unmap_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/add_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/add.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/adaptive_mean_pooling_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/mean_pooling_impl.hpp:
-
-/usr/local/include/mlpack/methods/cf/decomposition_policies/decomposition_policies.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/mean_pooling.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/adaptive_mean_pooling.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/adaptive_max_pooling_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/max_pooling_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/adaptive_max_pooling.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/recurrent_layer_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/recurrent_layer.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/multi_layer_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/init_rules/kathirvalavakumar_subavathi_init.hpp:
-
-/usr/local/include/mlpack/methods/ann/init_rules/init_rules_traits.hpp:
-
-/usr/local/include/mlpack/methods/logistic_regression/logistic_regression_function_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/init_rules/he_init.hpp:
-
-/usr/local/include/mlpack/methods/ann/init_rules/glorot_init.hpp:
-
-/usr/local/include/mlpack/methods/hoeffding_trees/hoeffding_numeric_split.hpp:
-
-/usr/local/include/mlpack/methods/ann/init_rules/gaussian_init.hpp:
-
-/usr/local/include/mlpack/methods/ann/init_rules/const_init.hpp:
-
-/usr/local/include/mlpack/methods/rann/ra_typedef.hpp:
-
-/usr/local/include/mlpack/methods/ann/dists/normal_distribution_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/dists/normal_distribution.hpp:
-
-/usr/local/include/mlpack/methods/svdplusplus/svdplusplus_function_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/convolution_rules/svd_convolution.hpp:
-
-/usr/local/include/mlpack/methods/ann/convolution_rules/naive_convolution.hpp:
-
-/usr/local/include/mlpack/methods/ann/convolution_rules/fft_convolution.hpp:
-
-/usr/local/include/mlpack/methods/ann/augmented/tasks/copy.hpp:
-
-/usr/local/include/mlpack/methods/ann/augmented/tasks/add_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/augmented/tasks/add.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/bipolar_sigmoid_function.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/hyper_sinh_function.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/tanh_function.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/tanh_exponential_function.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/swish_function.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/softsign_function.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/softplus_function.hpp:
-
-/usr/local/include/mlpack/methods/kmeans/refined_start.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/silu_function.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/convolution.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/rectifier_function.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/quadratic_function.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/multi_quadratic_function.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/mish_function.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/lisht_function.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/inverse_quadratic_function.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/hard_sigmoid_function.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/elliot_function.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/activation_functions.hpp:
-
-/usr/local/include/mlpack/methods/ann/forward_decls.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/q_learning_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/ann.hpp:
-
-/usr/local/include/mlpack/methods/ann.hpp:
-
-/usr/local/include/mlpack/methods/amf/termination_policies/validation_rmse_termination.hpp:
-
-/usr/local/include/mlpack/methods/amf/termination_policies/simple_residue_termination.hpp:
-
-/usr/local/include/mlpack/methods/svdplusplus.hpp:
-
-/usr/local/include/mlpack/methods/amf/termination_policies/complete_incremental_termination.hpp:
-
-/usr/local/include/mlpack/methods/amf/init_rules/random_acol_init.hpp:
-
-/usr/local/include/mlpack/methods/amf/init_rules/no_init.hpp:
-
-/usr/local/include/mlpack/methods/amf/init_rules/given_init.hpp:
-
-/usr/local/include/mlpack/methods/amf/init_rules/init_rules.hpp:
-
-/usr/local/include/mlpack/methods/amf/update_rules/svd_complete_incremental_learning.hpp:
-
-/usr/local/include/mlpack/methods/amf/update_rules/svd_incomplete_incremental_learning.hpp:
-
-/usr/local/include/mlpack/methods/amf/update_rules/nmf_als.hpp:
-
-/usr/local/include/mlpack/methods/amf/update_rules/nmf_mult_div.hpp:
-
-/usr/local/include/mlpack/methods/rann/ra_search_rules.hpp:
-
-/usr/local/include/mlpack/methods/amf/update_rules/update_rules.hpp:
-
-/usr/local/include/mlpack/methods/amf.hpp:
-
-/usr/local/include/mlpack/methods/decision_tree/decision_tree_regressor_impl.hpp:
-
-/usr/local/include/mlpack/methods/decision_tree/decision_tree_regressor.hpp:
-
-/usr/local/include/mlpack/methods/ann/augmented/tasks/score_impl.hpp:
-
-/usr/local/include/mlpack/methods/amf/update_rules/nmf_mult_dist.hpp:
-
-/usr/local/include/mlpack/methods/decision_tree/decision_tree_impl.hpp:
-
-/usr/local/include/mlpack/methods/decision_tree/random_dimension_select.hpp:
-
-/usr/local/include/mlpack/methods/fastmks/fastmks.hpp:
-
-/usr/local/include/mlpack/methods/decision_tree/all_dimension_select.hpp:
-
-/usr/local/include/mlpack/methods/decision_tree/random_binary_numeric_split_impl.hpp:
-
-/usr/local/include/mlpack/methods/decision_tree/random_binary_numeric_split.hpp:
-
-/usr/local/include/mlpack/methods/decision_tree/best_binary_numeric_split_impl.hpp:
-
-/usr/local/include/mlpack/methods/decision_tree/best_binary_numeric_split.hpp:
-
-/usr/local/include/mlpack/methods/decision_tree/information_gain.hpp:
-
-/usr/local/include/mlpack/methods/kmeans/pelleg_moore_kmeans_rules.hpp:
-
-/usr/local/include/mlpack/methods/perceptron/perceptron_impl.hpp:
-
-/usr/local/include/mlpack/methods/perceptron/learning_policies/simple_weight_update.hpp:
-
-/usr/local/include/mlpack/methods/perceptron/initialization_methods/random_init.hpp:
-
-/usr/local/include/mlpack/methods/nca/nca.hpp:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/negative_log_likelihood_impl.hpp:
-
-/usr/local/include/mlpack/methods/perceptron/initialization_methods/zero_init.hpp:
-
-/usr/local/include/mlpack/methods/naive_bayes/naive_bayes.hpp:
-
-/usr/local/include/mlpack/methods/adaboost.hpp:
+/usr/local/include/parlay/parallel.h:
 
 /usr/local/include/mlpack/core/hpt/hpt_impl.hpp:
 
@@ -3061,8 +2015,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/ensmallen_bits/swats/swats_impl.hpp:
 
 /usr/include/ensmallen_bits/svrg/svrg_impl.hpp:
-
-/usr/local/include/mlpack/methods/fastmks.hpp:
 
 /usr/include/ensmallen_bits/svrg/svrg_update.hpp:
 
@@ -3100,10 +2052,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/ensmallen_bits/rmsprop/rmsprop_update.hpp:
 
-/usr/local/include/mlpack/methods/naive_bayes/naive_bayes_classifier_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/dropout_impl.hpp:
-
 /usr/include/ensmallen_bits/rmsprop/rmsprop.hpp:
 
 /usr/include/ensmallen_bits/pso/pso_impl.hpp:
@@ -3126,25 +2074,17 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/ensmallen_bits/katyusha/katyusha_impl.hpp:
 
-/usr/local/include/mlpack/methods/ann/augmented/augmented.hpp:
-
 /usr/include/ensmallen_bits/iqn/iqn_impl.hpp:
 
 /usr/include/ensmallen_bits/grid_search/grid_search_impl.hpp:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/sigmoid_cross_entropy_error_impl.hpp:
-
 /usr/include/ensmallen_bits/gradient_descent/gradient_descent_impl.hpp:
-
-/usr/local/include/mlpack/methods/sparse_autoencoder.hpp:
 
 /usr/include/ensmallen_bits/fw/frank_wolfe_impl.hpp:
 
 /usr/include/ensmallen_bits/fw/constr_lpball.hpp:
 
 /usr/include/ensmallen_bits/fw/update_classic.hpp:
-
-/usr/local/include/mlpack/methods/nca.hpp:
 
 /usr/include/ensmallen_bits/fw/func_sq.hpp:
 
@@ -3164,8 +2104,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/ensmallen_bits/cmaes/random_selection.hpp:
 
-/usr/local/include/mlpack/methods/kmeans/hamerly_kmeans.hpp:
-
 /usr/include/ensmallen_bits/cmaes/full_selection.hpp:
 
 /usr/include/ensmallen_bits/cmaes/cmaes.hpp:
@@ -3173,8 +2111,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/ensmallen_bits/bigbatch_sgd/adaptive_stepsize.hpp:
 
 /usr/include/ensmallen_bits/bigbatch_sgd/bigbatch_sgd.hpp:
-
-/usr/local/include/mlpack/methods/decision_tree/decision_tree.hpp:
 
 /usr/include/ensmallen_bits/aug_lagrangian/aug_lagrangian_impl.hpp:
 
@@ -3188,11 +2124,7 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/ensmallen_bits/adam/adamax_update.hpp:
 
-/usr/local/include/mlpack/methods/sparse_autoencoder/sparse_autoencoder_impl.hpp:
-
 /usr/include/ensmallen_bits/adam/adam.hpp:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/earth_mover_distance.hpp:
 
 /usr/include/ensmallen_bits/ada_grad/ada_grad.hpp:
 
@@ -3206,11 +2138,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/ensmallen_bits/sgd/update_policies/nesterov_momentum_update.hpp:
 
-/usr/local/include/mlpack/methods/fastmks/fastmks_stat.hpp:
-
 /usr/include/ensmallen_bits/sgd/update_policies/momentum_update.hpp:
 
-/usr/local/include/mlpack/methods/cf/normalization/z_score_normalization.hpp:
+/usr/local/include/parlay/internal/delayed/zip.h:
+
+/usr/local/include/parlay/internal/work_stealing_deque.h:
 
 /usr/include/ensmallen_bits/sgd/sgd.hpp:
 
@@ -3221,6 +2153,8 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/ensmallen_bits/problems/three_hump_camel_function_impl.hpp:
 
 /usr/include/ensmallen_bits/problems/styblinski_tang_function_impl.hpp:
+
+/usr/include/asm-generic/int-ll64.h:
 
 /usr/include/ensmallen_bits/problems/sphere_function_impl.hpp:
 
@@ -3244,6 +2178,8 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/ensmallen_bits/problems/rosenbrock_function.hpp:
 
+/usr/local/include/parlay/internal/integer_sort.h:
+
 /usr/include/ensmallen_bits/problems/rastrigin_function_impl.hpp:
 
 /usr/include/ensmallen_bits/problems/rastrigin_function.hpp:
@@ -3251,6 +2187,8 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/ensmallen_bits/problems/mc_cormick_function_impl.hpp:
 
 /usr/include/ensmallen_bits/problems/matyas_function.hpp:
+
+/usr/local/include/parlay/range.h:
 
 /usr/include/ensmallen_bits/problems/levy_function_n13.hpp:
 
@@ -3261,8 +2199,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/ensmallen_bits/sgd/update_policies/quasi_hyperbolic_update.hpp:
 
 /usr/include/ensmallen_bits/problems/himmelblau_function_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/init_rules/random_init.hpp:
 
 /usr/include/ensmallen_bits/problems/himmelblau_function.hpp:
 
@@ -3286,10 +2222,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/ensmallen_bits/problems/drop_wave_function_impl.hpp:
 
-/usr/local/include/mlpack/methods/lmnn/lmnn.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/noisylinear.hpp:
-
 /usr/include/ensmallen_bits/problems/drop_wave_function.hpp:
 
 /usr/include/ensmallen_bits/problems/colville_function_impl.hpp:
@@ -3304,15 +2236,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/ensmallen_bits/problems/aug_lagrangian_test_functions.hpp:
 
-/usr/local/include/mlpack/methods/amf/init_rules/random_init.hpp:
-
 /usr/include/ensmallen_bits/problems/ackley_function_impl.hpp:
 
 /usr/include/ensmallen_bits/problems/ackley_function.hpp:
 
 /usr/include/ensmallen_bits/callbacks/timer_stop.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/replay/random_replay.hpp:
 
 /usr/include/ensmallen_bits/callbacks/query_front.hpp:
 
@@ -3324,13 +2252,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/ensmallen_bits/callbacks/callbacks.hpp:
 
-/usr/local/include/mlpack/methods/nystroem_method.hpp:
-
 /usr/include/ensmallen_bits/function/add_separable_gradient.hpp:
 
 /usr/include/ensmallen_bits/function/add_separable_evaluate.hpp:
 
-/usr/local/include/mlpack/methods/ann/init_rules/lecun_normal_init.hpp:
+/usr/local/include/parlay/slice.h:
 
 /usr/include/ensmallen_bits/problems/holder_table_function_impl.hpp:
 
@@ -3340,9 +2266,9 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/ensmallen_bits/function/sfinae_utility.hpp:
 
-/usr/include/ensmallen_bits/function/traits.hpp:
+/usr/local/include/parlay/internal/delayed/common.h:
 
-/usr/local/include/mlpack/methods/linear_svm/linear_svm_function.hpp:
+/usr/include/ensmallen_bits/function/traits.hpp:
 
 /usr/include/ensmallen_bits/function.hpp:
 
@@ -3352,13 +2278,7 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/ensmallen_bits/utility/any.hpp:
 
-/usr/local/include/mlpack/methods/ann/layer/layer.hpp:
-
-/usr/local/include/mlpack/methods/ann/augmented/tasks/score.hpp:
-
 /usr/include/ensmallen_bits/log.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/batch_norm.hpp:
 
 /usr/include/ensmallen_bits/config.hpp:
 
@@ -3367,8 +2287,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/local/include/mlpack/core/hpt/fixed.hpp:
 
 /usr/local/include/mlpack/core/hpt/deduce_hp_types.hpp:
-
-/usr/local/include/mlpack/methods/ann/regularizer/orthogonal_regularizer.hpp:
 
 /usr/local/include/mlpack/core/cv/k_fold_cv_impl.hpp:
 
@@ -3400,23 +2318,15 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/cv/metrics/f1_impl.hpp:
 
-/usr/local/include/mlpack/methods/ann/activation_functions/hard_swish_function.hpp:
-
 /usr/local/include/mlpack/core/cv/metrics/accuracy.hpp:
 
 /usr/local/include/mlpack/core/cv/metrics/facilities.hpp:
 
 /usr/local/include/mlpack/core/cv/metrics/metrics.hpp:
 
-/usr/local/include/mlpack/methods/reinforcement_learning/environment/ftn.hpp:
-
 /usr/local/include/mlpack/core/cv/cv.hpp:
 
 /usr/local/include/mlpack/core/tree/greedy_single_tree_traverser_impl.hpp:
-
-/usr/local/include/mlpack/methods/hoeffding_trees/hoeffding_tree.hpp:
-
-/usr/local/include/mlpack/core/tree/build_tree.hpp:
 
 /usr/local/include/mlpack/core/tree/spill_tree/typedef.hpp:
 
@@ -3432,15 +2342,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/tree/space_split/space_split_impl.hpp:
 
-/usr/local/include/mlpack/methods/gmm/eigenvalue_ratio_constraint.hpp:
-
 /usr/local/include/mlpack/core/tree/space_split/space_split.hpp:
 
 /usr/local/include/mlpack/core/tree/space_split/midpoint_space_split_impl.hpp:
 
 /usr/local/include/mlpack/core/tree/space_split/projection_vector.hpp:
-
-/usr/local/include/mlpack/methods/ann/regularizer/orthogonal_regularizer_impl.hpp:
 
 /usr/local/include/mlpack/core/tree/space_split/hyperplane.hpp:
 
@@ -3448,13 +2354,9 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/tree/space_split/midpoint_space_split.hpp:
 
-/usr/local/include/mlpack/methods/cf/neighbor_search_policies/lmetric_search.hpp:
-
 /usr/include/ensmallen_bits/sgd/update_policies/gradient_clipping.hpp:
 
 /usr/local/include/mlpack/core/tree/spill_tree/is_spill_tree.hpp:
-
-/usr/local/include/mlpack/methods/bayesian_linear_regression.hpp:
 
 /usr/local/include/mlpack/core/tree/rectangle_tree/typedef.hpp:
 
@@ -3463,8 +2365,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/local/include/mlpack/core/tree/spill_tree.hpp:
 
 /usr/local/include/mlpack/core/tree/rectangle_tree/r_plus_plus_tree_auxiliary_information.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/grouped_convolution.hpp:
 
 /usr/local/include/mlpack/core/tree/rectangle_tree/r_plus_tree_split_impl.hpp:
 
@@ -3478,8 +2378,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/tree/rectangle_tree/minimal_coverage_sweep.hpp:
 
-/usr/local/include/mlpack/methods/ann/layer/linear.hpp:
-
 /usr/local/include/mlpack/core/tree/rectangle_tree/r_plus_tree_descent_heuristic_impl.hpp:
 
 /usr/local/include/mlpack/core/tree/rectangle_tree/discrete_hilbert_value.hpp:
@@ -3488,9 +2386,7 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/tree/rectangle_tree/hilbert_r_tree_descent_heuristic_impl.hpp:
 
-/usr/local/include/mlpack/methods/reinforcement_learning/ddpg_impl.hpp:
-
-/usr/local/include/mlpack/methods/hoeffding_trees/hoeffding_categorical_split_impl.hpp:
+/usr/local/include/parlay/delayed.h:
 
 /usr/local/include/mlpack/core/tree/rectangle_tree/hilbert_r_tree_descent_heuristic.hpp:
 
@@ -3504,7 +2400,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/tree/rectangle_tree/r_star_tree_split_impl.hpp:
 
+/usr/local/include/parlay/internal/merge.h:
+
 /usr/local/include/mlpack/core/tree/rectangle_tree/single_tree_traverser_impl.hpp:
+
+/usr/local/include/parlay/internal/group_by.h:
 
 /usr/local/include/mlpack/core/tree/rectangle_tree/single_tree_traverser.hpp:
 
@@ -3512,15 +2412,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/tree/rectangle_tree/r_tree_split_impl.hpp:
 
-/usr/local/include/mlpack/methods/cf/interpolation_policies/similarity_interpolation.hpp:
-
 /usr/local/include/mlpack/core/tree/rectangle_tree/rectangle_tree.hpp:
 
 /usr/local/include/mlpack/core/tree/rectangle_tree.hpp:
 
 /usr/local/include/mlpack/core/tree/octree/dual_tree_traverser_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/flexible_relu.hpp:
 
 /usr/include/ensmallen_bits/aug_lagrangian/aug_lagrangian_function.hpp:
 
@@ -3528,17 +2424,13 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/tree/octree/single_tree_traverser_impl.hpp:
 
-/usr/local/include/mlpack/methods/logistic_regression/logistic_regression.hpp:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/hinge_embedding_loss_impl.hpp:
-
 /usr/local/include/mlpack/core/tree/octree/single_tree_traverser.hpp:
 
 /usr/local/include/mlpack/core/tree/octree/traits.hpp:
 
-/usr/local/include/mlpack/methods/cf/normalization/no_normalization.hpp:
-
 /usr/local/include/mlpack/core/tree/octree/octree_impl.hpp:
+
+/usr/include/x86_64-linux-gnu/asm/posix_types_64.h:
 
 /usr/local/include/mlpack/core/tree/octree/octree.hpp:
 
@@ -3546,15 +2438,9 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/tree/octree.hpp:
 
-/usr/local/include/mlpack/methods/ann/regularizer/lregularizer.hpp:
-
 /usr/local/include/mlpack/core/tree/cover_tree/typedef.hpp:
 
-/usr/local/include/mlpack/methods/cf/decomposition_policies/svd_complete_method.hpp:
-
 /usr/local/include/mlpack/core/tree/cover_tree/dual_tree_traverser_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/dists/dists.hpp:
 
 /usr/local/include/mlpack/core/tree/cover_tree/dual_tree_traverser.hpp:
 
@@ -3566,13 +2452,9 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/tree/cover_tree/cover_tree_impl.hpp:
 
-/usr/local/include/mlpack/methods/kmeans.hpp:
-
 /usr/local/include/mlpack/core/tree/cover_tree/first_point_is_root.hpp:
 
 /usr/local/include/mlpack/core/tree/binary_space_tree/typedef.hpp:
-
-/usr/local/include/mlpack/methods/kernel_pca/kernel_rules/naive_method.hpp:
 
 /usr/local/include/mlpack/core/tree/tree_traits.hpp:
 
@@ -3590,21 +2472,15 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/tree/binary_space_tree/rp_tree_max_split_impl.hpp:
 
-/usr/local/include/mlpack/methods/decision_tree/gini_gain.hpp:
-
 /usr/local/include/mlpack/core/tree/binary_space_tree/vantage_point_split.hpp:
 
 /usr/local/include/mlpack/core/cv/meta_info_extractor.hpp:
 
 /usr/local/include/mlpack/core/tree/binary_space_tree/mean_split_impl.hpp:
 
-/usr/local/include/mlpack/methods/ann/layer/identity.hpp:
-
 /usr/local/include/mlpack/core/tree/binary_space_tree/midpoint_split_impl.hpp:
 
 /usr/local/include/mlpack/core/tree/perform_split.hpp:
-
-/usr/local/include/mlpack/methods/softmax_regression/softmax_regression_function_impl.hpp:
 
 /usr/local/include/mlpack/core/tree/binary_space_tree/midpoint_split.hpp:
 
@@ -3612,9 +2488,9 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/tree/address.hpp:
 
-/usr/local/include/mlpack/core/tree/hollow_ball_bound.hpp:
+/usr/include/x86_64-linux-gnu/bits/types/sigval_t.h:
 
-/usr/local/include/mlpack/methods/ann/layer/layer_norm.hpp:
+/usr/local/include/mlpack/core/tree/hollow_ball_bound.hpp:
 
 /usr/local/include/mlpack/core/tree/ballbound_impl.hpp:
 
@@ -3624,15 +2500,13 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/tree/ballbound.hpp:
 
-/usr/local/include/mlpack/methods/ann/layer/linear3d_impl.hpp:
-
 /usr/local/include/mlpack/core/tree/hrectbound.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/siginfo-consts.h:
 
 /usr/local/include/mlpack/core/tree/bounds.hpp:
 
 /usr/local/include/mlpack/core/metrics/mahalanobis_distance.hpp:
-
-/usr/local/include/mlpack/methods/sparse_autoencoder/sparse_autoencoder_function_impl.hpp:
 
 /usr/include/ensmallen_bits/moead/weight_init_policies/bbs_init.hpp:
 
@@ -3648,11 +2522,7 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/kernels/pspectrum_string_kernel.hpp:
 
-/usr/local/include/mlpack/methods/kmeans/dual_tree_kmeans.hpp:
-
 /usr/local/include/mlpack/core/kernels/polynomial_kernel.hpp:
-
-/usr/local/include/mlpack/methods/rann.hpp:
 
 /usr/local/include/mlpack/core/kernels/linear_kernel.hpp:
 
@@ -3690,15 +2560,13 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/dists/gaussian_distribution_impl.hpp:
 
-/usr/local/include/mlpack/methods/ann/activation_functions/logistic_function.hpp:
-
 /usr/local/include/mlpack/core/dists/gaussian_distribution.hpp:
-
-/usr/local/include/mlpack/methods/ann/convolution_rules/border_modes.hpp:
 
 /usr/local/include/mlpack/core/dists/gamma_distribution_impl.hpp:
 
 /usr/local/include/mlpack/core/dists/gamma_distribution.hpp:
+
+/usr/local/include/parlay/internal/uninitialized_sequence.h:
 
 /usr/local/include/mlpack/core/dists/discrete_distribution_impl.hpp:
 
@@ -3720,8 +2588,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/math/random.hpp:
 
-/usr/local/include/mlpack/methods/kmeans/naive_kmeans_impl.hpp:
-
 /usr/local/include/mlpack/core/math/random_basis_impl.hpp:
 
 /usr/local/include/mlpack/core/math/random_basis.hpp:
@@ -3733,8 +2599,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/local/include/mlpack/core/math/make_alias.hpp:
 
 /usr/local/include/mlpack/core/math/log_add_impl.hpp:
-
-/usr/local/include/mlpack/methods/lsh/lsh_search.hpp:
 
 /usr/local/include/mlpack/core/math/log_add.hpp:
 
@@ -3762,18 +2626,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/data/confusion_matrix.hpp:
 
-/usr/include/armadillo_bits/glue_mixed_bones.hpp:
-
-/usr/local/include/mlpack/core/kernels/example_kernel.hpp:
-
-/usr/local/include/mlpack/core/dists/regression_distribution.hpp:
-
-/usr/include/armadillo_bits/glue_join_meat.hpp:
-
-/usr/local/include/mlpack/methods/matrix_completion/matrix_completion_impl.hpp:
-
-/usr/include/armadillo_bits/spop_mean_meat.hpp:
-
 /usr/include/ensmallen_bits/problems/fw_test_function.hpp:
 
 /usr/include/armadillo_bits/spglue_min_bones.hpp:
@@ -3783,8 +2635,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/local/include/mlpack/core/util/log_impl.hpp:
 
 /usr/include/armadillo_bits/spop_vectorise_bones.hpp:
-
-/usr/local/include/mlpack/methods/det/dtree_impl.hpp:
 
 /usr/local/include/mlpack/core/tree/cover_tree/traits.hpp:
 
@@ -3802,9 +2652,9 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/glue_polyval_bones.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/confname.h:
+/usr/local/include/parlay/internal/counting_sort.h:
 
-/usr/local/include/mlpack/methods/ann/layer/linear3d.hpp:
+/usr/include/x86_64-linux-gnu/bits/confname.h:
 
 /usr/include/armadillo_bits/glue_polyfit_bones.hpp:
 
@@ -3815,8 +2665,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/armadillo_bits/op_index_max_meat.hpp:
 
 /usr/include/armadillo_bits/op_reshape_meat.hpp:
-
-/usr/local/include/mlpack/methods/sparse_coding/nothing_initializer.hpp:
 
 /usr/include/armadillo_bits/eOpCube_bones.hpp:
 
@@ -3844,7 +2692,19 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/fn_dot.hpp:
 
-/usr/include/armadillo_bits/op_logmat_bones.hpp:
+/usr/include/armadillo_bits/glue_mixed_bones.hpp:
+
+/usr/include/x86_64-linux-gnu/asm/types.h:
+
+/usr/local/include/mlpack/core/kernels/example_kernel.hpp:
+
+/usr/local/include/mlpack/core/dists/regression_distribution.hpp:
+
+/usr/include/armadillo_bits/glue_join_meat.hpp:
+
+/usr/include/armadillo_bits/spop_mean_meat.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/sigthread.h:
 
 /usr/local/include/mlpack/core/tree/cover_tree/cover_tree.hpp:
 
@@ -3858,10 +2718,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/bits/ptr_traits.h:
 
-/usr/local/include/mlpack/methods/reinforcement_learning/policy/greedy_policy.hpp:
-
-/usr/include/string.h:
-
 /usr/include/armadillo_bits/op_normalise_bones.hpp:
 
 /usr/include/ensmallen_bits/qhadam/qhadam_impl.hpp:
@@ -3870,23 +2726,23 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/op_toeplitz_bones.hpp:
 
-/usr/local/include/mlpack/methods/kmeans/dual_tree_kmeans_rules_impl.hpp:
-
 /usr/include/armadillo_bits/op_find_unique_bones.hpp:
+
+/usr/local/include/parlay/internal/block_allocator.h:
 
 /usr/include/c++/11/debug/assertions.h:
 
 /usr/include/armadillo_bits/glue_kron_bones.hpp:
 
+/usr/include/asm-generic/bitsperlong.h:
+
 /usr/include/armadillo_bits/op_sp_plus_meat.hpp:
+
+../parallel_hdbscan/src/kdTreeKnn.h:
 
 /usr/include/armadillo_bits/op_relational_bones.hpp:
 
-/usr/local/include/mlpack/methods/ann/augmented/tasks/sort.hpp:
-
 /usr/include/armadillo_bits/op_misc_bones.hpp:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/cosine_embedding_loss.hpp:
 
 /usr/local/include/mlpack/core/util/version.hpp:
 
@@ -3895,6 +2751,8 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/armadillo_bits/op_shuffle_bones.hpp:
 
 /usr/include/armadillo_bits/op_cond_bones.hpp:
+
+/usr/local/include/parlay/internal/sequence_ops.h:
 
 /usr/local/include/mlpack/core/data/format.hpp:
 
@@ -3906,8 +2764,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/ext/type_traits.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/mean_absolute_percentage_error_impl.hpp:
-
 /usr/include/ensmallen_bits/problems/mc_cormick_function.hpp:
 
 /usr/include/armadillo_bits/mtSpGlue_meat.hpp:
@@ -3916,15 +2772,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/spop_mean_bones.hpp:
 
-/usr/local/include/mlpack/methods/reinforcement_learning/worker/n_step_q_learning_worker.hpp:
-
 /usr/include/armadillo_bits/op_stddev_bones.hpp:
 
 /usr/include/armadillo_bits/op_det_meat.hpp:
 
 /usr/include/armadillo_bits/op_hist_bones.hpp:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/triplet_margin_loss.hpp:
 
 /usr/include/armadillo_bits/op_mean_bones.hpp:
 
@@ -3937,8 +2789,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/armadillo_bits/typedef_elem.hpp:
 
 /usr/include/armadillo_bits/op_fft_meat.hpp:
-
-/usr/local/include/mlpack/methods/cf/interpolation_policies/average_interpolation.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
 
@@ -3966,8 +2816,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/subview_each_meat.hpp:
 
-/usr/local/include/mlpack/methods/sparse_autoencoder/maximal_inputs.hpp:
-
 /usr/include/armadillo_bits/eglue_core_bones.hpp:
 
 /usr/include/armadillo_bits/eOp_bones.hpp:
@@ -3975,10 +2823,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/ensmallen_bits/sarah/sarah_update.hpp:
 
 /usr/include/armadillo_bits/SpToDOp_bones.hpp:
-
-/usr/local/include/mlpack/methods/mean_shift/mean_shift_impl.hpp:
-
-/usr/local/include/mlpack/methods/nystroem_method/kmeans_selection.hpp:
 
 /usr/local/include/mlpack/core/tree/space_split/mean_space_split_impl.hpp:
 
@@ -3992,11 +2836,7 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/running_stat_vec_bones.hpp:
 
-/usr/local/include/mlpack/methods/gmm/em_fit_impl.hpp:
-
 /usr/include/armadillo_bits/running_stat_bones.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/concat.hpp:
 
 /usr/include/armadillo_bits/wall_clock_bones.hpp:
 
@@ -4006,15 +2846,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/diagview_meat.hpp:
 
-/usr/local/include/mlpack/methods/ann/layer/concatenate_impl.hpp:
-
 /usr/local/include/mlpack/core/data/imputation_methods/custom_imputation.hpp:
 
 /usr/include/ensmallen_bits/problems/zdt/zdt1_function.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/select2.h:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/environment/cart_pole.hpp:
 
 /usr/include/armadillo_bits/Col_meat.hpp:
 
@@ -4030,23 +2866,17 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/spop_diagmat_meat.hpp:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/hinge_loss_impl.hpp:
-
 /usr/include/armadillo_bits/subview_cube_bones.hpp:
 
 /usr/include/cereal/archives/xml.hpp:
 
 /usr/include/cereal/types/vector.hpp:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/triplet_margin_loss_impl.hpp:
-
 /usr/include/armadillo_bits/subview_field_bones.hpp:
 
 /usr/local/include/mlpack/core/tree/binary_space_tree/rp_tree_max_split.hpp:
 
 /usr/include/c++/11/bits/unordered_map.h:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/hinge_loss.hpp:
 
 /usr/include/ensmallen_bits/adam/amsgrad_update.hpp:
 
@@ -4060,13 +2890,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/ext/numeric_traits.h:
 
-/usr/local/include/mlpack/methods/nystroem_method/nystroem_method.hpp:
-
 /usr/include/armadillo_bits/op_unique_bones.hpp:
 
-/usr/local/include/mlpack/methods/cf/neighbor_search_policies/neighbor_search_policies.hpp:
-
 /usr/include/armadillo_bits/op_pinv_meat.hpp:
+
+/usr/include/x86_64-linux-gnu/asm/unistd_64.h:
 
 /usr/include/armadillo_bits/typedef_mat_fixed.hpp:
 
@@ -4114,8 +2942,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/GlueCube_bones.hpp:
 
-/usr/local/include/mlpack/methods/cf/normalization/item_mean_normalization.hpp:
-
 /usr/include/ensmallen_bits/problems/schwefel_function_impl.hpp:
 
 /usr/include/armadillo_bits/fn_symmat.hpp:
@@ -4132,15 +2958,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/podarray_bones.hpp:
 
-/usr/local/include/mlpack/methods/amf/init_rules/merge_init.hpp:
-
 /usr/include/armadillo_bits/cond_rel_bones.hpp:
 
 /usr/local/include/mlpack/core/data/image_info.hpp:
 
 /usr/include/armadillo_bits/fn_trunc_log.hpp:
-
-/usr/local/include/mlpack/methods/kernel_pca.hpp:
 
 /usr/local/include/mlpack/core/data/string_encoding_policies/bag_of_words_encoding_policy.hpp:
 
@@ -4154,6 +2976,8 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/def_atlas.hpp:
 
+/usr/local/include/parlay/internal/pool_allocator.h:
+
 /usr/include/cereal/details/static_object.hpp:
 
 /usr/include/ensmallen_bits/ada_bound/ada_bound.hpp:
@@ -4162,19 +2986,17 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/arma_rng.hpp:
 
+/usr/local/include/parlay/internal/atomic_wait.h:
+
 /usr/include/ensmallen_bits/ada_bound/ada_bound_update.hpp:
 
 /usr/local/include/mlpack/core/cv/cv_base_impl.hpp:
 
 /usr/include/armadillo_bits/fill.hpp:
 
-/usr/local/include/mlpack/methods/lmnn/lmnn_function_impl.hpp:
-
 /usr/include/armadillo_bits/constants_old.hpp:
 
 /usr/include/armadillo_bits/op_normalise_meat.hpp:
-
-/usr/local/include/mlpack/methods/cf/interpolation_policies/regression_interpolation.hpp:
 
 /usr/include/armadillo_bits/op_vectorise_bones.hpp:
 
@@ -4218,11 +3040,7 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/superlu/superlu_enum_consts.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/mean_squared_logarithmic_error_impl.hpp:
-
 /usr/include/superlu/supermatrix.h:
-
-/usr/local/include/mlpack/methods/range_search.hpp:
 
 /usr/include/armadillo_bits/newarp_SymEigsShiftSolver_bones.hpp:
 
@@ -4260,15 +3078,9 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/stdlib.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/binary_cross_entropy_loss_impl.hpp:
-
 /usr/include/armadillo_bits/op_chol_bones.hpp:
 
 /usr/include/c++/11/bits/atomic_lockfree_defines.h:
-
-/usr/local/include/mlpack/methods/ann/layer/repeat.hpp:
-
-/usr/local/include/mlpack/methods/perceptron/learning_policies/learning_policies.hpp:
 
 /usr/include/armadillo_bits/SpCol_meat.hpp:
 
@@ -4288,13 +3100,13 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/include_superlu.hpp:
 
-/usr/local/include/mlpack/methods/gmm/em_fit.hpp:
-
 /usr/include/c++/11/pstl/glue_numeric_defs.h:
 
 /usr/local/include/mlpack/core/data/load_image_impl.hpp:
 
 /usr/include/c++/11/mutex:
+
+/usr/local/include/parlay/internal/concurrency/hazptr_stack.h:
 
 /usr/include/ensmallen_bits/fw/line_search/line_search.hpp:
 
@@ -4310,19 +3122,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/gmm_diag_bones.hpp:
 
-/usr/local/include/mlpack/methods/amf/init_rules/average_init.hpp:
-
 /usr/include/armadillo_bits/op_diagvec_bones.hpp:
 
 /usr/include/c++/11/bits/random.h:
 
-/usr/local/include/mlpack/methods/ann/layer/multi_layer.hpp:
-
-/usr/local/include/mlpack/methods/ann/augmented/tasks/tasks.hpp:
-
 /usr/include/c++/11/random:
-
-/usr/local/include/mlpack/methods/bias_svd/bias_svd_impl.hpp:
 
 /usr/include/ensmallen_bits/sgdr/snapshot_sgdr.hpp:
 
@@ -4331,8 +3135,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/c++/11/bits/parse_numbers.h:
 
 /usr/include/armadillo_bits/fn_vectorise.hpp:
-
-/usr/local/include/mlpack/methods/adaboost/adaboost_impl.hpp:
 
 /usr/include/c++/11/bits/stl_multimap.h:
 
@@ -4345,8 +3147,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/c++/11/bits/stl_tree.h:
 
 /usr/include/c++/11/map:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/worker/one_step_q_learning_worker.hpp:
 
 /usr/include/armadillo_bits/arma_rel_comparators.hpp:
 
@@ -4362,8 +3162,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/backward/binders.h:
 
-/usr/local/include/mlpack/methods/naive_bayes/naive_bayes_classifier.hpp:
-
 /usr/include/armadillo_bits/newarp_SymEigsSolver_bones.hpp:
 
 /usr/include/armadillo_bits/fn_randi.hpp:
@@ -4374,19 +3172,13 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/bits/stl_algo.h:
 
-/usr/local/include/mlpack/core/tree/enumerate_tree.hpp:
-
 /usr/include/c++/11/bits/fstream.tcc:
-
-/usr/local/include/mlpack/methods/emst/emst.hpp:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
 
 /usr/include/armadillo_bits/fn_sort_index.hpp:
 
 /usr/include/armadillo_bits/Op_meat.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/elu.hpp:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
 
@@ -4396,29 +3188,33 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/fstream:
 
-/usr/include/ensmallen_bits/smorms3/smorms3_update.hpp:
-
-/usr/include/armadillo_bits/spglue_relational_bones.hpp:
-
 /usr/local/include/mlpack/core/util/size_checks.hpp:
-
-/usr/local/include/mlpack/methods/sparse_coding/random_initializer.hpp:
 
 /usr/include/armadillo_bits/op_princomp_bones.hpp:
 
-/usr/local/include/mlpack/methods/ann/layer/layer_types.hpp:
-
 /usr/include/strings.h:
 
-/usr/local/include/mlpack/methods/range_search/range_search.hpp:
+/usr/include/armadillo_bits/def_superlu.hpp:
 
-/usr/local/include/mlpack/methods/ann/activation_functions/elish_function.hpp:
+/usr/include/armadillo_bits/op_trimat_bones.hpp:
+
+/usr/include/armadillo_bits/fn_randg.hpp:
+
+/usr/include/armadillo_bits/fn_wishrnd.hpp:
+
+/usr/include/c++/11/bits/streambuf_iterator.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h:
+
+/usr/include/armadillo_bits/xtrans_mat_bones.hpp:
+
+/usr/local/include/parlay/internal/delayed/flatten.h:
+
+/usr/local/include/mlpack/core/data/load_image.hpp:
 
 /usr/include/armadillo_bits/SpOp_bones.hpp:
 
 /usr/include/armadillo_bits/glue_trapz_meat.hpp:
-
-/usr/local/include/mlpack/methods/naive_bayes.hpp:
 
 /usr/include/c++/11/cassert:
 
@@ -4428,8 +3224,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/MapMat_meat.hpp:
 
-/usr/local/include/mlpack/methods/linear_svm/linear_svm.hpp:
-
 /usr/include/armadillo_bits/running_stat_meat.hpp:
 
 /usr/include/armadillo_bits/def_arpack.hpp:
@@ -4437,8 +3231,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
 /usr/local/include/mlpack/core/util/timers_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/augmented/tasks/sort_impl.hpp:
 
 /usr/include/ensmallen_bits/parallel_sgd/decay_policies/constant_step.hpp:
 
@@ -4470,10 +3262,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/glue_trapz_bones.hpp:
 
-/usr/local/include/mlpack/methods/reinforcement_learning/td3.hpp:
-
-/usr/local/include/mlpack/methods/decision_tree/utils.hpp:
-
 /usr/include/c++/11/string:
 
 /usr/include/pthread.h:
@@ -4481,8 +3269,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/armadillo_bits/fn_expmat.hpp:
 
 /usr/include/armadillo_bits/op_sp_plus_bones.hpp:
-
-/usr/local/include/mlpack/methods/block_krylov_svd/randomized_block_krylov_svd_impl.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls.h:
 
@@ -4497,8 +3283,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/armadillo_bits/op_max_bones.hpp:
 
 /usr/include/armadillo_bits/fft_engine.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/noise/gaussian.hpp:
 
 /usr/include/armadillo_bits/op_pinv_bones.hpp:
 
@@ -4542,13 +3326,15 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
 
-/usr/local/include/mlpack/methods/ann/layer/alpha_dropout_impl.hpp:
-
 /usr/include/c++/11/ext/alloc_traits.h:
+
+/usr/local/include/parlay/internal/memory_size.h:
 
 /usr/include/armadillo_bits/SpCol_bones.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/sched.h:
+
+/usr/include/x86_64-linux-gnu/bits/siginfo-arch.h:
 
 /usr/include/armadillo_bits/op_dot_bones.hpp:
 
@@ -4556,15 +3342,7 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/spop_repmat_bones.hpp:
 
-/usr/local/include/mlpack/methods/approx_kfn/qdafn_impl.hpp:
-
-/usr/local/include/mlpack/methods/perceptron/perceptron.hpp:
-
 /usr/include/x86_64-linux-gnu/bits/select.h:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/mean_squared_logarithmic_error.hpp:
-
-/usr/local/include/mlpack/methods/ann/dists/bernoulli_distribution.hpp:
 
 /usr/include/armadillo_bits/CubeToMatOp_bones.hpp:
 
@@ -4578,17 +3356,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/bits/specfun.h:
 
-/usr/local/include/mlpack/methods/cf/decomposition_policies/svdplusplus_method.hpp:
-
 /usr/include/armadillo_bits/fn_histc.hpp:
 
 /usr/local/include/mlpack/core/tree/spill_tree/spill_dual_tree_traverser.hpp:
 
 /usr/include/armadillo_bits/spop_normalise_bones.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/ddpg.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/base_layer.hpp:
 
 /usr/include/armadillo_bits/spop_symmat_bones.hpp:
 
@@ -4604,11 +3376,7 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/features-time64.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/log_cosh_loss_impl.hpp:
-
 /usr/include/x86_64-linux-gnu/bits/stdio.h:
-
-/usr/local/include/mlpack/methods/kmeans/sample_initialization.hpp:
 
 /usr/include/armadillo_bits/glue_hypot_bones.hpp:
 
@@ -4620,21 +3388,15 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/op_symmat_bones.hpp:
 
-/usr/local/include/mlpack/methods/cf/normalization/user_mean_normalization.hpp:
-
 /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h:
 
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
 
 /usr/include/c++/11/queue:
 
-/usr/local/include/mlpack/methods/ann/init_rules/orthogonal_init.hpp:
-
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h:
-
-/usr/local/include/mlpack/methods/kernel_pca/kernel_rules/nystroem_method.hpp:
 
 /usr/include/unistd.h:
 
@@ -4652,15 +3414,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/strings_fortified.h:
 
-/usr/local/include/mlpack/methods/ann/layer/concat_impl.hpp:
-
 /usr/include/ensmallen_bits/cne/cne_impl.hpp:
 
 /usr/local/include/mlpack/core/tree/rectangle_tree/dual_tree_traverser.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
-
-/usr/local/include/mlpack/methods/preprocess.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
 
@@ -4672,8 +3430,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/fn_diagvec.hpp:
 
-/usr/local/include/mlpack/methods/ann/layer/relu6.hpp:
-
 /usr/include/armadillo_bits/spop_norm_bones.hpp:
 
 /usr/include/armadillo_bits/fn_polyval.hpp:
@@ -4681,12 +3437,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/armadillo_bits/op_cx_scalar_bones.hpp:
 
 /usr/include/armadillo_bits/mtGlue_bones.hpp:
-
-/usr/local/include/mlpack/methods/ann/ffn.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/multihead_attention_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/spline_function.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
@@ -4696,31 +3446,17 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/tr1/exp_integral.tcc:
 
-/usr/local/include/mlpack/methods/ann/convolution_rules/convolution_rules.hpp:
-
 /usr/include/armadillo_bits/OpCube_bones.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/padding.hpp:
 
 /usr/include/armadillo_bits/spglue_plus_bones.hpp:
 
 /usr/include/c++/11/bits/localefwd.h:
 
-/usr/local/include/mlpack/methods/ann/layer/repeat_impl.hpp:
-
 /usr/include/ensmallen_bits/parallel_sgd/parallel_sgd.hpp:
 
 /usr/include/armadillo_bits/debug.hpp:
 
-/usr/local/include/mlpack/methods/gmm/gmm.hpp:
-
 ../src/dc_dist.cpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/noise/ornstein_uhlenbeck.hpp:
-
-/usr/local/include/mlpack/methods/cf/decomposition_policies/block_krylov_svd_method.hpp:
-
-/usr/local/include/mlpack/methods/ann/init_rules/init_rules.hpp:
 
 /usr/include/ensmallen_bits/problems/generalized_rosenbrock_function_impl.hpp:
 
@@ -4736,19 +3472,13 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/glue_times_bones.hpp:
 
-/usr/local/include/mlpack/methods/ann/activation_functions/poisson1_function.hpp:
-
 /usr/local/include/mlpack/core/tree/binary_space_tree/breadth_first_dual_tree_traverser_impl.hpp:
 
 /usr/include/wchar.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/margin_ranking_loss.hpp:
-
 /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h:
-
-/usr/local/include/mlpack/methods/bias_svd/bias_svd_function.hpp:
 
 /usr/include/c++/11/bits/exception_defines.h:
 
@@ -4756,13 +3486,9 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/glue_cross_bones.hpp:
 
-/usr/local/include/mlpack/methods/pca/decomposition_policies/randomized_block_krylov_method.hpp:
-
 /usr/include/c++/11/iosfwd:
 
 /usr/include/stb/stb_image_write.h:
-
-/usr/local/include/mlpack/methods/ann/layer/linear_no_bias.hpp:
 
 /usr/include/c++/11/chrono:
 
@@ -4776,13 +3502,7 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
-/usr/local/include/mlpack/methods/ann/layer/dropout.hpp:
-
 /usr/include/armadillo_bits/mul_gemm_mixed.hpp:
-
-/usr/local/include/mlpack/methods/pca/decomposition_policies/decomposition_policies.hpp:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/mean_bias_error_impl.hpp:
 
 /usr/include/armadillo_bits/op_shift_bones.hpp:
 
@@ -4792,7 +3512,7 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/include_atlas.hpp:
 
-/usr/local/include/mlpack/methods/kmeans/pelleg_moore_kmeans_statistic.hpp:
+/usr/local/include/parlay/internal/heap_tree.h:
 
 /usr/include/armadillo_bits/op_expmat_bones.hpp:
 
@@ -4812,11 +3532,7 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/bits/stl_iterator_base_types.h:
 
-/usr/local/include/mlpack/methods/emst/union_find.hpp:
-
 /usr/include/armadillo_bits/spop_misc_bones.hpp:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/gelu_function.hpp:
 
 /usr/include/rapidjson/stringbuffer.h:
 
@@ -4834,15 +3550,7 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 ../src/dc_dist.hpp:
 
-/usr/local/include/mlpack/methods/hoeffding_trees/binary_numeric_split.hpp:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/mean_bias_error.hpp:
-
 /usr/include/c++/11/bits/vector.tcc:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/sac_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/margin_ranking_loss_impl.hpp:
 
 /usr/include/ensmallen_bits/moead/weight_init_policies/uniform_init.hpp:
 
@@ -4857,8 +3565,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/local/include/mlpack/core/util/deprecated.hpp:
 
 /usr/include/x86_64-linux-gnu/sys/single_threaded.h:
-
-/usr/local/include/mlpack/methods/lmnn/lmnn_impl.hpp:
 
 /usr/local/include/mlpack/core/metrics/non_maximal_suppression.hpp:
 
@@ -4884,29 +3590,13 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/asm-generic/errno-base.h:
 
+/usr/include/signal.h:
+
 /usr/include/armadillo_bits/fn_clamp.hpp:
 
 /usr/include/armadillo_bits/fn_var.hpp:
 
-/usr/include/armadillo_bits/op_trimat_bones.hpp:
-
-/usr/local/include/mlpack/methods/mean_shift/mean_shift.hpp:
-
-/usr/local/include/mlpack/methods/linear_svm/linear_svm_impl.hpp:
-
-/usr/include/armadillo_bits/def_superlu.hpp:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/mean_absolute_percentage_error.hpp:
-
-/usr/include/armadillo_bits/fn_randg.hpp:
-
-/usr/include/armadillo_bits/fn_wishrnd.hpp:
-
 /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h:
-
-/usr/include/armadillo_bits/arma_ostream_bones.hpp:
-
-/usr/include/c++/11/functional:
 
 /usr/include/linux/errno.h:
 
@@ -4920,15 +3610,9 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/iscanonical.h:
 
-/usr/local/include/mlpack/methods/neighbor_search.hpp:
-
 /usr/include/c++/11/bits/exception_ptr.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h:
-
-/usr/local/include/mlpack/methods/ann/activation_functions/gaussian_function.hpp:
-
-/usr/local/include/mlpack/methods/amf/termination_policies/termination_policies.hpp:
 
 /usr/include/armadillo_bits/op_diagmat_meat.hpp:
 
@@ -4940,17 +3624,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/math.h:
 
-/usr/local/include/mlpack/methods/decision_tree/multiple_random_dimension_select.hpp:
-
 /usr/include/c++/11/bits/stl_function.h:
 
 /usr/include/armadillo_bits/glue_affmul_meat.hpp:
 
-/usr/local/include/mlpack/methods/ann/layer/max_pooling.hpp:
-
 /usr/include/armadillo_bits/typedef_mat.hpp:
-
-/usr/local/include/mlpack/methods/pca/pca.hpp:
 
 /usr/include/c++/11/bits/invoke.h:
 
@@ -4986,15 +3664,9 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
 
-/usr/local/include/mlpack/methods/reinforcement_learning/replay/prioritized_replay.hpp:
-
-/usr/local/include/mlpack/methods/nystroem_method/nystroem_method_impl.hpp:
-
 /usr/include/stdc-predef.h:
 
 /usr/include/c++/11/bits/alloc_traits.h:
-
-/usr/local/include/mlpack/methods/lmnn/constraints_impl.hpp:
 
 /usr/include/errno.h:
 
@@ -5006,23 +3678,13 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
 
-/usr/local/include/mlpack/methods/quic_svd.hpp:
-
 /usr/include/armadillo_bits/op_hist_meat.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/multilabel_softmargin_loss.hpp:
-
 /usr/include/armadillo_bits/glue_cov_bones.hpp:
 
 /usr/include/armadillo_bits/fn_intersect.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/environment/acrobot.hpp:
-
-/usr/local/include/mlpack/methods/rann/rann.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/flexible_relu_impl.hpp:
 
 /usr/local/include/mlpack/core/tree/binary_space_tree/dual_tree_traverser.hpp:
 
@@ -5044,13 +3706,13 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/spglue_minus_meat.hpp:
 
-/usr/local/include/mlpack/methods/reinforcement_learning/q_networks/categorical_dqn.hpp:
-
 /usr/include/armadillo_bits/spop_max_bones.hpp:
 
 /usr/local/include/mlpack/core/data/imputer.hpp:
 
 /usr/include/armadillo_bits/arma_rng_cxx98.hpp:
+
+/usr/include/c++/11/forward_list:
 
 /usr/include/ensmallen_bits/ada_delta/ada_delta.hpp:
 
@@ -5064,8 +3726,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/set:
 
-/usr/local/include/mlpack/methods/hoeffding_trees/binary_numeric_split_info.hpp:
-
 /usr/include/armadillo_bits/op_cumprod_bones.hpp:
 
 /usr/include/armadillo_bits/mtGlueCube_bones.hpp:
@@ -5075,8 +3735,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/x86_64-linux-gnu/bits/timex.h:
 
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/log_cosh_loss.hpp:
 
 /usr/include/ensmallen_bits/function/add_separable_evaluate_with_gradient.hpp:
 
@@ -5104,21 +3762,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/bits/streambuf.tcc:
 
-/usr/local/include/mlpack/methods/ann/activation_functions/identity_function.hpp:
-
-/usr/include/c++/11/bits/stl_queue.h:
-
-/usr/local/include/mlpack/methods/hoeffding_trees/hoeffding_trees.hpp:
-
 /usr/include/armadillo_bits/op_roots_bones.hpp:
-
-/usr/local/include/mlpack/methods/approx_kfn/approx_kfn.hpp:
 
 /usr/include/c++/11/bits/ostream.tcc:
 
 /usr/include/c++/11/tr1/modified_bessel_func.tcc:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/cosine_embedding_loss_impl.hpp:
 
 /usr/include/armadillo_bits/op_flip_meat.hpp:
 
@@ -5137,8 +3785,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
 
 /usr/include/armadillo_bits/op_index_max_bones.hpp:
-
-/usr/local/include/mlpack/methods/amf/termination_policies/max_iteration_termination.hpp:
 
 /usr/include/c++/11/initializer_list:
 
@@ -5174,19 +3820,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/op_inv_bones.hpp:
 
-/usr/local/include/mlpack/methods/ann/layer/ftswish.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/radial_basis_function_impl.hpp:
-
 /usr/include/c++/11/bits/ostream_insert.h:
 
 /usr/include/ensmallen_bits/callbacks/print_loss.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/hinge_embedding_loss.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/hard_tanh.hpp:
 
 /usr/include/armadillo_bits/fn_nonzeros.hpp:
 
@@ -5198,13 +3836,9 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/vector:
 
-/usr/local/include/mlpack/methods/ann/rnn_impl.hpp:
-
 /usr/local/include/mlpack/core/metrics/bleu_impl.hpp:
 
 /usr/include/stdlib.h:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/worker/one_step_sarsa_worker.hpp:
 
 /usr/include/armadillo_bits/fn_sylvester.hpp:
 
@@ -5224,8 +3858,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/stdint.h:
 
-/usr/local/include/mlpack/methods/reinforcement_learning/environment/reward_clipping.hpp:
-
 /usr/include/x86_64-linux-gnu/bits/byteswap.h:
 
 /usr/local/include/mlpack/core/cv/metrics/roc_auc_score.hpp:
@@ -5244,13 +3876,9 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/alloca.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/poisson_nll_loss_impl.hpp:
-
 /usr/include/rapidjson/encodedstream.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/sigmoid_cross_entropy_error.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
 
@@ -5260,15 +3888,15 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/cwctype:
 
-/usr/local/include/mlpack/methods/reinforcement_learning/environment/continuous_mountain_car.hpp:
+/usr/include/c++/11/bits/stl_queue.h:
+
+/usr/local/include/mlpack/prereqs.hpp:
 
 /usr/include/armadillo_bits/mtOpCube_bones.hpp:
 
 /usr/include/armadillo_bits/op_min_bones.hpp:
 
 /usr/include/c++/11/cstdio:
-
-/usr/local/include/mlpack/methods/nmf/nmf.hpp:
 
 /usr/include/armadillo_bits/newarp_TridiagEigen_bones.hpp:
 
@@ -5280,27 +3908,17 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/stdio2.h:
 
-/usr/local/include/mlpack/methods/pca/decomposition_policies/exact_svd_method.hpp:
-
 /usr/include/ensmallen_bits/problems/sphere_function.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
+
+/usr/include/asm-generic/types.h:
 
 /usr/include/cereal/external/rapidxml/rapidxml.hpp:
 
 /usr/include/c++/11/cerrno:
 
-/usr/local/include/mlpack/methods/hoeffding_trees/categorical_split_info.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/lstm.hpp:
-
 /usr/include/x86_64-linux-gnu/bits/errno.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h:
-
-/usr/include/armadillo_bits/xtrans_mat_bones.hpp:
-
-/usr/local/include/mlpack/core/data/load_image.hpp:
 
 /usr/include/armadillo_bits/spglue_kron_bones.hpp:
 
@@ -5308,19 +3926,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/vr_class_reward_impl.hpp:
-
 /usr/include/armadillo_bits/op_toeplitz_meat.hpp:
-
-/usr/local/include/mlpack/methods/sparse_coding.hpp:
 
 /usr/include/armadillo_bits/op_dotext_bones.hpp:
 
 /usr/include/asm-generic/errno.h:
-
-/usr/local/include/mlpack/methods/ann/layer/grouped_convolution_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/batch_norm_impl.hpp:
 
 /usr/include/armadillo_bits/spop_reverse_bones.hpp:
 
@@ -5330,9 +3940,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/tr1/ell_integral.tcc:
 
-/usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h:
+/usr/local/include/mlpack/core/tree/build_tree.hpp:
 
-/usr/local/include/mlpack/methods/reinforcement_learning/environment/cont_double_pole_cart.hpp:
+../src/key_structs.hpp:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h:
 
 /usr/include/ensmallen_bits/smorms3/smorms3.hpp:
 
@@ -5344,7 +3956,13 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
 
-/usr/local/include/mlpack.hpp:
+/usr/include/string.h:
+
+/usr/include/armadillo_bits/op_logmat_bones.hpp:
+
+/usr/include/c++/11/functional:
+
+/usr/include/armadillo_bits/arma_ostream_bones.hpp:
 
 /usr/local/include/mlpack/methods/linear_regression/linear_regression_impl.hpp:
 
@@ -5354,15 +3972,13 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/spglue_plus_meat.hpp:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/poisson_nll_loss.hpp:
-
 /usr/include/ensmallen_bits/fw/update_linesearch.hpp:
 
 /usr/include/armadillo_bits/newarp_GenEigsSolver_meat.hpp:
 
-/usr/local/include/mlpack/methods/kmeans/kmeans_impl.hpp:
-
 /usr/local/include/mlpack/base.hpp:
+
+/usr/local/include/parlay/internal/thread_id_pool.h:
 
 /usr/include/armadillo_bits/config.hpp:
 
@@ -5376,23 +3992,17 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
 
-/usr/local/include/mlpack/methods/amf/termination_policies/simple_tolerance_termination.hpp:
-
 /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
 
 /usr/include/ensmallen_bits/ada_grad/ada_grad_impl.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/wchar2.h:
 
-/usr/local/include/mlpack/methods/approx_kfn/drusilla_select.hpp:
-
 /usr/include/armadillo_bits/fn_sqrtmat.hpp:
 
 /usr/local/include/mlpack/core/metrics/bleu.hpp:
 
 /usr/include/armadillo_bits/glue_relational_meat.hpp:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/vr_class_reward.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/fp-logb.h:
 
@@ -5414,15 +4024,17 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/op_median_bones.hpp:
 
-/usr/local/include/mlpack/methods/amf/amf.hpp:
-
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
-
-/usr/local/include/mlpack/methods/pca/pca_impl.hpp:
 
 /usr/include/armadillo_bits/op_stddev_meat.hpp:
 
 /usr/include/c++/11/bits/locale_classes.h:
+
+/usr/local/include/mlpack/core/cereal/unordered_map.hpp:
+
+/usr/include/c++/11/tr1/bessel_function.tcc:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h:
 
 /usr/include/sched.h:
 
@@ -5441,10 +4053,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/local/include/mlpack/core/data/types_impl.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
-
-/usr/local/include/mlpack/methods/softmax_regression/softmax_regression.hpp:
-
-/usr/local/include/mlpack/methods/perceptron/initialization_methods/initialization_methods.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
 
@@ -5466,8 +4074,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/typeinfo:
 
-/usr/local/include/mlpack/methods/ann/init_rules/network_init.hpp:
-
 /usr/include/ensmallen_bits/gradient_descent/gradient_descent.hpp:
 
 /usr/include/armadillo_bits/op_logmat_meat.hpp:
@@ -5478,8 +4084,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/newarp_SparseGenMatProd_meat.hpp:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/reconstruction_loss_impl.hpp:
-
 /usr/local/include/mlpack/core/cv/metrics/precision.hpp:
 
 /usr/include/armadillo_bits/hdf5_misc.hpp:
@@ -5488,23 +4092,17 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h:
 
-/usr/local/include/mlpack/methods/ann/layer/softmin.hpp:
-
 /usr/include/armadillo_bits/fn_diff.hpp:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h:
 
 /usr/include/c++/11/bits/sstream.tcc:
 
-/usr/local/include/mlpack/methods/local_coordinate_coding/local_coordinate_coding.hpp:
-
 /usr/include/c++/11/new:
 
 /usr/include/armadillo_bits/GenSpecialiser.hpp:
 
 /usr/include/c++/11/climits:
-
-/usr/local/include/mlpack/methods/det/dt_utils.hpp:
 
 /usr/include/c++/11/tr1/poly_laguerre.tcc:
 
@@ -5538,29 +4136,19 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/data/is_naninf.hpp:
 
-/usr/local/include/mlpack/methods/decision_tree/all_categorical_split_impl.hpp:
-
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
 
 /usr/include/armadillo_bits/Base_meat.hpp:
 
-/usr/local/include/mlpack/methods/kde/kde_rules.hpp:
-
 /usr/local/include/mlpack/methods/neighbor_search/sort_policies/furthest_neighbor_sort.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/softmax_impl.hpp:
 
 /usr/include/ensmallen_bits/adam/adam_update.hpp:
 
 /usr/include/c++/11/backward/auto_ptr.h:
 
 /usr/include/c++/11/exception:
-
-/usr/local/include/mlpack/methods/matrix_completion/matrix_completion.hpp:
-
-/usr/local/include/mlpack/methods/block_krylov_svd/randomized_block_krylov_svd.hpp:
 
 /usr/include/armadillo_bits/fn_elem.hpp:
 
@@ -5571,8 +4159,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/local/include/mlpack/core/math/columns_to_blocks_impl.hpp:
 
 /usr/include/c++/11/stdexcept:
-
-/usr/local/include/mlpack/methods/dbscan/dbscan_impl.hpp:
 
 /usr/include/c++/11/bits/unique_lock.h:
 
@@ -5589,8 +4175,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/c++/11/bits/stl_deque.h:
 
 /usr/include/c++/11/bits/std_abs.h:
-
-/usr/local/include/mlpack/methods/amf/update_rules/svd_batch_learning.hpp:
 
 /usr/include/c++/11/bits/stl_heap.h:
 
@@ -5620,15 +4204,13 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/bits/uniform_int_dist.h:
 
-/usr/local/include/mlpack/methods/amf/termination_policies/incomplete_incremental_termination.hpp:
-
 /usr/include/ensmallen_bits/swats/swats.hpp:
 
 /usr/include/c++/11/bits/basic_ios.h:
 
-/usr/local/include/mlpack/methods/kmeans/elkan_kmeans.hpp:
+/usr/include/ensmallen_bits/smorms3/smorms3_update.hpp:
 
-/usr/include/c++/11/bits/streambuf_iterator.h:
+/usr/include/armadillo_bits/spglue_relational_bones.hpp:
 
 /usr/include/armadillo_bits/newarp_DenseGenMatProd_bones.hpp:
 
@@ -5663,8 +4245,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/local/include/mlpack/core/data/detect_file_type_impl.hpp:
 
 /usr/include/armadillo_bits/SpProxy.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/lstm_impl.hpp:
 
 /usr/include/armadillo_bits/fn_eigs_sym.hpp:
 
@@ -5704,11 +4284,7 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/operator_cube_schur.hpp:
 
-/usr/local/include/mlpack/methods/ann/dists/bernoulli_distribution_impl.hpp:
-
 /usr/include/armadillo_bits/fn_unique.hpp:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/empty_loss.hpp:
 
 /usr/include/armadillo_bits/operator_cube_div.hpp:
 
@@ -5719,10 +4295,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/cereal/types/utility.hpp:
 
 /usr/include/armadillo_bits/operator_cube_relational.hpp:
-
-/usr/local/include/mlpack/methods/det.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/alpha_dropout.hpp:
 
 /usr/include/armadillo_bits/newarp_SortEigenvalue.hpp:
 
@@ -5800,8 +4372,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/op_cumprod_meat.hpp:
 
-/usr/local/include/mlpack/methods/approx_kfn/drusilla_select_impl.hpp:
-
 /usr/include/armadillo_bits/fn_ones.hpp:
 
 /usr/include/armadillo_bits/glue_quantile_meat.hpp:
@@ -5816,8 +4386,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/data/save.hpp:
 
-/usr/local/include/mlpack/methods/reinforcement_learning/q_learning.hpp:
-
 /usr/include/armadillo_bits/fn_find.hpp:
 
 /usr/local/include/mlpack/core/arma_extend/Mat_extra_bones.hpp:
@@ -5830,19 +4398,15 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/cereal/details/traits.hpp:
 
-/usr/local/include/mlpack/methods/cf/decomposition_policies/quic_svd_method.hpp:
-
 /usr/include/armadillo_bits/fn_randu.hpp:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/mean_squared_error_impl.hpp:
+/usr/local/include/parlay/internal/binary_search.h:
 
 /usr/include/armadillo_bits/fn_trig.hpp:
 
-/usr/local/include/mlpack/methods/lsh.hpp:
-
 /usr/include/cereal/archives/portable_binary.hpp:
 
-/usr/local/include/mlpack/methods/regularized_svd.hpp:
+/usr/local/include/parlay/monoid.h:
 
 /usr/include/armadillo_bits/fn_mean.hpp:
 
@@ -5850,13 +4414,13 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/fn_sort.hpp:
 
+/usr/local/include/parlay/primitives.h:
+
 /usr/local/include/mlpack/core/tree/cover_tree.hpp:
 
 /usr/include/armadillo_bits/fn_strans.hpp:
 
 /usr/include/armadillo_bits/fn_chol.hpp:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/huber_loss.hpp:
 
 /usr/include/ensmallen_bits/cmaes/cmaes_impl.hpp:
 
@@ -5869,6 +4433,8 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/armadillo_bits/fn_reshape.hpp:
 
 /usr/include/armadillo_bits/fn_cov.hpp:
+
+/usr/local/include/parlay/internal/delayed/filter_op.h:
 
 /usr/include/x86_64-linux-gnu/sys/select.h:
 
@@ -5894,8 +4460,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/fn_flip.hpp:
 
-/usr/local/include/mlpack/methods/kmeans/allow_empty_clusters.hpp:
-
 /usr/include/armadillo_bits/fn_as_scalar.hpp:
 
 /usr/include/armadillo_bits/fn_cross.hpp:
@@ -5906,19 +4470,15 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/spglue_schur_meat.hpp:
 
+/usr/local/include/parlay/internal/quicksort.h:
+
 /usr/include/ensmallen_bits/wn_grad/wn_grad_update.hpp:
 
 /usr/include/armadillo_bits/glue_polyval_meat.hpp:
 
-/usr/local/include/mlpack/methods/bias_svd/bias_svd.hpp:
-
 /usr/include/armadillo_bits/fn_cumprod.hpp:
 
 /usr/include/armadillo_bits/fn_fft.hpp:
-
-/usr/local/include/mlpack/methods/kde/kde_impl.hpp:
-
-/usr/local/include/mlpack/methods/kmeans/pelleg_moore_kmeans_rules_impl.hpp:
 
 /usr/include/armadillo_bits/fn_any.hpp:
 
@@ -5931,8 +4491,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/armadillo_bits/fn_size.hpp:
 
 /usr/include/armadillo_bits/fn_numel.hpp:
-
-/usr/local/include/mlpack/methods/cf.hpp:
 
 /usr/include/armadillo_bits/glue_cov_meat.hpp:
 
@@ -5947,8 +4505,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/armadillo_bits/fn_inplace_trans.hpp:
 
 /usr/include/armadillo_bits/fn_interp1.hpp:
-
-/usr/local/include/mlpack/methods/lmnn.hpp:
 
 /usr/local/include/mlpack/core/kernels/cosine_similarity_impl.hpp:
 
@@ -5970,8 +4526,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/fn_randperm.hpp:
 
-/usr/local/include/mlpack/methods/kde/kde_stat.hpp:
-
 /usr/include/armadillo_bits/op_trimat_meat.hpp:
 
 /usr/include/armadillo_bits/fn_powmat.hpp:
@@ -5982,13 +4536,13 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/fn_sprandu.hpp:
 
-/usr/local/include/mlpack/methods/ann/layer/add_merge.hpp:
-
 /usr/include/armadillo_bits/eop_core_meat.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
 
 /usr/include/armadillo_bits/fn_spsolve.hpp:
+
+../parallel_hdbscan/src/kdTree.h:
 
 /usr/include/armadillo_bits/fn_inv.hpp:
 
@@ -6014,8 +4568,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/SpToDOp_meat.hpp:
 
-/usr/local/include/mlpack/methods/kmeans/kill_empty_clusters.hpp:
-
 /usr/include/linux/limits.h:
 
 /usr/include/c++/11/bits/allocator.h:
@@ -6024,9 +4576,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/mtSpOp_meat.hpp:
 
-/usr/local/include/mlpack/methods/decision_tree/mad_gain.hpp:
-
 /usr/include/armadillo_bits/Glue_meat.hpp:
+
+/usr/include/asm-generic/param.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h:
 
 /usr/include/rapidjson/internal/pow10.h:
 
@@ -6041,8 +4595,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/armadillo_bits/fn_orth_null.hpp:
 
 /usr/include/armadillo_bits/SpGlue_meat.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/environment/environment.hpp:
 
 /usr/include/armadillo_bits/eOp_meat.hpp:
 
@@ -6096,9 +4648,9 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/spdiagview_meat.hpp:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/soft_margin_loss.hpp:
-
 /usr/include/armadillo_bits/sp_auxlib_meat.hpp:
+
+/usr/local/include/parlay/internal/delayed/map.h:
 
 /usr/local/include/mlpack/core/hpt/cv_function.hpp:
 
@@ -6111,8 +4663,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
 
 /usr/include/armadillo_bits/spglue_join_meat.hpp:
-
-/usr/local/include/mlpack/methods/ann/layer/celu_impl.hpp:
 
 /usr/include/armadillo_bits/Row_meat.hpp:
 
@@ -6168,17 +4718,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/running_stat_vec_meat.hpp:
 
-/usr/local/include/mlpack/methods/ann/layer/radial_basis_function.hpp:
-
 /usr/include/armadillo_bits/op_diagvec_meat.hpp:
 
 /usr/include/armadillo_bits/glue_mvnrnd_bones.hpp:
 
 /usr/local/include/mlpack/core/data/tokenizers/tokenizers.hpp:
-
-/usr/local/include/mlpack/methods/logistic_regression/logistic_regression_function.hpp:
-
-/usr/local/include/mlpack/methods/kmeans/elkan_kmeans_impl.hpp:
 
 /usr/include/armadillo_bits/op_dot_meat.hpp:
 
@@ -6186,9 +4730,9 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/op_htrans_meat.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
-
 /usr/local/include/mlpack/core/util/binding_details.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
 
 /usr/include/armadillo_bits/op_max_meat.hpp:
 
@@ -6208,17 +4752,15 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/data/extension.hpp:
 
-/usr/local/include/mlpack/methods/kmeans/kmeans.hpp:
-
 /usr/include/ensmallen_bits/de/de_impl.hpp:
 
 /usr/include/armadillo_bits/GenCube_meat.hpp:
 
 /usr/include/armadillo_bits/op_sort_index_meat.hpp:
 
-/usr/include/armadillo_bits/op_diff_bones.hpp:
-
 /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h:
+
+/usr/include/armadillo_bits/op_diff_bones.hpp:
 
 /usr/include/armadillo_bits/op_sum_meat.hpp:
 
@@ -6268,9 +4810,9 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/op_shift_meat.hpp:
 
-/usr/local/include/mlpack/methods/kmeans/pelleg_moore_kmeans.hpp:
-
 /usr/include/armadillo_bits/op_shuffle_meat.hpp:
+
+/usr/include/x86_64-linux-gnu/sys/ucontext.h:
 
 /usr/include/ensmallen_bits/cne/cne.hpp:
 
@@ -6288,11 +4830,7 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/op_misc_meat.hpp:
 
-/usr/local/include/mlpack/methods/ann/augmented/tasks/copy_impl.hpp:
-
 /usr/include/armadillo_bits/op_orth_null_meat.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/noise/noise.hpp:
 
 /usr/include/armadillo_bits/op_cx_scalar_meat.hpp:
 
@@ -6302,21 +4840,17 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/op_any_meat.hpp:
 
-/usr/local/include/mlpack/namespace_compat.hpp:
-
 /usr/include/armadillo_bits/op_nonzeros_meat.hpp:
 
 /usr/local/include/mlpack/core/cereal/is_loading.hpp:
 
 /usr/include/armadillo_bits/op_diff_meat.hpp:
 
-/usr/local/include/mlpack/methods/decision_tree/mse_gain.hpp:
-
 /usr/include/armadillo_bits/op_sqrtmat_meat.hpp:
 
-/usr/local/include/mlpack/core/util/ens_traits.hpp:
+/usr/local/include/parlay/internal/debug_uninitialized.h:
 
-/usr/local/include/mlpack/methods/adaboost/adaboost.hpp:
+/usr/local/include/mlpack/core/util/ens_traits.hpp:
 
 /usr/include/armadillo_bits/op_range_meat.hpp:
 
@@ -6332,13 +4866,9 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/op_wishrnd_meat.hpp:
 
-/usr/local/include/mlpack/methods/local_coordinate_coding/lcc.hpp:
-
 /usr/include/armadillo_bits/op_roots_meat.hpp:
 
 /usr/include/armadillo_bits/op_cond_meat.hpp:
-
-/usr/local/include/mlpack/methods/sparse_autoencoder/sparse_autoencoder_function.hpp:
 
 /usr/include/armadillo_bits/operator_cube_minus.hpp:
 
@@ -6354,11 +4884,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/glue_times_meat.hpp:
 
-/usr/local/include/mlpack/methods/emst/dtb_rules.hpp:
-
 /usr/local/include/mlpack/core/tree/greedy_single_tree_traverser.hpp:
 
 /usr/include/armadillo_bits/glue_mixed_meat.hpp:
+
+/usr/local/include/parlay/random.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
@@ -6378,13 +4908,13 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/glue_toeplitz_meat.hpp:
 
+/usr/include/x86_64-linux-gnu/asm/bitsperlong.h:
+
 /usr/include/armadillo_bits/glue_hist_meat.hpp:
 
 /usr/local/include/mlpack/core/tree/cosine_tree/cosine_tree_impl.hpp:
 
 /usr/include/armadillo_bits/glue_histc_meat.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/environment/double_pole_cart.hpp:
 
 /usr/include/ensmallen_bits/sgdr/cyclical_decay.hpp:
 
@@ -6440,8 +4970,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/spglue_merge_meat.hpp:
 
-/usr/local/include/mlpack/methods/hmm/hmm.hpp:
-
 /usr/include/armadillo_bits/op_symmat_meat.hpp:
 
 /usr/include/c++/11/typeindex:
@@ -6460,6 +4988,8 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/newarp_SparseGenRealShiftSolve_meat.hpp:
 
+/usr/include/x86_64-linux-gnu/bits/signum-generic.h:
+
 /usr/include/c++/11/cstdlib:
 
 /usr/include/c++/11/string_view:
@@ -6476,12 +5006,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/util/arma_traits.hpp:
 
-/usr/local/include/mlpack/prereqs.hpp:
-
-/usr/include/c++/11/tr1/bessel_function.tcc:
-
-/usr/local/include/mlpack/core/cereal/unordered_map.hpp:
-
 /usr/include/rapidjson/prettywriter.h:
 
 /usr/include/cereal/archives/binary.hpp:
@@ -6492,15 +5016,13 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/bits/stl_raw_storage_iter.h:
 
-/usr/local/include/mlpack/methods/gmm/no_constraint.hpp:
-
 /usr/include/armadillo_bits/arma_static_check.hpp:
 
 /usr/local/include/mlpack/core/data/map_policies/increment_policy.hpp:
 
-/usr/include/c++/11/bits/unique_ptr.h:
+/usr/local/include/parlay/scheduler.h:
 
-/usr/local/include/mlpack/methods/ann/layer/noisylinear_impl.hpp:
+/usr/include/c++/11/bits/unique_ptr.h:
 
 /usr/local/include/mlpack/core/util/prefixedoutstream_impl.hpp:
 
@@ -6510,15 +5032,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/bits/allocated_ptr.h:
 
-/usr/local/include/mlpack/methods/svdplusplus/svdplusplus_function.hpp:
-
 /usr/include/assert.h:
 
 /usr/include/c++/11/pstl/glue_memory_defs.h:
 
 /usr/include/cereal/specialize.hpp:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/empty_loss_impl.hpp:
 
 /usr/include/armadillo_bits/spdiagview_bones.hpp:
 
@@ -6531,8 +5049,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/x86_64-linux-gnu/c++/11/bits/cxxabi_tweaks.h:
 
 /usr/include/inttypes.h:
-
-/usr/local/include/mlpack/methods/amf/amf_impl.hpp:
 
 /usr/include/rapidjson/encodings.h:
 
@@ -6558,11 +5074,11 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/data/save_image.hpp:
 
+/usr/local/include/parlay/utilities.h:
+
 /usr/include/rapidjson/internal/ieee754.h:
 
 /usr/include/rapidjson/ostreamwrapper.h:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/replay/sumtree.hpp:
 
 /usr/include/rapidjson/document.h:
 
@@ -6572,8 +5088,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/rapidjson/memorystream.h:
 
-/usr/local/include/mlpack/methods/dbscan/random_point_selection.hpp:
-
 /usr/include/armadillo_bits/fn_trimat.hpp:
 
 /usr/include/c++/11/bits/locale_conv.h:
@@ -6581,8 +5095,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/rapidjson/internal/meta.h:
 
 /usr/local/include/mlpack/core/data/load_numeric_csv.hpp:
-
-/usr/local/include/mlpack/methods/kmeans/dual_tree_kmeans_impl.hpp:
 
 /usr/include/ensmallen_bits/problems/bukin_function_impl.hpp:
 
@@ -6600,6 +5112,8 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/data/map_policies/map_policies.hpp:
 
+/usr/include/x86_64-linux-gnu/asm/posix_types.h:
+
 /usr/include/armadillo_bits/operator_cube_plus.hpp:
 
 /usr/include/rapidjson/error/error.h:
@@ -6611,6 +5125,8 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/cereal/external/base64.hpp:
 
 /usr/include/cereal/external/rapidxml/rapidxml_print.hpp:
+
+/usr/local/include/parlay/internal/stream_delayed.h:
 
 /usr/include/cereal/types/tuple.hpp:
 
@@ -6630,6 +5146,8 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/cereal/types/polymorphic.hpp:
 
+/usr/local/include/parlay/thread_specific.h:
+
 /usr/local/include/mlpack/core/data/has_serialize.hpp:
 
 /usr/include/ensmallen_bits/problems/three_hump_camel_function.hpp:
@@ -6637,8 +5155,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/armadillo_bits/newarp_UpperHessenbergEigen_bones.hpp:
 
 /usr/local/include/mlpack/core/util/sfinae_utility.hpp:
-
-/usr/local/include/mlpack/methods/local_coordinate_coding/lcc_impl.hpp:
 
 /usr/local/include/mlpack/core/util/log.hpp:
 
@@ -6668,8 +5184,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/c++/11/bits/quoted_string.h:
 
-/usr/local/include/mlpack/methods/ann/loss_functions/dice_loss_impl.hpp:
-
 /usr/include/c++/11/bits/this_thread_sleep.h:
 
 /usr/local/include/mlpack/core/metrics/non_maximal_suppression_impl.hpp:
@@ -6679,8 +5193,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/local/include/mlpack/core/util/version_impl.hpp:
 
 /usr/local/include/mlpack/core/util/gitversion.hpp:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/multilabel_softmargin_loss_impl.hpp:
 
 /usr/include/c++/11/bits/stl_iterator_base_funcs.h:
 
@@ -6706,7 +5218,7 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/data/dataset_mapper.hpp:
 
-/usr/local/include/mlpack/methods/ann/ffn_impl.hpp:
+/usr/include/x86_64-linux-gnu/bits/ss_flags.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
 
@@ -6740,17 +5252,13 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/data/load_vec_impl.hpp:
 
-/usr/local/include/mlpack/methods/bayesian_linear_regression/bayesian_linear_regression.hpp:
-
 /usr/local/include/mlpack/core/data/save_impl.hpp:
+
+/usr/include/x86_64-linux-gnu/sys/param.h:
 
 /usr/local/include/mlpack/core/util/io_impl.hpp:
 
-/usr/local/include/mlpack/methods/nmf.hpp:
-
 /usr/local/include/mlpack/core/util/hyphenate_string.hpp:
-
-/usr/local/include/mlpack/methods/decision_tree.hpp:
 
 /usr/local/include/mlpack/core/data/imputation_methods/imputation_methods.hpp:
 
@@ -6775,8 +5283,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/local/include/mlpack/core/math/ccov_impl.hpp:
 
 /usr/local/include/mlpack/core/data/scaler_methods/standard_scaler.hpp:
-
-/usr/local/include/mlpack/methods/decision_tree/all_categorical_split.hpp:
 
 /usr/include/ensmallen_bits/sdp/sdp.hpp:
 

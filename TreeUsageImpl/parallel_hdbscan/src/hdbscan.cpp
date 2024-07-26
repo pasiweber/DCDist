@@ -83,7 +83,7 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan(parlay::sequence<pargeo::point
     });
 
   //WSPD which produces the edges over which Kruskal's algorithm will be run. 
-  //This is based on their extended notion of things being well-separated that used mutual reachability terminology as well.
+  //This is based on their extended notion of things being well-separated that uses mutual reachability terminology as well.
   hdbscanInternal::nodeCD(tree, coreDist, cdMin, cdMax, tree, S.data());
 
   floatT rhoLo = -0.1;

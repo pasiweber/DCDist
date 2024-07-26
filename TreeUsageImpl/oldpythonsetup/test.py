@@ -48,9 +48,10 @@ def get_dist_matrix(points, D, dim, num_points):
     return D
 
 k = 3
-n = 10000
+dim = 2000
+n = 4000
 dataset = "blobs"
-points1, _ = create_dataset(num_points=n, datatype=dataset, num_features=100)
+points1, _ = create_dataset(num_points=n, datatype=dataset, num_features=dim)
 points1t = np.transpose(points1)
 
 
@@ -94,7 +95,8 @@ cdists2 = dctree.compute_cdists(points1t, k, "naive")
 
 t3 = time.time()
 
-cdists3 = get_cdists(points1, k)
+
+#cdists3 = get_cdists(points1, k)
 
 t4 = time.time()
 
@@ -102,7 +104,7 @@ cdists4 = dctree.compute_cdists(points1t, k, "naive2")
 
 t5 = time.time()
 
-cdists4 = dctree.compute_cdists(points1t, k, "naive3")
+cdists5 = dctree.compute_cdists(points1t, k, "naive3")
 
 t6 = time.time()
 
@@ -114,5 +116,5 @@ print("python old", t4-t3)
 print("naive2:", t5-t4)
 print("naive3:", t6-t5)
 
-print(cdists4 - cdists3)
+#print(cdists4 - cdists3)
 #print("cdist diff:", cdists-cdists3)

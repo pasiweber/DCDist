@@ -39,7 +39,7 @@
 #include "parlay/parallel.h"
 #include "parlay/sequence.h"
 #include "kdTree.h"
-#include "hdbscan/point.h"
+#include "../include/hdbscan/point.h"
 
 namespace pargeo {
 

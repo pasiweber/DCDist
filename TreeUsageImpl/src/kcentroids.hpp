@@ -6,20 +6,10 @@
 #include <iostream>
 #include <algorithm>
 
-#include <dc_dist.hpp>
+#include <key_structs.hpp>
 
 
 
-//Cost-decrease annotation structs
-typedef struct Annotation {
-    double cost_decrease;
-    int center;
-    Annotation* parent;
-    Node* tree_node = nullptr;
-    bool has_leaf = true; //This is set to true until a node sets it to false. When we are "done" with the tree, we do another run over the annotations, adding leaves of those set to false, as a child of the node the annotation is currently pointing to
-    int k; //The next k for this annotation when it becomes a new node / smaller cluster again.
-    Node* orig_node; //This is used to extract a specific k solution efficiently
-} Annotation;
 
 
 bool is_a_root(const Node &tree);

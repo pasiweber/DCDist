@@ -1,7 +1,5 @@
-
-#include <vector>
-#include <kcentroids.hpp>
 #include <hcf.hpp>
+#include <iostream>
 
 HCF::HCF(int min_pts, int min_cluster_size, double (*obj_func)(Node*)) : 
 tree(nullptr){  //Initialize tree here
@@ -15,7 +13,7 @@ tree(nullptr){  //Initialize tree here
 
 void HCF::fit(Node *tree){
     std::cout << "Tree already provided..." << std::endl;
-    printTree(*tree);
+    //printTree(*tree);
 
     compute_clustering(tree);
 }

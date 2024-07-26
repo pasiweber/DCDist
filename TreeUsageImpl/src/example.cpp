@@ -5,11 +5,18 @@
 #include <kcentroids2.hpp>
 #include <dc_hdbscan.hpp>
 #include <dc_dist.hpp>
-#include <mlpack/methods/neighbor_search/neighbor_search.hpp>
-#include <mlpack/core.hpp>
-#include <mlpack/core/tree/binary_space_tree.hpp>
+#include <key_structs.hpp>
 
+#include <mlpack/core.hpp>
+
+#include "parlay/parallel.h"
+#include "parlay/sequence.h"
 #include <../parallel_hdbscan/src/kdTree.h>
+#include <../parallel_hdbscan/src/kdTreeKnn.h>
+#include <../parallel_hdbscan/include/hdbscan/point.h>
+#include <../parallel_hdbscan/src/kdTreeArma.h>
+
+
 
 // Function to create a new node -
 Node* addNode(Node* parent = nullptr, double cost=0.0, int id = -1, int size=1) {
@@ -168,20 +175,58 @@ void test_hdbscan(){
 }
 
 
-void test_mlpack(){
-    using namespace mlpack::metric; // ManhattanDistance
-    using namespace mlpack::tree;
-    using namespace mlpack::neighbor;
 
-    // arma::mat data = {  {1.0, 1.0},
-    //                     {2.0, 2.0},
-    //                     {3.0, 3.0},
-    //                     {1.5, 1.5},
-    //                     {5.5, 5.5},
-    //                     {10.0, 10.0}
-    //                     };
-     
-    arma::mat data2 = {{0.0, 1.0},
+void test_parallel_hdbscan(){
+    const int dim = 3; // Example dimension
+    const int minPts = 2;
+    using Point = pargeo::point<dim>; // Define the type of point
+    using nodeT = pargeo::kdNode<dim, pargeo::point<dim>>;
+
+    // Initialize a parlay sequence of points
+    parlay::sequence<Point> points(5); // Create a sequence of 5 points
+
+    // Populate the sequence with some values
+    for (int i = 0; i < 5; ++i) {
+        double coords[dim] = {static_cast<double>(i), static_cast<double>(i+1), static_cast<double>(i+2)};
+        points[i] = Point(coords);
+    }
+
+    nodeT* tree = pargeo::buildKdt<dim, pargeo::point<dim>>(points, true, true);
+    parlay::sequence<size_t> nns = pargeo::kdTreeKnn<dim, Point>(points, minPts, tree, true); 
+
+    parlay::sequence<float> coreDist = parlay::sequence<float>(points.size());
+    parlay::parallel_for (0, points.size(), [&](int i) {
+			       coreDist[i] = points[nns[i*minPts + minPts-1]].dist(points[i]);
+			     });
+
+
+    for (const float& value : coreDist) {
+        std::cout << value << " ";
+    }
+    std::cout << std::endl;
+}
+
+template<const int dim>
+parlay::sequence<pargeo::point<dim>> convertArmaMatToParlayPoints(const arma::mat& mat) {
+
+    // Create a parlay sequence of points
+    parlay::sequence<pargeo::point<dim>> points(mat.n_cols);
+    std::cout<< "num cols:" << mat.n_cols << std::endl;
+    // Populate the sequence with points created from the matrix columns
+    for (size_t j = 0; j < mat.n_cols; ++j) {
+        double coords[dim];
+        for (size_t i = 0; i < dim; ++i) {
+            coords[i] = mat(i, j);
+        }
+        points[j] = pargeo::point<dim>(coords);
+    }
+
+    return points;
+}
+
+
+void test_mlpack(){
+    arma::mat data3 = {{0.0, 1.0},
                         {0.0, 2.0},
                         {0.0, 3.0},
                         {0.0, 1.5},
@@ -189,18 +234,36 @@ void test_mlpack(){
                         {0.0, 10.0}
                         };
 
+    arma::mat data2 = arma::trans(data3);
 
-    //arma::vec query = data.row(0);
-    arma::mat data3 = arma::trans(data2);
-    compute_cdists(data3, 2, "kdtree");
+    const int dim = 2;
+    const int minPts = 2;
+    using Point = pargeo::point<dim>; // Define the type of point
+    using nodeT = pargeo::kdNode<dim, pargeo::point<dim>>;
     
+    parlay::sequence<pargeo::point<dim>> points =  convertArmaMatToParlayPoints<dim>(data2);
+
+    nodeT* tree = pargeo::buildKdt<dim, pargeo::point<dim>>(points, false, true);
+    nodeT* tree2 = pargeo::buildKdt2<dim, pargeo::point<dim>>(points, false, true);
+    parlay::sequence<size_t> nns = pargeo::kdTreeKnn<dim, Point>(points, minPts, tree, true); 
+
+    parlay::sequence<float> coreDist = parlay::sequence<float>(points.size());
+    parlay::parallel_for (0, points.size(), [&](int i) {
+			       coreDist[i] = points[nns[i*minPts + minPts-1]].dist(points[i]);
+			     });
 
 
+    for (const float& value : coreDist) {
+        std::cout << value << " ";
+    }
 }
 
+
+
 int main() {
-    test_k_centroids();
+    //test_k_centroids();
     //test_hdbscan();
-    //test_mlpack();
+    //test_parallel_hdbscan();
+    test_mlpack();
     return 0;
 }

@@ -1,5 +1,4 @@
 #include <kcentroids.hpp>
-#include <dc_dist.hpp>
 
 #include <vector>
 #include <limits>

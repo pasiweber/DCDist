@@ -1,6 +1,5 @@
 #include <dc_hdbscan.hpp>
-#include <kcentroids.hpp>
-
+#include <dc_dist.hpp>
 #include <vector>
 #include <limits>
 #include <stdexcept>
