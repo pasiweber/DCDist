@@ -1876,6 +1876,9 @@ CMakeFiles/MyProject.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
   /usr/local/include/parlay/sequence.h \
   /usr/local/include/parlay/relocation.h \
   ../parallel_hdbscan/src/kdTreeKnn.h \
+  ../parallel_hdbscan/src/kdTreeArma.h \
+  ../parallel_hdbscan/include/hdbscan/armapoint.h \
+  ../parallel_hdbscan/src/kdTreeKnnArma.h \
   ../src/quickselect.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/neighbor_search.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/neighbor_search_stat.hpp \
@@ -3770,6 +3773,9 @@ CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp
   /usr/local/include/parlay/sequence.h \
   /usr/local/include/parlay/relocation.h \
   ../parallel_hdbscan/src/kdTreeKnn.h \
+  ../parallel_hdbscan/src/kdTreeArma.h \
+  ../parallel_hdbscan/include/hdbscan/armapoint.h \
+  ../parallel_hdbscan/src/kdTreeKnnArma.h \
   /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/pybind11.h \
   /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/detail/class.h \
   /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/attr.h \
@@ -6521,7 +6527,10 @@ CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o: ../src/dc_hdbscan.cpp \
   /usr/local/include/parlay/random.h \
   /usr/local/include/parlay/sequence.h \
   /usr/local/include/parlay/relocation.h \
-  ../parallel_hdbscan/src/kdTreeKnn.h
+  ../parallel_hdbscan/src/kdTreeKnn.h \
+  ../parallel_hdbscan/src/kdTreeArma.h \
+  ../parallel_hdbscan/include/hdbscan/armapoint.h \
+  ../parallel_hdbscan/src/kdTreeKnnArma.h
 
 CMakeFiles/MyProject.dir/src/example.cpp.o: ../src/example.cpp \
   /usr/include/stdc-predef.h \
@@ -8400,10 +8409,11 @@ CMakeFiles/MyProject.dir/src/example.cpp.o: ../src/example.cpp \
   /usr/local/include/parlay/sequence.h \
   /usr/local/include/parlay/relocation.h \
   ../parallel_hdbscan/src/kdTreeKnn.h \
-  ../src/lp_objective.hpp \
-  ../src/dc_hdbscan.hpp \
   ../parallel_hdbscan/src/kdTreeArma.h \
-  ../parallel_hdbscan/include/hdbscan/armapoint.h
+  ../parallel_hdbscan/include/hdbscan/armapoint.h \
+  ../parallel_hdbscan/src/kdTreeKnnArma.h \
+  ../src/lp_objective.hpp \
+  ../src/dc_hdbscan.hpp
 
 CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
   /usr/include/stdc-predef.h \
@@ -8628,10 +8638,6 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 
 ../src/kcentroids.cpp:
 
-../parallel_hdbscan/include/hdbscan/armapoint.h:
-
-../parallel_hdbscan/src/kdTreeArma.h:
-
 ../src/lp_objective.hpp:
 
 ../src/kcentroids2.hpp:
@@ -8707,6 +8713,10 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 /usr/local/include/mlpack/methods/reinforcement_learning/policy/policy.hpp:
 
 /usr/local/include/mlpack/methods/reinforcement_learning/environment/reward_clipping.hpp:
+
+/usr/local/include/mlpack/methods/reinforcement_learning/environment/ftn_param.hpp:
+
+/usr/local/include/mlpack/methods/reinforcement_learning/environment/ftn.hpp:
 
 /usr/local/include/mlpack/core/data/tokenizers/char_extract.hpp:
 
@@ -9127,8 +9137,6 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 /usr/local/include/mlpack/methods/kmeans/kmeans.hpp:
 
 /usr/local/include/mlpack/core/tree/binary_space_tree/traits.hpp:
-
-/usr/include/armadillo_bits/op_mean_meat.hpp:
 
 /usr/include/c++/11/system_error:
 
@@ -10013,6 +10021,12 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 /usr/local/include/mlpack/core/tree/cellbound.hpp:
 
 /usr/include/armadillo_bits/op_flip_meat.hpp:
+
+/usr/local/include/mlpack/methods/reinforcement_learning/environment/mountain_car.hpp:
+
+/usr/local/include/mlpack/methods/ann/dists/bernoulli_distribution_impl.hpp:
+
+/usr/local/include/mlpack/methods/ann/loss_functions/cosine_embedding_loss_impl.hpp:
 
 /usr/include/c++/11/tr1/modified_bessel_func.tcc:
 
@@ -11904,8 +11918,6 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 
 /usr/local/include/mlpack/core/cv/cv.hpp:
 
-/usr/local/include/mlpack/methods/reinforcement_learning/environment/ftn.hpp:
-
 /usr/local/include/mlpack/core/cv/metrics/metrics.hpp:
 
 /usr/include/python3.10/descrobject.h:
@@ -12031,6 +12043,8 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 /usr/include/python3.10/typeslots.h:
 
 /usr/include/ensmallen_bits/problems/ackley_function_impl.hpp:
+
+../parallel_hdbscan/src/kdTreeArma.h:
 
 /usr/local/include/mlpack/methods/amf/init_rules/random_init.hpp:
 
@@ -12280,6 +12294,8 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 
 /usr/include/ensmallen_bits/fw/frank_wolfe_impl.hpp:
 
+../parallel_hdbscan/include/hdbscan/armapoint.h:
+
 /usr/include/ensmallen_bits/gradient_descent/gradient_descent_impl.hpp:
 
 /usr/local/include/mlpack/methods/ann/loss_functions/sigmoid_cross_entropy_error_impl.hpp:
@@ -12527,6 +12543,10 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 /usr/local/include/parlay/internal/delayed/terminal.h:
 
 /usr/local/include/parlay/internal/delayed/scan.h:
+
+/usr/include/armadillo_bits/op_mean_meat.hpp:
+
+../parallel_hdbscan/src/kdTreeKnnArma.h:
 
 /usr/local/include/mlpack/prereqs.hpp:
 
@@ -13445,11 +13465,3 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 /usr/local/include/mlpack/core/data/load_model_impl.hpp:
 
 /usr/local/include/mlpack/methods/reinforcement_learning/environment/env_type.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/environment/ftn_param.hpp:
-
-/usr/local/include/mlpack/methods/ann/dists/bernoulli_distribution_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/cosine_embedding_loss_impl.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/environment/mountain_car.hpp:

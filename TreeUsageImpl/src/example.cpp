@@ -15,6 +15,7 @@
 #include <../parallel_hdbscan/src/kdTreeKnn.h>
 #include <../parallel_hdbscan/include/hdbscan/point.h>
 #include <../parallel_hdbscan/src/kdTreeArma.h>
+#include <../parallel_hdbscan/src/kdTreeKnnArma.h>
 #include <../parallel_hdbscan/include/hdbscan/armapoint.h>
 
 
@@ -206,41 +207,6 @@ void test_parallel_hdbscan(){
     std::cout << std::endl;
 }
 
-template<const int dim>
-parlay::sequence<pargeo::point<dim>> convertArmaMatToParlayPoints(const arma::mat& mat) {
-
-    // Create a parlay sequence of points
-    parlay::sequence<pargeo::point<dim>> points(mat.n_cols);
-    std::cout<< "num cols:" << mat.n_cols << std::endl;
-    // Populate the sequence with points created from the matrix columns
-    for (size_t j = 0; j < mat.n_cols; ++j) {
-        double coords[dim];
-        for (size_t i = 0; i < dim; ++i) {
-            coords[i] = mat(i, j);
-        }
-        points[j] = pargeo::point<dim>(coords);
-    }
-
-    return points;
-}
-
-
-parlay::sequence<pargeo::point2> convertArmaMatToParlayPoints2(const arma::mat& mat) {
-
-     // Create a parlay sequence of points
-    parlay::sequence<pargeo::point2> points(mat.n_cols);
-    std::cout<< "num cols:" << mat.n_cols << std::endl;
-    // Populate the sequence with points created from the matrix columns
-    for (size_t j = 0; j < mat.n_cols; ++j) {
-        arma::Col<double> coords(mat.n_rows);
-        for (size_t i = 0; i < mat.n_rows; ++i) {
-            coords[i] = mat(i, j);
-        }
-        points[j] = pargeo::point2(&coords);
-    }
-
-    return points;
-}
 
 void test_mlpack(){
     arma::mat data3 = {{0.0, 1.0},
@@ -267,20 +233,30 @@ void test_mlpack(){
     
     //nodeT2* tree2 = pargeo::buildKdt2<pargeo::point2>(points2, false, true);
     parlay::sequence<size_t> nns = pargeo::kdTreeKnn<dim, Point>(points, minPts, tree, true); 
+    parlay::sequence<size_t> nns2 = pargeo::kdTreeKnn2<pargeo::point2>(points2, minPts, tree2, true); 
 
     parlay::sequence<float> coreDist = parlay::sequence<float>(points.size());
+    parlay::sequence<float> coreDist2 = parlay::sequence<float>(points2.size());
+
+
+
     parlay::parallel_for (0, points.size(), [&](int i) {
 			       coreDist[i] = points[nns[i*minPts + minPts-1]].dist(points[i]);
+			       coreDist2[i] = points2[nns2[i*minPts + minPts-1]].dist(points2[i]);
 			     });
 
-
+    std::cout << "cdists orig:" << std::endl;
     for (const float& value : coreDist) {
+        std::cout << value << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "cdists new:" << std::endl;
+    for (const float& value : coreDist2) {
         std::cout << value << " ";
     }
 
 
-    arma::vec v = {1.0, 2.0, 3.0, 4.0, 5.0};
-    double a = v[0];
 }
 
 

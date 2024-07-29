@@ -1876,6 +1876,9 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
   /usr/local/include/parlay/sequence.h \
   /usr/local/include/parlay/relocation.h \
   ../parallel_hdbscan/src/kdTreeKnn.h \
+  ../parallel_hdbscan/src/kdTreeArma.h \
+  ../parallel_hdbscan/include/hdbscan/armapoint.h \
+  ../parallel_hdbscan/src/kdTreeKnnArma.h \
   ../src/quickselect.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/neighbor_search.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/neighbor_search_stat.hpp \
@@ -1911,6 +1914,8 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/local/include/mlpack/methods/neighbor_search/neighbor_search.hpp:
 
 ../src/quickselect.hpp:
+
+../parallel_hdbscan/src/kdTreeKnnArma.h:
 
 /usr/local/include/parlay/internal/delayed/scan.h:
 
@@ -2080,6 +2085,8 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/ensmallen_bits/gradient_descent/gradient_descent_impl.hpp:
 
+../parallel_hdbscan/include/hdbscan/armapoint.h:
+
 /usr/include/ensmallen_bits/fw/frank_wolfe_impl.hpp:
 
 /usr/include/ensmallen_bits/fw/constr_lpball.hpp:
@@ -2235,6 +2242,8 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/ensmallen_bits/problems/aug_lagrangian_test_functions_impl.hpp:
 
 /usr/include/ensmallen_bits/problems/aug_lagrangian_test_functions.hpp:
+
+../parallel_hdbscan/src/kdTreeArma.h:
 
 /usr/include/ensmallen_bits/problems/ackley_function_impl.hpp:
 

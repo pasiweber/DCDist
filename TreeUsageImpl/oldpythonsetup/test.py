@@ -48,8 +48,8 @@ def get_dist_matrix(points, D, dim, num_points):
     return D
 
 k = 3
-dim = 2000
-n = 4000
+dim = 2
+n = 10000
 dataset = "blobs"
 points1, _ = create_dataset(num_points=n, datatype=dataset, num_features=dim)
 points1t = np.transpose(points1)
@@ -86,25 +86,25 @@ points3t = np.transpose(points3)
 print("Testing dc_dist code with dataset", dataset, "and n =", n)
 
 t1 = time.time()
-
+print("1")
 cdists = dctree.compute_cdists(points1t, k, "kd")
 
 t2 = time.time()
-
+print("2")
 cdists2 = dctree.compute_cdists(points1t, k, "naive")
 
 t3 = time.time()
+print("3")
 
-
-#cdists3 = get_cdists(points1, k)
+cdists3 = dctree.compute_cdists(points1t, k, "parallel2")
 
 t4 = time.time()
-
+print("4")
 cdists4 = dctree.compute_cdists(points1t, k, "naive2")
 
 t5 = time.time()
-
-cdists5 = dctree.compute_cdists(points1t, k, "naive3")
+print("5")
+cdists5 = dctree.compute_cdists(points1t, k, "parallel_arma")
 
 t6 = time.time()
 
@@ -112,9 +112,9 @@ t6 = time.time()
 
 print("kdtree:", t2-t1)
 print("naive:", t3-t2)
-print("python old", t4-t3)
+print("kd_parallel", t4-t3)
 print("naive2:", t5-t4)
-print("naive3:", t6-t5)
+print("kd_parallel_arma:", t6-t5)
 
 #print(cdists4 - cdists3)
-#print("cdist diff:", cdists-cdists3)
+print("cdist diff:", np.array(cdists3)-cdists5)

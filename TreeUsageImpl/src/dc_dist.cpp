@@ -115,24 +115,21 @@ std::vector<double> compute_cdists(arma::mat &data, size_t k, std::string mode){
         searcher = new mlpack::NeighborSearch<mlpack::NearestNeighborSort, mlpack::EuclideanDistance, arma::mat, mlpack::KDTree>(data, mlpack::NAIVE_MODE);
     } else if(mode == "naive2"){
         return naive_cdists_efficient(data, k);
-    } else if(mode == "naive3"){
+    } else if(mode == "parallel2"){
+        return parallel_cdists2(data, k);
+    } else if(mode == "parallel20"){
+        return parallel_cdists20(data, k);
+    } else if(mode == "parallel2000"){
         return parallel_cdists(data, k);
+    } else if(mode == "parallel_arma"){
+        return parallel_cdists_arma(data, k);
+
     }else { //KD tree knn search
         searcher = new mlpack::NeighborSearch<mlpack::NearestNeighborSort, mlpack::EuclideanDistance, arma::mat, mlpack::KDTree>(data); 
     }
     
 
     int n = data.n_cols;
-    const int dim = 2000; // Example dimension that is hardcoded for testing...
-    const int minPts = k;
-    
-    using Point = pargeo::point<dim>; // Define the type of point
-    using nodeT = pargeo::kdNode<dim, pargeo::point<dim>>;
-
-    parlay::sequence<pargeo::point<dim>> points =  convertArmaMatToParlayPoints<dim>(data);
-    
-    nodeT* tree = pargeo::buildKdt<dim, pargeo::point<dim>>(points, true, true);
-
 
     arma::Mat<size_t> neighbors;
     arma::mat distances;
@@ -223,6 +220,84 @@ std::vector<double> parallel_cdists(arma::mat &data, size_t k){
 
 
 
+std::vector<double> parallel_cdists2(arma::mat &data, size_t k){
+    int n = data.n_cols;
+    const int dim = 2; // Example dimension that is hardcoded for testing...
+    const int minPts = k;
+    
+    using Point = pargeo::point<dim>; // Define the type of point
+    using nodeT = pargeo::kdNode<dim, pargeo::point<dim>>;
+
+    parlay::sequence<pargeo::point<dim>> points =  convertArmaMatToParlayPoints<dim>(data);
+    
+    nodeT* tree = pargeo::buildKdt<dim, pargeo::point<dim>>(points, true, true);
+    parlay::sequence<size_t> nns = pargeo::kdTreeKnn<dim, Point>(points, minPts, tree, true); 
+
+    std::vector<double> coreDist(n);
+
+    for(int i = 0; i< points.size(); i++){
+		coreDist[i] = points[nns[i*minPts + minPts-1]].dist(points[i]);
+    }
+    
+    return coreDist;
+}
+
+std::vector<double> parallel_cdists20(arma::mat &data, size_t k){
+    int n = data.n_cols;
+    const int dim = 20; // Example dimension that is hardcoded for testing...
+    const int minPts = k;
+    
+    using Point = pargeo::point<dim>; // Define the type of point
+    using nodeT = pargeo::kdNode<dim, pargeo::point<dim>>;
+
+    parlay::sequence<pargeo::point<dim>> points =  convertArmaMatToParlayPoints<dim>(data);
+    
+    nodeT* tree = pargeo::buildKdt<dim, pargeo::point<dim>>(points, true, true);
+    parlay::sequence<size_t> nns = pargeo::kdTreeKnn<dim, Point>(points, minPts, tree, true); 
+
+    std::vector<double> coreDist(n);
+
+    for(int i = 0; i< points.size(); i++){
+		coreDist[i] = points[nns[i*minPts + minPts-1]].dist(points[i]);
+    }
+    
+
+    return coreDist;
+}
+
+std::vector<double> parallel_cdists_arma(arma::mat &data, size_t k){
+    int n = data.n_cols;
+    int dim = data.n_rows; // Example dimension that is hardcoded for testing...
+    int minPts = k;
+    
+    using Point = pargeo::point2; // Define the type of point
+    using nodeT = pargeo::kdNode2<pargeo::point2>;
+
+    parlay::sequence<pargeo::point2> points =  convertArmaMatToParlayPoints2(data);
+    
+    nodeT* tree = pargeo::buildKdt2<pargeo::point2>(points, true, true);
+    parlay::sequence<size_t> nns = pargeo::kdTreeKnn2<Point>(points, minPts, tree, true); 
+
+    std::vector<double> coreDist(n);
+
+    for(int i = 0; i< points.size(); i++){
+		coreDist[i] = points[nns[i*minPts + minPts-1]].dist(points[i]);
+    }
+    
+    // parlay::parallel_for (0, points.size(), [&](int i) {
+	// 		       coreDist[i] = points[nns[i*minPts + minPts-1]].dist(points[i]);
+	// 		     });
+
+    return coreDist;
+}
+
+
+
+
+
+
+
+
 template<const int dim>
 parlay::sequence<pargeo::point<dim>> convertArmaMatToParlayPoints(const arma::mat& mat) {
 
@@ -236,6 +311,23 @@ parlay::sequence<pargeo::point<dim>> convertArmaMatToParlayPoints(const arma::ma
             coords[i] = mat(i, j);
         }
         points[j] = pargeo::point<dim>(coords);
+    }
+
+    return points;
+}
+
+
+parlay::sequence<pargeo::point2> convertArmaMatToParlayPoints2(const arma::mat& mat) {
+    // Create a parlay sequence of points
+    parlay::sequence<pargeo::point2> points(mat.n_cols);
+    std::cout<< "num cols:" << mat.n_cols << std::endl;
+    // Populate the sequence with points created from the matrix columns
+    for (size_t j = 0; j < mat.n_cols; ++j) {
+        arma::Col<double> coords(mat.n_rows);
+        for (size_t i = 0; i < mat.n_rows; ++i) {
+            coords[i] = mat(i, j);
+        }
+        points[j] = pargeo::point2(&coords);
     }
 
     return points;

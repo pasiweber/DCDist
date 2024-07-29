@@ -1876,6 +1876,9 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
   /usr/local/include/parlay/sequence.h \
   /usr/local/include/parlay/relocation.h \
   ../parallel_hdbscan/src/kdTreeKnn.h \
+  ../parallel_hdbscan/src/kdTreeArma.h \
+  ../parallel_hdbscan/include/hdbscan/armapoint.h \
+  ../parallel_hdbscan/src/kdTreeKnnArma.h \
   /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/pybind11.h \
   /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/detail/class.h \
   /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/attr.h \
@@ -2816,6 +2819,8 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 
 /usr/local/include/mlpack/methods/reinforcement_learning/policy/policy.hpp:
 
+/usr/local/include/mlpack/methods/reinforcement_learning/environment/reward_clipping.hpp:
+
 /usr/local/include/mlpack/core/data/tokenizers/char_extract.hpp:
 
 /usr/local/include/mlpack/core/data/string_encoding_policies/dictionary_encoding_policy.hpp:
@@ -3235,8 +3240,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/local/include/mlpack/methods/kmeans/kmeans.hpp:
 
 /usr/local/include/mlpack/core/tree/binary_space_tree/traits.hpp:
-
-/usr/include/armadillo_bits/op_mean_meat.hpp:
 
 /usr/include/c++/11/system_error:
 
@@ -4036,8 +4039,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 
 /usr/include/python3.10/cpython/abstract.h:
 
-/usr/local/include/mlpack/methods/reinforcement_learning/environment/reward_clipping.hpp:
-
 /usr/include/armadillo_bits/translate_superlu.hpp:
 
 /usr/include/armadillo_bits/SpMat_iterators_meat.hpp:
@@ -4151,6 +4152,12 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/include/armadillo_bits/spop_diagmat_bones.hpp:
 
 /usr/include/armadillo_bits/op_flip_meat.hpp:
+
+/usr/local/include/mlpack/methods/reinforcement_learning/environment/mountain_car.hpp:
+
+/usr/local/include/mlpack/methods/ann/dists/bernoulli_distribution_impl.hpp:
+
+/usr/local/include/mlpack/methods/ann/loss_functions/cosine_embedding_loss_impl.hpp:
 
 /usr/include/c++/11/tr1/modified_bessel_func.tcc:
 
@@ -5720,6 +5727,10 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 
 /usr/local/include/mlpack/methods/rann.hpp:
 
+/usr/local/include/mlpack/methods/reinforcement_learning/environment/pendulum.hpp:
+
+/usr/local/include/mlpack/methods/kmeans/dual_tree_kmeans.hpp:
+
 /usr/local/include/mlpack/core/kernels/pspectrum_string_kernel.hpp:
 
 /usr/local/include/mlpack/core/tree/cover_tree/traits.hpp:
@@ -6136,6 +6147,8 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 
 /usr/include/ensmallen_bits/problems/ackley_function_impl.hpp:
 
+../parallel_hdbscan/src/kdTreeArma.h:
+
 /usr/local/include/mlpack/methods/amf/init_rules/random_init.hpp:
 
 /usr/include/ensmallen_bits/problems/aug_lagrangian_test_functions.hpp:
@@ -6384,6 +6397,8 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 
 /usr/include/ensmallen_bits/fw/frank_wolfe_impl.hpp:
 
+../parallel_hdbscan/include/hdbscan/armapoint.h:
+
 /usr/include/ensmallen_bits/gradient_descent/gradient_descent_impl.hpp:
 
 /usr/local/include/mlpack/methods/ann/loss_functions/sigmoid_cross_entropy_error_impl.hpp:
@@ -6631,6 +6646,10 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/local/include/parlay/internal/delayed/terminal.h:
 
 /usr/local/include/parlay/internal/delayed/scan.h:
+
+/usr/include/armadillo_bits/op_mean_meat.hpp:
+
+../parallel_hdbscan/src/kdTreeKnnArma.h:
 
 /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/detail/class.h:
 
@@ -7547,13 +7566,3 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/local/include/mlpack/methods/reinforcement_learning/environment/env_type.hpp:
 
 /usr/local/include/mlpack/methods/reinforcement_learning/environment/ftn_param.hpp:
-
-/usr/local/include/mlpack/methods/ann/dists/bernoulli_distribution_impl.hpp:
-
-/usr/local/include/mlpack/methods/ann/loss_functions/cosine_embedding_loss_impl.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/environment/mountain_car.hpp:
-
-/usr/local/include/mlpack/methods/kmeans/dual_tree_kmeans.hpp:
-
-/usr/local/include/mlpack/methods/reinforcement_learning/environment/pendulum.hpp:

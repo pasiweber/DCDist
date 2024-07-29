@@ -13,6 +13,11 @@
 #include <../parallel_hdbscan/src/kdTreeKnn.h>
 #include <../parallel_hdbscan/include/hdbscan/point.h>
 
+#include <../parallel_hdbscan/src/kdTreeArma.h>
+#include <../parallel_hdbscan/src/kdTreeKnnArma.h>
+#include <../parallel_hdbscan/include/hdbscan/armapoint.h>
+
+
 
 //Nodes for the dc-tree
 /*
@@ -72,7 +77,16 @@ std::vector<double> extract_cdists(arma::mat distances, size_t k);
 
 std::vector<double> naive_cdists_efficient(arma::mat &data, size_t k);
 std::vector<double> parallel_cdists(arma::mat &data, size_t k);
+std::vector<double> parallel_cdists2(arma::mat &data, size_t k);
+std::vector<double> parallel_cdists20(arma::mat &data, size_t k);
+
+
+
 template<const int dim>
 parlay::sequence<pargeo::point<dim>> convertArmaMatToParlayPoints(const arma::mat& mat);
+
+
+std::vector<double> parallel_cdists_arma(arma::mat &data, size_t k);
+parlay::sequence<pargeo::point2> convertArmaMatToParlayPoints2(const arma::mat& mat);
 
 #endif
