@@ -8402,7 +8402,8 @@ CMakeFiles/MyProject.dir/src/example.cpp.o: ../src/example.cpp \
   ../parallel_hdbscan/src/kdTreeKnn.h \
   ../src/lp_objective.hpp \
   ../src/dc_hdbscan.hpp \
-  ../parallel_hdbscan/src/kdTreeArma.h
+  ../parallel_hdbscan/src/kdTreeArma.h \
+  ../parallel_hdbscan/include/hdbscan/armapoint.h
 
 CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
   /usr/include/stdc-predef.h \
@@ -8626,6 +8627,8 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 
 
 ../src/kcentroids.cpp:
+
+../parallel_hdbscan/include/hdbscan/armapoint.h:
 
 ../parallel_hdbscan/src/kdTreeArma.h:
 

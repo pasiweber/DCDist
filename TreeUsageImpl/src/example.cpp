@@ -15,7 +15,7 @@
 #include <../parallel_hdbscan/src/kdTreeKnn.h>
 #include <../parallel_hdbscan/include/hdbscan/point.h>
 #include <../parallel_hdbscan/src/kdTreeArma.h>
-
+#include <../parallel_hdbscan/include/hdbscan/armapoint.h>
 
 
 // Function to create a new node -
@@ -225,6 +225,23 @@ parlay::sequence<pargeo::point<dim>> convertArmaMatToParlayPoints(const arma::ma
 }
 
 
+parlay::sequence<pargeo::point2> convertArmaMatToParlayPoints2(const arma::mat& mat) {
+
+     // Create a parlay sequence of points
+    parlay::sequence<pargeo::point2> points(mat.n_cols);
+    std::cout<< "num cols:" << mat.n_cols << std::endl;
+    // Populate the sequence with points created from the matrix columns
+    for (size_t j = 0; j < mat.n_cols; ++j) {
+        arma::Col<double> coords(mat.n_rows);
+        for (size_t i = 0; i < mat.n_rows; ++i) {
+            coords[i] = mat(i, j);
+        }
+        points[j] = pargeo::point2(&coords);
+    }
+
+    return points;
+}
+
 void test_mlpack(){
     arma::mat data3 = {{0.0, 1.0},
                         {0.0, 2.0},
@@ -240,11 +257,15 @@ void test_mlpack(){
     const int minPts = 2;
     using Point = pargeo::point<dim>; // Define the type of point
     using nodeT = pargeo::kdNode<dim, pargeo::point<dim>>;
-    
-    parlay::sequence<pargeo::point<dim>> points =  convertArmaMatToParlayPoints<dim>(data2);
+    using nodeT2 = pargeo::kdNode2<pargeo::point2>;
 
+    parlay::sequence<pargeo::point<dim>> points =  convertArmaMatToParlayPoints<dim>(data2);
+    parlay::sequence<pargeo::point2> points2 =  convertArmaMatToParlayPoints2(data2);
     nodeT* tree = pargeo::buildKdt<dim, pargeo::point<dim>>(points, false, true);
-    nodeT* tree2 = pargeo::buildKdt2<dim, pargeo::point<dim>>(points, false, true);
+    nodeT2* tree2 = pargeo::buildKdt2<pargeo::point2>(points2, true, true);
+
+    
+    //nodeT2* tree2 = pargeo::buildKdt2<pargeo::point2>(points2, false, true);
     parlay::sequence<size_t> nns = pargeo::kdTreeKnn<dim, Point>(points, minPts, tree, true); 
 
     parlay::sequence<float> coreDist = parlay::sequence<float>(points.size());
@@ -263,11 +284,29 @@ void test_mlpack(){
 }
 
 
+void simpleTest(){
+
+    arma::Col<double> a = {4.0,5.0,6.0};
+
+    arma::Col<double> c(a);
+
+    arma::Col<double> d = {1.0,2.0,3.0};
+
+    pargeo::point2 point(&d);
+
+    arma::Col<double> *coords = point.coords();
+    std::cout << point.dim << " dimensions" << std::endl;
+    pargeo::point2 point2(point.coords());
+    std::cout << point2.dim << " dimensions" << std::endl;
+}
+
+
 
 int main() {
     //test_k_centroids();
     //test_hdbscan();
     //test_parallel_hdbscan();
+    //simpleTest();
     test_mlpack();
     return 0;
 }

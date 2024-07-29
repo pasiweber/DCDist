@@ -1,0 +1,126 @@
+#pragma once
+
+#include <iostream>
+#include <algorithm>
+#include <math.h>
+#include <iomanip>
+#include "parlay/parallel.h"
+#include "parlay/primitives.h"
+#include <mlpack/core.hpp>
+
+namespace pargeo {
+  using namespace std;
+
+  struct _empty2 {
+    int arr[0]; // todo this produces a struct of size 0 but seems dangerous, need to check
+  };
+
+  template <class _tData, class _tFloat, class _tAtt> class _point2 {
+
+    static constexpr _tData empty = numeric_limits<_tData>::max();
+
+  public:
+    typedef _tFloat floatT;
+
+    arma::Col<_tData> x;
+    _tAtt attribute;
+    int dim;
+
+    _point2(){};
+    //Constructors
+    _point2(int dim) : x(dim) { 
+      x.fill(empty); 
+      this->dim = dim;}
+
+    _point2(arma::Col<_tData> *p): x(*p) { 
+      dim = x.size();
+    }
+
+    _point2(_point2 *p): attribute(p->attribute) { 
+      x(p->x); 
+      dim = x.size();
+    }
+
+    template<class _tIn>
+    _point2(parlay::slice<_tIn*,_tIn*> p) {
+      x.set_size(p.x.size());
+      for(int i=0; i<p.x.size(); ++i) x[i] = (_tData)p[i];
+      dim = x.size();
+      }
+
+    void setEmpty() {x[0]=empty;}
+
+    bool isEmpty() {return x[0]==empty;}
+
+    _point2 operator+(_point2 op2) {
+      return _point2(x+op2.x);}
+
+    _point2 operator-(_point2 op2) {
+      return _point2(x-op2.x);}
+
+    _point2 operator*(_tData dv) {
+      return _point2(x*dv);} // % is the element wise multiplication in armadillo
+
+    _point2 operator/(_tData dv) {
+      return _point2(x/dv);}
+
+    _tData& operator[](int i) {return x[i];}
+
+    _tData& at(int i) {return x[i];}
+
+    friend bool operator==(_point2 a, _point2 b) {  
+      return arma::all(a==b);
+      }
+
+    friend bool operator!=(_point2 a, _point2 b) {return !(a==b);}
+
+    arma::Col<_tData>* coords() {return &x;}
+
+
+    inline _tFloat dist(_point2 p) {
+      return arma::norm(x-p.x, 2);
+    }
+
+    _tData dot(_point2 p2) {
+      return arma::dot(x, p2.x);}
+
+    _point2 mult(_tData c) {
+      return _point2(x*c);}
+
+
+    _tFloat length() {
+      return arma::norm(x);}
+  };
+
+
+  using point2 = _point2<double, double, _empty2>;
+
+  using fpoint2 = _point2<float, float, _empty2>;
+
+  using lpoint2 = _point2<long, double, _empty2>;
+
+  template<class _A, class _B>
+  _B point2Cast(_B p) {
+    _B q;
+    for (int i=0; i<p.dim; ++i) q[i] = p[i];
+    return q;
+  }
+}
+
+static std::ostream& operator<<(std::ostream& os, const pargeo::point2 v) {
+  for (int i=0; i<v.x.size(); ++i)
+    os << v.x[i] << " ";
+  return os;
+}
+
+static std::ostream& operator<<(std::ostream& os, const pargeo::fpoint2 v) {
+  for (int i=0; i<v.x.size(); ++i)
+    os << v.x[i] << " ";
+  return os;
+}
+
+static std::ostream& operator<<(std::ostream& os, const pargeo::lpoint2 v) {
+  for (int i=0; i<v.x.size(); ++i)
+    os << v.x[i] << " ";
+  return os;
+}

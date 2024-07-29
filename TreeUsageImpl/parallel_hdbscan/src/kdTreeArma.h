@@ -1,17 +1,17 @@
 #pragma once
 
-#include "../include/hdbscan/point.h"
+#include "../include/hdbscan/armapoint.h"
 #include "parlay/parallel.h"
 #include "parlay/sequence.h"
 #include <mlpack/core.hpp>
 namespace pargeo {
 
-template <int _dim, class _objT> class kdNode2 {
+template <class _objT> class kdNode2 {
 
   typedef int intT;
   typedef double floatT;
-  typedef pargeo::point<_dim> pointT;
-  typedef kdNode<_dim, _objT> nodeT;
+  typedef pargeo::point2 pointT;
+  typedef kdNode2<_objT> nodeT;
 
   // Data fields
   intT id;
@@ -19,7 +19,6 @@ template <int _dim, class _objT> class kdNode2 {
   int k;
 
   pointT pMin, pMax;
-  arma::vec pMin2, pMax2;
 
   nodeT *left;
 
@@ -28,7 +27,6 @@ template <int _dim, class _objT> class kdNode2 {
   nodeT *sib;
 
   parlay::slice<_objT **, _objT **> items;
-  parlay::slice<arma::vec **, arma::vec **> items2; //Currently only using ONE pointer here instead of the pointer pointer.
 
   // Methods
 
@@ -42,22 +40,6 @@ template <int _dim, class _objT> class kdNode2 {
       _pMax[i] = max(_pMax[i], p[i]);
   }
 
-    //New
-    inline void minCoords2(arma::vec &_pMin, arma::vec &p) {
-        for (int i = 0; i < _pMin.n_elem; ++i){
-            _pMin[i] = min(_pMin[i], p[i]);
-        }
-    }
-    //New
-    inline void maxCoords2(arma::vec &_pMax, arma::vec &p) {
-        for (int i = 0; i < _pMax.n_elem; ++i){
-            _pMax[i] = max(_pMax[i], p[i]);
-        }
-    }
-
-
-
-
   inline void boundingBoxSerial() {
     pMin = pointT(items[0]->coords());
     pMax = pointT(items[0]->coords());
@@ -67,16 +49,6 @@ template <int _dim, class _objT> class kdNode2 {
     }
   }
 
-    //New
-    inline void boundingBoxSerial2() {
-        pMin2 = arma::vec(*(items2[0]));
-        pMax2 = arma::vec(*(items2[0]));
-
-        for (intT i = 0; i < size(); ++i) {
-            minCoords2(pMin2, items2[i][0]);
-            maxCoords2(pMax2, items2[i][0]);
-        }
-    }
 
 
   inline void boundingBoxParallel() {
@@ -103,34 +75,6 @@ template <int _dim, class _objT> class kdNode2 {
       maxCoords(pMax, localMax[p]);
     }
   }
-
-
-
-    inline void boundingBoxParallel2() {
-        intT P = parlay::num_workers() * 8;
-        intT blockSize = (size() + P - 1) / P;
-        pointT localMin[P];
-        pointT localMax[P];
-        for (intT i = 0; i < P; ++i) {
-            localMin[i] = pointT(items[0]->coords());
-            localMax[i] = pointT(items[0]->coords());
-        }
-        parlay::parallel_for(0, P, [&](intT p) {
-            intT s = p * blockSize;
-            intT e = min((intT)(p + 1) * blockSize, size());
-            for (intT j = s; j < e; ++j) {
-            minCoords(localMin[p], items[j][0]);
-            maxCoords(localMax[p], items[j][0]);
-            }
-        });
-        pMin = pointT(items[0]->coords());
-        pMax = pointT(items[0]->coords());
-        for (intT p = 0; p < P; ++p) {
-            minCoords(pMin, localMin[p]);
-            maxCoords(pMax, localMax[p]);
-        }
-    }
-
 
 
 
@@ -161,8 +105,12 @@ template <int _dim, class _objT> class kdNode2 {
     return lPt;
   }
 
+
+
+
+
   inline bool itemInBox(pointT pMin1, pointT pMax1, _objT *item) {
-    for (int i = 0; i < _dim; ++i) {
+    for (int i = 0; i < dim; ++i) {
       if (pMax1[i] < item->at(i) || pMin1[i] > item->at(i))
         return false;
     }
@@ -171,7 +119,7 @@ template <int _dim, class _objT> class kdNode2 {
 
   intT findWidest() {
     floatT xM = -1;
-    for (int kk = 0; kk < _dim; ++kk) {
+    for (int kk = 0; kk < dim; ++kk) {
       if (pMax[kk] - pMin[kk] > xM) {
         xM = pMax[kk] - pMin[kk];
         k = kk;
@@ -202,10 +150,11 @@ template <int _dim, class _objT> class kdNode2 {
       /* } */
 
       // Recursive construction
-      space[0] = nodeT(items.cut(0, median), median, space + 1, leafSize);
-      space[2 * median - 1] = nodeT(items.cut(median, size()), size() - median,
+      space[0] = nodeT(dim, items.cut(0, median), median, space + 1, leafSize);
+      space[2 * median - 1] = nodeT(dim, items.cut(median, size()), size() - median,
                                     space + 2 * median, leafSize);
       left = space;
+
       right = space + 2 * median - 1;
       left->sib = right;
       right->sib = left;
@@ -248,12 +197,12 @@ template <int _dim, class _objT> class kdNode2 {
       // Recursive construction
       parlay::par_do(
           [&]() {
-            space[0] = nodeT(items.cut(0, median), median, space + 1,
+            space[0] = nodeT(dim, items.cut(0, median), median, space + 1,
                              flags.cut(0, median), leafSize);
           },
           [&]() {
             space[2 * median - 1] =
-                nodeT(items.cut(median, size()), size() - median,
+                nodeT(dim, items.cut(median, size()), size() - median,
                       space + 2 * median, flags.cut(median, size()), leafSize);
           });
       left = space;
@@ -266,7 +215,7 @@ template <int _dim, class _objT> class kdNode2 {
 public:
   using objT = _objT;
 
-  static constexpr int dim = _dim;
+  int dim;
 
   inline nodeT *L() { return left; }
 
@@ -308,7 +257,7 @@ public:
 
   floatT diag() {
     floatT result = 0;
-    for (int d = 0; d < _dim; ++d) {
+    for (int d = 0; d < dim; ++d) {
       floatT tmp = pMax[d] - pMin[d];
       result += tmp * tmp;
     }
@@ -317,7 +266,7 @@ public:
 
   inline floatT lMax() {
     floatT myMax = 0;
-    for (int d = 0; d < _dim; ++d) {
+    for (int d = 0; d < dim; ++d) {
       floatT thisMax = pMax[d] - pMin[d];
       if (thisMax > myMax) {
         myMax = thisMax;
@@ -330,7 +279,7 @@ public:
                         pointT pMax2) {
     bool exclude = false;
     bool include = true; // 1 include 2
-    for (int i = 0; i < _dim; ++i) {
+    for (int i = 0; i < dim; ++i) {
       if (pMax1[i] < pMin2[i] || pMin1[i] > pMax2[i])
         exclude = true;
       if (pMax1[i] < pMax2[i] || pMin1[i] > pMin2[i])
@@ -344,23 +293,25 @@ public:
       return boxOverlap;
   }
 
-  kdNode2(parlay::slice<_objT **, _objT **> itemss, intT nn, nodeT *space,
+  kdNode2(int dims, parlay::slice<_objT **, _objT **> itemss, intT nn, nodeT *space,
          parlay::slice<bool *, bool *> flags, intT leafSize = 16)
       : items(itemss) {
     resetId();
+    dim = dims;
     if (size() > 2000)
       constructParallel(space, flags, leafSize);
     else
       constructSerial(space, leafSize);
   }
 
-  kdNode2(parlay::slice<_objT **, _objT **> itemss, intT nn, nodeT *space,
+  kdNode2(int dims, parlay::slice<_objT **, _objT **> itemss, intT nn, nodeT *space, 
          intT leafSize = 16)
       : items(itemss) {
     resetId();
+    dim = dims;
     constructSerial(space, leafSize);
   }
-};
+}; //End knode2
 
 template <typename nodeT> inline double nodeDistance2(nodeT *n1, nodeT *n2) {
   using floatT = typename nodeT::objT::floatT;
@@ -392,12 +343,12 @@ template <typename nodeT> inline double nodeFarDistance2(nodeT *n1, nodeT *n2) {
   return sqrt(result);
 }
 
-template <int dim, class objT>
-kdNode<dim, objT> *buildKdt2(parlay::sequence<objT> &P, bool parallel = true,
+template <class objT>
+kdNode2<objT> *buildKdt2(parlay::sequence<objT> &P, bool parallel = true,
                             bool noCoarsen = false,
                             parlay::sequence<objT *> *items = nullptr) {
-  typedef kdNode<dim, objT> nodeT;
-
+  typedef kdNode2<objT> nodeT; //new
+  int dims = P[0].dim; //new
   size_t n = P.size();
 
   if (!items) {
@@ -408,7 +359,8 @@ kdNode<dim, objT> *buildKdt2(parlay::sequence<objT> &P, bool parallel = true,
 
   parlay::slice<objT **, objT **> itemSlice = items->cut(0, items->size());
 
-  auto root = (nodeT *)malloc(sizeof(nodeT) * (2 * n - 1));
+  auto root = (nodeT *)malloc(sizeof(nodeT) * (2 * n - 1)); 
+  //auto root = new nodeT[2*n-1]; 
 
   /* parlay::parallel_for(0, 2*n-1, [&](size_t i) { */
   /* 	root[i].setEmpty(); */
@@ -417,9 +369,9 @@ kdNode<dim, objT> *buildKdt2(parlay::sequence<objT> &P, bool parallel = true,
   if (parallel) {
     auto flags = parlay::sequence<bool>(n);
     auto flagSlice = parlay::slice(flags.begin(), flags.end());
-    root[0] = nodeT(itemSlice, n, root + 1, flagSlice, noCoarsen ? 1 : 16);
+    root[0] = nodeT(dims, itemSlice, n, root + 1, flagSlice, noCoarsen ? 1 : 16);
   } else {
-    root[0] = nodeT(itemSlice, n, root + 1, noCoarsen ? 1 : 16);
+    root[0] = nodeT(dims, itemSlice, n, root + 1, noCoarsen ? 1 : 16);
   }
   return root;
 }

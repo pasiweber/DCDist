@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.10)
 project(MyProject)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3") #Set warnings here, TODO
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -w")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -w")
+
+
 
 set(CMAKE_PREFIX_PATH "/home/rasmus/.local/lib/python3.10/site-packages/pybind11/share/cmake/pybind11")
 

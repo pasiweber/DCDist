@@ -40,6 +40,7 @@
 #include "parlay/sequence.h"
 #include "kdTree.h"
 #include "../include/hdbscan/point.h"
+#include "../include/hdbscan/armapoint.h"
 
 namespace pargeo {
 
@@ -172,7 +173,7 @@ namespace pargeo {
   }
 
   template<int dim, class objT>
-  parlay::sequence<size_t> kdTreeKnn(parlay::sequence<objT> &queries,
+  parlay::sequence<size_t> kdTreeKnn2(parlay::sequence<objT> &queries,
 				     size_t k,
 				     kdNode<dim, objT>* tree = nullptr,
 				     bool sorted = false) {
@@ -199,8 +200,8 @@ namespace pargeo {
     return idx;
   }
 
-  template<int dim, typename objT>
-  parlay::sequence<size_t> bruteforceKnn(parlay::sequence<objT> &queries, size_t k) {
+  template<typename objT>
+  parlay::sequence<size_t> bruteforceKnn2(parlay::sequence<objT> &queries, size_t k) {
     auto out = parlay::sequence<elem<objT*>>(2*k*queries.size());
     auto idx = parlay::sequence<size_t>(k*queries.size());
     parlay::parallel_for(0, queries.size(), [&](size_t i) {
