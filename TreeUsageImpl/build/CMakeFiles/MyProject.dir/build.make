@@ -139,13 +139,58 @@ CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/dc_dist_bindings.cpp -o CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.s
 
+CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o: CMakeFiles/MyProject.dir/flags.make
+CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o: ../parallel_hdbscan/src/hdbscan_arma.cpp
+CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o: CMakeFiles/MyProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o -MF CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o.d -o CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o -c /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/hdbscan_arma.cpp
+
+CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/hdbscan_arma.cpp > CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.i
+
+CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/hdbscan_arma.cpp -o CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.s
+
+CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.o: CMakeFiles/MyProject.dir/flags.make
+CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.o: ../parallel_hdbscan/src/hdbscan.cpp
+CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.o: CMakeFiles/MyProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.o -MF CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.o.d -o CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.o -c /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/hdbscan.cpp
+
+CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/hdbscan.cpp > CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.i
+
+CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/hdbscan.cpp -o CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.s
+
+CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.o: CMakeFiles/MyProject.dir/flags.make
+CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.o: ../parallel_hdbscan/src/dendrogram.cpp
+CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.o: CMakeFiles/MyProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.o -MF CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.o.d -o CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.o -c /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/dendrogram.cpp
+
+CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/dendrogram.cpp > CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.i
+
+CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/dendrogram.cpp -o CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.s
+
 # Object files for target MyProject
 MyProject_OBJECTS = \
 "CMakeFiles/MyProject.dir/src/example.cpp.o" \
 "CMakeFiles/MyProject.dir/src/kcentroids.cpp.o" \
 "CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o" \
 "CMakeFiles/MyProject.dir/src/dc_dist.cpp.o" \
-"CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o"
+"CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o" \
+"CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o" \
+"CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.o" \
+"CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.o"
 
 # External object files for target MyProject
 MyProject_EXTERNAL_OBJECTS =
@@ -155,10 +200,13 @@ MyProject: CMakeFiles/MyProject.dir/src/kcentroids.cpp.o
 MyProject: CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o
 MyProject: CMakeFiles/MyProject.dir/src/dc_dist.cpp.o
 MyProject: CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o
+MyProject: CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o
+MyProject: CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.o
+MyProject: CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.o
 MyProject: CMakeFiles/MyProject.dir/build.make
 MyProject: /usr/lib/x86_64-linux-gnu/libpython3.10.so
 MyProject: CMakeFiles/MyProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable MyProject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable MyProject"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MyProject.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

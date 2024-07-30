@@ -2752,8 +2752,12 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
   /usr/local/include/mlpack/methods/sparse_coding/sparse_coding.hpp \
   /usr/local/include/mlpack/methods/svdplusplus.hpp \
   /usr/local/include/mlpack/methods/svdplusplus/svdplusplus.hpp \
-  /usr/local/include/mlpack/namespace_compat.hpp
+  /usr/local/include/mlpack/namespace_compat.hpp \
+  ../parallel_hdbscan/include/hdbscan/hdbscan.h \
+  ../parallel_hdbscan/include/hdbscan/edge.h
 
+
+../parallel_hdbscan/include/hdbscan/hdbscan.h:
 
 /usr/local/include/mlpack/namespace_compat.hpp:
 
@@ -5204,6 +5208,8 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/include/armadillo_bits/fn_symmat.hpp:
 
 /usr/include/ensmallen_bits/problems/schwefel_function_impl.hpp:
+
+../parallel_hdbscan/include/hdbscan/edge.h:
 
 /usr/include/armadillo_bits/GlueCube_bones.hpp:
 

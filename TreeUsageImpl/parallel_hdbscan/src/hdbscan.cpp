@@ -33,8 +33,8 @@
 #include "wspdFilter.h"
 #include "mark.h"
 
-#include "hdbscan/point.h"
-#include "hdbscan/hdbscan.h"
+#include "../include/hdbscan/point.h"
+#include "../include/hdbscan/hdbscan.h"
 
 using namespace std;
 using namespace parlay;

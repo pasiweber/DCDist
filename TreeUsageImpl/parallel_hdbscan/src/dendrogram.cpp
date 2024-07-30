@@ -4,9 +4,11 @@
 #include "unionFind.h"
 #include "getTime.h"
 
-#include "hdbscan/point.h"
-#include "hdbscan/edge.h"
-#include "hdbscan/hdbscan.h"
+#include "../include/hdbscan/point.h"
+#include "../include/hdbscan/armapoint.h"
+
+#include "../include/hdbscan/edge.h"
+#include "../include/hdbscan/hdbscan.h"
 
 using namespace std;
 using namespace parlay;

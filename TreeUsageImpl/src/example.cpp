@@ -17,6 +17,7 @@
 #include <../parallel_hdbscan/src/kdTreeArma.h>
 #include <../parallel_hdbscan/src/kdTreeKnnArma.h>
 #include <../parallel_hdbscan/include/hdbscan/armapoint.h>
+#include <../parallel_hdbscan/include/hdbscan/hdbscan.h>
 
 
 // Function to create a new node -
@@ -218,43 +219,22 @@ void test_mlpack(){
                         };
 
     arma::mat data2 = arma::trans(data3);
-
-    const int dim = 2;
     const int minPts = 2;
-    using Point = pargeo::point<dim>; // Define the type of point
-    using nodeT = pargeo::kdNode<dim, pargeo::point<dim>>;
-    using nodeT2 = pargeo::kdNode2<pargeo::point2>;
 
-    parlay::sequence<pargeo::point<dim>> points =  convertArmaMatToParlayPoints<dim>(data2);
+
     parlay::sequence<pargeo::point2> points2 =  convertArmaMatToParlayPoints2(data2);
-    nodeT* tree = pargeo::buildKdt<dim, pargeo::point<dim>>(points, false, true);
-    nodeT2* tree2 = pargeo::buildKdt2<pargeo::point2>(points2, true, true);
+    int dim = 2;
+    size_t n = 6;
+    parlay::sequence<pargeo::dirEdge> result_vec;
 
+    parlay::sequence<pargeo::wghEdge> E;
+
+    E = pargeo::hdbscan_arma(points2, minPts);
     
-    //nodeT2* tree2 = pargeo::buildKdt2<pargeo::point2>(points2, false, true);
-    parlay::sequence<size_t> nns = pargeo::kdTreeKnn<dim, Point>(points, minPts, tree, true); 
-    parlay::sequence<size_t> nns2 = pargeo::kdTreeKnn2<pargeo::point2>(points2, minPts, tree2, true); 
+    std::cout << "here1" << std::endl;
 
-    parlay::sequence<float> coreDist = parlay::sequence<float>(points.size());
-    parlay::sequence<float> coreDist2 = parlay::sequence<float>(points2.size());
-
-
-
-    parlay::parallel_for (0, points.size(), [&](int i) {
-			       coreDist[i] = points[nns[i*minPts + minPts-1]].dist(points[i]);
-			       coreDist2[i] = points2[nns2[i*minPts + minPts-1]].dist(points2[i]);
-			     });
-
-    std::cout << "cdists orig:" << std::endl;
-    for (const float& value : coreDist) {
-        std::cout << value << " ";
-    }
-    std::cout << std::endl;
-
-    std::cout << "cdists new:" << std::endl;
-    for (const float& value : coreDist2) {
-        std::cout << value << " ";
-    }
+    parlay::sequence<pargeo::dendroNode> dendro = pargeo::dendrogram(E, n);
+    std::cout << "here2" << std::endl;
 
 
 }
@@ -274,6 +254,9 @@ void simpleTest(){
     std::cout << point.dim << " dimensions" << std::endl;
     pargeo::point2 point2(point.coords());
     std::cout << point2.dim << " dimensions" << std::endl;
+
+
+    
 }
 
 

@@ -25,7 +25,7 @@
 #include "parlay/primitives.h"
 #include "parlay/parallel.h"
 #include "atomics.h"
-#include "hdbscan/edge.h"
+#include "../include/hdbscan/edge.h"
 
 namespace pargeo {
 

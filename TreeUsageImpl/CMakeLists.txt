@@ -36,6 +36,10 @@ add_executable(MyProject src/example.cpp
                 src/dc_hdbscan.cpp
                 src/dc_dist.cpp
                 src/dc_dist_bindings.cpp
+                parallel_hdbscan/src/hdbscan_arma.cpp
+                parallel_hdbscan/src/hdbscan.cpp
+                parallel_hdbscan/src/dendrogram.cpp
+
                 )
 
 

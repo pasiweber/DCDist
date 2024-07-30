@@ -24,7 +24,7 @@
 #pragma once
 
 #include "parlay/sequence.h"
-#include "hdbscan/point.h"
+#include "../include/hdbscan/point.h"
 #include "kdTree.h"
 #include "parBuf.h"
 
