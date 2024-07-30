@@ -103,18 +103,18 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan_arma(parlay::sequence<pargeo::
 
   //This is the (parallel) Memo-GFK (GeoFilterKruskal in this while loop)
   while (UF.numEdge() < S.size() - 1) {
-
+    std::cout << "here1" << std::endl;
     t0.start();
 
     floatT rhoHi;
     auto bccps = filterWspdParallel<nodeT>(beta, rhoLo, rhoHi, tree, &UF,
 					   coreDist, cdMin, cdMax, S.data());
-
+    std::cout << "here1.1" << std::endl;
     wspdTime += t0.get_next();
 
-    cout << "---" << endl;
-    cout << " beta = " << beta << endl;
-    cout << " rho = " << rhoLo << " -- " << rhoHi << endl;
+    // cout << "---" << endl;
+    // cout << " beta = " << beta << endl;
+    // cout << " rho = " << rhoLo << " -- " << rhoHi << endl;
 
     numEdges += bccps.size();
 
@@ -139,18 +139,19 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan_arma(parlay::sequence<pargeo::
         e.weight = get<2>(bcp);
         return e;
       });
-
+    std::cout << "here2" << std::endl;
     batchKruskal(edges, S.size(), UF);
     cout << " mst-edges = " << UF.numEdge() << endl;
     kruskalTime += t0.get_next();
-
+    std::cout << "here3" << std::endl;
     mark<nodeT, pointT, edgeUnionFind<long>>(tree, &UF, S.data());
     markTime += t0.stop();
 
     beta *= 2;
     rhoLo = rhoHi;
+    std::cout << "here4" << std::endl;
   }
-
+  std::cout << "here5" << std::endl;
   // floatT sum = 0;
   // auto E = UF.getEdge();
   // for (auto e: E) {

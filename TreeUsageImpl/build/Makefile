@@ -206,6 +206,7 @@ parallel_hdbscan/src/dendrogram.o: parallel_hdbscan/src/dendrogram.cpp.o
 # target to build an object file
 parallel_hdbscan/src/dendrogram.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dctree.dir/build.make CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.o
 .PHONY : parallel_hdbscan/src/dendrogram.cpp.o
 
 parallel_hdbscan/src/dendrogram.i: parallel_hdbscan/src/dendrogram.cpp.i
@@ -214,6 +215,7 @@ parallel_hdbscan/src/dendrogram.i: parallel_hdbscan/src/dendrogram.cpp.i
 # target to preprocess a source file
 parallel_hdbscan/src/dendrogram.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dctree.dir/build.make CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.i
 .PHONY : parallel_hdbscan/src/dendrogram.cpp.i
 
 parallel_hdbscan/src/dendrogram.s: parallel_hdbscan/src/dendrogram.cpp.s
@@ -222,6 +224,7 @@ parallel_hdbscan/src/dendrogram.s: parallel_hdbscan/src/dendrogram.cpp.s
 # target to generate assembly for a file
 parallel_hdbscan/src/dendrogram.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dctree.dir/build.make CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.s
 .PHONY : parallel_hdbscan/src/dendrogram.cpp.s
 
 parallel_hdbscan/src/hdbscan.o: parallel_hdbscan/src/hdbscan.cpp.o
@@ -230,6 +233,7 @@ parallel_hdbscan/src/hdbscan.o: parallel_hdbscan/src/hdbscan.cpp.o
 # target to build an object file
 parallel_hdbscan/src/hdbscan.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dctree.dir/build.make CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan.cpp.o
 .PHONY : parallel_hdbscan/src/hdbscan.cpp.o
 
 parallel_hdbscan/src/hdbscan.i: parallel_hdbscan/src/hdbscan.cpp.i
@@ -238,6 +242,7 @@ parallel_hdbscan/src/hdbscan.i: parallel_hdbscan/src/hdbscan.cpp.i
 # target to preprocess a source file
 parallel_hdbscan/src/hdbscan.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dctree.dir/build.make CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan.cpp.i
 .PHONY : parallel_hdbscan/src/hdbscan.cpp.i
 
 parallel_hdbscan/src/hdbscan.s: parallel_hdbscan/src/hdbscan.cpp.s
@@ -246,6 +251,7 @@ parallel_hdbscan/src/hdbscan.s: parallel_hdbscan/src/hdbscan.cpp.s
 # target to generate assembly for a file
 parallel_hdbscan/src/hdbscan.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dctree.dir/build.make CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan.cpp.s
 .PHONY : parallel_hdbscan/src/hdbscan.cpp.s
 
 parallel_hdbscan/src/hdbscan_arma.o: parallel_hdbscan/src/hdbscan_arma.cpp.o
@@ -254,6 +260,7 @@ parallel_hdbscan/src/hdbscan_arma.o: parallel_hdbscan/src/hdbscan_arma.cpp.o
 # target to build an object file
 parallel_hdbscan/src/hdbscan_arma.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dctree.dir/build.make CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o
 .PHONY : parallel_hdbscan/src/hdbscan_arma.cpp.o
 
 parallel_hdbscan/src/hdbscan_arma.i: parallel_hdbscan/src/hdbscan_arma.cpp.i
@@ -262,6 +269,7 @@ parallel_hdbscan/src/hdbscan_arma.i: parallel_hdbscan/src/hdbscan_arma.cpp.i
 # target to preprocess a source file
 parallel_hdbscan/src/hdbscan_arma.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dctree.dir/build.make CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan_arma.cpp.i
 .PHONY : parallel_hdbscan/src/hdbscan_arma.cpp.i
 
 parallel_hdbscan/src/hdbscan_arma.s: parallel_hdbscan/src/hdbscan_arma.cpp.s
@@ -270,6 +278,7 @@ parallel_hdbscan/src/hdbscan_arma.s: parallel_hdbscan/src/hdbscan_arma.cpp.s
 # target to generate assembly for a file
 parallel_hdbscan/src/hdbscan_arma.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dctree.dir/build.make CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan_arma.cpp.s
 .PHONY : parallel_hdbscan/src/hdbscan_arma.cpp.s
 
 src/dc_dist.o: src/dc_dist.cpp.o

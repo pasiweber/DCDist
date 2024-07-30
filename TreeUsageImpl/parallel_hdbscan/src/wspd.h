@@ -23,6 +23,7 @@
 
 #pragma once
 
+#include <iostream>
 #include "parlay/sequence.h"
 #include "../include/hdbscan/point.h"
 #include "kdTree.h"
@@ -251,34 +252,38 @@ namespace pargeo {
   inline void findPairParallel(nodeT *u, nodeT *v, opT* f, double s) {
     if (!f->moveon(u, v)) return;
     if (u->size() + v->size() < 2000) return findPairSerial(u,v,f,s);
-
+    std::cout << "fja1" <<std::endl;
     if (f->wellSeparated(u, v, s)) {
       f->run(u, v);//need to be thread safe
     } else {
-      if (u->isLeaf() && v->isLeaf()) {
-	throw std::runtime_error("error, leaves not well separated");
-      } else if (u->isLeaf()) {
-	par_do([&](){findPairParallel(v->L(), u, f, s);},
-	       [&](){findPairParallel(v->R(), u, f, s);});
-      } else if (v->isLeaf()) {
-	par_do([&](){findPairParallel(u->L(), v, f, s);},
-	       [&](){findPairParallel(u->R(), v, f, s);});
-      } else {
-	if (u->lMax() > v->lMax()) {
-	  par_do([&](){findPairParallel(u->L(), v, f, s);},
-		 [&](){findPairParallel(u->R(), v, f, s);});
-	} else {
-	  par_do([&](){findPairParallel(v->L(), u, f, s);},
-		 [&](){findPairParallel(v->R(), u, f, s);});
-	}
-      }}
+        if (u->isLeaf() && v->isLeaf()) {
+          throw std::runtime_error("error, leaves not well separated");
+        } else if (u->isLeaf()) {
+            std::cout << "fja2" <<std::endl;
+            par_do([&](){findPairParallel(v->L(), u, f, s);}, [&](){findPairParallel(v->R(), u, f, s);});
+        } else if (v->isLeaf()) {
+            std::cout << "fja3" <<std::endl;
+            par_do([&](){findPairParallel(u->L(), v, f, s);}, [&](){findPairParallel(u->R(), v, f, s);});
+        } else {
+          std::cout << "fja4" <<std::endl;
+            if (u->lMax() > v->lMax()) {
+              par_do([&](){findPairParallel(u->L(), v, f, s);}, [&](){findPairParallel(u->R(), v, f, s);});
+            } else {
+              par_do([&](){findPairParallel(v->L(), u, f, s);}, [&](){findPairParallel(v->R(), u, f, s);});
+            }
+        }
+      }
   }
 
   template<typename nodeT, typename opT>
   inline void computeWspdParallel(nodeT *nd, opT *f, double s=2) {
+    std::cout << "oo1" << std::endl;
+
     if (nd->size() < 2000) {
+      std::cout << "oo01" << std::endl;
       computeWspdSerial(nd, f, s);
     } else if (!nd->isLeaf() && f->start(nd)) {
+      std::cout << "oo2" << std::endl;
       par_do([&](){computeWspdParallel(nd->L(), f, s);},
 	     [&](){computeWspdParallel(nd->R(), f, s);});
       findPairParallel<nodeT, opT>(nd->L(), nd->R(), f, s);

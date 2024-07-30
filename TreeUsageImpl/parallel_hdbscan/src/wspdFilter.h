@@ -23,6 +23,7 @@
 
 #pragma once
 
+#include <iostream>
 #include <atomic>
 #include <tuple>
 #include <limits>
@@ -162,43 +163,40 @@ namespace pargeo {
       sequence<floatT>& cdMin;
       sequence<floatT>& cdMax;
 
-      rhoUpdateParallel(floatT _beta,
-			UF *_uf,
-			nodeT* _tree,
-			sequence<floatT>& _coreDist,
-			sequence<floatT>& _cdMin,
-			sequence<floatT>& _cdMax
-			) :
-	beta(_beta), uf(_uf), coreDist(_coreDist), cdMin(_cdMin), cdMax(_cdMax), tree(_tree) {
-	rho = std::numeric_limits<floatT>::max();}
+      rhoUpdateParallel(floatT _beta, UF *_uf, nodeT* _tree, sequence<floatT>& _coreDist, sequence<floatT>& _cdMin, sequence<floatT>& _cdMax) 
+	  : beta(_beta), uf(_uf), coreDist(_coreDist), cdMin(_cdMin), cdMax(_cdMax), tree(_tree) {
+		rho = std::numeric_limits<floatT>::max();}
 
-      void run(nodeT *u, nodeT *v) {
-	floatT myDist = max(nodeDistance(u, v), cdMin[u - tree]);
-	myDist = max(myDist, cdMin[v - tree]);
-	parlay::write_min(&rho, myDist, std::less<floatT>()); //check
-      }
+      	void run(nodeT *u, nodeT *v) {
+			floatT myDist = max(nodeDistance(u, v), cdMin[u - tree]);
+			myDist = max(myDist, cdMin[v - tree]);
+			parlay::write_min(&rho, myDist, std::less<floatT>()); //check
+      	}
 
-      bool moveon(nodeT *u, nodeT *v) {
-	if (u->hasId() && u->getId() == v->getId()) return false; // filtering
-	if (u->size()+v->size() <= beta) return false; // not in E_u, not considered for rho
-	floatT myDist = max(nodeDistance(u, v), cdMin[u - tree]);
-	myDist = max(myDist, cdMin[v - tree]);
-	if (myDist >= rho) return false; // no subsequent finds can update rho
-	return true;
-      }
+      	bool moveon(nodeT *u, nodeT *v) {
+			if (u->hasId() && u->getId() == v->getId()) return false; // filtering
+			if (u->size()+v->size() <= beta) return false; // not in E_u, not considered for rho
+			floatT myDist = max(nodeDistance(u, v), cdMin[u - tree]);
+			myDist = max(myDist, cdMin[v - tree]);
+			if (myDist >= rho) return false; // no subsequent finds can update rho
+			return true;
+      	}
 
-      bool start(nodeT *u) {
-	if (u->size() > beta) {
-	  return true;
-	} else {
-	  return false;// if node size < beta, so would children
-	}
-      }
+      	bool start(nodeT *u) {
+			if (u->size() > beta) {
+				return true;
+			} else {
+				return false;// if node size < beta, so would children
+			}
+      	}
 
-      floatT getRho() { return rho;}
+      	floatT getRho() { 
+			std::cout << "getrho" << std::endl;
+			return rho;
+		}
 
-      bool wellSeparated(nodeT* u, nodeT* v, floatT s) {
-	return unreachable(u, v, cdMin, cdMax, tree);}
+      	bool wellSeparated(nodeT* u, nodeT* v, floatT s) {
+		return unreachable(u, v, cdMin, cdMax, tree);}
     };
 
     template<class nodeT, class UF>
@@ -229,27 +227,26 @@ namespace pargeo {
 		     sequence<floatT>& _cdMin,
 		     sequence<floatT>& _cdMax,
 		     typename nodeT::objT* _P
-		     ) :
-	beta(betaa), rhoLo(rhoLoo), rhoHi(rhoHii),
-	tree(treee), uf(uff),
-	coreDist(_coreDist), cdMin(_cdMin), cdMax(_cdMax), P(_P) {
-	size_t procs = num_workers();
-	out = (bufT**) malloc(sizeof(bufT*)*procs);
-	parallel_for(0, procs, [&](size_t p) {
-				 out[p] = new bufT(tree->size()/procs);
-			       });
-      }
+		     ) : beta(betaa), rhoLo(rhoLoo), rhoHi(rhoHii), tree(treee), uf(uff),
+				coreDist(_coreDist), cdMin(_cdMin), cdMax(_cdMax), P(_P) {
+		size_t procs = num_workers();
+		out = (bufT**) malloc(sizeof(bufT*)*procs);
+		parallel_for(0, procs, [&](size_t p) {
+					out[p] = new bufT(tree->size()/procs);
+					});
+      	}
 
       ~wspGetParallel() {
-	size_t procs = num_workers();
-	parallel_for(0, procs, [&](size_t p) {
-				 delete out[p];});
-	free(out);
+		size_t procs = num_workers();
+		parallel_for(0, procs, [&](size_t p) {
+					delete out[p];});
+		free(out);
       }
 
       sequence<bcpT> collect() {
-	int procs = num_workers();
-	return parBufCollect<bcpT>(out, procs);
+		std::cout << "collect" << std::endl;
+		int procs = num_workers();
+		return parBufCollect<bcpT>(out, procs);
       }
 
       void run(nodeT *u, nodeT *v) {
@@ -291,29 +288,33 @@ namespace pargeo {
 			typename nodeT::objT*,
 			typename nodeT::objT::floatT>>
     filterWspdParallel(double t_beta,
-		       double t_rho_lo,
-		       double& t_rho_hi,
-		       nodeT *t_kdTree,
-		       UF *t_mst,
-		       sequence<floatT> &coreDist,
-		       sequence<floatT> &cdMin,
-		       sequence<floatT> &cdMax,
-		       typename nodeT::objT* P
-		       ) {
-      using floatT = double;
-      using objT = typename nodeT::objT;
-      using bcpT = std::tuple<objT*, objT*, floatT>;
+						double t_rho_lo,
+						double& t_rho_hi,
+						nodeT *t_kdTree,
+						UF *t_mst,
+						sequence<floatT> &coreDist,
+						sequence<floatT> &cdMin,
+						sequence<floatT> &cdMax,
+						typename nodeT::objT* P) {
+		using floatT = double;
+		using objT = typename nodeT::objT;
+		using bcpT = std::tuple<objT*, objT*, floatT>;
+		std::cout << "hi1" << std::endl;
+		auto myRho = rhoUpdateParallel<nodeT, UF>(t_beta, t_mst, t_kdTree, coreDist, cdMin, cdMax);
+		std::cout << "hi2" << std::endl;
 
-      auto myRho = rhoUpdateParallel<nodeT, UF>(t_beta, t_mst, t_kdTree, coreDist, cdMin, cdMax);
+		pargeo::computeWspdParallel<nodeT, rhoUpdateParallel<nodeT, UF>>(t_kdTree, &myRho);
+		std::cout << "hi3" << std::endl;
 
-      pargeo::computeWspdParallel<nodeT, rhoUpdateParallel<nodeT, UF>>(t_kdTree, &myRho);
+		auto mySplitter = wspGetParallel<nodeT, UF>(t_beta, t_rho_lo, myRho.getRho(), t_kdTree, t_mst, coreDist, cdMin, cdMax, P);
+		std::cout << "hi4" << std::endl;
 
-      auto mySplitter = wspGetParallel<nodeT, UF>(t_beta, t_rho_lo, myRho.getRho(), t_kdTree, t_mst, coreDist, cdMin, cdMax, P);
+		pargeo::computeWspdParallel<nodeT, wspGetParallel<nodeT, UF>>(t_kdTree, &mySplitter);
+		std::cout << "hi5" << std::endl;
 
-      pargeo::computeWspdParallel<nodeT, wspGetParallel<nodeT, UF>>(t_kdTree, &mySplitter);
-
-      t_rho_hi = myRho.getRho();
-      return mySplitter.collect();
+		t_rho_hi = myRho.getRho();
+		std::cout << "hi6" << std::endl;
+		return mySplitter.collect();
     }
 
   } // End namespace hdbscanInternal

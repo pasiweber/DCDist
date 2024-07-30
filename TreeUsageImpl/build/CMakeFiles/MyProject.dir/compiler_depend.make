@@ -7537,8 +7537,10 @@ CMakeFiles/MyProject.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
   /usr/local/include/parlay/sequence.h \
   /usr/local/include/parlay/relocation.h \
   ../parallel_hdbscan/src/kdTreeKnn.h \
-  ../parallel_hdbscan/src/kdTreeArma.h \
+  ../parallel_hdbscan/include/hdbscan/hdbscan.h \
+  ../parallel_hdbscan/include/hdbscan/edge.h \
   ../parallel_hdbscan/include/hdbscan/armapoint.h \
+  ../parallel_hdbscan/src/kdTreeArma.h \
   ../parallel_hdbscan/src/kdTreeKnnArma.h \
   ../src/quickselect.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/neighbor_search.hpp \
@@ -9434,8 +9436,10 @@ CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp
   /usr/local/include/parlay/sequence.h \
   /usr/local/include/parlay/relocation.h \
   ../parallel_hdbscan/src/kdTreeKnn.h \
-  ../parallel_hdbscan/src/kdTreeArma.h \
+  ../parallel_hdbscan/include/hdbscan/hdbscan.h \
+  ../parallel_hdbscan/include/hdbscan/edge.h \
   ../parallel_hdbscan/include/hdbscan/armapoint.h \
+  ../parallel_hdbscan/src/kdTreeArma.h \
   ../parallel_hdbscan/src/kdTreeKnnArma.h \
   /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/pybind11.h \
   /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/detail/class.h \
@@ -10310,9 +10314,7 @@ CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp
   /usr/local/include/mlpack/methods/sparse_coding/sparse_coding.hpp \
   /usr/local/include/mlpack/methods/svdplusplus.hpp \
   /usr/local/include/mlpack/methods/svdplusplus/svdplusplus.hpp \
-  /usr/local/include/mlpack/namespace_compat.hpp \
-  ../parallel_hdbscan/include/hdbscan/hdbscan.h \
-  ../parallel_hdbscan/include/hdbscan/edge.h
+  /usr/local/include/mlpack/namespace_compat.hpp
 
 CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o: ../src/dc_hdbscan.cpp \
   /usr/include/stdc-predef.h \
@@ -12191,8 +12193,10 @@ CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o: ../src/dc_hdbscan.cpp \
   /usr/local/include/parlay/sequence.h \
   /usr/local/include/parlay/relocation.h \
   ../parallel_hdbscan/src/kdTreeKnn.h \
-  ../parallel_hdbscan/src/kdTreeArma.h \
+  ../parallel_hdbscan/include/hdbscan/hdbscan.h \
+  ../parallel_hdbscan/include/hdbscan/edge.h \
   ../parallel_hdbscan/include/hdbscan/armapoint.h \
+  ../parallel_hdbscan/src/kdTreeArma.h \
   ../parallel_hdbscan/src/kdTreeKnnArma.h
 
 CMakeFiles/MyProject.dir/src/example.cpp.o: ../src/example.cpp \
@@ -14072,13 +14076,13 @@ CMakeFiles/MyProject.dir/src/example.cpp.o: ../src/example.cpp \
   /usr/local/include/parlay/sequence.h \
   /usr/local/include/parlay/relocation.h \
   ../parallel_hdbscan/src/kdTreeKnn.h \
-  ../parallel_hdbscan/src/kdTreeArma.h \
+  ../parallel_hdbscan/include/hdbscan/hdbscan.h \
+  ../parallel_hdbscan/include/hdbscan/edge.h \
   ../parallel_hdbscan/include/hdbscan/armapoint.h \
+  ../parallel_hdbscan/src/kdTreeArma.h \
   ../parallel_hdbscan/src/kdTreeKnnArma.h \
   ../src/lp_objective.hpp \
-  ../src/dc_hdbscan.hpp \
-  ../parallel_hdbscan/include/hdbscan/hdbscan.h \
-  ../parallel_hdbscan/include/hdbscan/edge.h
+  ../src/dc_hdbscan.hpp
 
 CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
   /usr/include/stdc-predef.h \

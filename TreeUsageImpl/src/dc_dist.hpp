@@ -12,6 +12,8 @@
 #include <../parallel_hdbscan/src/kdTree.h>
 #include <../parallel_hdbscan/src/kdTreeKnn.h>
 #include <../parallel_hdbscan/include/hdbscan/point.h>
+#include <../parallel_hdbscan/include/hdbscan/hdbscan.h>
+#include <../parallel_hdbscan/include/hdbscan/edge.h>
 
 #include <../parallel_hdbscan/src/kdTreeArma.h>
 #include <../parallel_hdbscan/src/kdTreeKnnArma.h>

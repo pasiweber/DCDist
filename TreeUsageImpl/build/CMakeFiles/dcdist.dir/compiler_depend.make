@@ -1876,8 +1876,10 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
   /usr/local/include/parlay/sequence.h \
   /usr/local/include/parlay/relocation.h \
   ../parallel_hdbscan/src/kdTreeKnn.h \
-  ../parallel_hdbscan/src/kdTreeArma.h \
+  ../parallel_hdbscan/include/hdbscan/hdbscan.h \
+  ../parallel_hdbscan/include/hdbscan/edge.h \
   ../parallel_hdbscan/include/hdbscan/armapoint.h \
+  ../parallel_hdbscan/src/kdTreeArma.h \
   ../parallel_hdbscan/src/kdTreeKnnArma.h \
   ../src/quickselect.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/neighbor_search.hpp \
@@ -2811,6 +2813,8 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/eGlue_bones.hpp:
 
+../parallel_hdbscan/include/hdbscan/hdbscan.h:
+
 /usr/include/c++/11/tr1/hypergeometric.tcc:
 
 /usr/include/armadillo_bits/spglue_times_bones.hpp:
@@ -2982,6 +2986,8 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/x86_64-linux-gnu/bits/math-vector.h:
 
 /usr/include/armadillo_bits/op_median_meat.hpp:
+
+../parallel_hdbscan/include/hdbscan/edge.h:
 
 /usr/include/armadillo_bits/def_atlas.hpp:
 

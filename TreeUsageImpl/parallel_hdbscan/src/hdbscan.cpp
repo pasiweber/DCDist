@@ -147,16 +147,6 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan(parlay::sequence<pargeo::point
     rhoLo = rhoHi;
   }
 
-  // floatT sum = 0;
-  // auto E = UF.getEdge();
-  // for (auto e: E) {
-  //   floatT w = S[e.u].dist(S[e.v]);
-  //   w = max(w, coreDist[e.u]);
-  //   w = max(w, coreDist[e.v]);
-  //   sum += w;
-  // }
-  // cout << "edge-sum = " << sum << endl;
-
   cout << "wspd-time = " << wspdTime << endl;
   cout << "kruskal-time = " << kruskalTime << endl;
   cout << "mark-time = " << markTime << endl;
@@ -164,21 +154,4 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan(parlay::sequence<pargeo::point
 }
 
 template sequence<wghEdge> pargeo::hdbscan<2>(sequence<point<2>> &, size_t);
-template sequence<wghEdge> pargeo::hdbscan<3>(sequence<point<3>> &, size_t);
-template sequence<wghEdge> pargeo::hdbscan<4>(sequence<point<4>> &, size_t);
-template sequence<wghEdge> pargeo::hdbscan<5>(sequence<point<5>> &, size_t);
-template sequence<wghEdge> pargeo::hdbscan<6>(sequence<point<6>> &, size_t);
-template sequence<wghEdge> pargeo::hdbscan<7>(sequence<point<7>> &, size_t);
-template sequence<wghEdge> pargeo::hdbscan<8>(sequence<point<8>> &, size_t);
-template sequence<wghEdge> pargeo::hdbscan<9>(sequence<point<9>> &, size_t);
-template sequence<wghEdge> pargeo::hdbscan<10>(sequence<point<10>> &, size_t);
-template sequence<wghEdge> pargeo::hdbscan<11>(sequence<point<11>> &, size_t);
-template sequence<wghEdge> pargeo::hdbscan<12>(sequence<point<12>> &, size_t);
-template sequence<wghEdge> pargeo::hdbscan<13>(sequence<point<13>> &, size_t);
-template sequence<wghEdge> pargeo::hdbscan<14>(sequence<point<14>> &, size_t);
-template sequence<wghEdge> pargeo::hdbscan<15>(sequence<point<15>> &, size_t);
-template sequence<wghEdge> pargeo::hdbscan<16>(sequence<point<16>> &, size_t);
-template sequence<wghEdge> pargeo::hdbscan<17>(sequence<point<17>> &, size_t);
-template sequence<wghEdge> pargeo::hdbscan<18>(sequence<point<18>> &, size_t);
-template sequence<wghEdge> pargeo::hdbscan<19>(sequence<point<19>> &, size_t);
 template sequence<wghEdge> pargeo::hdbscan<20>(sequence<point<20>> &, size_t);

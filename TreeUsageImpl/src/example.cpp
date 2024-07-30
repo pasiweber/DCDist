@@ -223,6 +223,12 @@ void test_mlpack(){
 
 
     parlay::sequence<pargeo::point2> points2 =  convertArmaMatToParlayPoints2(data2);
+
+    parlay::sequence<pargeo::point<2>> points1 =  convertArmaMatToParlayPoints<2>(data2);
+    parlay::sequence<pargeo::wghEdge> E2;
+    E2 = pargeo::hdbscan<2>(points1, minPts);
+
+
     int dim = 2;
     size_t n = 6;
     parlay::sequence<pargeo::dirEdge> result_vec;

@@ -342,13 +342,13 @@ Parlay_DIR:PATH=/usr/local/share/parlay/cmake
 dctree_LIB_DEPENDS:STATIC=general;dcdist;
 
 //Value Computed by CMake
-hdbscan_BINARY_DIR:STATIC=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/hdbscan/src
+hdbscan_BINARY_DIR:STATIC=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/parallel_hdbscan/src
 
 //Value Computed by CMake
 hdbscan_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-hdbscan_SOURCE_DIR:STATIC=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/hdbscan/src
+hdbscan_SOURCE_DIR:STATIC=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src
 
 //Value Computed by CMake
 parallel-hdbscan_BINARY_DIR:STATIC=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/hdbscan
