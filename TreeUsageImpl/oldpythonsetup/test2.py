@@ -37,12 +37,13 @@ print("2")
 #HDBSCAN old python
 t3 = time.time()
 print("3")
-cdists4 = dctree.compute_hdbscan_labels(points1t, k, "arma")
+cdists3 = dctree.compute_hdbscan_labels(points1, k, "pargeo")
+
 
 
 t4 = time.time()
 print("4")
-cdists3 = dctree.compute_hdbscan_labels(points1, k, "pargeo")
+cdists4 = dctree.compute_hdbscan_labels(points1t, k, "arma")
 
 t5 = time.time()
 

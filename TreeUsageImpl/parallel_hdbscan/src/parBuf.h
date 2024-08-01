@@ -155,6 +155,11 @@ namespace pargeo {
 		   parallel_for (0, buf->m_parentUsed, [&](intT parent) {
 		       for (intT elem = 0; elem < buf->m_parentSizes[parent+1]-buf->m_parentSizes[parent]; ++ elem) {
               std::cout << "parbufcoll5" << std::endl;
+              //std::cout << "all size: " << total << std::endl;
+              //std::cout << "index: " << vecSizes[p] + buf->m_parentSizes[parent] + elem << std::endl;
+              //std::cout << "p:" << p << ", parent:" << parent<< ", elem:" << elem <<", vecsizes:" << vecSizes.size() <<std::endl;
+              //std::cout << "total: " << vecSizes[p] + buf->m_parentSizes[parent] + elem << std::endl;
+              std::cout << P << " small p: " << p << ", parent:" << parent << ", elem: " << elem << std::endl;
 			        all[vecSizes[p] + buf->m_parentSizes[parent] + elem] = buf->m_parent[parent][elem];
 		       }
            }, 1);

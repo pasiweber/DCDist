@@ -6,16 +6,13 @@
 #include <iomanip>
 #include "parlay/parallel.h"
 #include "parlay/primitives.h"
-#include <mlpack/core.hpp>
+#include <armadillo>
 
 namespace pargeo {
   using namespace std;
 
-  struct _empty2 {
-    int arr[0]; // todo this produces a struct of size 0 but seems dangerous, need to check
-  };
 
-  template <class _tData, class _tFloat, class _tAtt> class _point2 {
+  template <class _tData, class _tFloat> class _point2 {
 
     static constexpr _tData empty = numeric_limits<_tData>::max();
 
@@ -23,12 +20,14 @@ namespace pargeo {
     typedef _tFloat floatT;
 
     arma::Col<_tData> x;
-    _tAtt attribute;
     int dim;
 
-    _point2(){};
+    _point2() : x(20), dim(20){
+      x.fill(empty);
+    };
     //Constructors
     _point2(int dim) : x(dim) { 
+
       x.fill(empty); 
       this->dim = dim;}
 
@@ -36,7 +35,7 @@ namespace pargeo {
       dim = x.size();
     }
 
-    _point2(_point2 *p): attribute(p->attribute) { 
+    _point2(_point2 *p)  { 
       x(p->x); 
       dim = x.size();
     }
@@ -93,11 +92,11 @@ namespace pargeo {
   };
 
 
-  using point2 = _point2<double, double, _empty2>;
+  using point2 = _point2<double, double>;
 
-  using fpoint2 = _point2<float, float, _empty2>;
+  using fpoint2 = _point2<float, float>;
 
-  using lpoint2 = _point2<long, double, _empty2>;
+  using lpoint2 = _point2<long, double>;
 
   template<class _A, class _B>
   _B point2Cast(_B p) {

@@ -3,7 +3,7 @@
 #include "../include/hdbscan/armapoint.h"
 #include "parlay/parallel.h"
 #include "parlay/sequence.h"
-#include <mlpack/core.hpp>
+
 namespace pargeo {
 
 template <class _objT> class kdNode2 {
@@ -296,8 +296,8 @@ public:
   kdNode2(int dims, parlay::slice<_objT **, _objT **> itemss, intT nn, nodeT *space,
          parlay::slice<bool *, bool *> flags, intT leafSize = 16)
       : items(itemss) {
-    resetId();
     dim = dims;
+    resetId();
     if (size() > 2000)
       constructParallel(space, flags, leafSize);
     else
@@ -307,8 +307,8 @@ public:
   kdNode2(int dims, parlay::slice<_objT **, _objT **> itemss, intT nn, nodeT *space, 
          intT leafSize = 16)
       : items(itemss) {
-    resetId();
     dim = dims;
+    resetId();
     constructSerial(space, leafSize);
   }
 }; //End knode2

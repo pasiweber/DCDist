@@ -6,7 +6,7 @@
 #include <pybind11/numpy.h>
 #include <pybind11/stl.h>
 //mlpack stuff
-#include <mlpack.hpp>
+#include <armadillo>
 
 
 #include "parlay/parallel.h"
@@ -21,7 +21,6 @@
 #include <../parallel_hdbscan/src/kdTreeArma.h>
 #include <../parallel_hdbscan/src/kdTreeKnnArma.h>
 namespace py = pybind11;
-
 
 
 using namespace parlay;

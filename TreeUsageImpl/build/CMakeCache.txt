@@ -339,7 +339,7 @@ PYTHON_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libpython3.10.so
 Parlay_DIR:PATH=/usr/local/share/parlay/cmake
 
 //Dependencies for the target
-dctree_LIB_DEPENDS:STATIC=general;dcdist;
+dctree_LIB_DEPENDS:STATIC=general;dcdist;general;mlpack::mlpack;
 
 //Value Computed by CMake
 hdbscan_BINARY_DIR:STATIC=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/parallel_hdbscan/src
@@ -349,6 +349,9 @@ hdbscan_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 hdbscan_SOURCE_DIR:STATIC=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src
+
+//The directory containing a CMake configuration file for mlpack.
+mlpack_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/mlpack
 
 //Value Computed by CMake
 parallel-hdbscan_BINARY_DIR:STATIC=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/hdbscan

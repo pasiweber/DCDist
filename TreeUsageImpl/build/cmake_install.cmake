@@ -60,10 +60,6 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "/usr/lib/python3/dist-packages" TYPE MODULE FILES "/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/dctree.cpython-310-x86_64-linux-gnu.so")
   if(EXISTS "$ENV{DESTDIR}/usr/lib/python3/dist-packages/dctree.cpython-310-x86_64-linux-gnu.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}/usr/lib/python3/dist-packages/dctree.cpython-310-x86_64-linux-gnu.so")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}/usr/lib/python3/dist-packages/dctree.cpython-310-x86_64-linux-gnu.so"
-         OLD_RPATH "/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/external_libs/mlpack-4.4.0/lib:"
-         NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}/usr/lib/python3/dist-packages/dctree.cpython-310-x86_64-linux-gnu.so")
     endif()

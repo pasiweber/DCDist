@@ -43,7 +43,8 @@ struct unionFind {
 
   // initialize n elements all as roots
   unionFind(size_t n) {
-    parents = parlay::sequence<vertexId>(n, -1);}
+    parents = parlay::sequence<vertexId>(n, -1);
+  }
 
   vertexId find(vertexId i) {
     if (is_root(i)) return i;
@@ -83,7 +84,7 @@ struct unionFind {
   // returns true if successful
   bool tryLink(vertexId u, vertexId v) {
     return (parents[u] == -1 &&
-	    pargeo::atomic_compare_and_swap(&parents[u], -1, v));
+      pargeo::atomic_compare_and_swap(&parents[u], -1, v));
   }
 };
 
@@ -137,6 +138,7 @@ struct edgeUnionFind {
   }
 
   parlay::sequence<wghEdge> getEdge() {
+    std::cout << "getEdge called" << std::endl;
     return parlay::filter(edges, [&](wghEdge e){return !e.isEmpty();});
   }
 };

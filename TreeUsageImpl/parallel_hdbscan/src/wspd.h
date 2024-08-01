@@ -237,6 +237,7 @@ namespace pargeo {
     }
 
     sequence<pType> collectPairs() {
+      std::cout << "collectPairs" << std::endl;
       int procs = num_workers();
       return parBufCollect<pType>(out, procs);
     }

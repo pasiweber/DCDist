@@ -66,7 +66,7 @@ namespace pargeo {
 
     friend bool operator==(_point a, _point b) {
       for (int ii=0; ii<dim; ++ii) {
-	if (a[ii] != b[ii]) return false;}
+	      if (a[ii] != b[ii]) return false;}
       return true;}
 
     friend bool operator!=(_point a, _point b) {return !(a==b);}

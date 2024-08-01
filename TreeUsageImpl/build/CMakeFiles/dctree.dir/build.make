@@ -141,6 +141,10 @@ dctree.cpython-310-x86_64-linux-gnu.so: CMakeFiles/dctree.dir/parallel_hdbscan/s
 dctree.cpython-310-x86_64-linux-gnu.so: CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.o
 dctree.cpython-310-x86_64-linux-gnu.so: CMakeFiles/dctree.dir/build.make
 dctree.cpython-310-x86_64-linux-gnu.so: libdcdist.a
+dctree.cpython-310-x86_64-linux-gnu.so: /usr/lib/x86_64-linux-gnu/libmlpack.so.3.4
+dctree.cpython-310-x86_64-linux-gnu.so: /usr/lib/libarmadillo.so
+dctree.cpython-310-x86_64-linux-gnu.so: /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so
+dctree.cpython-310-x86_64-linux-gnu.so: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
 dctree.cpython-310-x86_64-linux-gnu.so: CMakeFiles/dctree.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared module dctree.cpython-310-x86_64-linux-gnu.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dctree.dir/link.txt --verbose=$(VERBOSE)
