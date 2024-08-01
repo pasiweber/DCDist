@@ -1814,73 +1814,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
   /usr/local/include/parlay/internal/sequence_base.h \
   /usr/local/include/parlay/parallel.h \
   /usr/local/include/parlay/relocation.h \
-  ../parallel_hdbscan/src/kdTree.h \
-  ../parallel_hdbscan/include/hdbscan/point.h \
-  /usr/local/include/parlay/primitives.h \
-  /usr/local/include/parlay/internal/counting_sort.h \
-  /usr/local/include/parlay/internal/sequence_ops.h \
-  /usr/local/include/parlay/delayed_sequence.h \
-  /usr/local/include/parlay/monoid.h \
-  /usr/local/include/parlay/range.h \
-  /usr/local/include/parlay/sequence.h \
-  /usr/local/include/parlay/slice.h \
-  /usr/local/include/parlay/internal/uninitialized_sequence.h \
-  /usr/local/include/parlay/alloc.h \
-  /usr/local/include/parlay/internal/debug_uninitialized.h \
-  /usr/local/include/parlay/internal/integer_sort.h \
-  /usr/local/include/parlay/internal/counting_sort.h \
-  /usr/local/include/parlay/internal/get_time.h \
-  /usr/local/include/parlay/internal/group_by.h \
-  /usr/local/include/parlay/internal/block_delayed.h \
-  /usr/local/include/parlay/internal/stream_delayed.h \
-  /usr/local/include/parlay/internal/collect_reduce.h \
-  /usr/local/include/parlay/internal/integer_sort.h \
-  /usr/local/include/parlay/internal/sample_sort.h \
-  /usr/local/include/parlay/internal/bucket_sort.h \
-  /usr/local/include/parlay/internal/merge_sort.h \
-  /usr/local/include/parlay/internal/merge.h \
-  /usr/local/include/parlay/internal/binary_search.h \
-  /usr/local/include/parlay/internal/quicksort.h \
-  /usr/local/include/parlay/internal/uninitialized_storage.h \
-  /usr/local/include/parlay/internal/transpose.h \
-  /usr/local/include/parlay/internal/heap_tree.h \
-  /usr/local/include/parlay/internal/merge.h \
-  /usr/local/include/parlay/internal/merge_sort.h \
-  /usr/local/include/parlay/internal/sequence_ops.h \
-  /usr/local/include/parlay/internal/sample_sort.h \
-  /usr/local/include/parlay/delayed.h \
-  /usr/local/include/parlay/internal/delayed/filter.h \
-  /usr/local/include/parlay/range.h \
-  /usr/local/include/parlay/relocation.h \
-  /usr/local/include/parlay/sequence.h \
-  /usr/local/include/parlay/utilities.h \
-  /usr/local/include/parlay/internal/sequence_ops.h \
-  /usr/local/include/parlay/internal/uninitialized_sequence.h \
-  /usr/local/include/parlay/internal/delayed/common.h \
-  /usr/local/include/parlay/internal/delayed/flatten.h \
-  /usr/local/include/parlay/monoid.h \
-  /usr/local/include/parlay/parallel.h \
-  /usr/local/include/parlay/slice.h \
-  /usr/local/include/parlay/type_traits.h \
-  /usr/local/include/parlay/internal/delayed/map.h \
-  /usr/local/include/parlay/internal/delayed/terminal.h \
-  /usr/local/include/parlay/internal/delayed/filter_op.h \
-  /usr/local/include/parlay/internal/delayed/flatten.h \
-  /usr/local/include/parlay/internal/delayed/map.h \
-  /usr/local/include/parlay/internal/delayed/scan.h \
-  /usr/local/include/parlay/internal/delayed/terminal.h \
-  /usr/local/include/parlay/internal/delayed/zip.h \
-  /usr/local/include/parlay/delayed_sequence.h \
-  /usr/local/include/parlay/monoid.h \
-  /usr/local/include/parlay/random.h \
-  /usr/local/include/parlay/sequence.h \
-  /usr/local/include/parlay/relocation.h \
-  ../parallel_hdbscan/src/kdTreeKnn.h \
-  ../parallel_hdbscan/include/hdbscan/hdbscan.h \
-  ../parallel_hdbscan/include/hdbscan/edge.h \
-  ../parallel_hdbscan/include/hdbscan/armapoint.h \
-  ../parallel_hdbscan/src/kdTreeArma.h \
-  ../parallel_hdbscan/src/kdTreeKnnArma.h \
   ../src/quickselect.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/neighbor_search.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/neighbor_search_stat.hpp \
@@ -1917,32 +1850,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 ../src/quickselect.hpp:
 
-../parallel_hdbscan/src/kdTreeKnnArma.h:
-
-/usr/local/include/parlay/internal/delayed/scan.h:
-
-/usr/local/include/parlay/internal/delayed/terminal.h:
-
-/usr/local/include/parlay/internal/delayed/filter.h:
-
-/usr/local/include/parlay/internal/uninitialized_storage.h:
-
-/usr/local/include/parlay/internal/merge_sort.h:
-
-/usr/local/include/parlay/internal/bucket_sort.h:
-
-/usr/local/include/parlay/internal/sample_sort.h:
-
-/usr/local/include/parlay/internal/collect_reduce.h:
-
-/usr/local/include/parlay/internal/block_delayed.h:
-
-/usr/local/include/parlay/internal/get_time.h:
-
-/usr/local/include/parlay/delayed_sequence.h:
-
-../parallel_hdbscan/include/hdbscan/point.h:
-
 /usr/local/include/parlay/relocation.h:
 
 /usr/local/include/parlay/internal/sequence_base.h:
@@ -1960,8 +1867,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/x86_64-linux-gnu/bits/sigstack.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/stack_t.h:
-
-/usr/local/include/parlay/internal/transpose.h:
 
 /usr/include/x86_64-linux-gnu/bits/sigcontext.h:
 
@@ -2087,8 +1992,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/ensmallen_bits/gradient_descent/gradient_descent_impl.hpp:
 
-../parallel_hdbscan/include/hdbscan/armapoint.h:
-
 /usr/include/ensmallen_bits/fw/frank_wolfe_impl.hpp:
 
 /usr/include/ensmallen_bits/fw/constr_lpball.hpp:
@@ -2149,8 +2052,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/ensmallen_bits/sgd/update_policies/momentum_update.hpp:
 
-/usr/local/include/parlay/internal/delayed/zip.h:
-
 /usr/local/include/parlay/internal/work_stealing_deque.h:
 
 /usr/include/ensmallen_bits/sgd/sgd.hpp:
@@ -2186,8 +2087,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/ensmallen_bits/problems/rosenbrock_function_impl.hpp:
 
 /usr/include/ensmallen_bits/problems/rosenbrock_function.hpp:
-
-/usr/local/include/parlay/internal/integer_sort.h:
 
 /usr/include/ensmallen_bits/problems/rastrigin_function_impl.hpp:
 
@@ -2245,8 +2144,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/ensmallen_bits/problems/aug_lagrangian_test_functions.hpp:
 
-../parallel_hdbscan/src/kdTreeArma.h:
-
 /usr/include/ensmallen_bits/problems/ackley_function_impl.hpp:
 
 /usr/include/ensmallen_bits/problems/ackley_function.hpp:
@@ -2276,8 +2173,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/ensmallen_bits/function/static_checks.hpp:
 
 /usr/include/ensmallen_bits/function/sfinae_utility.hpp:
-
-/usr/local/include/parlay/internal/delayed/common.h:
 
 /usr/include/ensmallen_bits/function/traits.hpp:
 
@@ -2397,8 +2292,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/tree/rectangle_tree/hilbert_r_tree_descent_heuristic_impl.hpp:
 
-/usr/local/include/parlay/delayed.h:
-
 /usr/local/include/mlpack/core/tree/rectangle_tree/hilbert_r_tree_descent_heuristic.hpp:
 
 /usr/local/include/mlpack/core/tree/rectangle_tree/x_tree_auxiliary_information.hpp:
@@ -2411,11 +2304,7 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/tree/rectangle_tree/r_star_tree_split_impl.hpp:
 
-/usr/local/include/parlay/internal/merge.h:
-
 /usr/local/include/mlpack/core/tree/rectangle_tree/single_tree_traverser_impl.hpp:
-
-/usr/local/include/parlay/internal/group_by.h:
 
 /usr/local/include/mlpack/core/tree/rectangle_tree/single_tree_traverser.hpp:
 
@@ -2577,8 +2466,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/local/include/mlpack/core/dists/gamma_distribution.hpp:
 
-/usr/local/include/parlay/internal/uninitialized_sequence.h:
-
 /usr/local/include/mlpack/core/dists/discrete_distribution_impl.hpp:
 
 /usr/local/include/mlpack/core/dists/discrete_distribution.hpp:
@@ -2662,8 +2549,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/armadillo_bits/glue_intersect_bones.hpp:
 
 /usr/include/armadillo_bits/glue_polyval_bones.hpp:
-
-/usr/local/include/parlay/internal/counting_sort.h:
 
 /usr/include/x86_64-linux-gnu/bits/confname.h:
 
@@ -2749,8 +2634,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/op_sp_plus_meat.hpp:
 
-../parallel_hdbscan/src/kdTreeKnn.h:
-
 /usr/include/armadillo_bits/op_relational_bones.hpp:
 
 /usr/include/armadillo_bits/op_misc_bones.hpp:
@@ -2762,8 +2645,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/armadillo_bits/op_shuffle_bones.hpp:
 
 /usr/include/armadillo_bits/op_cond_bones.hpp:
-
-/usr/local/include/parlay/internal/sequence_ops.h:
 
 /usr/local/include/mlpack/core/data/format.hpp:
 
@@ -2812,8 +2693,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/c++/11/cmath:
 
 /usr/include/armadillo_bits/eGlue_bones.hpp:
-
-../parallel_hdbscan/include/hdbscan/hdbscan.h:
 
 /usr/include/c++/11/tr1/hypergeometric.tcc:
 
@@ -2986,8 +2865,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/x86_64-linux-gnu/bits/math-vector.h:
 
 /usr/include/armadillo_bits/op_median_meat.hpp:
-
-../parallel_hdbscan/include/hdbscan/edge.h:
 
 /usr/include/armadillo_bits/def_atlas.hpp:
 
@@ -3222,8 +3099,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h:
 
 /usr/include/armadillo_bits/xtrans_mat_bones.hpp:
-
-/usr/local/include/parlay/internal/delayed/flatten.h:
 
 /usr/local/include/mlpack/core/data/load_image.hpp:
 
@@ -3526,8 +3401,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/armadillo_bits/fn_kmeans.hpp:
 
 /usr/include/armadillo_bits/include_atlas.hpp:
-
-/usr/local/include/parlay/internal/heap_tree.h:
 
 /usr/include/armadillo_bits/op_expmat_bones.hpp:
 
@@ -4415,21 +4288,15 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/fn_randu.hpp:
 
-/usr/local/include/parlay/internal/binary_search.h:
-
 /usr/include/armadillo_bits/fn_trig.hpp:
 
 /usr/include/cereal/archives/portable_binary.hpp:
-
-/usr/local/include/parlay/monoid.h:
 
 /usr/include/armadillo_bits/fn_mean.hpp:
 
 /usr/local/include/mlpack/core/data/string_encoding_policies/string_encoding_policies.hpp:
 
 /usr/include/armadillo_bits/fn_sort.hpp:
-
-/usr/local/include/parlay/primitives.h:
 
 /usr/local/include/mlpack/core/tree/cover_tree.hpp:
 
@@ -4448,8 +4315,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/armadillo_bits/fn_reshape.hpp:
 
 /usr/include/armadillo_bits/fn_cov.hpp:
-
-/usr/local/include/parlay/internal/delayed/filter_op.h:
 
 /usr/include/x86_64-linux-gnu/sys/select.h:
 
@@ -4484,8 +4349,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/ensmallen_bits/swats/swats_update.hpp:
 
 /usr/include/armadillo_bits/spglue_schur_meat.hpp:
-
-/usr/local/include/parlay/internal/quicksort.h:
 
 /usr/include/ensmallen_bits/wn_grad/wn_grad_update.hpp:
 
@@ -4556,8 +4419,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
 
 /usr/include/armadillo_bits/fn_spsolve.hpp:
-
-../parallel_hdbscan/src/kdTree.h:
 
 /usr/include/armadillo_bits/fn_inv.hpp:
 
@@ -4664,8 +4525,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/armadillo_bits/spdiagview_meat.hpp:
 
 /usr/include/armadillo_bits/sp_auxlib_meat.hpp:
-
-/usr/local/include/parlay/internal/delayed/map.h:
 
 /usr/local/include/mlpack/core/hpt/cv_function.hpp:
 
@@ -4903,8 +4762,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 
 /usr/include/armadillo_bits/glue_mixed_meat.hpp:
 
-/usr/local/include/parlay/random.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
 /usr/local/include/mlpack/core/data/scaler_methods/mean_normalization.hpp:
@@ -5140,8 +4997,6 @@ CMakeFiles/dcdist.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
 /usr/include/cereal/external/base64.hpp:
 
 /usr/include/cereal/external/rapidxml/rapidxml_print.hpp:
-
-/usr/local/include/parlay/internal/stream_delayed.h:
 
 /usr/include/cereal/types/tuple.hpp:
 

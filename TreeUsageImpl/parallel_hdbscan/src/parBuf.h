@@ -58,10 +58,10 @@ namespace pargeo {
     intT size() {
       intT tmp = 0;
       for(intT i = 0; i < m_parentUsed-1; ++ i) {
-	//cout << "size: parent " << i << ": " << m_parentSizes[i] << endl;
-	tmp += m_parentSizes[i];
+        //cout << "size: parent " << i << ": " << m_parentSizes[i] << endl;
+        tmp += m_parentSizes[i];
       }
-      //cout << "size: last parent " << ": " << m_count << endl;
+        //cout << "size: last parent " << ": " << m_count << endl;
       tmp += m_count;
       return tmp;
     }
@@ -132,13 +132,11 @@ namespace pargeo {
   parlay::sequence<T> parBufCollect(parBuf<T> **t_threadVecs, size_t P) {
     using namespace parlay;
     using intT = size_t;
-    std::cout << "parbufcoll" << std::endl;
     parlay::sequence<intT> vecSizes(P);
     for(int p = 0; p < P; ++ p) {
       t_threadVecs[p]->finalize();
       vecSizes[p] = t_threadVecs[p]->size();
     }
-    std::cout << "parbufcoll2" << std::endl;
 
     intT total = scan_inplace(make_slice(vecSizes));
 
@@ -146,25 +144,16 @@ namespace pargeo {
 
     parallel_for(0, P,
 		 [&](intT p) {
-       std::cout << "parbufcoll3" << std::endl;
 
 		   auto buf = t_threadVecs[p];
 		   intT threadTotal = prefixSumSerial<intT>(buf->m_parentSizes, 0, buf->m_parentUsed);
 		   buf->m_parentSizes[buf->m_parentUsed] = threadTotal; // there's 1 extra space at the end of array
-       std::cout << "parbufcoll4" << std::endl;
 		   parallel_for (0, buf->m_parentUsed, [&](intT parent) {
 		       for (intT elem = 0; elem < buf->m_parentSizes[parent+1]-buf->m_parentSizes[parent]; ++ elem) {
-              std::cout << "parbufcoll5" << std::endl;
-              //std::cout << "all size: " << total << std::endl;
-              //std::cout << "index: " << vecSizes[p] + buf->m_parentSizes[parent] + elem << std::endl;
-              //std::cout << "p:" << p << ", parent:" << parent<< ", elem:" << elem <<", vecsizes:" << vecSizes.size() <<std::endl;
-              //std::cout << "total: " << vecSizes[p] + buf->m_parentSizes[parent] + elem << std::endl;
-              std::cout << P << " small p: " << p << ", parent:" << parent << ", elem: " << elem << std::endl;
 			        all[vecSizes[p] + buf->m_parentSizes[parent] + elem] = buf->m_parent[parent][elem];
 		       }
            }, 1);
 		 }, 1);
-    std::cout << "parbufcoll done" << std::endl;
 
     return sequence<T>(all, all + total);
   }

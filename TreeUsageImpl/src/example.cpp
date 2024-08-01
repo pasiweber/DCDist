@@ -37,7 +37,40 @@ Node* addNode(Node* parent = nullptr, double cost=0.0, int id = -1, int size=1) 
 
 
 
+template<const int dim>
+parlay::sequence<pargeo::point<dim>> convertArmaMatToParlayPoints(const arma::mat& mat) {
 
+    // Create a parlay sequence of points
+    parlay::sequence<pargeo::point<dim>> points(mat.n_cols);
+    std::cout<< "num cols:" << mat.n_cols << std::endl;
+    // Populate the sequence with points created from the matrix columns
+    for (size_t j = 0; j < mat.n_cols; ++j) {
+        double coords[dim];
+        for (size_t i = 0; i < dim; ++i) {
+            coords[i] = mat(i, j);
+        }
+        points[j] = pargeo::point<dim>(coords);
+    }
+
+    return points;
+}
+
+
+parlay::sequence<pargeo::point2> convertArmaMatToParlayPoints22(const arma::mat& mat) {
+    // Create a parlay sequence of points
+    parlay::sequence<pargeo::point2> points(mat.n_cols);
+    std::cout<< "num cols:" << mat.n_cols << std::endl;
+    // Populate the sequence with points created from the matrix columns
+    for (size_t j = 0; j < mat.n_cols; ++j) {
+        arma::Col<double> coords(mat.n_rows);
+        for (size_t i = 0; i < mat.n_rows; ++i) {
+            coords[i] = mat(i, j);
+        }
+        points[j] = pargeo::point2(&coords);
+    }
+
+    return points;
+}
 
 
 
@@ -234,29 +267,7 @@ void test_mlpack(){
                         {0.10, 5.5, 21.0, 0.0, 5.5, 21.0, 0.0, 5.5, 21.0, 0.0, 5.5, 21.0, 0.0, 5.5, 21.0, 0.0, 5.5, 21.0, 0.0, 5.5, 21.0, 0.0, 5.5, 21.0},
                         {0.11, 11.0,28.0, 0.5, 11.0,28.0, 0.5, 11.0,28.0, 0.5, 11.0,28.0, 0.5, 11.0,28.0, 0.5, 11.0,28.0, 0.5, 11.0,28.0, 0.5, 11.0,28.0},
 
-                        {0.0, 1.1, 20.5, 0.0, 1.0, 20.0, 0.0, 1.0, 20.0, 0.0, 1.0, 20.0, 0.0, 1.0, 20.0, 0.0, 1.0, 20.0, 0.0, 1.0, 20.0, 0.0, 1.0, 20.0},
-                        {0.0, 2.2, 35.6, 0.0, 2.0, 35.0, 0.0, 2.0, 35.0, 0.0, 2.0, 35.0, 0.0, 2.0, 35.0, 0.0, 2.0, 35.0, 0.0, 2.0, 35.0, 0.0, 2.0, 35.0},
-                        {0.0, 3.3, 30.7, 0.0, 3.0, 30.0, 0.0, 3.0, 30.0, 0.0, 3.0, 30.0, 0.0, 3.0, 30.0, 0.0, 3.0, 30.0, 0.0, 3.0, 30.0, 0.0, 3.0, 30.0},
-                        {0.0, 1.4, 30.8, 0.0, 1.5, 30.0, 0.0, 1.5, 30.0, 0.0, 1.5, 30.0, 0.0, 1.5, 30.0, 0.0, 1.5, 30.0, 0.0, 1.5, 30.0, 0.0, 1.5, 30.0},
-                        {0.0, 5.6, 11.0, 0.0, 5.5, 11.0, 0.0, 5.5, 11.0, 0.0, 5.5, 11.0, 0.0, 5.5, 11.0, 0.0, 5.5, 11.0, 0.0, 5.5, 11.0, 0.0, 5.5, 11.0},
-                        {0.0, 10.1,28.0, 0.0, 10.0,28.0, 0.0, 10.0,28.0, 0.0, 10.0,28.0, 0.0, 10.0,28.0, 0.0, 10.0,28.0, 0.0, 10.0,28.0, 0.0, 10.0,28.0},
-                        {0.0, 2.2, 30.0, 0.0, 2.0, 30.0, 0.0, 2.0, 30.0, 0.0, 2.0, 30.0, 0.0, 2.0, 30.0, 0.0, 2.0, 30.0, 0.0, 2.0, 30.0, 0.0, 2.0, 30.0},
-                        {0.0, 7.7, 11.0, 0.0, 7.5, 11.0, 0.0, 7.5, 11.0, 0.0, 7.5, 11.0, 0.0, 7.5, 11.0, 0.0, 7.5, 11.0, 0.0, 7.5, 11.0, 0.0, 7.5, 11.0},
-                        {0.0, 12.1,28.0, 0.0, 12.0,28.0, 0.0, 12.0,28.0, 0.0, 12.0,28.0, 0.0, 12.0,28.0, 0.0, 12.0,28.0, 0.0, 12.0,28.0, 0.0, 12.0,28.0},
-                        {0.0, 4.2, 30.0, 0.0, 4.5, 30.0, 0.0, 4.5, 30.0, 0.0, 4.5, 30.0, 0.0, 4.5, 30.0, 0.0, 4.5, 30.0, 0.0, 4.5, 30.0, 0.0, 4.5, 30.0},
-                        {0.0, 5.8, 21.0, 0.0, 5.5, 21.0, 0.0, 5.5, 21.0, 0.0, 5.5, 21.0, 0.0, 5.5, 21.0, 0.0, 5.5, 21.0, 0.0, 5.5, 21.0, 0.0, 5.5, 21.0},
-                        {0.5, 11.5,28.0, 0.5, 11.0,28.0, 0.5, 11.0,28.0, 0.5, 11.0,28.0, 0.5, 11.0,28.0, 0.5, 11.0,28.0, 0.5, 11.0,28.0, 0.5, 11.0,28.0},
-                        {0.1, 2.51, 35.0, 0.0, 2.0, 35.0, 0.0, 2.0, 35.0, 0.0, 2.0, 35.0, 0.0, 2.0, 35.0, 0.0, 2.0, 35.0, 0.0, 2.0, 35.0, 0.0, 2.0, 35.0},
-                        {0.2, 3.312, 30.0, 0.0, 3.0, 30.0, 0.0, 3.0, 30.0, 0.0, 3.0, 30.0, 0.0, 3.0, 30.0, 0.0, 3.0, 30.0, 0.0, 3.0, 30.0, 0.0, 3.0, 30.0},
-                        {0.3, 1.156, 30.0, 0.0, 1.5, 30.0, 0.0, 1.5, 30.0, 0.0, 1.5, 30.0, 0.0, 1.5, 30.0, 0.0, 1.5, 30.0, 0.0, 1.5, 30.0, 0.0, 1.5, 30.0},
-                        {0.4, 5.89, 11.0, 0.0, 5.5, 11.0, 0.0, 5.5, 11.0, 0.0, 5.5, 11.0, 0.0, 5.5, 11.0, 0.0, 5.5, 11.0, 0.0, 5.5, 11.0, 0.0, 5.5, 11.0},
-                        {0.5, 10.39,28.0, 0.0, 10.0,28.0, 0.0, 10.0,28.0, 0.0, 10.0,28.0, 0.0, 10.0,28.0, 0.0, 10.0,28.0, 0.0, 10.0,28.0, 0.0, 10.0,28.0},
-                        {0.6, 2.94, 30.0, 0.0, 2.0, 30.0, 0.0, 2.0, 30.0, 0.0, 2.0, 30.0, 0.0, 2.0, 30.0, 0.0, 2.0, 30.0, 0.0, 2.0, 30.0, 0.0, 2.0, 30.0},
-                        {0.7, 7.2183, 11.0, 0.0, 7.5, 11.0, 0.0, 7.5, 11.0, 0.0, 7.5, 11.0, 0.0, 7.5, 11.0, 0.0, 7.5, 11.0, 0.0, 7.5, 11.0, 0.0, 7.5, 11.0},
-                        {0.8, 12.1238,28.0, 0.0, 12.0,28.0, 0.0, 12.0,28.0, 0.0, 12.0,28.0, 0.0, 12.0,28.0, 0.0, 12.0,28.0, 0.0, 12.0,28.0, 0.0, 12.0,28.0},
-                        {0.9, 4.123, 30.0, 0.0, 4.5, 30.0, 0.0, 4.5, 30.0, 0.0, 4.5, 30.0, 0.0, 4.5, 30.0, 0.0, 4.5, 30.0, 0.0, 4.5, 30.0, 0.0, 4.5, 30.0},
-                        {0.10, 5.543, 21.0, 0.0, 5.5, 21.0, 0.0, 5.5, 21.0, 0.0, 5.5, 21.0, 0.0, 5.5, 21.0, 0.0, 5.5, 21.0, 0.0, 5.5, 21.0, 0.0, 5.5, 21.0},
-                        {0.11, 11.321,28.0, 0.5, 11.0,28.0, 0.5, 11.0,28.0, 0.5, 11.0,28.0, 0.5, 11.0,28.0, 0.5, 11.0,28.0, 0.5, 11.0,28.0, 0.5, 11.0,28.0} //Stop here for issue
+                        //Stop here for issue
 
                         };
 
@@ -264,13 +275,29 @@ void test_mlpack(){
     const int minPts = 2;
     int n = 12;
     std::cout << "here" << std::endl;
-    parlay::sequence<pargeo::point2> points2 =  convertArmaMatToParlayPoints2(data2);
+    parlay::sequence<pargeo::point2> points2 =  convertArmaMatToParlayPoints22(data2);
+    parlay::sequence<pargeo::point<24>> points =  convertArmaMatToParlayPoints<24>(data2);
+    pargeo::point2 p1;
+    pargeo::point2 p2(10); 
+    //std::cout << "size of points2: " << sizeof(points2[0]) << ", and size of points: " << sizeof(points[0]) << std::endl;
+    //std::cout << "size of p1: " << sizeof(p1) << ", and size of p2: " << sizeof(p2) << std::endl;
 
-    parlay::sequence<pargeo::dirEdge> result_vec;
+
+
+    parlay::sequence<pargeo::wghEdge> E2;
+    E2 = pargeo::hdbscan<24>(points, minPts);
+    parlay::sequence<pargeo::dendroNode> dendro2 = pargeo::dendrogram(E2, n);
+    parlay::sequence<double> A2(dendro2.size()*4);
+    parlay::parallel_for(0, dendro2.size(), [&](size_t i){
+                        A2[i*4+0] = std::get<0>(dendro2[i]);
+                        A2[i*4+1] = std::get<1>(dendro2[i]);
+                        A2[i*4+2] = std::get<2>(dendro2[i]);
+                        A2[i*4+3] = std::get<3>(dendro2[i]);});
+
+    std::cout << "###########################################################################################" << std::endl;
 
     parlay::sequence<pargeo::wghEdge> E;
     E = pargeo::hdbscan_arma(points2, minPts);
-    std::cout << "finished" << std::endl;
     parlay::sequence<pargeo::dendroNode> dendro = pargeo::dendrogram(E, n);
     parlay::sequence<double> A(dendro.size()*4);
     parlay::parallel_for(0, dendro.size(), [&](size_t i){
@@ -278,9 +305,6 @@ void test_mlpack(){
                         A[i*4+1] = std::get<1>(dendro[i]);
                         A[i*4+2] = std::get<2>(dendro[i]);
                         A[i*4+3] = std::get<3>(dendro[i]);});
-
-    std::cout << "done" << std::endl;
-
 
 }
 

@@ -5093,73 +5093,6 @@ CMakeFiles/MyProject.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
   /usr/local/include/parlay/internal/sequence_base.h \
   /usr/local/include/parlay/parallel.h \
   /usr/local/include/parlay/relocation.h \
-  ../parallel_hdbscan/src/kdTree.h \
-  ../parallel_hdbscan/include/hdbscan/point.h \
-  /usr/local/include/parlay/primitives.h \
-  /usr/local/include/parlay/internal/counting_sort.h \
-  /usr/local/include/parlay/internal/sequence_ops.h \
-  /usr/local/include/parlay/delayed_sequence.h \
-  /usr/local/include/parlay/monoid.h \
-  /usr/local/include/parlay/range.h \
-  /usr/local/include/parlay/sequence.h \
-  /usr/local/include/parlay/slice.h \
-  /usr/local/include/parlay/internal/uninitialized_sequence.h \
-  /usr/local/include/parlay/alloc.h \
-  /usr/local/include/parlay/internal/debug_uninitialized.h \
-  /usr/local/include/parlay/internal/integer_sort.h \
-  /usr/local/include/parlay/internal/counting_sort.h \
-  /usr/local/include/parlay/internal/get_time.h \
-  /usr/local/include/parlay/internal/group_by.h \
-  /usr/local/include/parlay/internal/block_delayed.h \
-  /usr/local/include/parlay/internal/stream_delayed.h \
-  /usr/local/include/parlay/internal/collect_reduce.h \
-  /usr/local/include/parlay/internal/integer_sort.h \
-  /usr/local/include/parlay/internal/sample_sort.h \
-  /usr/local/include/parlay/internal/bucket_sort.h \
-  /usr/local/include/parlay/internal/merge_sort.h \
-  /usr/local/include/parlay/internal/merge.h \
-  /usr/local/include/parlay/internal/binary_search.h \
-  /usr/local/include/parlay/internal/quicksort.h \
-  /usr/local/include/parlay/internal/uninitialized_storage.h \
-  /usr/local/include/parlay/internal/transpose.h \
-  /usr/local/include/parlay/internal/heap_tree.h \
-  /usr/local/include/parlay/internal/merge.h \
-  /usr/local/include/parlay/internal/merge_sort.h \
-  /usr/local/include/parlay/internal/sequence_ops.h \
-  /usr/local/include/parlay/internal/sample_sort.h \
-  /usr/local/include/parlay/delayed.h \
-  /usr/local/include/parlay/internal/delayed/filter.h \
-  /usr/local/include/parlay/range.h \
-  /usr/local/include/parlay/relocation.h \
-  /usr/local/include/parlay/sequence.h \
-  /usr/local/include/parlay/utilities.h \
-  /usr/local/include/parlay/internal/sequence_ops.h \
-  /usr/local/include/parlay/internal/uninitialized_sequence.h \
-  /usr/local/include/parlay/internal/delayed/common.h \
-  /usr/local/include/parlay/internal/delayed/flatten.h \
-  /usr/local/include/parlay/monoid.h \
-  /usr/local/include/parlay/parallel.h \
-  /usr/local/include/parlay/slice.h \
-  /usr/local/include/parlay/type_traits.h \
-  /usr/local/include/parlay/internal/delayed/map.h \
-  /usr/local/include/parlay/internal/delayed/terminal.h \
-  /usr/local/include/parlay/internal/delayed/filter_op.h \
-  /usr/local/include/parlay/internal/delayed/flatten.h \
-  /usr/local/include/parlay/internal/delayed/map.h \
-  /usr/local/include/parlay/internal/delayed/scan.h \
-  /usr/local/include/parlay/internal/delayed/terminal.h \
-  /usr/local/include/parlay/internal/delayed/zip.h \
-  /usr/local/include/parlay/delayed_sequence.h \
-  /usr/local/include/parlay/monoid.h \
-  /usr/local/include/parlay/random.h \
-  /usr/local/include/parlay/sequence.h \
-  /usr/local/include/parlay/relocation.h \
-  ../parallel_hdbscan/src/kdTreeKnn.h \
-  ../parallel_hdbscan/include/hdbscan/hdbscan.h \
-  ../parallel_hdbscan/include/hdbscan/edge.h \
-  ../parallel_hdbscan/include/hdbscan/armapoint.h \
-  ../parallel_hdbscan/src/kdTreeArma.h \
-  ../parallel_hdbscan/src/kdTreeKnnArma.h \
   ../src/quickselect.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/neighbor_search.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/neighbor_search_stat.hpp \
@@ -6992,73 +6925,6 @@ CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp
   /usr/local/include/parlay/internal/sequence_base.h \
   /usr/local/include/parlay/parallel.h \
   /usr/local/include/parlay/relocation.h \
-  ../parallel_hdbscan/src/kdTree.h \
-  ../parallel_hdbscan/include/hdbscan/point.h \
-  /usr/local/include/parlay/primitives.h \
-  /usr/local/include/parlay/internal/counting_sort.h \
-  /usr/local/include/parlay/internal/sequence_ops.h \
-  /usr/local/include/parlay/delayed_sequence.h \
-  /usr/local/include/parlay/monoid.h \
-  /usr/local/include/parlay/range.h \
-  /usr/local/include/parlay/sequence.h \
-  /usr/local/include/parlay/slice.h \
-  /usr/local/include/parlay/internal/uninitialized_sequence.h \
-  /usr/local/include/parlay/alloc.h \
-  /usr/local/include/parlay/internal/debug_uninitialized.h \
-  /usr/local/include/parlay/internal/integer_sort.h \
-  /usr/local/include/parlay/internal/counting_sort.h \
-  /usr/local/include/parlay/internal/get_time.h \
-  /usr/local/include/parlay/internal/group_by.h \
-  /usr/local/include/parlay/internal/block_delayed.h \
-  /usr/local/include/parlay/internal/stream_delayed.h \
-  /usr/local/include/parlay/internal/collect_reduce.h \
-  /usr/local/include/parlay/internal/integer_sort.h \
-  /usr/local/include/parlay/internal/sample_sort.h \
-  /usr/local/include/parlay/internal/bucket_sort.h \
-  /usr/local/include/parlay/internal/merge_sort.h \
-  /usr/local/include/parlay/internal/merge.h \
-  /usr/local/include/parlay/internal/binary_search.h \
-  /usr/local/include/parlay/internal/quicksort.h \
-  /usr/local/include/parlay/internal/uninitialized_storage.h \
-  /usr/local/include/parlay/internal/transpose.h \
-  /usr/local/include/parlay/internal/heap_tree.h \
-  /usr/local/include/parlay/internal/merge.h \
-  /usr/local/include/parlay/internal/merge_sort.h \
-  /usr/local/include/parlay/internal/sequence_ops.h \
-  /usr/local/include/parlay/internal/sample_sort.h \
-  /usr/local/include/parlay/delayed.h \
-  /usr/local/include/parlay/internal/delayed/filter.h \
-  /usr/local/include/parlay/range.h \
-  /usr/local/include/parlay/relocation.h \
-  /usr/local/include/parlay/sequence.h \
-  /usr/local/include/parlay/utilities.h \
-  /usr/local/include/parlay/internal/sequence_ops.h \
-  /usr/local/include/parlay/internal/uninitialized_sequence.h \
-  /usr/local/include/parlay/internal/delayed/common.h \
-  /usr/local/include/parlay/internal/delayed/flatten.h \
-  /usr/local/include/parlay/monoid.h \
-  /usr/local/include/parlay/parallel.h \
-  /usr/local/include/parlay/slice.h \
-  /usr/local/include/parlay/type_traits.h \
-  /usr/local/include/parlay/internal/delayed/map.h \
-  /usr/local/include/parlay/internal/delayed/terminal.h \
-  /usr/local/include/parlay/internal/delayed/filter_op.h \
-  /usr/local/include/parlay/internal/delayed/flatten.h \
-  /usr/local/include/parlay/internal/delayed/map.h \
-  /usr/local/include/parlay/internal/delayed/scan.h \
-  /usr/local/include/parlay/internal/delayed/terminal.h \
-  /usr/local/include/parlay/internal/delayed/zip.h \
-  /usr/local/include/parlay/delayed_sequence.h \
-  /usr/local/include/parlay/monoid.h \
-  /usr/local/include/parlay/random.h \
-  /usr/local/include/parlay/sequence.h \
-  /usr/local/include/parlay/relocation.h \
-  ../parallel_hdbscan/src/kdTreeKnn.h \
-  ../parallel_hdbscan/include/hdbscan/hdbscan.h \
-  ../parallel_hdbscan/include/hdbscan/edge.h \
-  ../parallel_hdbscan/include/hdbscan/armapoint.h \
-  ../parallel_hdbscan/src/kdTreeArma.h \
-  ../parallel_hdbscan/src/kdTreeKnnArma.h \
   /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/pybind11.h \
   /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/detail/class.h \
   /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/attr.h \
@@ -7199,7 +7065,74 @@ CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp
   /usr/include/c++/11/bits/gslice.h \
   /usr/include/c++/11/bits/gslice_array.h \
   /usr/include/c++/11/bits/mask_array.h \
-  /usr/include/c++/11/bits/indirect_array.h
+  /usr/include/c++/11/bits/indirect_array.h \
+  ../parallel_hdbscan/include/hdbscan/point.h \
+  /usr/local/include/parlay/primitives.h \
+  /usr/local/include/parlay/internal/counting_sort.h \
+  /usr/local/include/parlay/internal/sequence_ops.h \
+  /usr/local/include/parlay/delayed_sequence.h \
+  /usr/local/include/parlay/monoid.h \
+  /usr/local/include/parlay/range.h \
+  /usr/local/include/parlay/sequence.h \
+  /usr/local/include/parlay/slice.h \
+  /usr/local/include/parlay/internal/uninitialized_sequence.h \
+  /usr/local/include/parlay/alloc.h \
+  /usr/local/include/parlay/internal/debug_uninitialized.h \
+  /usr/local/include/parlay/internal/integer_sort.h \
+  /usr/local/include/parlay/internal/counting_sort.h \
+  /usr/local/include/parlay/internal/get_time.h \
+  /usr/local/include/parlay/internal/group_by.h \
+  /usr/local/include/parlay/internal/block_delayed.h \
+  /usr/local/include/parlay/internal/stream_delayed.h \
+  /usr/local/include/parlay/internal/collect_reduce.h \
+  /usr/local/include/parlay/internal/integer_sort.h \
+  /usr/local/include/parlay/internal/sample_sort.h \
+  /usr/local/include/parlay/internal/bucket_sort.h \
+  /usr/local/include/parlay/internal/merge_sort.h \
+  /usr/local/include/parlay/internal/merge.h \
+  /usr/local/include/parlay/internal/binary_search.h \
+  /usr/local/include/parlay/internal/quicksort.h \
+  /usr/local/include/parlay/internal/uninitialized_storage.h \
+  /usr/local/include/parlay/internal/transpose.h \
+  /usr/local/include/parlay/internal/heap_tree.h \
+  /usr/local/include/parlay/internal/merge.h \
+  /usr/local/include/parlay/internal/merge_sort.h \
+  /usr/local/include/parlay/internal/sequence_ops.h \
+  /usr/local/include/parlay/internal/sample_sort.h \
+  /usr/local/include/parlay/delayed.h \
+  /usr/local/include/parlay/internal/delayed/filter.h \
+  /usr/local/include/parlay/range.h \
+  /usr/local/include/parlay/relocation.h \
+  /usr/local/include/parlay/sequence.h \
+  /usr/local/include/parlay/utilities.h \
+  /usr/local/include/parlay/internal/sequence_ops.h \
+  /usr/local/include/parlay/internal/uninitialized_sequence.h \
+  /usr/local/include/parlay/internal/delayed/common.h \
+  /usr/local/include/parlay/internal/delayed/flatten.h \
+  /usr/local/include/parlay/monoid.h \
+  /usr/local/include/parlay/parallel.h \
+  /usr/local/include/parlay/slice.h \
+  /usr/local/include/parlay/type_traits.h \
+  /usr/local/include/parlay/internal/delayed/map.h \
+  /usr/local/include/parlay/internal/delayed/terminal.h \
+  /usr/local/include/parlay/internal/delayed/filter_op.h \
+  /usr/local/include/parlay/internal/delayed/flatten.h \
+  /usr/local/include/parlay/internal/delayed/map.h \
+  /usr/local/include/parlay/internal/delayed/scan.h \
+  /usr/local/include/parlay/internal/delayed/terminal.h \
+  /usr/local/include/parlay/internal/delayed/zip.h \
+  /usr/local/include/parlay/delayed_sequence.h \
+  /usr/local/include/parlay/monoid.h \
+  /usr/local/include/parlay/random.h \
+  /usr/local/include/parlay/sequence.h \
+  /usr/local/include/parlay/relocation.h \
+  ../parallel_hdbscan/include/hdbscan/armapoint.h \
+  ../parallel_hdbscan/include/hdbscan/hdbscan.h \
+  ../parallel_hdbscan/include/hdbscan/edge.h \
+  ../parallel_hdbscan/src/kdTree.h \
+  ../parallel_hdbscan/src/kdTreeKnn.h \
+  ../parallel_hdbscan/src/kdTreeArma.h \
+  ../parallel_hdbscan/src/kdTreeKnnArma.h
 
 CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o: ../src/dc_hdbscan.cpp \
   /usr/include/stdc-predef.h \
@@ -9015,74 +8948,7 @@ CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o: ../src/dc_hdbscan.cpp \
   /usr/local/include/parlay/slice.h \
   /usr/local/include/parlay/internal/sequence_base.h \
   /usr/local/include/parlay/parallel.h \
-  /usr/local/include/parlay/relocation.h \
-  ../parallel_hdbscan/src/kdTree.h \
-  ../parallel_hdbscan/include/hdbscan/point.h \
-  /usr/local/include/parlay/primitives.h \
-  /usr/local/include/parlay/internal/counting_sort.h \
-  /usr/local/include/parlay/internal/sequence_ops.h \
-  /usr/local/include/parlay/delayed_sequence.h \
-  /usr/local/include/parlay/monoid.h \
-  /usr/local/include/parlay/range.h \
-  /usr/local/include/parlay/sequence.h \
-  /usr/local/include/parlay/slice.h \
-  /usr/local/include/parlay/internal/uninitialized_sequence.h \
-  /usr/local/include/parlay/alloc.h \
-  /usr/local/include/parlay/internal/debug_uninitialized.h \
-  /usr/local/include/parlay/internal/integer_sort.h \
-  /usr/local/include/parlay/internal/counting_sort.h \
-  /usr/local/include/parlay/internal/get_time.h \
-  /usr/local/include/parlay/internal/group_by.h \
-  /usr/local/include/parlay/internal/block_delayed.h \
-  /usr/local/include/parlay/internal/stream_delayed.h \
-  /usr/local/include/parlay/internal/collect_reduce.h \
-  /usr/local/include/parlay/internal/integer_sort.h \
-  /usr/local/include/parlay/internal/sample_sort.h \
-  /usr/local/include/parlay/internal/bucket_sort.h \
-  /usr/local/include/parlay/internal/merge_sort.h \
-  /usr/local/include/parlay/internal/merge.h \
-  /usr/local/include/parlay/internal/binary_search.h \
-  /usr/local/include/parlay/internal/quicksort.h \
-  /usr/local/include/parlay/internal/uninitialized_storage.h \
-  /usr/local/include/parlay/internal/transpose.h \
-  /usr/local/include/parlay/internal/heap_tree.h \
-  /usr/local/include/parlay/internal/merge.h \
-  /usr/local/include/parlay/internal/merge_sort.h \
-  /usr/local/include/parlay/internal/sequence_ops.h \
-  /usr/local/include/parlay/internal/sample_sort.h \
-  /usr/local/include/parlay/delayed.h \
-  /usr/local/include/parlay/internal/delayed/filter.h \
-  /usr/local/include/parlay/range.h \
-  /usr/local/include/parlay/relocation.h \
-  /usr/local/include/parlay/sequence.h \
-  /usr/local/include/parlay/utilities.h \
-  /usr/local/include/parlay/internal/sequence_ops.h \
-  /usr/local/include/parlay/internal/uninitialized_sequence.h \
-  /usr/local/include/parlay/internal/delayed/common.h \
-  /usr/local/include/parlay/internal/delayed/flatten.h \
-  /usr/local/include/parlay/monoid.h \
-  /usr/local/include/parlay/parallel.h \
-  /usr/local/include/parlay/slice.h \
-  /usr/local/include/parlay/type_traits.h \
-  /usr/local/include/parlay/internal/delayed/map.h \
-  /usr/local/include/parlay/internal/delayed/terminal.h \
-  /usr/local/include/parlay/internal/delayed/filter_op.h \
-  /usr/local/include/parlay/internal/delayed/flatten.h \
-  /usr/local/include/parlay/internal/delayed/map.h \
-  /usr/local/include/parlay/internal/delayed/scan.h \
-  /usr/local/include/parlay/internal/delayed/terminal.h \
-  /usr/local/include/parlay/internal/delayed/zip.h \
-  /usr/local/include/parlay/delayed_sequence.h \
-  /usr/local/include/parlay/monoid.h \
-  /usr/local/include/parlay/random.h \
-  /usr/local/include/parlay/sequence.h \
-  /usr/local/include/parlay/relocation.h \
-  ../parallel_hdbscan/src/kdTreeKnn.h \
-  ../parallel_hdbscan/include/hdbscan/hdbscan.h \
-  ../parallel_hdbscan/include/hdbscan/edge.h \
-  ../parallel_hdbscan/include/hdbscan/armapoint.h \
-  ../parallel_hdbscan/src/kdTreeArma.h \
-  ../parallel_hdbscan/src/kdTreeKnnArma.h
+  /usr/local/include/parlay/relocation.h
 
 CMakeFiles/MyProject.dir/src/example.cpp.o: ../src/example.cpp \
   /usr/include/stdc-predef.h \
@@ -10899,6 +10765,8 @@ CMakeFiles/MyProject.dir/src/example.cpp.o: ../src/example.cpp \
   /usr/local/include/parlay/internal/sequence_base.h \
   /usr/local/include/parlay/parallel.h \
   /usr/local/include/parlay/relocation.h \
+  ../src/lp_objective.hpp \
+  ../src/dc_hdbscan.hpp \
   ../parallel_hdbscan/src/kdTree.h \
   ../parallel_hdbscan/include/hdbscan/point.h \
   /usr/local/include/parlay/primitives.h \
@@ -10961,13 +10829,11 @@ CMakeFiles/MyProject.dir/src/example.cpp.o: ../src/example.cpp \
   /usr/local/include/parlay/sequence.h \
   /usr/local/include/parlay/relocation.h \
   ../parallel_hdbscan/src/kdTreeKnn.h \
-  ../parallel_hdbscan/include/hdbscan/hdbscan.h \
-  ../parallel_hdbscan/include/hdbscan/edge.h \
-  ../parallel_hdbscan/include/hdbscan/armapoint.h \
   ../parallel_hdbscan/src/kdTreeArma.h \
+  ../parallel_hdbscan/include/hdbscan/armapoint.h \
   ../parallel_hdbscan/src/kdTreeKnnArma.h \
-  ../src/lp_objective.hpp \
-  ../src/dc_hdbscan.hpp
+  ../parallel_hdbscan/include/hdbscan/hdbscan.h \
+  ../parallel_hdbscan/include/hdbscan/edge.h
 
 CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
   /usr/include/stdc-predef.h \

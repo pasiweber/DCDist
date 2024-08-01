@@ -155,3 +155,5 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan(parlay::sequence<pargeo::point
 
 template sequence<wghEdge> pargeo::hdbscan<2>(sequence<point<2>> &, size_t);
 template sequence<wghEdge> pargeo::hdbscan<20>(sequence<point<20>> &, size_t);
+template sequence<wghEdge> pargeo::hdbscan<24>(sequence<point<24>> &, size_t);
+

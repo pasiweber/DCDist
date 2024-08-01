@@ -144,7 +144,7 @@ namespace pargeo {
   template<typename nodeT, typename objT>
   void knnHelper2(nodeT* tree, objT& q, buffer2<objT*>& out) {
     // find the leaf first
-    int relation = tree->boxCompare(tree->getMin(), tree->getMax(),
+    int relation = tree->boxCompare(tree->getMin(), tree->getMax(), //This calls functions on the first element in the array
 				    point2(q.coords()),
 				    point2(q.coords()));
 

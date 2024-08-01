@@ -26,6 +26,22 @@ namespace py = pybind11;
 using namespace parlay;
 
 
+parlay::sequence<pargeo::point2> convertArmaMatToParlayPoints2(const arma::mat& mat) {
+    // Create a parlay sequence of points
+    parlay::sequence<pargeo::point2> points(mat.n_cols);
+    std::cout<< "num cols:" << mat.n_cols << std::endl;
+    // Populate the sequence with points created from the matrix columns
+    for (size_t j = 0; j < mat.n_cols; ++j) {
+        arma::Col<double> coords(mat.n_rows);
+        for (size_t i = 0; i < mat.n_rows; ++i) {
+            coords[i] = mat(i, j);
+        }
+        points[j] = pargeo::point2(&coords);
+    }
+
+    return points;
+}
+
 parlay::sequence<pargeo::point2> translate_points(py::array_t<double> input_array) {
     std::cout << "compute cdists wrapper called" << std::endl;
     // Convert numpy array to armadillo matrix

@@ -41,6 +41,7 @@ template <class _objT> class kdNode2 {
   }
 
   inline void boundingBoxSerial() {
+
     pMin = pointT(items[0]->coords());
     pMax = pointT(items[0]->coords());
     for (intT i = 0; i < size(); ++i) {
@@ -362,9 +363,6 @@ kdNode2<objT> *buildKdt2(parlay::sequence<objT> &P, bool parallel = true,
   auto root = (nodeT *)malloc(sizeof(nodeT) * (2 * n - 1)); 
   //auto root = new nodeT[2*n-1]; 
 
-  /* parlay::parallel_for(0, 2*n-1, [&](size_t i) { */
-  /* 	root[i].setEmpty(); */
-  /*   }); */
 
   if (parallel) {
     auto flags = parlay::sequence<bool>(n);

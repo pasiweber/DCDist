@@ -22,8 +22,7 @@ namespace pargeo {
     arma::Col<_tData> x;
     int dim;
 
-    _point2() : x(20), dim(20){
-      x.fill(empty);
+    _point2() : x(), dim(0) {
     };
     //Constructors
     _point2(int dim) : x(dim) { 

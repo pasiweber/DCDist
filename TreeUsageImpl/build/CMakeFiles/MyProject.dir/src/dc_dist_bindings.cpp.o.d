@@ -1716,68 +1716,6 @@ CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o: \
  /usr/local/include/parlay/internal/sequence_base.h \
  /usr/local/include/parlay/parallel.h \
  /usr/local/include/parlay/relocation.h \
- /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/src/kdTree.h \
- /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/src/../include/hdbscan/point.h \
- /usr/local/include/parlay/primitives.h \
- /usr/local/include/parlay/internal/counting_sort.h \
- /usr/local/include/parlay/internal/sequence_ops.h \
- /usr/local/include/parlay/delayed_sequence.h \
- /usr/local/include/parlay/monoid.h /usr/local/include/parlay/range.h \
- /usr/local/include/parlay/sequence.h /usr/local/include/parlay/slice.h \
- /usr/local/include/parlay/internal/uninitialized_sequence.h \
- /usr/local/include/parlay/alloc.h \
- /usr/local/include/parlay/internal/debug_uninitialized.h \
- /usr/local/include/parlay/internal/integer_sort.h \
- /usr/local/include/parlay/internal/counting_sort.h \
- /usr/local/include/parlay/internal/get_time.h \
- /usr/local/include/parlay/internal/group_by.h \
- /usr/local/include/parlay/internal/block_delayed.h \
- /usr/local/include/parlay/internal/stream_delayed.h \
- /usr/local/include/parlay/internal/collect_reduce.h \
- /usr/local/include/parlay/internal/integer_sort.h \
- /usr/local/include/parlay/internal/sample_sort.h \
- /usr/local/include/parlay/internal/bucket_sort.h \
- /usr/local/include/parlay/internal/merge_sort.h \
- /usr/local/include/parlay/internal/merge.h \
- /usr/local/include/parlay/internal/binary_search.h \
- /usr/local/include/parlay/internal/quicksort.h \
- /usr/local/include/parlay/internal/uninitialized_storage.h \
- /usr/local/include/parlay/internal/transpose.h \
- /usr/local/include/parlay/internal/heap_tree.h \
- /usr/local/include/parlay/internal/merge.h \
- /usr/local/include/parlay/internal/merge_sort.h \
- /usr/local/include/parlay/internal/sequence_ops.h \
- /usr/local/include/parlay/internal/sample_sort.h \
- /usr/local/include/parlay/delayed.h \
- /usr/local/include/parlay/internal/delayed/filter.h \
- /usr/local/include/parlay/range.h /usr/local/include/parlay/relocation.h \
- /usr/local/include/parlay/sequence.h \
- /usr/local/include/parlay/utilities.h \
- /usr/local/include/parlay/internal/sequence_ops.h \
- /usr/local/include/parlay/internal/uninitialized_sequence.h \
- /usr/local/include/parlay/internal/delayed/common.h \
- /usr/local/include/parlay/internal/delayed/flatten.h \
- /usr/local/include/parlay/monoid.h /usr/local/include/parlay/parallel.h \
- /usr/local/include/parlay/slice.h \
- /usr/local/include/parlay/type_traits.h \
- /usr/local/include/parlay/internal/delayed/map.h \
- /usr/local/include/parlay/internal/delayed/terminal.h \
- /usr/local/include/parlay/internal/delayed/filter_op.h \
- /usr/local/include/parlay/internal/delayed/flatten.h \
- /usr/local/include/parlay/internal/delayed/map.h \
- /usr/local/include/parlay/internal/delayed/scan.h \
- /usr/local/include/parlay/internal/delayed/terminal.h \
- /usr/local/include/parlay/internal/delayed/zip.h \
- /usr/local/include/parlay/delayed_sequence.h \
- /usr/local/include/parlay/monoid.h /usr/local/include/parlay/random.h \
- /usr/local/include/parlay/sequence.h \
- /usr/local/include/parlay/relocation.h \
- /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/src/kdTreeKnn.h \
- /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/include/hdbscan/hdbscan.h \
- /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/include/hdbscan/edge.h \
- /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/include/hdbscan/armapoint.h \
- /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/src/kdTreeArma.h \
- /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/src/kdTreeKnnArma.h \
  /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/pybind11.h \
  /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/detail/class.h \
  /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/attr.h \
@@ -1898,4 +1836,66 @@ CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o: \
  /usr/include/c++/11/bits/gslice.h \
  /usr/include/c++/11/bits/gslice_array.h \
  /usr/include/c++/11/bits/mask_array.h \
- /usr/include/c++/11/bits/indirect_array.h
+ /usr/include/c++/11/bits/indirect_array.h \
+ /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/include/hdbscan/point.h \
+ /usr/local/include/parlay/primitives.h \
+ /usr/local/include/parlay/internal/counting_sort.h \
+ /usr/local/include/parlay/internal/sequence_ops.h \
+ /usr/local/include/parlay/delayed_sequence.h \
+ /usr/local/include/parlay/monoid.h /usr/local/include/parlay/range.h \
+ /usr/local/include/parlay/sequence.h /usr/local/include/parlay/slice.h \
+ /usr/local/include/parlay/internal/uninitialized_sequence.h \
+ /usr/local/include/parlay/alloc.h \
+ /usr/local/include/parlay/internal/debug_uninitialized.h \
+ /usr/local/include/parlay/internal/integer_sort.h \
+ /usr/local/include/parlay/internal/counting_sort.h \
+ /usr/local/include/parlay/internal/get_time.h \
+ /usr/local/include/parlay/internal/group_by.h \
+ /usr/local/include/parlay/internal/block_delayed.h \
+ /usr/local/include/parlay/internal/stream_delayed.h \
+ /usr/local/include/parlay/internal/collect_reduce.h \
+ /usr/local/include/parlay/internal/integer_sort.h \
+ /usr/local/include/parlay/internal/sample_sort.h \
+ /usr/local/include/parlay/internal/bucket_sort.h \
+ /usr/local/include/parlay/internal/merge_sort.h \
+ /usr/local/include/parlay/internal/merge.h \
+ /usr/local/include/parlay/internal/binary_search.h \
+ /usr/local/include/parlay/internal/quicksort.h \
+ /usr/local/include/parlay/internal/uninitialized_storage.h \
+ /usr/local/include/parlay/internal/transpose.h \
+ /usr/local/include/parlay/internal/heap_tree.h \
+ /usr/local/include/parlay/internal/merge.h \
+ /usr/local/include/parlay/internal/merge_sort.h \
+ /usr/local/include/parlay/internal/sequence_ops.h \
+ /usr/local/include/parlay/internal/sample_sort.h \
+ /usr/local/include/parlay/delayed.h \
+ /usr/local/include/parlay/internal/delayed/filter.h \
+ /usr/local/include/parlay/range.h /usr/local/include/parlay/relocation.h \
+ /usr/local/include/parlay/sequence.h \
+ /usr/local/include/parlay/utilities.h \
+ /usr/local/include/parlay/internal/sequence_ops.h \
+ /usr/local/include/parlay/internal/uninitialized_sequence.h \
+ /usr/local/include/parlay/internal/delayed/common.h \
+ /usr/local/include/parlay/internal/delayed/flatten.h \
+ /usr/local/include/parlay/monoid.h /usr/local/include/parlay/parallel.h \
+ /usr/local/include/parlay/slice.h \
+ /usr/local/include/parlay/type_traits.h \
+ /usr/local/include/parlay/internal/delayed/map.h \
+ /usr/local/include/parlay/internal/delayed/terminal.h \
+ /usr/local/include/parlay/internal/delayed/filter_op.h \
+ /usr/local/include/parlay/internal/delayed/flatten.h \
+ /usr/local/include/parlay/internal/delayed/map.h \
+ /usr/local/include/parlay/internal/delayed/scan.h \
+ /usr/local/include/parlay/internal/delayed/terminal.h \
+ /usr/local/include/parlay/internal/delayed/zip.h \
+ /usr/local/include/parlay/delayed_sequence.h \
+ /usr/local/include/parlay/monoid.h /usr/local/include/parlay/random.h \
+ /usr/local/include/parlay/sequence.h \
+ /usr/local/include/parlay/relocation.h \
+ /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/include/hdbscan/armapoint.h \
+ /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/include/hdbscan/hdbscan.h \
+ /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/include/hdbscan/edge.h \
+ /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/src/kdTree.h \
+ /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/src/kdTreeKnn.h \
+ /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/src/kdTreeArma.h \
+ /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/src/kdTreeKnnArma.h
