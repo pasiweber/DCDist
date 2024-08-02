@@ -37,7 +37,7 @@ class KCentroidsTree
         Basic constructor, creates the hierarchy based on the template objective.
         Sets up smart pointers within the tree to instantly get children of a node.
     */
-    KCentroidsTree(Node& root) : tree(create_hierarchy(root)), curr_k(1){
+    KCentroidsTree(Node& root) : tree(create_hierarchy_new(root)), curr_k(1){
         int n = root.size;
         setup_quick_clusters(n, this->tree);
         this->curr_k_solution = this->tree;
@@ -70,7 +70,7 @@ class KCentroidsTree
         return k_solution(k, curr_solution);
     }
 
-
+    
     private:
         /*
         Creates the hierarchy tree in O(n) time and space, and annotates each node with the k instance it was created at, i.e. the k that made the split that created the node.
@@ -92,7 +92,6 @@ class KCentroidsTree
         Node* create_hierarchy(Node& root){
             std::vector<Annotation*> annotations = annotate_tree(root);
             std::sort(annotations.begin(), annotations.end(), compareByCost);
-
 
             //Create the tree here using the pointers in the annotations.
             Node* root_pointer = new Node{nullptr, 0.0, annotations[0]->center};
@@ -142,8 +141,7 @@ class KCentroidsTree
 
                 curr_anno->tree_node = new_node;
             }
-
-            //Second loop/pass adding final leaves to the tree
+            //Second loop/pass adding final leaves to the tree - it is a pass over the annotations, NOT the tree itself.
             for(int i = 0; i < leaves_to_add.size(); i++){ 
                 curr_anno = leaves_to_add[i];
                 if(!(curr_anno->has_leaf)){ //TODO: Remove this if statement - not needed I think
@@ -157,6 +155,58 @@ class KCentroidsTree
             assign_sizes(root_pointer); //Add number of leaves in subtree to each node
             delete_annotations(annotations); //Free the annotations from memory
 
+            return root_pointer;
+        }
+
+
+
+        Node* create_hierarchy_new(Node& root){
+            std::vector<Annotation*> annotations = annotate_tree(root);
+            std::sort(annotations.begin(), annotations.end(), compareByCost);
+
+            Node* root_pointer = new Node{nullptr, -1.0, annotations[0]->center, 1}; //parent, cost, id, k
+            annotations[0]->tree_node = root_pointer; //Unroll first iteration of loop to avoid an if/else in loop.
+
+            Annotation* curr_anno; 
+            Annotation* parent_anno;
+            Node* parent_node;
+
+            for(int i = 1; i < annotations.size(); i++){
+                curr_anno = annotations[i];
+                Node* new_node = new Node{nullptr, -1.0, curr_anno->center, i+1};//parent, cost, id, k
+                curr_anno->tree_node = new_node;
+
+                parent_anno = curr_anno->parent;
+                parent_node = parent_anno->tree_node;
+                double cost = parent_node->cost;
+
+                if(cost != curr_anno->cost_decrease && cost >= 0){ //No more new nodes added to current parent, update the pointers
+                    Node* new_parent = parent_node->children[0]; //parent, cost, id, k.
+                    new_node->parent = new_parent;
+                    parent_anno->tree_node = new_parent; //we are done with the previous parent node that annotation pointed to
+                    new_parent->cost = curr_anno->cost_decrease;
+
+                    Node* new_splitter = new Node{new_parent, -1.0, new_parent->id, i+1};
+                    new_splitter->parent = new_parent; //TODO: Remove, right?
+                    new_splitter->is_orig_cluster = true; //Used to distinguish nodes when getting clusterings out for each k
+                    
+                    new_parent->children.push_back(new_splitter); 
+                    new_parent->children.push_back(new_node); 
+
+                } else if (cost < 0){
+                    Node* new_splitter = new Node{parent_node, -1.0, parent_node->id, i+1}; //parent, cost, id, k
+                    new_splitter->is_orig_cluster = true; 
+                    parent_node->cost = curr_anno->cost_decrease;
+                    new_node->parent = parent_node;
+                    
+                    parent_node->children.push_back(new_splitter); 
+                    parent_node->children.push_back(new_node);
+                } else { //Cost_decrease == parent cost_decrease
+                    parent_node->children.push_back(new_node);
+                    new_node->parent = parent_node;
+                }
+            }
+            delete_annotations(annotations); //Free the annotations from memory
             return root_pointer;
         }
 
@@ -275,7 +325,7 @@ class KCentroidsTree
             } else {
                 Node *solution_holder = new Node{nullptr, 0.0};
                 solution_holder->k = -1; //This has a default k value that should never be part of a solution
-                //printTree2(*(this->tree));
+                printTree2(*(this->tree));
                 get_k_solution_helper(k, curr_solution, solution_holder);
 
                 std::vector<int> res(n);

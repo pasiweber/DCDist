@@ -17,14 +17,19 @@ bool compareByCost(const Annotation* anno1, const Annotation* anno2){
 }
 
 void print_annotations(std::vector<Annotation*> annotations){
-    std::cout << "Annotations:" << std::endl;
-    std::cout << "[";
-    for(Annotation* anno : annotations){
-        std::cout << "(" << anno->cost_decrease << ", " << anno->center << "), "; 
-    }
-    std::cout << "]" << std::endl;
+        std::cout << "Annotations:" << std::endl;
+        std::cout << "[";
+        for(Annotation* anno : annotations){
+            if(anno->parent == nullptr){
+                std::cout << "(" << anno->cost_decrease << ", " << anno->center <<"), "; 
+            } else{
+                std::cout << "(" << anno->cost_decrease << ", " << anno->center << ", " << anno->parent->center <<"), "; 
 
-}
+            }
+        }
+        std::cout << "]" << std::endl;
+
+    }
 
 
 
