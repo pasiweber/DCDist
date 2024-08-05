@@ -83,62 +83,14 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/dc_dist_bindings.cpp -o CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.s
 
-CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o: CMakeFiles/dctree.dir/flags.make
-CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o: ../parallel_hdbscan/src/hdbscan_arma.cpp
-CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o: CMakeFiles/dctree.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o -MF CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o.d -o CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o -c /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/hdbscan_arma.cpp
-
-CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan_arma.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan_arma.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/hdbscan_arma.cpp > CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan_arma.cpp.i
-
-CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan_arma.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan_arma.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/hdbscan_arma.cpp -o CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan_arma.cpp.s
-
-CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan.cpp.o: CMakeFiles/dctree.dir/flags.make
-CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan.cpp.o: ../parallel_hdbscan/src/hdbscan.cpp
-CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan.cpp.o: CMakeFiles/dctree.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan.cpp.o -MF CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan.cpp.o.d -o CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan.cpp.o -c /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/hdbscan.cpp
-
-CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/hdbscan.cpp > CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan.cpp.i
-
-CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/hdbscan.cpp -o CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan.cpp.s
-
-CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.o: CMakeFiles/dctree.dir/flags.make
-CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.o: ../parallel_hdbscan/src/dendrogram.cpp
-CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.o: CMakeFiles/dctree.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.o -MF CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.o.d -o CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.o -c /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/dendrogram.cpp
-
-CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/dendrogram.cpp > CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.i
-
-CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/dendrogram.cpp -o CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.s
-
 # Object files for target dctree
 dctree_OBJECTS = \
-"CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o" \
-"CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o" \
-"CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan.cpp.o" \
-"CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.o"
+"CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o"
 
 # External object files for target dctree
 dctree_EXTERNAL_OBJECTS =
 
 dctree.cpython-310-x86_64-linux-gnu.so: CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o
-dctree.cpython-310-x86_64-linux-gnu.so: CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o
-dctree.cpython-310-x86_64-linux-gnu.so: CMakeFiles/dctree.dir/parallel_hdbscan/src/hdbscan.cpp.o
-dctree.cpython-310-x86_64-linux-gnu.so: CMakeFiles/dctree.dir/parallel_hdbscan/src/dendrogram.cpp.o
 dctree.cpython-310-x86_64-linux-gnu.so: CMakeFiles/dctree.dir/build.make
 dctree.cpython-310-x86_64-linux-gnu.so: libdcdist.a
 dctree.cpython-310-x86_64-linux-gnu.so: /usr/lib/x86_64-linux-gnu/libmlpack.so.3.4
@@ -146,8 +98,9 @@ dctree.cpython-310-x86_64-linux-gnu.so: /usr/lib/libarmadillo.so
 dctree.cpython-310-x86_64-linux-gnu.so: /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so
 dctree.cpython-310-x86_64-linux-gnu.so: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
 dctree.cpython-310-x86_64-linux-gnu.so: CMakeFiles/dctree.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared module dctree.cpython-310-x86_64-linux-gnu.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared module dctree.cpython-310-x86_64-linux-gnu.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dctree.dir/link.txt --verbose=$(VERBOSE)
+	/usr/bin/strip /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/dctree.cpython-310-x86_64-linux-gnu.so
 
 # Rule to build all files generated by this target.
 CMakeFiles/dctree.dir/build: dctree.cpython-310-x86_64-linux-gnu.so

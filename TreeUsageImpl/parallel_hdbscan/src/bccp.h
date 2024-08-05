@@ -35,17 +35,17 @@ namespace pargeo {
     template <typename objT>
     struct bcp {
       using floatT = typename objT::floatT;
-
       objT* u;
       objT* v;
       floatT dist;
 
+      //Constructor
       bcp(): u(NULL), v(NULL), dist(std::numeric_limits<floatT>::max()) {}
 
       void update(objT* _u, objT* _v, floatT _dist) {
-	if (_dist < dist) {
-	  u = _u; v = _v; dist = _dist;
-	}
+        if (_dist < dist) {
+          u = _u; v = _v; dist = _dist;
+        }
       }
     };
 
@@ -53,10 +53,10 @@ namespace pargeo {
     bcp<typename nodeT::objT> bcpBruteforce(nodeT* n1, nodeT* n2) {
       bcp<typename nodeT::objT> r;
       for (size_t i = 0; i < n1->size(); ++ i) {
-	for (size_t j = 0; j < n2->size(); ++ j) {
-	  double tmp = n1->at(i)->dist( *(n2->at(j)) );
-	  r.update(n1->at(i), n2->at(j), tmp);
-	}
+        for (size_t j = 0; j < n2->size(); ++ j) {
+          double tmp = n1->at(i)->dist( *(n2->at(j)) );
+          r.update(n1->at(i), n2->at(j), tmp);
+        }
       }
       return r;
     }
@@ -67,48 +67,41 @@ namespace pargeo {
 
       if (n1->isLeaf() && n2->isLeaf()) {
 
-	for (size_t i=0; i<n1->size(); ++i) {
-	  for (size_t j=0; j<n2->size(); ++j) {
-	    r->update(n1->at(i), n2->at(j),
-		      n1->at(i)->dist(*n2->at(j)));
-	  }
-	}
-
+        for (size_t i=0; i<n1->size(); ++i) {
+          for (size_t j=0; j<n2->size(); ++j) {
+            r->update(n1->at(i), n2->at(j),
+                n1->at(i)->dist(*n2->at(j)));
+          }
+          
+        }
       } else {
+	      if (n1->isLeaf()) {
+          if (nodeDistance(n1, n2->L()) < nodeDistance(n1, n2->R())) {
+            bcpHelper(n1, n2->L(), r); bcpHelper(n1, n2->R(), r);
+          } else {
+            bcpHelper(n1, n2->R(), r); bcpHelper(n1, n2->L(), r);
+          }
+	      } else if (n2->isLeaf()) {
 
-	if (n1->isLeaf()) {
+          if (nodeDistance(n2, n1->L()) < nodeDistance(n2, n1->R())) {
+            bcpHelper(n1->L(), n2, r); bcpHelper(n1->R(), n2, r);
+          } else {
+            bcpHelper(n1->R(), n2, r); bcpHelper(n1->L(), n2, r);
+          }
+	      } else {
+          pair<nodeT*, nodeT*> ordering[4]; //todo change to tuple
+          ordering[0] = make_pair(n1->L(), n2->L());
+          ordering[1] = make_pair(n1->L(), n2->R());
+          ordering[2] = make_pair(n1->R(), n2->L());
+          ordering[3] = make_pair(n1->R(), n2->R());
 
-	  if (nodeDistance(n1, n2->L()) < nodeDistance(n1, n2->R())) {
-	    bcpHelper(n1, n2->L(), r); bcpHelper(n1, n2->R(), r);
-	  } else {
-	    bcpHelper(n1, n2->R(), r); bcpHelper(n1, n2->L(), r);
-	  }
-
-	} else if (n2->isLeaf()) {
-
-	  if (nodeDistance(n2, n1->L()) < nodeDistance(n2, n1->R())) {
-	    bcpHelper(n1->L(), n2, r); bcpHelper(n1->R(), n2, r);
-	  } else {
-	    bcpHelper(n1->R(), n2, r); bcpHelper(n1->L(), n2, r);
-	  }
-
-	} else {
-
-	  pair<nodeT*, nodeT*> ordering[4]; //todo change to tuple
-	  ordering[0] = make_pair(n1->L(), n2->L());
-	  ordering[1] = make_pair(n1->L(), n2->R());
-	  ordering[2] = make_pair(n1->R(), n2->L());
-	  ordering[3] = make_pair(n1->R(), n2->R());
-
-	  auto cmp = [&](pair<nodeT*,nodeT*> p1, pair<nodeT*,nodeT*> p2) {
-									  return nodeDistance(p1.first, p1.second) < nodeDistance(p2.first, p2.second);};
-	  sort(ordering, ordering + 4, cmp);
-
-	  for (int o=0; o<4; ++o) {
-	    bcpHelper(ordering[o].first, ordering[o].second, r);}
-
-	}
-
+          auto cmp = [&](pair<nodeT*,nodeT*> p1, pair<nodeT*,nodeT*> p2) {
+                          return nodeDistance(p1.first, p1.second) < nodeDistance(p2.first, p2.second);};
+          sort(ordering, ordering + 4, cmp);
+          for (int o=0; o<4; ++o) {
+            bcpHelper(ordering[o].first, ordering[o].second, r);
+          }
+	      }
       }
     }
 

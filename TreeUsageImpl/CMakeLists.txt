@@ -49,9 +49,7 @@ target_link_libraries(MyProject mlpack armadillo pybind11::module ${Python3_LIBR
 add_library(dcdist STATIC src/dc_dist.cpp)
 
 # Add the Python module
-pybind11_add_module(dctree src/dc_dist_bindings.cpp parallel_hdbscan/src/hdbscan_arma.cpp 
-parallel_hdbscan/src/hdbscan.cpp 
-parallel_hdbscan/src/dendrogram.cpp)
+pybind11_add_module(dctree src/dc_dist_bindings.cpp)
 
 target_link_libraries(dctree PRIVATE dcdist ${MLPACK_LIBRARIES} ${Armadillo_LIBRARIES})
 # Link the Python module to the static library

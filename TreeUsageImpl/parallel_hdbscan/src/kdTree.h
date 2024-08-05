@@ -209,19 +209,17 @@ template <int _dim, class _objT> class kdNode {
 
       // Recursive construction
       parlay::par_do(
-          [&]() {
-            space[0] = nodeT(items.cut(0, median), median, space + 1,
-                             flags.cut(0, median), leafSize);
-          },
-          [&]() {
-            space[2 * median - 1] =
-                nodeT(items.cut(median, size()), size() - median,
-                      space + 2 * median, flags.cut(median, size()), leafSize);
-          });
-      left = space;
-      right = space + 2 * median - 1;
-      left->sib = right;
-      right->sib = left;
+        [&]() {
+          space[0] = nodeT(items.cut(0, median), median, space + 1, flags.cut(0, median), leafSize);
+        },
+        [&]() {
+          space[2 * median - 1] =
+              nodeT(items.cut(median, size()), size() - median, space + 2 * median, flags.cut(median, size()), leafSize);
+        });
+        left = space;
+        right = space + 2 * median - 1;
+        left->sib = right;
+        right->sib = left;
     }
   }
 
@@ -306,10 +304,11 @@ public:
       return boxOverlap;
   }
 
+
   kdNode(parlay::slice<_objT **, _objT **> itemss, intT nn, nodeT *space,
-         parlay::slice<bool *, bool *> flags, intT leafSize = 16)
-      : items(itemss) {
+         parlay::slice<bool *, bool *> flags, intT leafSize = 16) : items(itemss) {
     resetId();
+
     if (size() > 2000)
       constructParallel(space, flags, leafSize);
     else
@@ -317,8 +316,7 @@ public:
   }
 
   kdNode(parlay::slice<_objT **, _objT **> itemss, intT nn, nodeT *space,
-         intT leafSize = 16)
-      : items(itemss) {
+         intT leafSize = 16) : items(itemss) {
     resetId();
     constructSerial(space, leafSize);
   }
@@ -384,3 +382,8 @@ kdNode<dim, objT> *buildKdt(parlay::sequence<objT> &P, bool parallel = true,
 }
 
 } // namespace pargeo
+
+// std::cout << "Points in the items slice:" << std::endl;
+// for (size_t i = 0; i < items.size(); ++i) {
+//   std::cout << *(items[i]) << std::endl;
+// }

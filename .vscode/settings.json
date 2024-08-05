@@ -84,5 +84,6 @@
         "xtree": "cpp",
         "coroutine": "cpp",
         "resumable": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": false
 }

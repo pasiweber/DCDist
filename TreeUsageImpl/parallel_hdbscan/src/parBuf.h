@@ -71,8 +71,8 @@ namespace pargeo {
       intT *parentSizes1 = (intT *) malloc(sizeof(intT) * (m_parentTotal * 2+1));
 
       for(intT i = 0; i < m_parentUsed; ++ i) {
-	parent1[i] = m_parent[i];
-	parentSizes1[i] = m_parentSizes[i];
+        parent1[i] = m_parent[i];
+        parentSizes1[i] = m_parentSizes[i];
       }
 
       free(m_parent);
@@ -90,33 +90,33 @@ namespace pargeo {
 
     T* increment() {
       if (m_count + 1 > m_currentSize) {
-	// book keeping for current arr
-	finalize();
+        // book keeping for current arr
+        finalize();
 
-	// allocate new arr
-	T *arr1 = (T *) malloc(sizeof(T) * m_currentSize * 2);
+        // allocate new arr
+        T *arr1 = (T *) malloc(sizeof(T) * m_currentSize * 2);
 
-	if (m_parentUsed < m_parentTotal) {
-	  m_parent[m_parentUsed++] = arr1;
-	} else {
-	  m_parent[incrementParent()] = arr1;
-	}
+        if (m_parentUsed < m_parentTotal) {
+          m_parent[m_parentUsed++] = arr1;
+        } else {
+          m_parent[incrementParent()] = arr1;
+        }
 
-	m_arr = arr1;
-	m_count = 0;
-	m_currentSize *= 2;
+        m_arr = arr1;
+        m_count = 0;
+        m_currentSize *= 2;
       }
       return m_arr + (m_count++);
     }
 
     ~parBuf() {
       for (intT i = 0; i < m_parentUsed; ++ i) {
-	free(m_parent[i]);
+	      free(m_parent[i]);
       }
-
       free(m_parent);
     }
-  };
+
+  }; //End parBuf Struct
 
   template <typename T>
   T prefixSumSerial(T* data, size_t s, size_t e) {
@@ -142,18 +142,16 @@ namespace pargeo {
 
     T* all= (T*) malloc(sizeof(T) * total);
 
-    parallel_for(0, P,
-		 [&](intT p) {
-
-		   auto buf = t_threadVecs[p];
-		   intT threadTotal = prefixSumSerial<intT>(buf->m_parentSizes, 0, buf->m_parentUsed);
-		   buf->m_parentSizes[buf->m_parentUsed] = threadTotal; // there's 1 extra space at the end of array
-		   parallel_for (0, buf->m_parentUsed, [&](intT parent) {
-		       for (intT elem = 0; elem < buf->m_parentSizes[parent+1]-buf->m_parentSizes[parent]; ++ elem) {
-			        all[vecSizes[p] + buf->m_parentSizes[parent] + elem] = buf->m_parent[parent][elem];
-		       }
-           }, 1);
-		 }, 1);
+    parallel_for(0, P, [&](intT p) {
+      auto buf = t_threadVecs[p];
+      intT threadTotal = prefixSumSerial<intT>(buf->m_parentSizes, 0, buf->m_parentUsed);
+      buf->m_parentSizes[buf->m_parentUsed] = threadTotal; // there's 1 extra space at the end of array
+      parallel_for (0, buf->m_parentUsed, [&](intT parent) {
+        for (intT elem = 0; elem < buf->m_parentSizes[parent+1]-buf->m_parentSizes[parent]; ++ elem) {
+          all[vecSizes[p] + buf->m_parentSizes[parent] + elem] = buf->m_parent[parent][elem];
+        }
+      }, 1);
+		}, 1);
 
     return sequence<T>(all, all + total);
   }

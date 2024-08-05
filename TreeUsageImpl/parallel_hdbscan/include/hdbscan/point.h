@@ -14,55 +14,55 @@ namespace pargeo {
     int arr[0]; // todo this produces a struct of size 0 but seems dangerous, need to check
   };
 
-  template <int _dim, class _tData, class _tFloat, class _tAtt> class _point {
+  template <int _dim, class _dataType, class _floatType, class attributeType> class _point {
 
-    static constexpr _tData empty = numeric_limits<_tData>::max();
+    static constexpr _dataType empty = numeric_limits<_dataType>::max();
 
   public:
 
     static constexpr int dim = _dim;
-    typedef _tFloat floatT;
+    typedef _floatType floatType;
 
-    _tData x[_dim];
-    _tAtt attribute;
+    _dataType x[_dim];
+    attributeType attribute;
 
     _point() { for (int i=0; i<_dim; ++i) x[i]=empty; }
 
-    _point(_tData* p) { for (int i=0; i<_dim; ++i) x[i]=p[i]; }
+    _point(_dataType* p) { for (int i=0; i<_dim; ++i) x[i]=p[i]; }
 
     _point(_point* p): attribute(p->attribute) { for (int i=0; i<_dim; ++i) x[i]=p->x[i]; }
 
     template<class _tIn>
     _point(parlay::slice<_tIn*,_tIn*> p) {
-      for(int i=0; i<_dim; ++i) x[i] = (_tData)p[i];}
+      for(int i=0; i<_dim; ++i) x[i] = (_dataType)p[i];}
 
     void setEmpty() {x[0]=empty;}
 
     bool isEmpty() {return x[0]==empty;}
 
     _point operator+(_point op2) {
-      _tData xx[_dim];
+      _dataType xx[_dim];
       for (int i=0; i<_dim; ++i) xx[i] = x[i]+op2.x[i];
       return _point(xx);}
 
     _point operator-(_point op2) {
-      _tData xx[_dim];
+      _dataType xx[_dim];
       for (int i=0; i<_dim; ++i) xx[i] = x[i]-op2.x[i];
       return _point(xx);}
 
-    _point operator*(_tData dv) {
-      _tData xx[_dim];
+    _point operator*(_dataType dv) {
+      _dataType xx[_dim];
       for (int i=0; i<_dim; ++i) xx[i] = x[i]*dv;
       return _point(xx);}
 
-    _point operator/(_tData dv) {
-      _tData xx[_dim];
+    _point operator/(_dataType dv) {
+      _dataType xx[_dim];
       for (int i=0; i<_dim; ++i) xx[i] = x[i]/dv;
       return _point(xx);}
 
-    _tData& operator[](int i) {return x[i];}
+    _dataType& operator[](int i) {return x[i];}
 
-    _tData& at(int i) {return x[i];}
+    _dataType& at(int i) {return x[i];}
 
     friend bool operator==(_point a, _point b) {
       for (int ii=0; ii<dim; ++ii) {
@@ -71,34 +71,27 @@ namespace pargeo {
 
     friend bool operator!=(_point a, _point b) {return !(a==b);}
 
-    _tData* coords() {return x;}
+    _dataType* coords() {return x;}
 
-    inline _tData distSqr(_point p) {
-      _tData xx=0;
+    inline _dataType distSqr(_point p) {
+      _dataType xx=0;
       for (int i=0; i<_dim; ++i) xx += (x[i]-p.x[i])*(x[i]-p.x[i]);
       return xx;}
 
-    inline _tFloat dist(_point p) {
+    inline _floatType dist(_point p) {
       return sqrt(distSqr(p));
     }
 
-    _tData dot(_point p2) {
-      _tData r = 0;
+    _dataType dot(_point p2) {
+      _dataType r = 0;
       for(int i=0; i<dim; ++i) r += x[i]*p2[i];
       return r;}
 
-    _point mult(_tData c) {
+    _point mult(_dataType c) {
       _point r;
       for(int i=0; i<dim; ++i) r[i] = x[i]*c;
       return r;}
 
-    _tData lenSqr() {
-      _tData xx=0;
-      for (int i=0; i<_dim; ++i) xx += x[i]*x[i];
-      return xx;}
-
-    _tFloat length() {
-      return sqrt((_tFloat)lenSqr());}
   };
 
   template<int dim>

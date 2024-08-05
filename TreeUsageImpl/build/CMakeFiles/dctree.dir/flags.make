@@ -6,5 +6,5 @@ CXX_DEFINES = -Ddctree_EXPORTS
 
 CXX_INCLUDES = -I/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src -isystem /usr/include/python3.10 -isystem /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include
 
-CXX_FLAGS =  -O3  -w -g -fPIC -fvisibility=hidden
+CXX_FLAGS =  -O3  -w -fPIC -fvisibility=hidden -flto -fno-fat-lto-objects
 

@@ -47,11 +47,9 @@ using namespace pargeo;
 using namespace pargeo::hdbscanInternal;
 
 parlay::sequence<pargeo::wghEdge> pargeo::hdbscan_arma(parlay::sequence<pargeo::point2> &S, size_t minPts) {
-  using pointT = point2; //pargeo point
-  using nodeT = kdNode2<point2>;
-  using floatT = typename pointT::floatT;
-  using pairT = wsp<nodeT>;
-  using bcpT = tuple<pointT*, pointT*, floatT>;
+  using pointType = point2; //NEW
+  using treeNode = kdNode2<point2>; //NEW
+  using floatType = typename pointType::floatType;
 
   if (S.size() < 2) {
     throw std::runtime_error("need more than 2 points");
@@ -61,42 +59,40 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan_arma(parlay::sequence<pargeo::
   t0.start();
 
   //Build the kd-tree for k nearest neighbors
-    nodeT* tree = buildKdt2<point2>(S, true, true); //This returns a c array of nodes
+    treeNode* tree = buildKdt2<point2>(S, true, true); //This returns a c array of nodes //NEW
 
     cout << "build-tree-time = " << t0.get_next() << endl;
 
-    // todo return distances
-
     //Get the k nearest neighbors over the tree using the kd-tree from above
-    sequence<size_t> nns = kdTreeKnn2<pointT>(S, minPts, tree, true); //parlay::sequence is basically an std::vector optimized for parallelism.
+    sequence<size_t> nns = kdTreeKnn2<pointType>(S, minPts, tree, true); //NEW
 
   //It looks like they do it in the same way that we do - first get all k, then take the k'th as the core distance. 
   //They use some nested indexing - i.e. they get the k'th nearest neighbor and compute the distance to that point from the current point and insert it into their list of core distances.
-  sequence<floatT> coreDist = sequence<floatT>(S.size());
+  sequence<floatType> coreDist = sequence<floatType>(S.size());
   parallel_for (0, S.size(), [&](intT i) {
 			       coreDist[i] = S[nns[i*minPts + minPts-1]].dist(S[i]);
 			     });
 
   cout << "core-dist-time = " << t0.get_next() << endl;
 
-  sequence<floatT> cdMin = sequence<floatT>(tree->size() * 2);
-  sequence<floatT> cdMax = sequence<floatT>(tree->size() * 2);
+  sequence<floatType> cdMin = sequence<floatType>(tree->size() * 2);
+  sequence<floatType> cdMax = sequence<floatType>(tree->size() * 2);
   parallel_for(0, tree->size()*2, [&](intT i) {
-      cdMin[i] = std::numeric_limits<floatT>::max();
-      cdMax[i] = std::numeric_limits<floatT>::lowest();
+      cdMin[i] = std::numeric_limits<floatType>::max();
+      cdMax[i] = std::numeric_limits<floatType>::lowest();
     });
 
   //WSPD which produces the edges over which Kruskal's algorithm will be run. 
   //This is based on their extended notion of things being well-separated that uses mutual reachability terminology as well.
   hdbscanInternal::nodeCD(tree, coreDist, cdMin, cdMax, tree, S.data());
 
-  floatT rhoLo = -0.1;
-  floatT beta = 2;
+  floatType rhoLo = -0.1;
+  floatType beta = 2;
   size_t numEdges = 0;
 
-  floatT wspdTime = 0;
-  floatT kruskalTime = 0;
-  floatT markTime = 0;
+  floatType wspdTime = 0;
+  floatType kruskalTime = 0;
+  floatType markTime = 0;
   edgeUnionFind<long> UF(S.size());
 
   t0.stop();
@@ -105,8 +101,8 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan_arma(parlay::sequence<pargeo::
   while (UF.numEdge() < S.size() - 1) {
     t0.start();
 
-    floatT rhoHi;
-    auto bccps = filterWspdParallel<nodeT>(beta, rhoLo, rhoHi, tree, &UF,
+    floatType rhoHi;
+    auto bccps = filterWspdParallel<treeNode>(beta, rhoLo, rhoHi, tree, &UF,
 					   coreDist, cdMin, cdMax, S.data());
     wspdTime += t0.get_next();
 
@@ -125,7 +121,7 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan_arma(parlay::sequence<pargeo::
 
     struct wEdge {
       size_t u,v;
-      floatT weight;
+      floatType weight;
     };
 
     auto base = S.data();
@@ -140,16 +136,16 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan_arma(parlay::sequence<pargeo::
     batchKruskal(edges, S.size(), UF);
     cout << " mst-edges = " << UF.numEdge() << endl;
     kruskalTime += t0.get_next();
-    mark<nodeT, pointT, edgeUnionFind<long>>(tree, &UF, S.data());
+    mark<treeNode, pointType, edgeUnionFind<long>>(tree, &UF, S.data());
     markTime += t0.stop();
 
     beta *= 2;
     rhoLo = rhoHi;
   }
-  // floatT sum = 0;
+  // floatType sum = 0;
   // auto E = UF.getEdge();
   // for (auto e: E) {
-  //   floatT w = S[e.u].dist(S[e.v]);
+  //   floatType w = S[e.u].dist(S[e.v]);
   //   w = max(w, coreDist[e.u]);
   //   w = max(w, coreDist[e.v]);
   //   sum += w;

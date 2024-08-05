@@ -188,14 +188,14 @@ class KCentroidsTree
 
                     Node* new_splitter = new Node{new_parent, -1.0, new_parent->id, i+1};
                     new_splitter->parent = new_parent; //TODO: Remove, right?
-                    new_splitter->is_orig_cluster = true; //Used to distinguish nodes when getting clusterings out for each k
+                    new_splitter->is_orig_cluster = true; //Used to distinguish nodes when getting clusterings out for each k //Can maybe remove this - we always know orig_cluster is the first if needed. 
                     
                     new_parent->children.push_back(new_splitter); 
                     new_parent->children.push_back(new_node); 
 
                 } else if (cost < 0){
                     Node* new_splitter = new Node{parent_node, -1.0, parent_node->id, i+1}; //parent, cost, id, k
-                    new_splitter->is_orig_cluster = true; 
+                    new_splitter->is_orig_cluster = true;  //Can maybe remove this - we always know orig_cluster is the first if needed. 
                     parent_node->cost = curr_anno->cost_decrease;
                     new_node->parent = parent_node;
                     
@@ -318,7 +318,7 @@ class KCentroidsTree
         */
         std::vector<int> k_solution(int k, Node *curr_solution){
             int n = this->tree->size;
-            if(k>=n || k < 1){
+            if(k>=n || k < 1){ //If k >= n all points should just be output
                 this->curr_k = n;
                 this->curr_k_solution = this->tree;
                 return index_order; //Just return each id as a unique point as default for any invalid parameter for now.

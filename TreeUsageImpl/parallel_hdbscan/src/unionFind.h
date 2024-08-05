@@ -88,7 +88,7 @@ struct unionFind {
     return (parents[u] == -1 &&
       pargeo::atomic_compare_and_swap(&parents[u], -1, v));
   }
-};
+}; //End unionFind Struct
 
 // The following supports both "union" that is only safe sequentially
 // and "link" that is safe in parallel.  Find is always safe in parallel.
@@ -134,9 +134,7 @@ struct edgeUnionFind {
     parents[u] = v;}
 
   size_t numEdge() {
-    return parlay::count_if(make_slice(edges), [&](wghEdge e) {
-						 return !e.isEmpty();
-					       });
+    return parlay::count_if(make_slice(edges), [&](wghEdge e){ return !e.isEmpty();});
   }
 
   parlay::sequence<wghEdge> getEdge() {

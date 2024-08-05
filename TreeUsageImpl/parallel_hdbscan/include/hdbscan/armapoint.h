@@ -12,14 +12,14 @@ namespace pargeo {
   using namespace std;
 
 
-  template <class _tData, class _tFloat> class _point2 {
+  template <class _dataType, class _floatType> class _point2 {
 
-    static constexpr _tData empty = numeric_limits<_tData>::max();
+    static constexpr _dataType empty = numeric_limits<_dataType>::max();
 
   public:
-    typedef _tFloat floatT;
+    typedef _floatType floatType;
 
-    arma::Col<_tData> x;
+    arma::Col<_dataType> x;
     int dim;
 
     _point2() : x(), dim(0) {
@@ -30,7 +30,7 @@ namespace pargeo {
       x.fill(empty); 
       this->dim = dim;}
 
-    _point2(arma::Col<_tData> *p): x(*p) { 
+    _point2(arma::Col<_dataType> *p): x(*p) { 
       dim = x.size();
     }
 
@@ -42,7 +42,7 @@ namespace pargeo {
     template<class _tIn>
     _point2(parlay::slice<_tIn*,_tIn*> p) {
       x.set_size(p.x.size());
-      for(int i=0; i<p.x.size(); ++i) x[i] = (_tData)p[i];
+      for(int i=0; i<p.x.size(); ++i) x[i] = (_dataType)p[i];
       dim = x.size();
       }
 
@@ -56,15 +56,15 @@ namespace pargeo {
     _point2 operator-(_point2 op2) {
       return _point2(x-op2.x);}
 
-    _point2 operator*(_tData dv) {
+    _point2 operator*(_dataType dv) {
       return _point2(x*dv);} // % is the element wise multiplication in armadillo
 
-    _point2 operator/(_tData dv) {
+    _point2 operator/(_dataType dv) {
       return _point2(x/dv);}
 
-    _tData& operator[](int i) {return x[i];}
+    _dataType& operator[](int i) {return x[i];}
 
-    _tData& at(int i) {return x[i];}
+    _dataType& at(int i) {return x[i];}
 
     friend bool operator==(_point2 a, _point2 b) {  
       return arma::all(a==b);
@@ -72,22 +72,19 @@ namespace pargeo {
 
     friend bool operator!=(_point2 a, _point2 b) {return !(a==b);}
 
-    arma::Col<_tData>* coords() {return &x;}
+    arma::Col<_dataType>* coords() {return &x;}
 
 
-    inline _tFloat dist(_point2 p) {
+    inline _floatType dist(_point2 p) {
       return arma::norm(x-p.x, 2);
     }
 
-    _tData dot(_point2 p2) {
+    _dataType dot(_point2 p2) {
       return arma::dot(x, p2.x);}
 
-    _point2 mult(_tData c) {
+    _point2 mult(_dataType c) {
       return _point2(x*c);}
 
-
-    _tFloat length() {
-      return arma::norm(x);}
   };
 
 

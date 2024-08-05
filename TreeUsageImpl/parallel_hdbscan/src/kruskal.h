@@ -74,35 +74,33 @@ namespace pargeo {
       parlay::sequence<reservation> &R;
       unionFind<vertexId> &UF;
       parlay::sequence<bool> &inST;
-    UnionFindStep(parlay::sequence<indexedEdge> &E,
-		  unionFind<vertexId> &UF,
-		  parlay::sequence<reservation> &R,
-		  parlay::sequence<bool> &inST) :
-      E(E), R(R), UF(UF), inST(inST) {}
+
+      UnionFindStep(parlay::sequence<indexedEdge> &E, unionFind<vertexId> &UF,
+        parlay::sequence<reservation> &R, parlay::sequence<bool> &inST) : E(E), R(R), UF(UF), inST(inST) {}
 
       bool reserve(edgeId i) {
-	vertexId u = E[i].u = UF.find(E[i].u);
-	vertexId v = E[i].v = UF.find(E[i].v);
-	if (u != v) {
-	  R[v].reserve(i);
-	  R[u].reserve(i);
-	  return true;
-	} else return false;
+        vertexId u = E[i].u = UF.find(E[i].u);
+        vertexId v = E[i].v = UF.find(E[i].v);
+        if (u != v) {
+          R[v].reserve(i);
+          R[u].reserve(i);
+          return true;
+        } else return false;
       }
 
       bool commit(edgeId i) {
-	vertexId u = E[i].u;
-	vertexId v = E[i].v;
-	if (R[v].check(i)) {
-	  R[u].checkReset(i);
-	  UF.link(v, u);
-	  inST[E[i].id] = true;
-	  return true;}
-	else if (R[u].check(i)) {
-	  UF.link(u, v);
-	  inST[E[i].id] = true;
-	  return true; }
-	else return false;
+        vertexId u = E[i].u;
+        vertexId v = E[i].v;
+        if (R[v].check(i)) {
+          R[u].checkReset(i);
+          UF.link(v, u);
+          inST[E[i].id] = true;
+          return true;}
+        else if (R[u].check(i)) {
+          UF.link(u, v);
+          inST[E[i].id] = true;
+          return true; }
+        else return false;
       }
     };
 
@@ -114,36 +112,35 @@ namespace pargeo {
       edgeUnionFind<vertexId> &UF;
       EdgeUnionFindStep(parlay::sequence<indexedEdge> &E,
 			edgeUnionFind<vertexId> &UF,
-			parlay::sequence<reservation> &R) :
-	E(E), R(R), UF(UF) {
+			parlay::sequence<reservation> &R) : E(E), R(R), UF(UF) {
         EReal = parlay::sequence<indexedEdge>(E);
       }
 
       bool reserve(edgeId i) {
-	vertexId u = E[i].u = UF.find(E[i].u);
-	vertexId v = E[i].v = UF.find(E[i].v);
-	if (u != v) {
-	  R[v].reserve(i);
-	  R[u].reserve(i);
-	  return true;
-	} else return false;
+        vertexId u = E[i].u = UF.find(E[i].u);
+        vertexId v = E[i].v = UF.find(E[i].v);
+        if (u != v) {
+          R[v].reserve(i);
+          R[u].reserve(i);
+          return true;
+        } else return false;
       }
 
       bool commit(edgeId i) {
-	vertexId u = E[i].u;
-	vertexId v = E[i].v;
-	vertexId uReal = EReal[i].u;
-	vertexId vReal = EReal[i].v;
-	if (R[v].check(i)) {
-	  R[u].checkReset(i);
-	  UF.link(v, u, vReal, uReal, EReal[i].w);
-	  return true;}
-	else if (R[u].check(i)) {
-	  UF.link(u, v, uReal, vReal, EReal[i].w);
-	  return true; }
-	else return false;
+        vertexId u = E[i].u;
+        vertexId v = E[i].v;
+        vertexId uReal = EReal[i].u;
+        vertexId vReal = EReal[i].v;
+        if (R[v].check(i)) {
+          R[u].checkReset(i);
+          UF.link(v, u, vReal, uReal, EReal[i].w);
+          return true;}
+        else if (R[u].check(i)) {
+          UF.link(u, v, uReal, vReal, EReal[i].w);
+          return true; }
+        else return false;
       }
-    };
+    }; //End EdgeUnionFindStep Struct
 
   } // End namespace kruskalInternal
 
@@ -163,7 +160,8 @@ namespace pargeo {
 
     // tag each edge with an index
     auto IW = parlay::delayed_seq<indexedEdge>(m, [&] (size_t i) {
-	return indexedEdge(E[i].u, E[i].v, i, E[i].weight);});
+	    return indexedEdge(E[i].u, E[i].v, i, E[i].weight);
+    });
 
     auto IW1 = parlay::sort(IW, edgeLess);
     //t.next("sort edges");
@@ -182,10 +180,7 @@ namespace pargeo {
   }
 
   template <typename edgeT>
-  void batchKruskal(parlay::sequence<edgeT> &E,
-		    size_t n,
-		    edgeUnionFind<long>& UF) {
-
+  void batchKruskal(parlay::sequence<edgeT> &E,size_t n, edgeUnionFind<long>& UF) {
     using namespace kruskalInternal;
 
     size_t m = E.size();
@@ -193,11 +188,13 @@ namespace pargeo {
 
     // equal edge weights will prioritize the earliest one
     auto edgeLess = [&] (indexedEdge a, indexedEdge b) {
-      return (a.w < b.w) || ((a.w == b.w) && (a.id < b.id));};
+      return (a.w < b.w) || ((a.w == b.w) && (a.id < b.id));
+    };
 
     // tag each edge with an index
     auto IW = parlay::delayed_seq<indexedEdge>(m, [&] (size_t i) {
-	return indexedEdge(E[i].u, E[i].v, i, E[i].weight);});
+	    return indexedEdge(E[i].u, E[i].v, i, E[i].weight);
+    });
 
     auto IW1 = parlay::sort(IW, edgeLess);
 
