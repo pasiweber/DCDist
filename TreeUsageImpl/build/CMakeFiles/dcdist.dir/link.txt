@@ -1,2 +1,2 @@
-/usr/bin/ar qc libdcdist.a CMakeFiles/dcdist.dir/src/dc_dist.cpp.o
+/usr/bin/ar qc libdcdist.a CMakeFiles/dcdist.dir/src/dc_dist.cpp.o CMakeFiles/dcdist.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o CMakeFiles/dcdist.dir/parallel_hdbscan/src/hdbscan_vector.cpp.o CMakeFiles/dcdist.dir/parallel_hdbscan/src/hdbscan.cpp.o CMakeFiles/dcdist.dir/parallel_hdbscan/src/dendrogram.cpp.o
 /usr/bin/ranlib libdcdist.a

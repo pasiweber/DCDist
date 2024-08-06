@@ -53,6 +53,9 @@ namespace pargeo {
 
       m_parentUsed = 1;
       m_parentTotal = m_defaultParent;
+
+
+      //std::cout << "alloc sizes: " << sizeof(T) *t_initSize << ", " << sizeof(T*) *m_defaultParent << ", " << sizeof(intT) *(m_defaultParent+1) << std::endl;
     }
 
     intT size() {
@@ -132,7 +135,7 @@ namespace pargeo {
   parlay::sequence<T> parBufCollect(parBuf<T> **t_threadVecs, size_t P) {
     using namespace parlay;
     using intT = size_t;
-    parlay::sequence<intT> vecSizes(P);
+    parlay::sequence<intT> vecSizes(P); //P is number of processes
     for(int p = 0; p < P; ++ p) {
       t_threadVecs[p]->finalize();
       vecSizes[p] = t_threadVecs[p]->size();
@@ -141,7 +144,6 @@ namespace pargeo {
     intT total = scan_inplace(make_slice(vecSizes));
 
     T* all= (T*) malloc(sizeof(T) * total);
-
     parallel_for(0, P, [&](intT p) {
       auto buf = t_threadVecs[p];
       intT threadTotal = prefixSumSerial<intT>(buf->m_parentSizes, 0, buf->m_parentUsed);

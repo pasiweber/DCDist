@@ -78,7 +78,7 @@ namespace pargeo {
 
     friend bool operator!=(_vectorPoint a, _vectorPoint b) {return !(a==b);}
 
-    std::vector<_dataType>* coords() {return x;}
+    std::vector<_dataType>* coords() {return &x;}
 
     inline _dataType distSqr(_vectorPoint p) {
       _dataType xx=0;

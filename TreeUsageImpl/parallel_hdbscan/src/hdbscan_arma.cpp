@@ -51,6 +51,8 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan_arma(parlay::sequence<pargeo::
 
   if (S.size() < 2) {
     throw std::runtime_error("need more than 2 points");
+  } else{
+    std::cout << "We have sufficient points" << std::endl;
   }
 
   timer t0;
@@ -59,7 +61,7 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan_arma(parlay::sequence<pargeo::
   //Build the kd-tree for k nearest neighbors
     treeNode* tree = buildKdtArma<pointType>(S, true, true); //This returns a c array of nodes //NEW
 
-    cout << "build-tree-time = " << t0.get_next() << endl;
+  cout << "build-tree-time = " << t0.get_next() << endl;
 
     //Get the k nearest neighbors over the tree using the kd-tree from above
     sequence<size_t> nns = kdTreeKnnArma<pointType>(S, minPts, tree, true); //NEW
@@ -80,9 +82,15 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan_arma(parlay::sequence<pargeo::
       cdMax[i] = std::numeric_limits<floatType>::lowest();
     });
 
+
   //WSPD which produces the edges over which Kruskal's algorithm will be run. 
   //This is based on their extended notion of things being well-separated that uses mutual reachability terminology as well.
   hdbscanInternal::nodeCD(tree, coreDist, cdMin, cdMax, tree, S.data());
+
+  // for(int i = 0; i < 20; i++) {
+  //       std::cout << "i:" <<  i << ", " << cdMin[i] << ", " << cdMax[i] << std::endl;
+  // }
+
 
   floatType rhoLo = -0.1;
   floatType beta = 2;

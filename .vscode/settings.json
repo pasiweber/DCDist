@@ -83,7 +83,12 @@
         "xtr1common": "cpp",
         "xtree": "cpp",
         "coroutine": "cpp",
-        "resumable": "cpp"
+        "resumable": "cpp",
+        "cinttypes": "cpp",
+        "complex": "cpp",
+        "typeindex": "cpp",
+        "unordered_set": "cpp",
+        "valarray": "cpp"
     },
     "cmake.configureOnOpen": false
 }

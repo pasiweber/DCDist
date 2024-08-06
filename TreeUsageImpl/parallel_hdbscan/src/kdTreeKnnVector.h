@@ -28,8 +28,8 @@
 #include <algorithm> // nth_element
 #include "parlay/parallel.h"
 #include "parlay/sequence.h"
-#include "kdTreeArma.h"
-#include "../include/hdbscan/armapoint.h"
+#include "kdTreeVector.h"
+#include "../include/hdbscan/vectorpoint.h"
 
 namespace pargeo {
 
@@ -39,50 +39,50 @@ namespace pargeo {
     typedef double floatT;
 
     template <typename T>
-    struct elemArma {
+    struct elemVector {
       floatT cost;// Non-negative
       T entry;
-      elemArma(floatT t_cost, T t_entry) : cost(t_cost), entry(t_entry) {}
-      elemArma() : cost(std::numeric_limits<floatT>::max()) {}
-      bool operator<(const elemArma& b) const {
+      elemVector(floatT t_cost, T t_entry) : cost(t_cost), entry(t_entry) {}
+      elemVector() : cost(std::numeric_limits<floatT>::max()) {}
+      bool operator<(const elemVector& b) const {
         if (cost < b.cost) return true;
         return false;
       }
     };
 
     template <typename T>
-    struct bufferArma {
-      typedef parlay::slice<elemArma<T>*, elemArma<T>*> sliceT;
+    struct bufferVector {
+      typedef parlay::slice<elemVector<T>*, elemVector<T>*> sliceT;
       intT k;
       intT ptr;
       sliceT buf;
 
-      bufferArma(intT t_k, sliceT t_buf): k(t_k), ptr(0), buf(t_buf) {}
+      bufferVector(intT t_k, sliceT t_buf): k(t_k), ptr(0), buf(t_buf) {}
 
       inline void reset() {ptr = 0;}
 
       bool hasK() {return ptr >= k;}
 
-      elemArma<T> keepK() {
-        if (ptr < k) throw std::runtime_error("Error, kbufferArma not enough k.");
+      elemVector<T> keepK() {
+        if (ptr < k) throw std::runtime_error("Error, kbufferVector not enough k.");
         ptr = k;
         std::nth_element(buf.begin(), buf.begin()+k-1, buf.end());
         return buf[k-1];
       }
 
       void sort() { // todo check
-        if (ptr < k) throw std::runtime_error("Error, sorting kbufferArma without enough k.");
+        if (ptr < k) throw std::runtime_error("Error, sorting kbufferVector without enough k.");
         parlay::sort(buf.cut(0, k));
       }
 
-      void insert(elemArma<T> t_elem) {
+      void insert(elemVector<T> t_elem) {
         buf[ptr++] = t_elem;
         if (ptr >= buf.size()) keepK();
       }
 
-      elemArma<T> operator[](intT i) {
+      elemVector<T> operator[](intT i) {
         if (i < ptr) return buf[i];
-        else return elemArma<T>();
+        else return elemVector<T>();
       }
     };
   }
@@ -91,14 +91,14 @@ namespace pargeo {
   using namespace std;
 
   template<typename nodeT, typename objT>
-  void knnRangeHelperArma(nodeT* tree, objT& q, ArmaPoint qMin, ArmaPoint qMax, double radius, bufferArma<objT*>& out) {
+  void knnRangeHelperVector(nodeT* tree, objT& q, VectorPoint qMin, VectorPoint qMax, double radius, bufferVector<objT*>& out) {
     int relation = tree->boxCompare(qMin, qMax, tree->getMin(), tree->getMax());
     if(relation == tree->boxExclude) {
       return;
     } else if (relation == tree->boxInclude) {
       for (size_t i = 0; i < tree->size(); ++i) {
         objT* p = tree->getItem(i);
-        out.insert(elemArma(q.dist(*p), p));
+        out.insert(elemVector(q.dist(*p), p));
       }
     } else { // intersect
       if (tree->isLeaf()) {
@@ -106,35 +106,35 @@ namespace pargeo {
           objT* p = tree->getItem(i);
           double dist = q.dist(*p);
 	        if (dist <= radius) {
-            out.insert(elemArma(dist, p));
+            out.insert(elemVector(dist, p));
           }
 	      }
       } else {
-        knnRangeHelperArma<nodeT, objT>(tree->L(), q, qMin, qMax, radius, out);
-        knnRangeHelperArma<nodeT, objT>(tree->R(), q, qMin, qMax, radius, out);
+        knnRangeHelperVector<nodeT, objT>(tree->L(), q, qMin, qMax, radius, out);
+        knnRangeHelperVector<nodeT, objT>(tree->R(), q, qMin, qMax, radius, out);
       }
     }
   }
 
   template<typename nodeT, typename objT>
-  void knnRangeArma(nodeT* tree, objT& q, double radius, bufferArma<objT*>& out) {
+  void knnRangeVector(nodeT* tree, objT& q, double radius, bufferVector<objT*>& out) {
     int dim = q.dim;
-    ArmaPoint qMin(dim), qMax(dim);
+    VectorPoint qMin(dim), qMax(dim);
     for (size_t i=0; i<dim; i++) {
       auto tmp = q[i] - radius;
       qMin[i] = tmp;
       qMax[i] = tmp + radius * 2;
     }
-    knnRangeHelperArma<nodeT, objT>(tree, q, qMin, qMax, radius, out);
+    knnRangeHelperVector<nodeT, objT>(tree, q, qMin, qMax, radius, out);
   }
 
   // modify to take in the tree instead
   template<typename nodeT, typename objT>
-  void knnHelperArma(nodeT* tree, objT& q, bufferArma<objT*>& out) {
+  void knnHelperVector(nodeT* tree, objT& q, bufferVector<objT*>& out) {
     // find the leaf first
     int relation = tree->boxCompare(tree->getMin(), tree->getMax(), //This calls functions on the first element in the array
-				    ArmaPoint(q.coords()),
-				    ArmaPoint(q.coords()));
+				    VectorPoint(q.coords()),
+				    VectorPoint(q.coords()));
 
     if (relation == tree->boxExclude) {
       return;
@@ -143,11 +143,11 @@ namespace pargeo {
         // basecase
         for (size_t i = 0; i < tree->size(); ++ i) {
           objT* p = tree->getItem(i);
-          out.insert(elemArma(q.dist(*p), p));
+          out.insert(elemVector(q.dist(*p), p));
         }
       } else {
-        knnHelperArma<nodeT, objT>(tree->L(), q, out);
-        knnHelperArma<nodeT, objT>(tree->R(), q, out);
+        knnHelperVector<nodeT, objT>(tree->L(), q, out);
+        knnHelperVector<nodeT, objT>(tree->R(), q, out);
       }
     }
     if (!out.hasK()) {
@@ -156,31 +156,31 @@ namespace pargeo {
       }
       for (size_t i=0; i<tree->siblin()->size(); ++i) {
         objT* p = tree->siblin()->getItem(i);
-        out.insert(elemArma(q.dist(*p), p));
+        out.insert(elemVector(q.dist(*p), p));
       }
-    }else { // bufferArma filled to a least k
+    }else { // bufferVector filled to a least k
       if (tree->siblin() != NULL) {
-        elemArma tmp = out.keepK();
-        knnRangeArma<nodeT, objT>(tree->siblin(), q, tmp.cost, out);
+        elemVector tmp = out.keepK();
+        knnRangeVector<nodeT, objT>(tree->siblin(), q, tmp.cost, out);
       }
     }
   }
 
   template<class objT>
-  parlay::sequence<size_t> kdTreeKnnArma(parlay::sequence<objT> &queries, size_t k, kdNodeArma<objT>* tree = nullptr, bool sorted = false) {
-    using nodeT = kdNodeArma<objT>;
+  parlay::sequence<size_t> kdTreeKnnVector(parlay::sequence<objT> &queries, size_t k, kdNodeVector<objT>* tree = nullptr, bool sorted = false) {
+    using nodeT = kdNodeVector<objT>;
     bool freeTree = false;
 
     if (!tree) {
       freeTree = true;
-      tree = buildKdtArma<objT>(queries, true);
+      tree = buildKdtVector<objT>(queries, true);
     }
-    auto out = parlay::sequence<elemArma<objT*>>(2*k*queries.size());
+    auto out = parlay::sequence<elemVector<objT*>>(2*k*queries.size());
     auto idx = parlay::sequence<size_t>(k*queries.size());
 
     parlay::parallel_for(0, queries.size(), [&](size_t i) {
-					      bufferArma buf = bufferArma<objT*>(k, out.cut(i*2*k, (i+1)*2*k));
-					      knnHelperArma<nodeT, objT>(tree, queries[i], buf);
+					      bufferVector buf = bufferVector<objT*>(k, out.cut(i*2*k, (i+1)*2*k));
+					      knnHelperVector<nodeT, objT>(tree, queries[i], buf);
 					      buf.keepK();
 					      if (sorted) buf.sort();
 					      for(size_t j=0; j<k; ++j) {
@@ -194,15 +194,15 @@ namespace pargeo {
   }
 
   template<typename objT>
-  parlay::sequence<size_t> bruteforceKnnArma(parlay::sequence<objT> &queries, size_t k) {
-    auto out = parlay::sequence<elemArma<objT*>>(2*k*queries.size());
+  parlay::sequence<size_t> bruteforceKnnVector(parlay::sequence<objT> &queries, size_t k) {
+    auto out = parlay::sequence<elemVector<objT*>>(2*k*queries.size());
     auto idx = parlay::sequence<size_t>(k*queries.size());
     parlay::parallel_for(0, queries.size(), [&](size_t i) {
 					      objT q = queries[i];
-					      bufferArma buf = bufferArma<objT*>(k, out.cut(i*2*k, (i+1)*2*k));
+					      bufferVector buf = bufferVector<objT*>(k, out.cut(i*2*k, (i+1)*2*k));
 					      for(size_t j=0; j<queries.size(); ++j) {
 						objT* p = &queries[j];
-						buf.insert(elemArma(q.dist(p), p));
+						buf.insert(elemVector(q.dist(p), p));
 					      }
 					      buf.keepK();
 					      for(size_t j=0; j<k; ++j) {

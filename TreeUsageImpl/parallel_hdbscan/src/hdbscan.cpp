@@ -62,6 +62,9 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan(parlay::sequence<pargeo::point
     sequence<floatType> coreDist = sequence<floatType>(S.size());
     parallel_for (0, S.size(), [&](intT i) {
         coreDist[i] = S[nns[i*minPts + minPts-1]].dist(S[i]);
+        // if(i % 20 == 0){
+        //     std::cout << "i:" <<  i << ", " << coreDist[i] << std::endl;
+        // }
     });
     cout << "core-dist-time = " << t0.get_next() << endl;
 
@@ -74,6 +77,9 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan(parlay::sequence<pargeo::point
     });
     hdbscanInternal::nodeCD(tree, coreDist, cdMin, cdMax, tree, S.data()); //Set cdmin and cdmax to actual values for each node
 
+    // for(int i = 0; i < 20; i++) {
+    //     std::cout << "i:" <<  i << ", " << cdMin[i] << ", " << cdMax[i] << std::endl;
+    // }
 
     floatType rhoLo = -0.1;
     floatType beta = 2; //Starts as 2, doubles each round. We partition pairs into cardinality < beta and > beta.
@@ -143,6 +149,6 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan(parlay::sequence<pargeo::point
 }
 
 template sequence<wghEdge> pargeo::hdbscan<2>(sequence<point<2>> &, size_t);
-template sequence<wghEdge> pargeo::hdbscan<20>(sequence<point<20>> &, size_t);
+template sequence<wghEdge> pargeo::hdbscan<200>(sequence<point<200>> &, size_t);
 template sequence<wghEdge> pargeo::hdbscan<24>(sequence<point<24>> &, size_t);
 

@@ -56,8 +56,6 @@ struct unionFind {
       vertexId gp = parents[p];
       parents[i] = gp;
       i = p;
-      std::cout << "i:" << i << std::endl;
-      std::cout << "gp:" << gp << std::endl;
       p = gp;
     } while (!is_root(p));
     return p;
@@ -138,7 +136,6 @@ struct edgeUnionFind {
   }
 
   parlay::sequence<wghEdge> getEdge() {
-    std::cout << "getEdge called" << std::endl;
     return parlay::filter(edges, [&](wghEdge e){return !e.isEmpty();});
   }
 };

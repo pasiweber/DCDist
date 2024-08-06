@@ -198,7 +198,6 @@ namespace pargeo {
       	}
 
       	floatT getRho() { 
-			std::cout << "getrho" << std::endl;
 			return rho;
 		}
 
@@ -252,8 +251,8 @@ namespace pargeo {
 			free(out);
 		}
 
+		//Here within the class the problem lies (?)
 		sequence<bcpT> collect() {
-			std::cout << "collect" << std::endl;
 			int procs = num_workers();
 			return parBufCollect<bcpT>(out, procs);
 		}
@@ -312,21 +311,15 @@ namespace pargeo {
 		using floatT = double;
 		using objT = typename nodeT::objT;
 		using bcpT = std::tuple<objT*, objT*, floatT>;
-		std::cout << "hi1" << std::endl;
 		auto myRho = rhoUpdateParallel<nodeT, UF>(t_beta, t_mst, t_kdTree, coreDist, cdMin, cdMax);
-		std::cout << "hi2" << std::endl;
 
 		pargeo::computeWspdParallel<nodeT, rhoUpdateParallel<nodeT, UF>>(t_kdTree, &myRho);
-		std::cout << "hi3" << std::endl;
 
 		auto mySplitter = wspGetParallel<nodeT, UF>(t_beta, t_rho_lo, myRho.getRho(), t_kdTree, t_mst, coreDist, cdMin, cdMax, P);
-		std::cout << "hi4" << std::endl;
 
 		pargeo::computeWspdParallel<nodeT, wspGetParallel<nodeT, UF>>(t_kdTree, &mySplitter);
-		std::cout << "hi5" << std::endl;
 
 		t_rho_hi = myRho.getRho();
-		std::cout << "hi6" << std::endl;
 		return mySplitter.collect();
     }
 

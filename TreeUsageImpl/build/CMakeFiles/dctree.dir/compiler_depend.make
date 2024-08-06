@@ -2016,9 +2016,9 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
   /usr/local/include/parlay/sequence.h \
   /usr/local/include/parlay/relocation.h \
   ../parallel_hdbscan/include/hdbscan/armapoint.h \
+  ../parallel_hdbscan/include/hdbscan/vectorpoint.h \
   ../parallel_hdbscan/include/hdbscan/hdbscan.h \
   ../parallel_hdbscan/include/hdbscan/edge.h \
-  ../parallel_hdbscan/include/hdbscan/vectorpoint.h \
   ../parallel_hdbscan/src/kdTree.h \
   ../parallel_hdbscan/src/kdTreeKnn.h \
   ../parallel_hdbscan/src/kdTreeArma.h \

@@ -1,17 +1,17 @@
 #pragma once
 
-#include "../include/hdbscan/armapoint.h"
+#include "../include/hdbscan/vectorpoint.h"
 #include "parlay/parallel.h"
 #include "parlay/sequence.h"
 
 namespace pargeo {
 
-template <class _objT> class kdNodeArma {
+template <class _objT> class kdNodeVector {
 
   typedef int intT;
   typedef double floatT;
-  typedef pargeo::ArmaPoint pointT;
-  typedef kdNodeArma<_objT> nodeT;
+  typedef pargeo::VectorPoint pointT;
+  typedef kdNodeVector<_objT> nodeT;
 
   // Data fields
   intT id;
@@ -41,7 +41,7 @@ template <class _objT> class kdNodeArma {
   }
 
   inline void boundingBoxSerial() {
-    std::cout << "bbserial" << std::endl;
+
     pMin = pointT(items[0]->coords());
     pMax = pointT(items[0]->coords());
     for (intT i = 0; i < size(); ++i) {
@@ -53,7 +53,6 @@ template <class _objT> class kdNodeArma {
 
 
   inline void boundingBoxParallel() {
-    std::cout << "bbpar" << std::endl;
     intT P = parlay::num_workers() * 8;
     intT blockSize = (size() + P - 1) / P;
     pointT localMin[P];
@@ -83,7 +82,6 @@ template <class _objT> class kdNodeArma {
 
 
   inline intT splitItemSerial(floatT xM) {
-    std::cout << "splititserial" << std::endl;
     if (size() < 2) {
       throw std::runtime_error("Error, kdTree splitting singleton.");
     }
@@ -113,7 +111,6 @@ template <class _objT> class kdNodeArma {
 
 
   inline bool itemInBox(pointT pMin1, pointT pMax1, _objT *item) {
-    std::cout << "inbox" << std::endl;
     for (int i = 0; i < dim; ++i) {
       if (pMax1[i] < item->at(i) || pMin1[i] > item->at(i))
         return false;
@@ -122,7 +119,6 @@ template <class _objT> class kdNodeArma {
   }
 
   intT findWidest() {
-    std::cout << "widest" << std::endl;
     floatT xM = -1;
     for (int kk = 0; kk < dim; ++kk) {
       if (pMax[kk] - pMin[kk] > xM) {
@@ -134,18 +130,12 @@ template <class _objT> class kdNodeArma {
   }
 
   void constructSerial(nodeT *space, intT leafSize) {
-    std::cout << "s1" << std::endl;
     boundingBoxSerial();
-    std::cout << "size:" << size() << std::endl;
     sib = NULL;
-    std::cout << "s2" << std::endl;
     if (size() <= leafSize) {
-      std::cout << "s21" << std::endl;
       left = NULL;
       right = NULL;
     } else {
-      std::cout << "s3" << std::endl;
-
       intT k = findWidest();
       floatT xM = (pMax[k] + pMin[k]) / 2;
 
@@ -155,7 +145,6 @@ template <class _objT> class kdNodeArma {
       if (median == 0 || median == size()) {
         median = ceil(size() / 2.0);
       }
-      std::cout << "s4 med " << 2 * median - 1 << std::endl;
 
       /* if (!space[0].isEmpty() || !space[2*median-1].isEmpty()) { */
       /*   throw std::runtime_error("Error, kdNode overwrite."); */
@@ -163,11 +152,9 @@ template <class _objT> class kdNodeArma {
 
       // Recursive construction
       space[0] = nodeT(dim, items.cut(0, median), median, space + 1, leafSize);
-      std::cout << "middle" << std::endl;
       space[2 * median - 1] = nodeT(dim, items.cut(median, size()), size() - median,
                                     space + 2 * median, leafSize);
       left = space;
-      std::cout << "s5" << std::endl;
 
       right = space + 2 * median - 1;
       left->sib = right;
@@ -177,7 +164,6 @@ template <class _objT> class kdNodeArma {
 
   void constructParallel(nodeT *space, parlay::slice<bool *, bool *> flags,
                          intT leafSize) {
-    std::cout << "constructionnn" << std::endl;
     boundingBoxParallel();
 
     sib = NULL;
@@ -271,7 +257,6 @@ public:
   static const int boxExclude = 2;
 
   floatT diag() {
-    std::cout << "diag" << std::endl;
     floatT result = 0;
     for (int d = 0; d < dim; ++d) {
       floatT tmp = pMax[d] - pMin[d];
@@ -281,7 +266,6 @@ public:
   }
 
   inline floatT lMax() {
-    std::cout << "lmax" << std::endl;
     floatT myMax = 0;
     for (int d = 0; d < dim; ++d) {
       floatT thisMax = pMax[d] - pMin[d];
@@ -294,7 +278,6 @@ public:
 
   inline int boxCompare(pointT pMin1, pointT pMax1, pointT pMin2,
                         pointT pMax2) {
-    std::cout << "boxcompare" << std::endl;
     bool exclude = false;
     bool include = true; // 1 include 2
     for (int i = 0; i < dim; ++i) {
@@ -311,29 +294,27 @@ public:
       return boxOverlap;
   }
 
-  kdNodeArma(int dims, parlay::slice<_objT **, _objT **> itemss, intT nn, nodeT *space,
+  kdNodeVector(int dims, parlay::slice<_objT **, _objT **> itemss, intT nn, nodeT *space,
          parlay::slice<bool *, bool *> flags, intT leafSize = 16)
       : items(itemss) {
     dim = dims;
     resetId();
-    std::cout << "topmost" << std::endl;
     if (size() > 2000)
       constructParallel(space, flags, leafSize);
     else
       constructSerial(space, leafSize);
   }
 
-  kdNodeArma(int dims, parlay::slice<_objT **, _objT **> itemss, intT nn, nodeT *space, 
+  kdNodeVector(int dims, parlay::slice<_objT **, _objT **> itemss, intT nn, nodeT *space, 
          intT leafSize = 16)
       : items(itemss) {
     dim = dims;
     resetId();
-    std::cout << "bottommost" << std::endl;
     constructSerial(space, leafSize);
   }
 }; //End knode2
 
-template <typename nodeT> inline double nodeDistanceArma(nodeT *n1, nodeT *n2) {
+template <typename nodeT> inline double nodeDistanceVector(nodeT *n1, nodeT *n2) {
   using floatT = typename nodeT::objT::floatType;
 
   for (int d = 0; d < n1->dim; ++d) {
@@ -352,7 +333,7 @@ template <typename nodeT> inline double nodeDistanceArma(nodeT *n1, nodeT *n2) {
   return 0; // could be intersecting
 }
 
-template <typename nodeT> inline double nodeFarDistanceArma(nodeT *n1, nodeT *n2) {
+template <typename nodeT> inline double nodeFarDistanceVector(nodeT *n1, nodeT *n2) {
   using floatT = typename nodeT::objT::floatType;
   floatT result = 0;
   for (int d = 0; d < n1->dim; ++d) {
@@ -364,33 +345,31 @@ template <typename nodeT> inline double nodeFarDistanceArma(nodeT *n1, nodeT *n2
 }
 
 template <class objT>
-kdNodeArma<objT> *buildKdtArma(parlay::sequence<objT> &P, bool parallel = true,
+kdNodeVector<objT> *buildKdtVector(parlay::sequence<objT> &P, bool parallel = true,
                             bool noCoarsen = false,
                             parlay::sequence<objT *> *items = nullptr) {
-  typedef kdNodeArma<objT> nodeT; //new
+  typedef kdNodeVector<objT> nodeT; //new
   int dims = P[0].dim; //new
   size_t n = P.size();
+
   if (!items) {
     items = new parlay::sequence<objT *>(n);
   }
-  std::cout << "here with dims: " << dims << std::endl;
+
   parlay::parallel_for(0, n, [&](size_t i) { items->at(i) = &P[i]; });
 
   parlay::slice<objT **, objT **> itemSlice = items->cut(0, items->size());
-  
-  std::cout << "here 2" << std::endl;
 
   auto root = (nodeT *)malloc(sizeof(nodeT) * (2 * n - 1)); 
   //auto root = new nodeT[2*n-1]; 
+
+
   if (parallel) {
-    std::cout << "space size:" << sizeof(nodeT) * (2 * n - 1) << ", node size " <<sizeof(nodeT) << std::endl;
     auto flags = parlay::sequence<bool>(n);
     auto flagSlice = parlay::slice(flags.begin(), flags.end());
     root[0] = nodeT(dims, itemSlice, n, root + 1, flagSlice, noCoarsen ? 1 : 16);
-
   } else {
     root[0] = nodeT(dims, itemSlice, n, root + 1, noCoarsen ? 1 : 16);
-
   }
   return root;
 }

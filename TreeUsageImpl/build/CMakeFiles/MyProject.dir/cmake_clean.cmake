@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.o.d"
   "CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o"
   "CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o.d"
+  "CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_vector.cpp.o"
+  "CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_vector.cpp.o.d"
   "CMakeFiles/MyProject.dir/src/dc_dist.cpp.o"
   "CMakeFiles/MyProject.dir/src/dc_dist.cpp.o.d"
   "CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o"

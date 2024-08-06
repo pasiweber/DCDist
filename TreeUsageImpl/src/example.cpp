@@ -300,8 +300,20 @@ void test_mlpack(){
     //std::cout << "size of points2: " << sizeof(points2[0]) << ", and size of points: " << sizeof(points[0]) << std::endl;
     //std::cout << "size of p1: " << sizeof(p1) << ", and size of p2: " << sizeof(p2) << std::endl;
 
+    //VECTOR
+    parlay::sequence<pargeo::wghEdge> E3;
+    E3 = pargeo::hdbscan_vector(pointsVector, minPts);
+    parlay::sequence<pargeo::dendroNode> dendro3 = pargeo::dendrogram(E3, n);
+    parlay::sequence<double> A3(dendro3.size()*4);
+    parlay::parallel_for(0, dendro3.size(), [&](size_t i){
+                        A3[i*4+0] = std::get<0>(dendro3[i]);
+                        A3[i*4+1] = std::get<1>(dendro3[i]);
+                        A3[i*4+2] = std::get<2>(dendro3[i]);
+                        A3[i*4+3] = std::get<3>(dendro3[i]);});
 
+    std::cout << "1 ###########################################################################################" << std::endl;
 
+    //PARGEO
     parlay::sequence<pargeo::wghEdge> E2;
     E2 = pargeo::hdbscan<24>(points, minPts);
     parlay::sequence<pargeo::dendroNode> dendro2 = pargeo::dendrogram(E2, n);
@@ -312,8 +324,8 @@ void test_mlpack(){
                         A2[i*4+2] = std::get<2>(dendro2[i]);
                         A2[i*4+3] = std::get<3>(dendro2[i]);});
 
-    std::cout << "###########################################################################################" << std::endl;
-
+    std::cout << "2 ###########################################################################################" << std::endl;
+    //ARMA
     parlay::sequence<pargeo::wghEdge> E;
     E = pargeo::hdbscan_arma(points2, minPts);
     parlay::sequence<pargeo::dendroNode> dendro = pargeo::dendrogram(E, n);
