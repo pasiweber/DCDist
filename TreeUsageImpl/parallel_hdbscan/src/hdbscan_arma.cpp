@@ -36,6 +36,7 @@
 #include "../include/hdbscan/point.h"
 #include "../include/hdbscan/hdbscan.h"
 #include "../include/hdbscan/armapoint.h"
+#include "../include/hdbscan/vectorpoint.h"
 
 #include "kdTreeArma.h"
 #include "kdTreeKnnArma.h"
@@ -46,9 +47,9 @@ using namespace parlay;
 using namespace pargeo;
 using namespace pargeo::hdbscanInternal;
 
-parlay::sequence<pargeo::wghEdge> pargeo::hdbscan_arma(parlay::sequence<pargeo::point2> &S, size_t minPts) {
-  using pointType = point2; //NEW
-  using treeNode = kdNode2<point2>; //NEW
+parlay::sequence<pargeo::wghEdge> pargeo::hdbscan_arma(parlay::sequence<pargeo::VectorPoint> &S, size_t minPts) {
+  using pointType = ArmaPoint; //NEW
+  using treeNode = kdNode2<pointType>; //NEW
   using floatType = typename pointType::floatType;
 
   if (S.size() < 2) {
@@ -59,7 +60,7 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan_arma(parlay::sequence<pargeo::
   t0.start();
 
   //Build the kd-tree for k nearest neighbors
-    treeNode* tree = buildKdt2<point2>(S, true, true); //This returns a c array of nodes //NEW
+    treeNode* tree = buildKdt2<pointType>(S, true, true); //This returns a c array of nodes //NEW
 
     cout << "build-tree-time = " << t0.get_next() << endl;
 

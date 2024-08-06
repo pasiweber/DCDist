@@ -2018,6 +2018,7 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
   ../parallel_hdbscan/include/hdbscan/armapoint.h \
   ../parallel_hdbscan/include/hdbscan/hdbscan.h \
   ../parallel_hdbscan/include/hdbscan/edge.h \
+  ../parallel_hdbscan/include/hdbscan/vectorpoint.h \
   ../parallel_hdbscan/src/kdTree.h \
   ../parallel_hdbscan/src/kdTreeKnn.h \
   ../parallel_hdbscan/src/kdTreeArma.h \
@@ -4433,6 +4434,8 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/include/c++/11/bits/locale_facets.h:
 
 /usr/include/c++/11/any:
+
+../parallel_hdbscan/include/hdbscan/vectorpoint.h:
 
 /usr/include/c++/11/typeinfo:
 

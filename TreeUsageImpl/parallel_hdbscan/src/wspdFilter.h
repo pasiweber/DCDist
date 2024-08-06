@@ -211,7 +211,7 @@ namespace pargeo {
 		using floatT = double;
 		using bcpT = std::tuple<typename nodeT::objT*,
 					typename nodeT::objT*,
-					typename nodeT::objT::floatT>;
+					typename nodeT::objT::floatType>;
 		using bufT = parBuf<bcpT>;
 
 		floatT rhoLo;
@@ -299,7 +299,7 @@ namespace pargeo {
     }; //End wspGetParallel Struct
 
     template <class nodeT, class UF>
-    sequence<std::tuple<typename nodeT::objT*, typename nodeT::objT*, typename nodeT::objT::floatT>> filterWspdParallel(
+    sequence<std::tuple<typename nodeT::objT*, typename nodeT::objT*, typename nodeT::objT::floatType>> filterWspdParallel(
 						double t_beta,
 						double t_rho_lo,
 						double& t_rho_hi,

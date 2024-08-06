@@ -33,6 +33,7 @@
 
 #include "../include/hdbscan/point.h"
 #include "../include/hdbscan/armapoint.h"
+#include "../include/hdbscan/vectorpoint.h"
 
 namespace pargeo {
 
@@ -93,7 +94,7 @@ namespace pargeo {
   using namespace std;
 
   template<typename nodeT, typename objT>
-  void knnRangeHelper2(nodeT* tree, objT& q, point2 qMin, point2 qMax, double radius, buffer2<objT*>& out) {
+  void knnRangeHelper2(nodeT* tree, objT& q, ArmaPoint qMin, ArmaPoint qMax, double radius, buffer2<objT*>& out) {
     int relation = tree->boxCompare(qMin, qMax, tree->getMin(), tree->getMax());
     if(relation == tree->boxExclude) {
       return;
@@ -121,7 +122,7 @@ namespace pargeo {
   template<typename nodeT, typename objT>
   void knnRange2(nodeT* tree, objT& q, double radius, buffer2<objT*>& out) {
     int dim = q.dim;
-    point2 qMin(dim), qMax(dim);
+    ArmaPoint qMin(dim), qMax(dim);
     for (size_t i=0; i<dim; i++) {
       auto tmp = q[i] - radius;
       qMin[i] = tmp;
@@ -135,8 +136,8 @@ namespace pargeo {
   void knnHelper2(nodeT* tree, objT& q, buffer2<objT*>& out) {
     // find the leaf first
     int relation = tree->boxCompare(tree->getMin(), tree->getMax(), //This calls functions on the first element in the array
-				    point2(q.coords()),
-				    point2(q.coords()));
+				    ArmaPoint(q.coords()),
+				    ArmaPoint(q.coords()));
 
     if (relation == tree->boxExclude) {
       return;

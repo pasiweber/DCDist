@@ -323,7 +323,7 @@ public:
 };
 
 template <typename nodeT> inline double nodeDistance(nodeT *n1, nodeT *n2) {
-  using floatT = typename nodeT::objT::floatT;
+  using floatT = typename nodeT::objT::floatType;
 
   for (int d = 0; d < n1->dim; ++d) {
     if (n1->getMin(d) > n2->getMax(d) || n2->getMin(d) > n1->getMax(d)) {
@@ -342,7 +342,7 @@ template <typename nodeT> inline double nodeDistance(nodeT *n1, nodeT *n2) {
 }
 
 template <typename nodeT> inline double nodeFarDistance(nodeT *n1, nodeT *n2) {
-  using floatT = typename nodeT::objT::floatT;
+  using floatT = typename nodeT::objT::floatType;
   floatT result = 0;
   for (int d = 0; d < n1->dim; ++d) {
     floatT tmp =

@@ -34,7 +34,7 @@ namespace pargeo {
 
     template <typename objT>
     struct bcp {
-      using floatT = typename objT::floatT;
+      using floatT = typename objT::floatType;
       objT* u;
       objT* v;
       floatT dist;
@@ -110,7 +110,7 @@ namespace pargeo {
   template <typename nodeT>
   tuple<typename nodeT::objT*,
 	typename nodeT::objT*,
-	typename nodeT::objT::floatT> bccp(nodeT* n1, nodeT* n2) {
+	typename nodeT::objT::floatType> bccp(nodeT* n1, nodeT* n2) {
     using namespace bccpInternal;
     using floatT = double;
 

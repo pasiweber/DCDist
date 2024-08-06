@@ -1084,7 +1084,8 @@ CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.o: ../parallel_hdbs
   /usr/include/armadillo_bits/newarp_UpperHessenbergEigen_meat.hpp \
   /usr/include/armadillo_bits/newarp_UpperHessenbergQR_meat.hpp \
   /usr/include/armadillo_bits/compiler_setup_post.hpp \
-  ../parallel_hdbscan/include/hdbscan/hdbscan.h
+  ../parallel_hdbscan/include/hdbscan/hdbscan.h \
+  ../parallel_hdbscan/include/hdbscan/vectorpoint.h
 
 CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.o: ../parallel_hdbscan/src/hdbscan.cpp \
   /usr/include/stdc-predef.h \
@@ -2180,7 +2181,8 @@ CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.o: ../parallel_hdbscan
   /usr/include/armadillo_bits/newarp_TridiagEigen_meat.hpp \
   /usr/include/armadillo_bits/newarp_UpperHessenbergEigen_meat.hpp \
   /usr/include/armadillo_bits/newarp_UpperHessenbergQR_meat.hpp \
-  /usr/include/armadillo_bits/compiler_setup_post.hpp
+  /usr/include/armadillo_bits/compiler_setup_post.hpp \
+  ../parallel_hdbscan/include/hdbscan/vectorpoint.h
 
 CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o: ../parallel_hdbscan/src/hdbscan_arma.cpp \
   /usr/include/stdc-predef.h \
@@ -3277,6 +3279,7 @@ CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o: ../parallel_hd
   /usr/include/armadillo_bits/newarp_UpperHessenbergEigen_meat.hpp \
   /usr/include/armadillo_bits/newarp_UpperHessenbergQR_meat.hpp \
   /usr/include/armadillo_bits/compiler_setup_post.hpp \
+  ../parallel_hdbscan/include/hdbscan/vectorpoint.h \
   ../parallel_hdbscan/src/kdTreeArma.h \
   ../parallel_hdbscan/src/kdTreeKnnArma.h
 
@@ -7129,6 +7132,7 @@ CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp
   ../parallel_hdbscan/include/hdbscan/armapoint.h \
   ../parallel_hdbscan/include/hdbscan/hdbscan.h \
   ../parallel_hdbscan/include/hdbscan/edge.h \
+  ../parallel_hdbscan/include/hdbscan/vectorpoint.h \
   ../parallel_hdbscan/src/kdTree.h \
   ../parallel_hdbscan/src/kdTreeKnn.h \
   ../parallel_hdbscan/src/kdTreeArma.h \
@@ -10831,6 +10835,7 @@ CMakeFiles/MyProject.dir/src/example.cpp.o: ../src/example.cpp \
   ../parallel_hdbscan/src/kdTreeKnn.h \
   ../parallel_hdbscan/src/kdTreeArma.h \
   ../parallel_hdbscan/include/hdbscan/armapoint.h \
+  ../parallel_hdbscan/include/hdbscan/vectorpoint.h \
   ../parallel_hdbscan/src/kdTreeKnnArma.h \
   ../parallel_hdbscan/include/hdbscan/hdbscan.h \
   ../parallel_hdbscan/include/hdbscan/edge.h
@@ -12000,6 +12005,8 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 
 /usr/include/rapidjson/istreamwrapper.h:
 
+/usr/include/rapidjson/ostreamwrapper.h:
+
 /usr/include/armadillo_bits/eOp_bones.hpp:
 
 /usr/include/armadillo_bits/running_stat_vec_bones.hpp:
@@ -12708,8 +12715,6 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 
 /usr/include/c++/11/bits/deque.tcc:
 
-/usr/include/c++/11/typeinfo:
-
 /usr/include/c++/11/cstring:
 
 /usr/include/armadillo_bits/eOpCube_bones.hpp:
@@ -12823,6 +12828,10 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 /usr/include/c++/11/bits/basic_string.h:
 
 /usr/include/c++/11/bits/shared_ptr_base.h:
+
+/usr/include/c++/11/typeinfo:
+
+../parallel_hdbscan/include/hdbscan/vectorpoint.h:
 
 /usr/include/c++/11/pstl/glue_memory_defs.h:
 
@@ -14789,5 +14798,3 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 /usr/local/include/parlay/utilities.h:
 
 /usr/include/rapidjson/internal/ieee754.h:
-
-/usr/include/rapidjson/ostreamwrapper.h:

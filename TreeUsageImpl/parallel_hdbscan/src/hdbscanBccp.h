@@ -34,7 +34,7 @@ namespace pargeo {
 
     template <typename objT>
     struct bcp {
-      using floatT = typename objT::floatT;
+      using floatT = typename objT::floatType;
 
       objT* u;
       objT* v;
@@ -128,7 +128,7 @@ namespace pargeo {
   template <typename nodeT>
   tuple<typename nodeT::objT*,
 	typename nodeT::objT*,
-    typename nodeT::objT::floatT> hdbscanBccp(nodeT* n1,
+    typename nodeT::objT::floatType> hdbscanBccp(nodeT* n1,
 					      nodeT* n2,
 					      sequence<floatT> &coreDist,
 					      typename nodeT::objT* P

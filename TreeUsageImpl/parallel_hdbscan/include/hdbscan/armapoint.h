@@ -12,7 +12,7 @@ namespace pargeo {
   using namespace std;
 
 
-  template <class _dataType, class _floatType> class _point2 {
+  template <class _dataType, class _floatType> class _armaPoint {
 
     static constexpr _dataType empty = numeric_limits<_dataType>::max();
 
@@ -22,25 +22,25 @@ namespace pargeo {
     arma::Col<_dataType> x;
     int dim;
 
-    _point2() : x(), dim(0) {
+    _armaPoint() : x(), dim(0) {
     };
     //Constructors
-    _point2(int dim) : x(dim) { 
+    _armaPoint(int dim) : x(dim) { 
 
       x.fill(empty); 
       this->dim = dim;}
 
-    _point2(arma::Col<_dataType> *p): x(*p) { 
+    _armaPoint(arma::Col<_dataType> *p): x(*p) { 
       dim = x.size();
     }
 
-    _point2(_point2 *p)  { 
+    _armaPoint(_armaPoint *p)  { 
       x(p->x); 
       dim = x.size();
     }
 
     template<class _tIn>
-    _point2(parlay::slice<_tIn*,_tIn*> p) {
+    _armaPoint(parlay::slice<_tIn*,_tIn*> p) {
       x.set_size(p.x.size());
       for(int i=0; i<p.x.size(); ++i) x[i] = (_dataType)p[i];
       dim = x.size();
@@ -50,49 +50,49 @@ namespace pargeo {
 
     bool isEmpty() {return x[0]==empty;}
 
-    _point2 operator+(_point2 op2) {
-      return _point2(x+op2.x);}
+    _armaPoint operator+(_armaPoint op2) {
+      return _armaPoint(x+op2.x);}
 
-    _point2 operator-(_point2 op2) {
-      return _point2(x-op2.x);}
+    _armaPoint operator-(_armaPoint op2) {
+      return _armaPoint(x-op2.x);}
 
-    _point2 operator*(_dataType dv) {
-      return _point2(x*dv);} // % is the element wise multiplication in armadillo
+    _armaPoint operator*(_dataType dv) {
+      return _armaPoint(x*dv);} // % is the element wise multiplication in armadillo
 
-    _point2 operator/(_dataType dv) {
-      return _point2(x/dv);}
+    _armaPoint operator/(_dataType dv) {
+      return _armaPoint(x/dv);}
 
     _dataType& operator[](int i) {return x[i];}
 
     _dataType& at(int i) {return x[i];}
 
-    friend bool operator==(_point2 a, _point2 b) {  
+    friend bool operator==(_armaPoint a, _armaPoint b) {  
       return arma::all(a==b);
       }
 
-    friend bool operator!=(_point2 a, _point2 b) {return !(a==b);}
+    friend bool operator!=(_armaPoint a, _armaPoint b) {return !(a==b);}
 
     arma::Col<_dataType>* coords() {return &x;}
 
 
-    inline _floatType dist(_point2 p) {
+    inline _floatType dist(_armaPoint p) {
       return arma::norm(x-p.x, 2);
     }
 
-    _dataType dot(_point2 p2) {
+    _dataType dot(_armaPoint p2) {
       return arma::dot(x, p2.x);}
 
-    _point2 mult(_dataType c) {
-      return _point2(x*c);}
+    _armaPoint mult(_dataType c) {
+      return _armaPoint(x*c);}
 
   };
 
 
-  using point2 = _point2<double, double>;
+  using ArmaPoint = _armaPoint<double, double>;
 
-  using fpoint2 = _point2<float, float>;
+  using fArmaPoint = _armaPoint<float, float>;
 
-  using lpoint2 = _point2<long, double>;
+  using lArmaPoint = _armaPoint<long, double>;
 
   template<class _A, class _B>
   _B point2Cast(_B p) {
@@ -102,19 +102,19 @@ namespace pargeo {
   }
 }
 
-static std::ostream& operator<<(std::ostream& os, const pargeo::point2 v) {
+static std::ostream& operator<<(std::ostream& os, const pargeo::ArmaPoint v) {
   for (int i=0; i<v.x.size(); ++i)
     os << v.x[i] << " ";
   return os;
 }
 
-static std::ostream& operator<<(std::ostream& os, const pargeo::fpoint2 v) {
+static std::ostream& operator<<(std::ostream& os, const pargeo::fArmaPoint v) {
   for (int i=0; i<v.x.size(); ++i)
     os << v.x[i] << " ";
   return os;
 }
 
-static std::ostream& operator<<(std::ostream& os, const pargeo::lpoint2 v) {
+static std::ostream& operator<<(std::ostream& os, const pargeo::lArmaPoint v) {
   for (int i=0; i<v.x.size(); ++i)
     os << v.x[i] << " ";
   return os;

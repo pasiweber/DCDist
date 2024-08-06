@@ -1086,6 +1086,7 @@ CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.o
  /usr/include/armadillo_bits/newarp_UpperHessenbergQR_meat.hpp
  /usr/include/armadillo_bits/compiler_setup_post.hpp
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/include/hdbscan/hdbscan.h
+ /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/include/hdbscan/vectorpoint.h
 
 CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.o
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/hdbscan.cpp
@@ -2183,6 +2184,7 @@ CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.o
  /usr/include/armadillo_bits/newarp_UpperHessenbergEigen_meat.hpp
  /usr/include/armadillo_bits/newarp_UpperHessenbergQR_meat.hpp
  /usr/include/armadillo_bits/compiler_setup_post.hpp
+ /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/include/hdbscan/vectorpoint.h
 
 CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/hdbscan_arma.cpp
@@ -3280,6 +3282,7 @@ CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o
  /usr/include/armadillo_bits/newarp_UpperHessenbergEigen_meat.hpp
  /usr/include/armadillo_bits/newarp_UpperHessenbergQR_meat.hpp
  /usr/include/armadillo_bits/compiler_setup_post.hpp
+ /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/include/hdbscan/vectorpoint.h
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/kdTreeArma.h
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/kdTreeKnnArma.h
 
@@ -7134,6 +7137,7 @@ CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/include/hdbscan/armapoint.h
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/include/hdbscan/hdbscan.h
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/include/hdbscan/edge.h
+ /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/include/hdbscan/vectorpoint.h
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/kdTree.h
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/kdTreeKnn.h
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/kdTreeArma.h
@@ -10838,6 +10842,7 @@ CMakeFiles/MyProject.dir/src/example.cpp.o
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/kdTreeKnn.h
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/kdTreeArma.h
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/include/hdbscan/armapoint.h
+ /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/include/hdbscan/vectorpoint.h
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/src/kdTreeKnnArma.h
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/include/hdbscan/hdbscan.h
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/parallel_hdbscan/include/hdbscan/edge.h

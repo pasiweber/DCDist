@@ -1895,6 +1895,7 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: \
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/include/hdbscan/armapoint.h \
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/include/hdbscan/hdbscan.h \
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/include/hdbscan/edge.h \
+ /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/include/hdbscan/vectorpoint.h \
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/src/kdTree.h \
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/src/kdTreeKnn.h \
  /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/../parallel_hdbscan/src/kdTreeArma.h \

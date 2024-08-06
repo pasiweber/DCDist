@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../include/hdbscan/armapoint.h"
+#include "../include/hdbscan/vectorpoint.h"
 #include "parlay/parallel.h"
 #include "parlay/sequence.h"
 
@@ -10,7 +11,7 @@ template <class _objT> class kdNode2 {
 
   typedef int intT;
   typedef double floatT;
-  typedef pargeo::point2 pointT;
+  typedef pargeo::ArmaPoint pointT;
   typedef kdNode2<_objT> nodeT;
 
   // Data fields
@@ -315,7 +316,7 @@ public:
 }; //End knode2
 
 template <typename nodeT> inline double nodeDistance2(nodeT *n1, nodeT *n2) {
-  using floatT = typename nodeT::objT::floatT;
+  using floatT = typename nodeT::objT::floatType;
 
   for (int d = 0; d < n1->dim; ++d) {
     if (n1->getMin(d) > n2->getMax(d) || n2->getMin(d) > n1->getMax(d)) {
@@ -334,7 +335,7 @@ template <typename nodeT> inline double nodeDistance2(nodeT *n1, nodeT *n2) {
 }
 
 template <typename nodeT> inline double nodeFarDistance2(nodeT *n1, nodeT *n2) {
-  using floatT = typename nodeT::objT::floatT;
+  using floatT = typename nodeT::objT::floatType;
   floatT result = 0;
   for (int d = 0; d < n1->dim; ++d) {
     floatT tmp =

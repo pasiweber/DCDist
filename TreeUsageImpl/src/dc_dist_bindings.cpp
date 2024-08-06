@@ -26,9 +26,9 @@ namespace py = pybind11;
 using namespace parlay;
 
 
-parlay::sequence<pargeo::point2> convertArmaMatToParlayPoints2(const arma::mat& mat) {
+parlay::sequence<pargeo::ArmaPoint> convertArmaMatToParlayPoints2(const arma::mat& mat) {
     // Create a parlay sequence of points
-    parlay::sequence<pargeo::point2> points(mat.n_cols);
+    parlay::sequence<pargeo::ArmaPoint> points(mat.n_cols);
     std::cout<< "num cols:" << mat.n_cols << std::endl;
     // Populate the sequence with points created from the matrix columns
     for (size_t j = 0; j < mat.n_cols; ++j) {
@@ -36,13 +36,13 @@ parlay::sequence<pargeo::point2> convertArmaMatToParlayPoints2(const arma::mat& 
         for (size_t i = 0; i < mat.n_rows; ++i) {
             coords[i] = mat(i, j);
         }
-        points[j] = pargeo::point2(&coords);
+        points[j] = pargeo::ArmaPoint(&coords);
     }
 
     return points;
 }
 
-parlay::sequence<pargeo::point2> translate_points(py::array_t<double> input_array) {
+parlay::sequence<pargeo::ArmaPoint> translate_points(py::array_t<double> input_array) {
     std::cout << "compute cdists wrapper called" << std::endl;
     // Convert numpy array to armadillo matrix
     auto buf = input_array.request();
@@ -115,7 +115,7 @@ py::array_t<double> py_hdbscan(py::array_t<double, py::array::c_style | py::arra
         return wrapArray2d<double>(A, 4);
     } else{
         //TODO: This seemingly does not work for very few points?? Like 10 points
-        parlay::sequence<pargeo::point2> points = translate_points(array);
+        parlay::sequence<pargeo::ArmaPoint> points = translate_points(array);
         int n = points.size();
         int dim = points[0].dim; 
         std::cout << "n: " << n << ", dim: " << dim << std::endl;
