@@ -33,11 +33,8 @@
 #include "wspdFilter.h"
 #include "mark.h"
 
-#include "../include/hdbscan/point.h"
 #include "../include/hdbscan/hdbscan.h"
 #include "../include/hdbscan/armapoint.h"
-#include "../include/hdbscan/vectorpoint.h"
-
 #include "kdTreeArma.h"
 #include "kdTreeKnnArma.h"
 
@@ -47,9 +44,9 @@ using namespace parlay;
 using namespace pargeo;
 using namespace pargeo::hdbscanInternal;
 
-parlay::sequence<pargeo::wghEdge> pargeo::hdbscan_arma(parlay::sequence<pargeo::VectorPoint> &S, size_t minPts) {
+parlay::sequence<pargeo::wghEdge> pargeo::hdbscan_arma(parlay::sequence<pargeo::ArmaPoint> &S, size_t minPts) {
   using pointType = ArmaPoint; //NEW
-  using treeNode = kdNode2<pointType>; //NEW
+  using treeNode = kdNodeArma<pointType>; //NEW
   using floatType = typename pointType::floatType;
 
   if (S.size() < 2) {
@@ -60,12 +57,12 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan_arma(parlay::sequence<pargeo::
   t0.start();
 
   //Build the kd-tree for k nearest neighbors
-    treeNode* tree = buildKdt2<pointType>(S, true, true); //This returns a c array of nodes //NEW
+    treeNode* tree = buildKdtArma<pointType>(S, true, true); //This returns a c array of nodes //NEW
 
     cout << "build-tree-time = " << t0.get_next() << endl;
 
     //Get the k nearest neighbors over the tree using the kd-tree from above
-    sequence<size_t> nns = kdTreeKnn2<pointType>(S, minPts, tree, true); //NEW
+    sequence<size_t> nns = kdTreeKnnArma<pointType>(S, minPts, tree, true); //NEW
 
   //It looks like they do it in the same way that we do - first get all k, then take the k'th as the core distance. 
   //They use some nested indexing - i.e. they get the k'th nearest neighbor and compute the distance to that point from the current point and insert it into their list of core distances.

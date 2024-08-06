@@ -32,7 +32,7 @@ namespace pargeo {
         for (int i=0; i< dim; ++i) x[i]=empty;
     }
 
-    _vectorPoint(std::vector<_dataType>* p) : dim(p->size()), x(p->size()) { for (int i=0; i<dim; ++i) x[i]=p[i]; }
+    _vectorPoint(std::vector<_dataType>* p) : dim(p->size()), x(p->size()) { for (int i=0; i<dim; ++i) x[i]=(*p)[i]; }
 
     _vectorPoint(_vectorPoint* p): dim(p->dim), x(p->dim) { for (int i=0; i<dim; ++i) x[i]=p->x[i]; }
 

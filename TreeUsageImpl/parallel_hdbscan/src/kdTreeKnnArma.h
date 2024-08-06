@@ -28,12 +28,8 @@
 #include <algorithm> // nth_element
 #include "parlay/parallel.h"
 #include "parlay/sequence.h"
-#include "kdTree.h"
 #include "kdTreeArma.h"
-
-#include "../include/hdbscan/point.h"
 #include "../include/hdbscan/armapoint.h"
-#include "../include/hdbscan/vectorpoint.h"
 
 namespace pargeo {
 
@@ -49,43 +45,44 @@ namespace pargeo {
       elem2(floatT t_cost, T t_entry) : cost(t_cost), entry(t_entry) {}
       elem2() : cost(std::numeric_limits<floatT>::max()) {}
       bool operator<(const elem2& b) const {
-	if (cost < b.cost) return true;
-	return false;}
+        if (cost < b.cost) return true;
+        return false;
+      }
     };
 
     template <typename T>
-    struct buffer2 {
+    struct bufferArma {
       typedef parlay::slice<elem2<T>*, elem2<T>*> sliceT;
       intT k;
       intT ptr;
       sliceT buf;
 
-      buffer2(intT t_k, sliceT t_buf): k(t_k), ptr(0), buf(t_buf) {}
+      bufferArma(intT t_k, sliceT t_buf): k(t_k), ptr(0), buf(t_buf) {}
 
       inline void reset() {ptr = 0;}
 
       bool hasK() {return ptr >= k;}
 
       elem2<T> keepK() {
-	if (ptr < k) throw std::runtime_error("Error, kbuffer2 not enough k.");
-	ptr = k;
-	std::nth_element(buf.begin(), buf.begin()+k-1, buf.end());
-	return buf[k-1];
+        if (ptr < k) throw std::runtime_error("Error, kbufferArma not enough k.");
+        ptr = k;
+        std::nth_element(buf.begin(), buf.begin()+k-1, buf.end());
+        return buf[k-1];
       }
 
       void sort() { // todo check
-	if (ptr < k) throw std::runtime_error("Error, sorting kbuffer2 without enough k.");
-	parlay::sort(buf.cut(0, k));
+        if (ptr < k) throw std::runtime_error("Error, sorting kbufferArma without enough k.");
+        parlay::sort(buf.cut(0, k));
       }
 
       void insert(elem2<T> t_elem) {
-	buf[ptr++] = t_elem;
-	if (ptr >= buf.size()) keepK();
+        buf[ptr++] = t_elem;
+        if (ptr >= buf.size()) keepK();
       }
 
       elem2<T> operator[](intT i) {
-	if (i < ptr) return buf[i];
-	else return elem2<T>();
+        if (i < ptr) return buf[i];
+        else return elem2<T>();
       }
     };
   }
@@ -94,7 +91,7 @@ namespace pargeo {
   using namespace std;
 
   template<typename nodeT, typename objT>
-  void knnRangeHelper2(nodeT* tree, objT& q, ArmaPoint qMin, ArmaPoint qMax, double radius, buffer2<objT*>& out) {
+  void knnRangeHelperArma(nodeT* tree, objT& q, ArmaPoint qMin, ArmaPoint qMax, double radius, bufferArma<objT*>& out) {
     int relation = tree->boxCompare(qMin, qMax, tree->getMin(), tree->getMax());
     if(relation == tree->boxExclude) {
       return;
@@ -113,14 +110,14 @@ namespace pargeo {
           }
 	      }
       } else {
-        knnRangeHelper2<nodeT, objT>(tree->L(), q, qMin, qMax, radius, out);
-        knnRangeHelper2<nodeT, objT>(tree->R(), q, qMin, qMax, radius, out);
+        knnRangeHelperArma<nodeT, objT>(tree->L(), q, qMin, qMax, radius, out);
+        knnRangeHelperArma<nodeT, objT>(tree->R(), q, qMin, qMax, radius, out);
       }
     }
   }
 
   template<typename nodeT, typename objT>
-  void knnRange2(nodeT* tree, objT& q, double radius, buffer2<objT*>& out) {
+  void knnRangeArma(nodeT* tree, objT& q, double radius, bufferArma<objT*>& out) {
     int dim = q.dim;
     ArmaPoint qMin(dim), qMax(dim);
     for (size_t i=0; i<dim; i++) {
@@ -128,12 +125,12 @@ namespace pargeo {
       qMin[i] = tmp;
       qMax[i] = tmp + radius * 2;
     }
-    knnRangeHelper2<nodeT, objT>(tree, q, qMin, qMax, radius, out);
+    knnRangeHelperArma<nodeT, objT>(tree, q, qMin, qMax, radius, out);
   }
 
   // modify to take in the tree instead
   template<typename nodeT, typename objT>
-  void knnHelper2(nodeT* tree, objT& q, buffer2<objT*>& out) {
+  void knnHelperArma(nodeT* tree, objT& q, bufferArma<objT*>& out) {
     // find the leaf first
     int relation = tree->boxCompare(tree->getMin(), tree->getMax(), //This calls functions on the first element in the array
 				    ArmaPoint(q.coords()),
@@ -149,8 +146,8 @@ namespace pargeo {
           out.insert(elem2(q.dist(*p), p));
         }
       } else {
-        knnHelper2<nodeT, objT>(tree->L(), q, out);
-        knnHelper2<nodeT, objT>(tree->R(), q, out);
+        knnHelperArma<nodeT, objT>(tree->L(), q, out);
+        knnHelperArma<nodeT, objT>(tree->R(), q, out);
       }
     }
     if (!out.hasK()) {
@@ -161,29 +158,29 @@ namespace pargeo {
         objT* p = tree->siblin()->getItem(i);
         out.insert(elem2(q.dist(*p), p));
       }
-    }else { // buffer2 filled to a least k
+    }else { // bufferArma filled to a least k
       if (tree->siblin() != NULL) {
         elem2 tmp = out.keepK();
-        knnRange2<nodeT, objT>(tree->siblin(), q, tmp.cost, out);
+        knnRangeArma<nodeT, objT>(tree->siblin(), q, tmp.cost, out);
       }
     }
   }
 
   template<class objT>
-  parlay::sequence<size_t> kdTreeKnn2(parlay::sequence<objT> &queries, size_t k, kdNode2<objT>* tree = nullptr, bool sorted = false) {
-    using nodeT = kdNode2<objT>;
+  parlay::sequence<size_t> kdTreeKnnArma(parlay::sequence<objT> &queries, size_t k, kdNodeArma<objT>* tree = nullptr, bool sorted = false) {
+    using nodeT = kdNodeArma<objT>;
     bool freeTree = false;
 
     if (!tree) {
       freeTree = true;
-      tree = buildKdt2<objT>(queries, true);
+      tree = buildKdtArma<objT>(queries, true);
     }
     auto out = parlay::sequence<elem2<objT*>>(2*k*queries.size());
     auto idx = parlay::sequence<size_t>(k*queries.size());
 
     parlay::parallel_for(0, queries.size(), [&](size_t i) {
-					      buffer2 buf = buffer2<objT*>(k, out.cut(i*2*k, (i+1)*2*k));
-					      knnHelper2<nodeT, objT>(tree, queries[i], buf);
+					      bufferArma buf = bufferArma<objT*>(k, out.cut(i*2*k, (i+1)*2*k));
+					      knnHelperArma<nodeT, objT>(tree, queries[i], buf);
 					      buf.keepK();
 					      if (sorted) buf.sort();
 					      for(size_t j=0; j<k; ++j) {
@@ -197,12 +194,12 @@ namespace pargeo {
   }
 
   template<typename objT>
-  parlay::sequence<size_t> bruteforceKnn2(parlay::sequence<objT> &queries, size_t k) {
+  parlay::sequence<size_t> bruteforceKnnArma(parlay::sequence<objT> &queries, size_t k) {
     auto out = parlay::sequence<elem2<objT*>>(2*k*queries.size());
     auto idx = parlay::sequence<size_t>(k*queries.size());
     parlay::parallel_for(0, queries.size(), [&](size_t i) {
 					      objT q = queries[i];
-					      buffer2 buf = buffer2<objT*>(k, out.cut(i*2*k, (i+1)*2*k));
+					      bufferArma buf = bufferArma<objT*>(k, out.cut(i*2*k, (i+1)*2*k));
 					      for(size_t j=0; j<queries.size(); ++j) {
 						objT* p = &queries[j];
 						buf.insert(elem2(q.dist(p), p));

@@ -1,18 +1,17 @@
 #pragma once
 
 #include "../include/hdbscan/armapoint.h"
-#include "../include/hdbscan/vectorpoint.h"
 #include "parlay/parallel.h"
 #include "parlay/sequence.h"
 
 namespace pargeo {
 
-template <class _objT> class kdNode2 {
+template <class _objT> class kdNodeArma {
 
   typedef int intT;
   typedef double floatT;
   typedef pargeo::ArmaPoint pointT;
-  typedef kdNode2<_objT> nodeT;
+  typedef kdNodeArma<_objT> nodeT;
 
   // Data fields
   intT id;
@@ -295,7 +294,7 @@ public:
       return boxOverlap;
   }
 
-  kdNode2(int dims, parlay::slice<_objT **, _objT **> itemss, intT nn, nodeT *space,
+  kdNodeArma(int dims, parlay::slice<_objT **, _objT **> itemss, intT nn, nodeT *space,
          parlay::slice<bool *, bool *> flags, intT leafSize = 16)
       : items(itemss) {
     dim = dims;
@@ -306,7 +305,7 @@ public:
       constructSerial(space, leafSize);
   }
 
-  kdNode2(int dims, parlay::slice<_objT **, _objT **> itemss, intT nn, nodeT *space, 
+  kdNodeArma(int dims, parlay::slice<_objT **, _objT **> itemss, intT nn, nodeT *space, 
          intT leafSize = 16)
       : items(itemss) {
     dim = dims;
@@ -315,7 +314,7 @@ public:
   }
 }; //End knode2
 
-template <typename nodeT> inline double nodeDistance2(nodeT *n1, nodeT *n2) {
+template <typename nodeT> inline double nodeDistanceArma(nodeT *n1, nodeT *n2) {
   using floatT = typename nodeT::objT::floatType;
 
   for (int d = 0; d < n1->dim; ++d) {
@@ -334,7 +333,7 @@ template <typename nodeT> inline double nodeDistance2(nodeT *n1, nodeT *n2) {
   return 0; // could be intersecting
 }
 
-template <typename nodeT> inline double nodeFarDistance2(nodeT *n1, nodeT *n2) {
+template <typename nodeT> inline double nodeFarDistanceArma(nodeT *n1, nodeT *n2) {
   using floatT = typename nodeT::objT::floatType;
   floatT result = 0;
   for (int d = 0; d < n1->dim; ++d) {
@@ -346,10 +345,10 @@ template <typename nodeT> inline double nodeFarDistance2(nodeT *n1, nodeT *n2) {
 }
 
 template <class objT>
-kdNode2<objT> *buildKdt2(parlay::sequence<objT> &P, bool parallel = true,
+kdNodeArma<objT> *buildKdtArma(parlay::sequence<objT> &P, bool parallel = true,
                             bool noCoarsen = false,
                             parlay::sequence<objT *> *items = nullptr) {
-  typedef kdNode2<objT> nodeT; //new
+  typedef kdNodeArma<objT> nodeT; //new
   int dims = P[0].dim; //new
   size_t n = P.size();
 

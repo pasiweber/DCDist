@@ -10835,10 +10835,10 @@ CMakeFiles/MyProject.dir/src/example.cpp.o: ../src/example.cpp \
   ../parallel_hdbscan/src/kdTreeKnn.h \
   ../parallel_hdbscan/src/kdTreeArma.h \
   ../parallel_hdbscan/include/hdbscan/armapoint.h \
-  ../parallel_hdbscan/include/hdbscan/vectorpoint.h \
   ../parallel_hdbscan/src/kdTreeKnnArma.h \
   ../parallel_hdbscan/include/hdbscan/hdbscan.h \
-  ../parallel_hdbscan/include/hdbscan/edge.h
+  ../parallel_hdbscan/include/hdbscan/edge.h \
+  ../parallel_hdbscan/include/hdbscan/vectorpoint.h
 
 CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
   /usr/include/stdc-predef.h \
