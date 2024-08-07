@@ -57,11 +57,11 @@ void printTree2(const Node& tree);
 Node* construct_dc_tree(const std::vector<std::vector<double>> &points);
 
 
-void swap(double *const a, double *const b);
+// void swap(double *const a, double *const b);
 
-unsigned long long partition(std::vector<double> &arr, const unsigned long long low, const unsigned long long high);
+// unsigned long long partition(std::vector<double> &arr, const unsigned long long low, const unsigned long long high);
 
-double quickSelect(std::vector<double> &arr, const unsigned long long low, const unsigned long long high, const int k);
+// double quickSelect(std::vector<double> &arr, const unsigned long long low, const unsigned long long high, const int k);
 
 
 std::vector<double> compute_cdists(arma::mat &data, size_t k, std::string mode);

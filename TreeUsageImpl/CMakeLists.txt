@@ -35,11 +35,8 @@ add_executable(MyProject src/example.cpp
                 src/dc_hdbscan.cpp
                 src/dc_dist.cpp
                 src/dc_dist_bindings.cpp
-                parallel_hdbscan/src/hdbscan_arma.cpp
-                parallel_hdbscan/src/hdbscan_vector.cpp
-                parallel_hdbscan/src/hdbscan.cpp
-                parallel_hdbscan/src/dendrogram.cpp
-
+                src/graph.cpp
+                src/graph_hdb_c.cpp
                 )
 
 
@@ -48,10 +45,6 @@ target_link_libraries(MyProject mlpack armadillo pybind11::module ${Python3_LIBR
 
 # Add the static library - Needed to link for the pybind (here all cpp files needed that aren't the module itself should be added).
 add_library(dcdist STATIC src/dc_dist.cpp 
-    parallel_hdbscan/src/hdbscan_arma.cpp 
-    parallel_hdbscan/src/hdbscan_vector.cpp 
-    parallel_hdbscan/src/hdbscan.cpp
-    parallel_hdbscan/src/dendrogram.cpp
     )
 
 # Add the Python module

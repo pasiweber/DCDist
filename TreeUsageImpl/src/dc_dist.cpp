@@ -1,5 +1,5 @@
 #include <dc_dist.hpp>
-#include <quickselect.hpp>
+//#include <quickselect.hpp>
 #include <iostream>
 
 //mlpack stuff

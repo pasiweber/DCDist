@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <omp.h>
 #include <string.h>
-
+#include<graph_hdb_c.hpp>
 // gcc -shared -o hdb.so hdb_c.c -O3 -march=native -lm -fopenmp -fPIC
 /*
 This code computes the core distances using quickselect, 
@@ -110,4 +110,25 @@ void calc_core_dist(unsigned long long n, int k, double *core_dist, double *dist
         memcpy(temp_array, &distance_matrix[i * n], n * sizeof(double));
         core_dist[i] = quickSelect(temp_array, 0, n - 1, k - 1);
     }
+}
+
+double *calc_mutual_reachability_dist(double *data, unsigned long long n, int dim, int k)
+{
+    double *distance_matrix = (double *)malloc(n * n * sizeof(double));
+    double *core_dist = (double *)malloc(n * sizeof(double));
+    double *mutual_reach_dist = (double *)malloc(n * n * sizeof(double));
+
+    calc_distance_matrix(data, n, dim, distance_matrix);
+    calc_core_dist(n, k, core_dist, distance_matrix);
+
+#pragma omp parallel for // schedule(static, 2)
+    for (unsigned long long i = 0; i < n; i++)
+    {
+        for (unsigned long long j = i + 1; j < n; j++)
+        {
+            mutual_reach_dist[i * n + j] = fmax(fmax(core_dist[i], core_dist[j]), distance_matrix[i * n + j]);
+            mutual_reach_dist[j * n + i] = mutual_reach_dist[i * n + j];
+        }
+    }
+    return mutual_reach_dist;
 }

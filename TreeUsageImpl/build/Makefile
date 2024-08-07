@@ -200,114 +200,6 @@ dctree/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dctree.dir/build.make CMakeFiles/dctree.dir/build
 .PHONY : dctree/fast
 
-parallel_hdbscan/src/dendrogram.o: parallel_hdbscan/src/dendrogram.cpp.o
-.PHONY : parallel_hdbscan/src/dendrogram.o
-
-# target to build an object file
-parallel_hdbscan/src/dendrogram.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/parallel_hdbscan/src/dendrogram.cpp.o
-.PHONY : parallel_hdbscan/src/dendrogram.cpp.o
-
-parallel_hdbscan/src/dendrogram.i: parallel_hdbscan/src/dendrogram.cpp.i
-.PHONY : parallel_hdbscan/src/dendrogram.i
-
-# target to preprocess a source file
-parallel_hdbscan/src/dendrogram.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/parallel_hdbscan/src/dendrogram.cpp.i
-.PHONY : parallel_hdbscan/src/dendrogram.cpp.i
-
-parallel_hdbscan/src/dendrogram.s: parallel_hdbscan/src/dendrogram.cpp.s
-.PHONY : parallel_hdbscan/src/dendrogram.s
-
-# target to generate assembly for a file
-parallel_hdbscan/src/dendrogram.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/dendrogram.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/parallel_hdbscan/src/dendrogram.cpp.s
-.PHONY : parallel_hdbscan/src/dendrogram.cpp.s
-
-parallel_hdbscan/src/hdbscan.o: parallel_hdbscan/src/hdbscan.cpp.o
-.PHONY : parallel_hdbscan/src/hdbscan.o
-
-# target to build an object file
-parallel_hdbscan/src/hdbscan.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/parallel_hdbscan/src/hdbscan.cpp.o
-.PHONY : parallel_hdbscan/src/hdbscan.cpp.o
-
-parallel_hdbscan/src/hdbscan.i: parallel_hdbscan/src/hdbscan.cpp.i
-.PHONY : parallel_hdbscan/src/hdbscan.i
-
-# target to preprocess a source file
-parallel_hdbscan/src/hdbscan.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/parallel_hdbscan/src/hdbscan.cpp.i
-.PHONY : parallel_hdbscan/src/hdbscan.cpp.i
-
-parallel_hdbscan/src/hdbscan.s: parallel_hdbscan/src/hdbscan.cpp.s
-.PHONY : parallel_hdbscan/src/hdbscan.s
-
-# target to generate assembly for a file
-parallel_hdbscan/src/hdbscan.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/parallel_hdbscan/src/hdbscan.cpp.s
-.PHONY : parallel_hdbscan/src/hdbscan.cpp.s
-
-parallel_hdbscan/src/hdbscan_arma.o: parallel_hdbscan/src/hdbscan_arma.cpp.o
-.PHONY : parallel_hdbscan/src/hdbscan_arma.o
-
-# target to build an object file
-parallel_hdbscan/src/hdbscan_arma.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/parallel_hdbscan/src/hdbscan_arma.cpp.o
-.PHONY : parallel_hdbscan/src/hdbscan_arma.cpp.o
-
-parallel_hdbscan/src/hdbscan_arma.i: parallel_hdbscan/src/hdbscan_arma.cpp.i
-.PHONY : parallel_hdbscan/src/hdbscan_arma.i
-
-# target to preprocess a source file
-parallel_hdbscan/src/hdbscan_arma.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/parallel_hdbscan/src/hdbscan_arma.cpp.i
-.PHONY : parallel_hdbscan/src/hdbscan_arma.cpp.i
-
-parallel_hdbscan/src/hdbscan_arma.s: parallel_hdbscan/src/hdbscan_arma.cpp.s
-.PHONY : parallel_hdbscan/src/hdbscan_arma.s
-
-# target to generate assembly for a file
-parallel_hdbscan/src/hdbscan_arma.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_arma.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/parallel_hdbscan/src/hdbscan_arma.cpp.s
-.PHONY : parallel_hdbscan/src/hdbscan_arma.cpp.s
-
-parallel_hdbscan/src/hdbscan_vector.o: parallel_hdbscan/src/hdbscan_vector.cpp.o
-.PHONY : parallel_hdbscan/src/hdbscan_vector.o
-
-# target to build an object file
-parallel_hdbscan/src/hdbscan_vector.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_vector.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/parallel_hdbscan/src/hdbscan_vector.cpp.o
-.PHONY : parallel_hdbscan/src/hdbscan_vector.cpp.o
-
-parallel_hdbscan/src/hdbscan_vector.i: parallel_hdbscan/src/hdbscan_vector.cpp.i
-.PHONY : parallel_hdbscan/src/hdbscan_vector.i
-
-# target to preprocess a source file
-parallel_hdbscan/src/hdbscan_vector.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_vector.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/parallel_hdbscan/src/hdbscan_vector.cpp.i
-.PHONY : parallel_hdbscan/src/hdbscan_vector.cpp.i
-
-parallel_hdbscan/src/hdbscan_vector.s: parallel_hdbscan/src/hdbscan_vector.cpp.s
-.PHONY : parallel_hdbscan/src/hdbscan_vector.s
-
-# target to generate assembly for a file
-parallel_hdbscan/src/hdbscan_vector.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/parallel_hdbscan/src/hdbscan_vector.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/parallel_hdbscan/src/hdbscan_vector.cpp.s
-.PHONY : parallel_hdbscan/src/hdbscan_vector.cpp.s
-
 src/dc_dist.o: src/dc_dist.cpp.o
 .PHONY : src/dc_dist.o
 
@@ -410,6 +302,54 @@ src/example.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/example.cpp.s
 .PHONY : src/example.cpp.s
 
+src/graph.o: src/graph.cpp.o
+.PHONY : src/graph.o
+
+# target to build an object file
+src/graph.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/graph.cpp.o
+.PHONY : src/graph.cpp.o
+
+src/graph.i: src/graph.cpp.i
+.PHONY : src/graph.i
+
+# target to preprocess a source file
+src/graph.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/graph.cpp.i
+.PHONY : src/graph.cpp.i
+
+src/graph.s: src/graph.cpp.s
+.PHONY : src/graph.s
+
+# target to generate assembly for a file
+src/graph.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/graph.cpp.s
+.PHONY : src/graph.cpp.s
+
+src/graph_hdb_c.o: src/graph_hdb_c.cpp.o
+.PHONY : src/graph_hdb_c.o
+
+# target to build an object file
+src/graph_hdb_c.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/graph_hdb_c.cpp.o
+.PHONY : src/graph_hdb_c.cpp.o
+
+src/graph_hdb_c.i: src/graph_hdb_c.cpp.i
+.PHONY : src/graph_hdb_c.i
+
+# target to preprocess a source file
+src/graph_hdb_c.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/graph_hdb_c.cpp.i
+.PHONY : src/graph_hdb_c.cpp.i
+
+src/graph_hdb_c.s: src/graph_hdb_c.cpp.s
+.PHONY : src/graph_hdb_c.s
+
+# target to generate assembly for a file
+src/graph_hdb_c.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/graph_hdb_c.cpp.s
+.PHONY : src/graph_hdb_c.cpp.s
+
 src/kcentroids.o: src/kcentroids.cpp.o
 .PHONY : src/kcentroids.o
 
@@ -449,18 +389,6 @@ help:
 	@echo "... MyProject"
 	@echo "... dcdist"
 	@echo "... dctree"
-	@echo "... parallel_hdbscan/src/dendrogram.o"
-	@echo "... parallel_hdbscan/src/dendrogram.i"
-	@echo "... parallel_hdbscan/src/dendrogram.s"
-	@echo "... parallel_hdbscan/src/hdbscan.o"
-	@echo "... parallel_hdbscan/src/hdbscan.i"
-	@echo "... parallel_hdbscan/src/hdbscan.s"
-	@echo "... parallel_hdbscan/src/hdbscan_arma.o"
-	@echo "... parallel_hdbscan/src/hdbscan_arma.i"
-	@echo "... parallel_hdbscan/src/hdbscan_arma.s"
-	@echo "... parallel_hdbscan/src/hdbscan_vector.o"
-	@echo "... parallel_hdbscan/src/hdbscan_vector.i"
-	@echo "... parallel_hdbscan/src/hdbscan_vector.s"
 	@echo "... src/dc_dist.o"
 	@echo "... src/dc_dist.i"
 	@echo "... src/dc_dist.s"
@@ -473,6 +401,12 @@ help:
 	@echo "... src/example.o"
 	@echo "... src/example.i"
 	@echo "... src/example.s"
+	@echo "... src/graph.o"
+	@echo "... src/graph.i"
+	@echo "... src/graph.s"
+	@echo "... src/graph_hdb_c.o"
+	@echo "... src/graph_hdb_c.i"
+	@echo "... src/graph_hdb_c.s"
 	@echo "... src/kcentroids.o"
 	@echo "... src/kcentroids.i"
 	@echo "... src/kcentroids.s"
