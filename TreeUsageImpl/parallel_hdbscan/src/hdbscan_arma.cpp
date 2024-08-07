@@ -55,6 +55,7 @@ parlay::sequence<pargeo::wghEdge> pargeo::hdbscan_arma(parlay::sequence<pargeo::
     std::cout << "We have sufficient points" << std::endl;
   }
 
+
   timer t0;
   t0.start();
 

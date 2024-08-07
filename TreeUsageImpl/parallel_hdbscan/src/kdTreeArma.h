@@ -140,9 +140,9 @@ template <class _objT> class kdNodeArma {
     sib = NULL;
     std::cout << "s2" << std::endl;
     if (size() <= leafSize) {
-      std::cout << "s21" << std::endl;
       left = NULL;
       right = NULL;
+      std::cout << "s21" << std::endl;
     } else {
       std::cout << "s3" << std::endl;
 
@@ -155,8 +155,7 @@ template <class _objT> class kdNodeArma {
       if (median == 0 || median == size()) {
         median = ceil(size() / 2.0);
       }
-      std::cout << "s4 med " << 2 * median - 1 << std::endl;
-
+      std::cout << "s4 index " << 2 * median - 1 << std::endl;
       /* if (!space[0].isEmpty() || !space[2*median-1].isEmpty()) { */
       /*   throw std::runtime_error("Error, kdNode overwrite."); */
       /* } */
@@ -171,7 +170,10 @@ template <class _objT> class kdNodeArma {
 
       right = space + 2 * median - 1;
       left->sib = right;
+      std::cout << "s6" << std::endl;
       right->sib = left;
+      std::cout << "s7" << std::endl;
+
     }
   }
 

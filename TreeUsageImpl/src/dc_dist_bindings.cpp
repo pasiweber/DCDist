@@ -74,11 +74,15 @@ parlay::sequence<pargeo::ArmaPoint> translate_points_arma(py::array_t<double> in
 
     // Populate the vector of vectors
     for (ssize_t i = 0; i < rows; ++i) {
+        //std::cout << "i " << i << " : ";
         for (ssize_t j = 0; j < cols; ++j) {
             result[i][j] = ptr[i * cols + j];
+            //std::cout << result[i][j] << " ";
         }
+        //std::cout << std::endl;
+
     }
-    std::cout << "here" << std::endl;
+    //std::cout << "here" << std::endl;
     // Call the original compute_cdists function
     return convertArmaMatToParlayPoints_Arma(result);
 }
@@ -153,11 +157,8 @@ py::array_t<double> py_hdbscan(py::array_t<double, py::array::c_style | py::arra
             parlay::sequence<pargeo::point<200>> P(n);
             std::memcpy(P.data(), array.data(), array.size() * sizeof(double));
 
-            // for(int i = 0; i < P.size(); i++){
-            //     std::cout << "i: " << i << ", p: " << P[i] << std::endl;
-            // }
-
-
+            //std::cout << "i: " << 55 << ", p: " << P[55] << std::endl;
+            
             E = pargeo::hdbscan<200>(P, minPts);
         } else {
             throw std::runtime_error("Only dimensions 2-20 is supported at the moment");
@@ -175,12 +176,11 @@ py::array_t<double> py_hdbscan(py::array_t<double, py::array::c_style | py::arra
         std::cout << "Arma version" << std::endl;
         //TODO: This seemingly does not work for very few points?? Like 10 points
         parlay::sequence<pargeo::ArmaPoint> points = translate_points_arma(array);
-
         // for(int i = 0; i < points.size(); i++){
-        //     std::cout << "i: " << i << ", p: " << points[i] << std::endl;
+        //      std::cout << "i: " << i << ", p: " << points[i] << std::endl;
         // }
 
-        
+        //std::cout << "i: " << 55 << ", p: " << points[55] << std::endl;
 
 
         int n = points.size();
