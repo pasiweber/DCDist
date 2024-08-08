@@ -1,2 +1,2 @@
-/usr/bin/ar qc libdcdist.a CMakeFiles/dcdist.dir/src/dc_dist.cpp.o
+/usr/bin/ar qc libdcdist.a CMakeFiles/dcdist.dir/src/dc_dist.cpp.o CMakeFiles/dcdist.dir/src/dc_hdbscan.cpp.o CMakeFiles/dcdist.dir/src/graph.cpp.o CMakeFiles/dcdist.dir/src/graph_hdb_c.cpp.o
 /usr/bin/ranlib libdcdist.a

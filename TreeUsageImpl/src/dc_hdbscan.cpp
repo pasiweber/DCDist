@@ -18,10 +18,10 @@ tree(nullptr){  //Initialize tree here
 
 
 
-void Dc_hdbscan::fit(double *data, unsigned long long n, int dim, int k){
+void Dc_hdbscan::fit(double *data, unsigned long long n, int dim, int minPts){
     std::cout << "Constructing dc-tree from points..." << std::endl;
-    tree = construct_dc_tree(data, n, dim, k);
-    printTree(*tree);
+    tree = construct_dc_tree(data, n, dim, minPts);
+    //printTree(*tree);
 
     compute_clustering(tree);
 }

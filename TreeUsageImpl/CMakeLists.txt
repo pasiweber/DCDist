@@ -44,7 +44,7 @@ target_link_libraries(MyProject mlpack armadillo pybind11::module ${Python3_LIBR
 
 
 # Add the static library - Needed to link for the pybind (here all cpp files needed that aren't the module itself should be added).
-add_library(dcdist STATIC src/dc_dist.cpp 
+add_library(dcdist STATIC src/dc_dist.cpp src/dc_hdbscan.cpp src/graph.cpp src/graph_hdb_c.cpp
     )
 
 # Add the Python module

@@ -121,7 +121,7 @@ if __name__ == '__main__':
     load_name = "blobs12"
     ground_truth_labels = None
 
-    points, ground_truth_labels = create_dataset(num_points=num_points, datatype=dataset_type, save=save_dataset, load=load_dataset, save_name=save_name, load_name=load_name, num_classes=k)
+    #points, ground_truth_labels = create_dataset(num_points=num_points, datatype=dataset_type, save=save_dataset, load=load_dataset, save_name=save_name, load_name=load_name, num_classes=k)
     display_labels = color_labels(points, "lightgreen")
     random_labels = diff_labels(points)
     if ground_truth_labels is None:

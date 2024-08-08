@@ -1737,83 +1737,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
   /usr/include/ensmallen_bits/wn_grad/wn_grad_impl.hpp \
   /usr/include/ensmallen_bits/wn_grad/wn_grad.hpp \
   /usr/local/include/mlpack/core/hpt/hpt_impl.hpp \
-  /usr/local/include/parlay/parallel.h \
-  /usr/local/include/parlay/scheduler.h \
-  /usr/local/include/parlay/internal/work_stealing_deque.h \
-  /usr/local/include/parlay/internal/work_stealing_job.h \
-  /usr/local/include/parlay/internal/atomic_wait.h \
-  /usr/local/include/parlay/type_traits.h \
-  /usr/include/c++/11/forward_list \
-  /usr/include/c++/11/bits/forward_list.h \
-  /usr/include/c++/11/bits/forward_list.tcc \
-  /usr/include/c++/11/variant \
-  /usr/include/linux/futex.h \
-  /usr/include/linux/types.h \
-  /usr/include/x86_64-linux-gnu/asm/types.h \
-  /usr/include/asm-generic/types.h \
-  /usr/include/asm-generic/int-ll64.h \
-  /usr/include/x86_64-linux-gnu/asm/bitsperlong.h \
-  /usr/include/asm-generic/bitsperlong.h \
-  /usr/include/linux/posix_types.h \
-  /usr/include/linux/stddef.h \
-  /usr/include/x86_64-linux-gnu/asm/posix_types.h \
-  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
-  /usr/include/asm-generic/posix_types.h \
-  /usr/include/x86_64-linux-gnu/sys/syscall.h \
-  /usr/include/x86_64-linux-gnu/asm/unistd.h \
-  /usr/include/x86_64-linux-gnu/asm/unistd_64.h \
-  /usr/include/x86_64-linux-gnu/bits/syscall.h \
-  /usr/local/include/parlay/sequence.h \
-  /usr/local/include/parlay/alloc.h \
-  /usr/local/include/parlay/type_traits.h \
-  /usr/local/include/parlay/utilities.h \
-  /usr/local/include/parlay/portability.h \
-  /usr/local/include/parlay/internal/debug_uninitialized.h \
-  /usr/local/include/parlay/internal/block_allocator.h \
-  /usr/local/include/parlay/utilities.h \
-  /usr/local/include/parlay/thread_specific.h \
-  /usr/local/include/parlay/internal/thread_id_pool.h \
-  /usr/local/include/parlay/range.h \
-  /usr/local/include/parlay/internal/concurrency/hazptr_stack.h \
-  /usr/local/include/parlay/internal/concurrency/acquire_retire.h \
-  /usr/local/include/parlay/portability.h \
-  /usr/local/include/parlay/thread_specific.h \
-  /usr/local/include/parlay/internal/memory_size.h \
-  /usr/include/x86_64-linux-gnu/sys/param.h \
-  /usr/include/signal.h \
-  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
-  /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
-  /usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h \
-  /usr/include/x86_64-linux-gnu/bits/siginfo-arch.h \
-  /usr/include/x86_64-linux-gnu/bits/siginfo-consts.h \
-  /usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h \
-  /usr/include/x86_64-linux-gnu/bits/types/sigval_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h \
-  /usr/include/x86_64-linux-gnu/bits/sigevent-consts.h \
-  /usr/include/x86_64-linux-gnu/bits/sigaction.h \
-  /usr/include/x86_64-linux-gnu/bits/sigcontext.h \
-  /usr/include/x86_64-linux-gnu/bits/types/stack_t.h \
-  /usr/include/x86_64-linux-gnu/sys/ucontext.h \
-  /usr/include/x86_64-linux-gnu/bits/sigstack.h \
-  /usr/include/x86_64-linux-gnu/bits/sigstksz.h \
-  /usr/include/x86_64-linux-gnu/bits/ss_flags.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
-  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
-  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
-  /usr/include/x86_64-linux-gnu/bits/param.h \
-  /usr/include/linux/param.h \
-  /usr/include/x86_64-linux-gnu/asm/param.h \
-  /usr/include/asm-generic/param.h \
-  /usr/local/include/parlay/internal/pool_allocator.h \
-  /usr/local/include/parlay/portability.h \
-  /usr/local/include/parlay/internal/block_allocator.h \
-  /usr/local/include/parlay/parallel.h \
-  /usr/local/include/parlay/slice.h \
-  /usr/local/include/parlay/internal/sequence_base.h \
-  /usr/local/include/parlay/parallel.h \
-  /usr/local/include/parlay/relocation.h \
   /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/pybind11.h \
   /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/detail/class.h \
   /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/attr.h \
@@ -1830,6 +1753,17 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
   /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
   /usr/include/x86_64-linux-gnu/bits/statx.h \
   /usr/include/linux/stat.h \
+  /usr/include/linux/types.h \
+  /usr/include/x86_64-linux-gnu/asm/types.h \
+  /usr/include/asm-generic/types.h \
+  /usr/include/asm-generic/int-ll64.h \
+  /usr/include/x86_64-linux-gnu/asm/bitsperlong.h \
+  /usr/include/asm-generic/bitsperlong.h \
+  /usr/include/linux/posix_types.h \
+  /usr/include/linux/stddef.h \
+  /usr/include/x86_64-linux-gnu/asm/posix_types.h \
+  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
+  /usr/include/asm-generic/posix_types.h \
   /usr/include/x86_64-linux-gnu/bits/statx-generic.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_statx_timestamp.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_statx.h \
@@ -1929,6 +1863,9 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
   /usr/include/python3.10/frameobject.h \
   /usr/include/python3.10/cpython/frameobject.h \
   /usr/include/python3.10/pythread.h \
+  /usr/include/c++/11/forward_list \
+  /usr/include/c++/11/bits/forward_list.h \
+  /usr/include/c++/11/bits/forward_list.tcc \
   /usr/include/c++/11/version \
   /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/cast.h \
   /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/detail/descr.h \
@@ -1954,8 +1891,17 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
   /usr/include/c++/11/bits/gslice.h \
   /usr/include/c++/11/bits/gslice_array.h \
   /usr/include/c++/11/bits/mask_array.h \
-  /usr/include/c++/11/bits/indirect_array.h
+  /usr/include/c++/11/bits/indirect_array.h \
+  /usr/include/c++/11/variant \
+  ../src/dc_hdbscan.hpp \
+  ../src/kcentroids.hpp
 
+
+../src/kcentroids.hpp:
+
+../src/dc_hdbscan.hpp:
+
+/usr/include/c++/11/variant:
 
 /usr/include/c++/11/bits/indirect_array.h:
 
@@ -1985,6 +1931,10 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 
 /usr/include/c++/11/version:
 
+/usr/include/c++/11/bits/forward_list.tcc:
+
+/usr/include/c++/11/bits/forward_list.h:
+
 /usr/include/python3.10/cpython/frameobject.h:
 
 /usr/include/python3.10/cpython/fileutils.h:
@@ -2002,6 +1952,8 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/include/python3.10/osmodule.h:
 
 /usr/include/python3.10/cpython/ceval.h:
+
+/usr/include/python3.10/ceval.h:
 
 /usr/include/python3.10/pylifecycle.h:
 
@@ -2079,6 +2031,16 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/statx-generic.h:
 
+/usr/include/asm-generic/posix_types.h:
+
+/usr/include/linux/stddef.h:
+
+/usr/include/python3.10/cpython/unicodeobject.h:
+
+/usr/include/linux/posix_types.h:
+
+/usr/include/linux/types.h:
+
 /usr/include/linux/stat.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_stat.h:
@@ -2098,80 +2060,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/detail/common.h:
 
 /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/detail/class.h:
-
-/usr/local/include/parlay/relocation.h:
-
-/usr/local/include/parlay/internal/sequence_base.h:
-
-/usr/include/x86_64-linux-gnu/asm/param.h:
-
-/usr/include/linux/param.h:
-
-/usr/include/x86_64-linux-gnu/bits/param.h:
-
-/usr/include/x86_64-linux-gnu/bits/signal_ext.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigstksz.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigstack.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/stack_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigcontext.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigaction.h:
-
-/usr/include/python3.10/ceval.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigevent-consts.h:
-
-/usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/signum-arch.h:
-
-/usr/local/include/parlay/internal/concurrency/acquire_retire.h:
-
-/usr/local/include/parlay/portability.h:
-
-/usr/local/include/parlay/alloc.h:
-
-/usr/local/include/parlay/sequence.h:
-
-/usr/include/x86_64-linux-gnu/bits/syscall.h:
-
-/usr/include/x86_64-linux-gnu/asm/unistd.h:
-
-/usr/include/x86_64-linux-gnu/sys/syscall.h:
-
-/usr/include/asm-generic/posix_types.h:
-
-/usr/include/linux/stddef.h:
-
-/usr/include/python3.10/cpython/unicodeobject.h:
-
-/usr/include/linux/posix_types.h:
-
-/usr/include/linux/types.h:
-
-/usr/include/linux/futex.h:
-
-/usr/include/c++/11/variant:
-
-/usr/include/c++/11/bits/forward_list.tcc:
-
-/usr/include/c++/11/bits/forward_list.h:
-
-/usr/local/include/parlay/type_traits.h:
-
-/usr/local/include/parlay/internal/work_stealing_job.h:
-
-/usr/local/include/parlay/parallel.h:
 
 /usr/local/include/mlpack/core/hpt/hpt_impl.hpp:
 
@@ -2309,8 +2197,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 
 /usr/include/ensmallen_bits/sgd/update_policies/momentum_update.hpp:
 
-/usr/local/include/parlay/internal/work_stealing_deque.h:
-
 /usr/include/ensmallen_bits/sgd/sgd.hpp:
 
 /usr/include/ensmallen_bits/problems/zdt/zdt6_function.hpp:
@@ -2354,8 +2240,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/include/ensmallen_bits/problems/mc_cormick_function_impl.hpp:
 
 /usr/include/ensmallen_bits/problems/matyas_function.hpp:
-
-/usr/local/include/parlay/range.h:
 
 /usr/include/ensmallen_bits/problems/levy_function_n13.hpp:
 
@@ -2426,8 +2310,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/include/ensmallen_bits/function/add_separable_gradient.hpp:
 
 /usr/include/ensmallen_bits/function/add_separable_evaluate.hpp:
-
-/usr/local/include/parlay/slice.h:
 
 /usr/include/ensmallen_bits/problems/holder_table_function_impl.hpp:
 
@@ -2661,8 +2543,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 
 /usr/local/include/mlpack/core/tree/address.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/types/sigval_t.h:
-
 /usr/local/include/mlpack/core/tree/hollow_ball_bound.hpp:
 
 /usr/local/include/mlpack/core/tree/ballbound_impl.hpp:
@@ -2674,8 +2554,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/local/include/mlpack/core/tree/ballbound.hpp:
 
 /usr/local/include/mlpack/core/tree/hrectbound.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/siginfo-consts.h:
 
 /usr/local/include/mlpack/core/tree/bounds.hpp:
 
@@ -2881,8 +2759,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 
 /usr/include/armadillo_bits/spop_mean_meat.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/sigthread.h:
-
 /usr/local/include/mlpack/core/tree/cover_tree/cover_tree.hpp:
 
 /usr/include/armadillo_bits/op_sqrtmat_bones.hpp:
@@ -2904,8 +2780,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/include/armadillo_bits/op_toeplitz_bones.hpp:
 
 /usr/include/armadillo_bits/op_find_unique_bones.hpp:
-
-/usr/local/include/parlay/internal/block_allocator.h:
 
 /usr/include/c++/11/debug/assertions.h:
 
@@ -3067,8 +2941,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 
 /usr/include/armadillo_bits/op_pinv_meat.hpp:
 
-/usr/include/x86_64-linux-gnu/asm/unistd_64.h:
-
 /usr/include/armadillo_bits/typedef_mat_fixed.hpp:
 
 /usr/include/armadillo_bits/op_cov_bones.hpp:
@@ -3153,8 +3025,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 
 /usr/include/armadillo_bits/def_atlas.hpp:
 
-/usr/local/include/parlay/internal/pool_allocator.h:
-
 /usr/include/cereal/details/static_object.hpp:
 
 /usr/include/ensmallen_bits/ada_bound/ada_bound.hpp:
@@ -3162,8 +3032,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/include/armadillo_bits/def_lapack.hpp:
 
 /usr/include/armadillo_bits/arma_rng.hpp:
-
-/usr/local/include/parlay/internal/atomic_wait.h:
 
 /usr/include/ensmallen_bits/ada_bound/ada_bound_update.hpp:
 
@@ -3286,8 +3154,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/local/include/mlpack/core/data/load_image_impl.hpp:
 
 /usr/include/c++/11/mutex:
-
-/usr/local/include/parlay/internal/concurrency/hazptr_stack.h:
 
 /usr/include/ensmallen_bits/fw/line_search/line_search.hpp:
 
@@ -3527,13 +3393,9 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 
 /usr/include/c++/11/ext/alloc_traits.h:
 
-/usr/local/include/parlay/internal/memory_size.h:
-
 /usr/include/armadillo_bits/SpCol_bones.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/sched.h:
-
-/usr/include/x86_64-linux-gnu/bits/siginfo-arch.h:
 
 /usr/include/armadillo_bits/op_dot_bones.hpp:
 
@@ -3770,8 +3632,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/include/ensmallen_bits/moead/moead.hpp:
 
 /usr/include/asm-generic/errno-base.h:
-
-/usr/include/signal.h:
 
 /usr/include/armadillo_bits/fn_clamp.hpp:
 
@@ -4197,8 +4057,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 
 /usr/local/include/mlpack/base.hpp:
 
-/usr/local/include/parlay/internal/thread_id_pool.h:
-
 /usr/include/armadillo_bits/config.hpp:
 
 /usr/include/rapidjson/reader.h:
@@ -4266,8 +4124,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/local/include/mlpack/core/cereal/unordered_map.hpp:
 
 /usr/include/c++/11/tr1/bessel_function.tcc:
-
-/usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h:
 
 /usr/include/sched.h:
 
@@ -4807,10 +4663,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 
 /usr/include/armadillo_bits/Glue_meat.hpp:
 
-/usr/include/asm-generic/param.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h:
-
 /usr/include/rapidjson/internal/pow10.h:
 
 /usr/include/c++/11/limits:
@@ -5047,8 +4899,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 
 /usr/include/armadillo_bits/op_shuffle_meat.hpp:
 
-/usr/include/x86_64-linux-gnu/sys/ucontext.h:
-
 /usr/include/ensmallen_bits/cne/cne.hpp:
 
 /usr/include/ensmallen_bits/problems/zdt/zdt4_function.hpp:
@@ -5084,8 +4934,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/include/armadillo_bits/op_diff_meat.hpp:
 
 /usr/include/armadillo_bits/op_sqrtmat_meat.hpp:
-
-/usr/local/include/parlay/internal/debug_uninitialized.h:
 
 /usr/local/include/mlpack/core/util/ens_traits.hpp:
 
@@ -5227,8 +5075,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 
 /usr/include/armadillo_bits/newarp_SparseGenRealShiftSolve_meat.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/signum-generic.h:
-
 /usr/include/c++/11/cstdlib:
 
 /usr/include/c++/11/string_view:
@@ -5262,8 +5108,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/include/armadillo_bits/arma_static_check.hpp:
 
 /usr/local/include/mlpack/core/data/map_policies/increment_policy.hpp:
-
-/usr/local/include/parlay/scheduler.h:
 
 /usr/include/c++/11/bits/unique_ptr.h:
 
@@ -5316,8 +5160,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/include/armadillo_bits/op_cumsum_bones.hpp:
 
 /usr/local/include/mlpack/core/data/save_image.hpp:
-
-/usr/local/include/parlay/utilities.h:
 
 /usr/include/rapidjson/internal/ieee754.h:
 
@@ -5388,8 +5230,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/include/cereal/types/memory.hpp:
 
 /usr/include/cereal/types/polymorphic.hpp:
-
-/usr/local/include/parlay/thread_specific.h:
 
 /usr/local/include/mlpack/core/data/has_serialize.hpp:
 
@@ -5465,8 +5305,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 
 /usr/include/python3.10/weakrefobject.h:
 
-/usr/include/x86_64-linux-gnu/bits/ss_flags.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
 
 /usr/local/include/mlpack/core/data/map_policies/datatype.hpp:
@@ -5500,8 +5338,6 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 /usr/local/include/mlpack/core/data/load_vec_impl.hpp:
 
 /usr/local/include/mlpack/core/data/save_impl.hpp:
-
-/usr/include/x86_64-linux-gnu/sys/param.h:
 
 /usr/local/include/mlpack/core/util/io_impl.hpp:
 

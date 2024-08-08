@@ -115,7 +115,7 @@ void calc_core_dist(unsigned long long n, int k, double *core_dist, double *dist
 double* calc_mutual_reachability_dist(double *data, unsigned long long n, int dim, int k)
 {
     double *distance_matrix = (double *)malloc(n * n * sizeof(double));
-    double *core_dist = (double *)malloc(n * sizeof(double));
+    double *core_dist = (double *)malloc(n * sizeof(double)); //TODO: Change this to be a vector and use mlpack KNN
     double *mutual_reach_dist = (double *)malloc(n * n * sizeof(double));
 
     calc_distance_matrix(data, n, dim, distance_matrix);

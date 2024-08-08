@@ -9,13 +9,11 @@
 #include <armadillo>
 
 
-#include "parlay/parallel.h"
-#include "parlay/sequence.h"
+#include <dc_hdbscan.hpp>
 
 namespace py = pybind11;
 
 
-using namespace parlay;
 
 
 // parlay::sequence<pargeo::ArmaPoint> convertArmaMatToParlayPoints_Arma(std::vector<std::vector<double>> mat) {
@@ -121,98 +119,36 @@ py::array_t<T> wrapArray2d(Seq& result_vec, ssize_t cols) {
 				   ));
 }
 
-py::array_t<double> py_hdbscan(py::array_t<double, py::array::c_style | py::array::forcecast> array, size_t minPts, std::string mode) {
-//   if (array.ndim() != 2)
-//     throw std::runtime_error("Input should be 2-D NumPy array");
+std::vector<int> py_hdbscan(py::array_t<double> array, size_t minPts, size_t mcs) {
+    py::buffer_info buf_info = array.request();
 
-//     if(mode == "pargeo"){ 
-//         if (sizeof(pargeo::point<2>) != 16)
-//             throw std::runtime_error("sizeof(pargeo::point<2>) != 16, check point.h");
+    if (buf_info.ndim != 2) {
+        throw std::runtime_error("Input array must be 2-dimensional");
+    }
+    
 
-//         int dim = array.shape()[1];
-//         std::cout << "dim:" << dim << std::endl;
-//         size_t n = array.size() / dim;
-//         parlay::sequence<pargeo::dirEdge> result_vec;
+    // Get the shape of the array
+    size_t rows = buf_info.shape[0];
+    size_t cols = buf_info.shape[1];
+    size_t size = rows * cols;
+    double* data = new double[size];
 
-//         sequence<pargeo::wghEdge> E;
-//         if (dim == 2) {
-//             parlay::sequence<pargeo::point<2>> P(n);
-//             std::memcpy(P.data(), array.data(), array.size() * sizeof(double));
-//             // for(int i = 0; i < P.size(); i++){
-//             //     std::cout << "i: " << i << ", p: " << P[i] << std::endl;
-//             // }
+    std::memcpy(data, buf_info.ptr, size * sizeof(double));
+    // std::cout << "The data: " << std::endl;
+    // for(int i = 0; i < size; i++){
+    //   std::cout << data[i] << " ";
+    // }
+    // std::cout << std::endl;
+    //double *data, unsigned long long n, int dim, int k
+    int dim = cols;
+    unsigned long long n = rows;
+    std::cout << "dim: " << cols << ", n: " << n << std::endl;
 
-//             E = pargeo::hdbscan<2>(P, minPts);
-//         } else if (dim == 200) {
-//             parlay::sequence<pargeo::point<200>> P(n);
-//             std::memcpy(P.data(), array.data(), array.size() * sizeof(double));
+    Dc_hdbscan tree(minPts, mcs);
+    tree.fit(data, n, dim, minPts);
 
-//             //std::cout << "i: " << 55 << ", p: " << P[55] << std::endl;
-            
-//             E = pargeo::hdbscan<200>(P, minPts);
-//         } else {
-//             throw std::runtime_error("Only dimensions 2-20 is supported at the moment");
-//         }
-
-//         sequence<pargeo::dendroNode> dendro = pargeo::dendrogram(E, n);
-//         sequence<double> A(dendro.size()*4);
-//         parlay::parallel_for(0, dendro.size(), [&](size_t i){
-//                             A[i*4+0] = std::get<0>(dendro[i]);
-//                             A[i*4+1] = std::get<1>(dendro[i]);
-//                             A[i*4+2] = std::get<2>(dendro[i]);
-//                             A[i*4+3] = std::get<3>(dendro[i]);});
-//         return wrapArray2d<double>(A, 4);
-//     } else if(mode == "arma"){
-//         std::cout << "Arma version" << std::endl;
-//         //TODO: This seemingly does not work for very few points?? Like 10 points
-//         parlay::sequence<pargeo::ArmaPoint> points = translate_points_arma(array);
-//         // for(int i = 0; i < points.size(); i++){
-//         //      std::cout << "i: " << i << ", p: " << points[i] << std::endl;
-//         // }
-
-//         //std::cout << "i: " << 55 << ", p: " << points[55] << std::endl;
-
-
-//         int n = points.size();
-//         int dim = points[0].dim; 
-//         std::cout << "n: " << n << ", dim: " << dim << std::endl;
-//         parlay::sequence<pargeo::dirEdge> result_vec;
-//         sequence<pargeo::wghEdge> E;
-//         E = pargeo::hdbscan_arma(points, minPts);
-        
-//         std::cout << "Done with HDBSCAN part, Computing dendrogram" << std::endl;
-//         sequence<pargeo::dendroNode> dendro = pargeo::dendrogram(E, n);
-//         sequence<double> A(dendro.size()*4);
-//         parlay::parallel_for(0, dendro.size(), [&](size_t i){
-//                             A[i*4+0] = std::get<0>(dendro[i]);
-//                             A[i*4+1] = std::get<1>(dendro[i]);
-//                             A[i*4+2] = std::get<2>(dendro[i]);
-//                             A[i*4+3] = std::get<3>(dendro[i]);});
-
-//         return wrapArray2d<double>(A, 4);
-//     } else {
-//         std::cout << "Vector version" << std::endl;
-//         //TODO: This seemingly does not work for very few points?? Like 10 points
-//         parlay::sequence<pargeo::VectorPoint> points = translate_points_vector(array);
-//         int n = points.size();
-//         int dim = points[0].dim; 
-//         std::cout << "n: " << n << ", dim: " << dim << std::endl;
-//         parlay::sequence<pargeo::dirEdge> result_vec;
-//         sequence<pargeo::wghEdge> E;
-//         E = pargeo::hdbscan_vector(points, minPts);
-
-//         std::cout << "Done with HDBSCAN part, Computing dendrogram" << std::endl;
-//         sequence<pargeo::dendroNode> dendro = pargeo::dendrogram(E, n);
-//         sequence<double> A(dendro.size()*4);
-//         parlay::parallel_for(0, dendro.size(), [&](size_t i){
-//                             A[i*4+0] = std::get<0>(dendro[i]);
-//                             A[i*4+1] = std::get<1>(dendro[i]);
-//                             A[i*4+2] = std::get<2>(dendro[i]);
-//                             A[i*4+3] = std::get<3>(dendro[i]);});
-
-//         return wrapArray2d<double>(A, 4);
-
-//     }
+    std::vector<int> labels = tree.labels_;
+    return labels;
 }
 
 
@@ -242,5 +178,5 @@ PYBIND11_MODULE(dctree, m) {
           py::arg("data"), py::arg("k"), py::arg("mode"));
 
     m.def("compute_hdbscan_labels", &py_hdbscan, "Compute HDBSCAN and return integers",
-          py::arg("array"), py::arg("minPts"), py::arg("mode"));
+          py::arg("array"), py::arg("minPts"), py::arg("mcs"));
 }

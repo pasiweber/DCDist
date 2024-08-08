@@ -7,8 +7,6 @@
 
 #include <mlpack/core.hpp>
 
-#include "parlay/parallel.h"
-#include "parlay/sequence.h"
 
 
 
