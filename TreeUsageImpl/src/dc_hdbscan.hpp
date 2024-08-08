@@ -36,7 +36,7 @@ class Dc_hdbscan
         2) Compute clusters bottom up
         3) Assign internal fields for the labels
     */
-    void fit(const std::vector<std::vector<double>> &points);
+    void fit(double *data, unsigned long long n, int dim, int k);
 
     void fit(Node *tree);
 

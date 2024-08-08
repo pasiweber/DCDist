@@ -1830,7 +1830,10 @@ CMakeFiles/MyProject.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp \
   /usr/local/include/mlpack/core/tree/greedy_single_tree_traverser.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/typedef.hpp \
   /usr/local/include/mlpack/methods/neighbor_search/neighbor_search.hpp \
-  /usr/local/include/mlpack/core/tree/binary_space_tree.hpp
+  /usr/local/include/mlpack/core/tree/binary_space_tree.hpp \
+  ../src/graph_hdb_c.hpp \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/omp.h \
+  ../src/graph.hpp
 
 CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
   /usr/include/stdc-predef.h \
@@ -7563,6 +7566,7 @@ CMakeFiles/MyProject.dir/src/graph.cpp.o: ../src/graph.cpp \
   /usr/include/c++/11/bits/hash_bytes.h \
   /usr/include/c++/11/bits/range_access.h \
   /usr/include/c++/11/bits/vector.tcc \
+  ../src/key_structs.hpp \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
@@ -7650,7 +7654,32 @@ CMakeFiles/MyProject.dir/src/graph.cpp.o: ../src/graph.cpp \
   /usr/include/c++/11/bits/basic_ios.tcc \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
-  /usr/include/c++/11/bits/istream.tcc
+  /usr/include/c++/11/bits/istream.tcc \
+  /usr/include/c++/11/algorithm \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/bits/stl_algo.h \
+  /usr/include/c++/11/bits/algorithmfwd.h \
+  /usr/include/c++/11/bits/stl_heap.h \
+  /usr/include/c++/11/bits/stl_tempbuf.h \
+  /usr/include/c++/11/bits/uniform_int_dist.h \
+  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
+  /usr/include/c++/11/functional \
+  /usr/include/c++/11/tuple \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/bits/uses_allocator.h \
+  /usr/include/c++/11/bits/invoke.h \
+  /usr/include/c++/11/bits/refwrap.h \
+  /usr/include/c++/11/bits/std_function.h \
+  /usr/include/c++/11/unordered_map \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/hashtable.h \
+  /usr/include/c++/11/bits/hashtable_policy.h \
+  /usr/include/c++/11/bits/enable_special_members.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/unordered_map.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  /usr/include/c++/11/pstl/execution_defs.h
 
 CMakeFiles/MyProject.dir/src/graph_hdb_c.cpp.o: ../src/graph_hdb_c.cpp \
   /usr/include/stdc-predef.h \
@@ -8000,10 +8029,6 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 
 ../src/graph.cpp:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/omp.h:
-
-../src/graph_hdb_c.hpp:
-
 ../src/lp_objective.hpp:
 
 ../src/kcentroids2.hpp:
@@ -8157,6 +8182,10 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/detail/common.h:
 
 /home/rasmus/.local/lib/python3.10/site-packages/pybind11/include/pybind11/detail/class.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/omp.h:
+
+../src/graph_hdb_c.hpp:
 
 /usr/local/include/mlpack/methods/neighbor_search/typedef.hpp:
 

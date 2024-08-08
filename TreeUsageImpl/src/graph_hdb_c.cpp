@@ -112,7 +112,7 @@ void calc_core_dist(unsigned long long n, int k, double *core_dist, double *dist
     }
 }
 
-double *calc_mutual_reachability_dist(double *data, unsigned long long n, int dim, int k)
+double* calc_mutual_reachability_dist(double *data, unsigned long long n, int dim, int k)
 {
     double *distance_matrix = (double *)malloc(n * n * sizeof(double));
     double *core_dist = (double *)malloc(n * sizeof(double));
@@ -121,7 +121,7 @@ double *calc_mutual_reachability_dist(double *data, unsigned long long n, int di
     calc_distance_matrix(data, n, dim, distance_matrix);
     calc_core_dist(n, k, core_dist, distance_matrix);
 
-#pragma omp parallel for // schedule(static, 2)
+    #pragma omp parallel for // schedule(static, 2)
     for (unsigned long long i = 0; i < n; i++)
     {
         for (unsigned long long j = i + 1; j < n; j++)

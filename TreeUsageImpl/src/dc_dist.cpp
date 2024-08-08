@@ -6,11 +6,76 @@
 #include <mlpack/methods/neighbor_search/neighbor_search.hpp>
 #include <mlpack/core/tree/binary_space_tree.hpp>
 
+#include <graph_hdb_c.hpp>
+#include <graph.hpp>
+
+
+void assign_node_sizes(Node* tree){
+    assign_node_size_helper(tree);
+}
+
+int assign_node_size_helper(Node* tree){
+    if((tree->children).size() == 0){
+        tree->size = 1;
+        return 1;
+    }{ 
+        int size = 0;
+        for(Node* child : tree->children){
+            size += assign_node_size_helper(child);
+        }
+        tree->size = size;
+        return size;
+    }
+}
+
 
 //TODO: Implement
-Node* construct_dc_tree(const std::vector<std::vector<double>> &points){
-    return new Node{};
+Node* construct_dc_tree(double *data, unsigned long long n, int dim, int k){
+    double* mut_dists = calc_mutual_reachability_dist(data, n, dim, k);
+    std::vector<MSTEdge> edges = calc_mst(n, mut_dists, k);
+    Node* root = constructHierarchy(edges);
+    assign_node_sizes(root);
+
+    return root;
 }
+
+
+
+
+std::vector<double> compute_cdists(arma::mat &data, size_t k, std::string mode){
+    mlpack::NeighborSearch<mlpack::NearestNeighborSort, mlpack::EuclideanDistance, arma::mat, mlpack::KDTree> *searcher;
+
+    searcher = new mlpack::NeighborSearch<mlpack::NearestNeighborSort, mlpack::EuclideanDistance, arma::mat, mlpack::KDTree>(data); 
+
+    int n = data.n_cols;
+
+    arma::Mat<size_t> neighbors;
+    arma::mat distances;
+
+    searcher->Search(k-1, neighbors, distances); //This does not include point itself in k, which is why we do k-1
+
+    std::vector<double> cdists = extract_cdists(distances, k);
+
+    return cdists; //This default return value needs to be here, otherwise armadillo becomes confused...
+}
+
+
+
+std::vector<double> extract_cdists(arma::mat distances, size_t k){
+    std::vector<double> cdists;
+
+    std::cout << "num_cols:" << distances.n_cols << std::endl;
+    for(size_t i = 0; i < distances.n_cols; i++)
+    {
+        arma::vec col = distances.col(i);
+        cdists.push_back(col(k-2));
+    }
+    
+    return cdists;
+}
+
+
+
 
 
 
@@ -98,92 +163,6 @@ void printTree2(const Node& tree) {
     printSubtree2("", tree);
     cout << "\n";
 }
-
-
-
-std::vector<double> compute_cdists(arma::mat &data, size_t k, std::string mode){
-
-    std::cout << "compute_cdists called" << std::endl;
-    //KDTree<EuclideanDistance, DTBStat, arma::mat> tree(data);
-    //KDTree<EuclideanDistance, EmptyStatistic, arma::mat> tree(data);
-    
-    mlpack::NeighborSearch<mlpack::NearestNeighborSort, mlpack::EuclideanDistance, arma::mat, mlpack::KDTree> *searcher;
-
-    if(mode == "naive"){ //Brute force knn search QUICKSELECT WRITE IT YOURSELF TODO TODO
-        searcher = new mlpack::NeighborSearch<mlpack::NearestNeighborSort, mlpack::EuclideanDistance, arma::mat, mlpack::KDTree>(data, mlpack::NAIVE_MODE);
-    } else if(mode == "naive2"){
-        return naive_cdists_efficient(data, k);
-    }else { //KD tree knn search
-        searcher = new mlpack::NeighborSearch<mlpack::NearestNeighborSort, mlpack::EuclideanDistance, arma::mat, mlpack::KDTree>(data); 
-    }
-    
-
-    int n = data.n_cols;
-
-    arma::Mat<size_t> neighbors;
-    arma::mat distances;
-
-    searcher->Search(k-1, neighbors, distances); //This does not include point itself in k, which is why we do k-1
-    //std::cout << "The neighbors:" << std::endl; 
-    //neighbors.print();
-
-    //std::cout << "The distances:" << std::endl; 
-    //distances.print();
-
-    std::vector<double> cdists = extract_cdists(distances, k);
-
-    return cdists; //This default return value needs to be here, otherwise armadillo becomes confused...
-}
-
-
-
-std::vector<double> extract_cdists(arma::mat distances, size_t k){
-    std::vector<double> cdists;
-
-    std::cout << "num_cols:" << distances.n_cols << std::endl;
-    for(size_t i = 0; i < distances.n_cols; i++)
-    {
-        arma::vec col = distances.col(i);
-        cdists.push_back(col(k-2));
-    }
-    
-    return cdists;
-}
-
-
-
-/*
-Two versions - quickselect and sorting efficiently.
-
-1. Fill up n x n array with distances  
-
-*/
-std::vector<double> naive_cdists_efficient(arma::mat &data, size_t k){
-    int n = data.n_cols;
-    std::vector<std::vector<double>> dist_matrix(n, std::vector<double>(n)); //nxn dist matrix holder
-    std::vector<double> cdists;
-    cdists.resize(n);
-
-    for(size_t i = 0; i < data.n_cols; i++)
-    {
-        const arma::vec &col_i = data.col(i);
-        for(size_t j = i; j < data.n_cols; j++){
-            double res = arma::norm(col_i-data.col(j), 2);
-            dist_matrix[i][j] = res;
-            dist_matrix[j][i] = res;
-        }
-        std::nth_element(dist_matrix[i].begin(), dist_matrix[i].begin() + k-1, dist_matrix[i].end());
-        cdists[i] = dist_matrix[i][k-1];
-    }
-
-    return cdists;
-}
-
-
-
-
-
-
 
 
 

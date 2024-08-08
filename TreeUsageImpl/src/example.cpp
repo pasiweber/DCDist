@@ -111,13 +111,15 @@ void printLabels(std::vector<int> labels){
 
 void test_mst(){
 
-    double data[] = {1.0, 1.0,
+    double data[] = {0.5, 0.6,
                      2.0, 2.0,
                      3.0, 3.0,
                      4.0, 4.0,
-                     5.0, 5.0};
+                     50.0, 50.0,
+                     21.0, 10.0,
+                     36.0, 8.0,};
 
-    unsigned long long n = 5;
+    unsigned long long n = 7;
     int dim = 2;
     int k = 2;
 
@@ -130,6 +132,16 @@ void test_mst(){
 
     }
     std::cout << std::endl;
+
+    Node* root = constructHierarchy(edges); //TODO: Get tree sizes annotated
+    assign_sizes(root);
+
+    printTree(*root);
+    Dc_hdbscan tree(k, k);
+    tree.fit(data, n, dim, k);
+
+    std::vector<int> labels = tree.labels_;
+    printLabels(labels);
 
 }
 

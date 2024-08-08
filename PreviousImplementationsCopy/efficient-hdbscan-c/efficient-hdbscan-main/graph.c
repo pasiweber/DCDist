@@ -249,27 +249,9 @@ int *constructHierarchy(struct MSTEdge *edges, unsigned long long numEdges, int 
             }
         }
 
-        // if (clusters[i].isCluster)
-        // {
-        //     printf("ClusterID %lld\n", i);
-        //     printf("Cluster size %lld\n", clusters[i].size);
-        //     printf("IsCluster %d\n", clusters[i].isCluster);
-        //     printf("Birth Stability %f\n", clusters[i].birthStability);
-        //     printf("Stability %f\n", clusters[i].stability);
-        //     printf("Children Stability %f\n", clusters[i].childrenStability);
-        //     printf("Root %lld\n", clusters[i].root);
-        //     // printf("Points: ");
-        //     // for (unsigned long long j = 0; j < clusters[i].size; j++)
-        //     // {
-        //     //     printf(" %lld", clusters[i].points[j]);
-        //     // }
-        //     // clusterDataPoints += clusters[i].size;
-        //     // numClusers++;
-        //     printf("\n\n");
-        // }
+   
     }
 
-    // printf("\n\n Noise: %lld\n\n", numPoints - clusterDataPoints);
 
     int *cluster_labels = (int *)malloc(numPoints * sizeof(int));
     memset(cluster_labels, -1, numPoints * sizeof(int));

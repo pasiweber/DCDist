@@ -45,7 +45,9 @@
 
 
 
+void assign_node_sizes(Node* tree);
 
+int assign_node_size_helper(Node* tree);
 
 void printSubtree(const std::string &prefix, const Node& tree);
 void printTree(const Node& tree);
@@ -54,7 +56,7 @@ void printTree(const Node& tree);
 void printSubtree2(const std::string &prefix, const Node& tree);
 void printTree2(const Node& tree);
 
-Node* construct_dc_tree(const std::vector<std::vector<double>> &points);
+Node* construct_dc_tree(double *data, unsigned long long n, int dim, int k);
 
 
 // void swap(double *const a, double *const b);
