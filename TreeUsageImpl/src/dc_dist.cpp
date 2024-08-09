@@ -30,7 +30,7 @@ int assign_node_size_helper(Node* tree){
 
 
 //TODO: Implement
-Node* construct_dc_tree(double *data, unsigned long long n, int dim, int k){
+Node* construct_dc_tree(double *data, unsigned long long n, int dim, int k){ //k is minPts for core dists
     double* mut_dists = calc_mutual_reachability_dist(data, n, dim, k);
     std::vector<MSTEdge> edges = calc_mst(n, mut_dists, k);
     Node* root = constructHierarchy(edges);
