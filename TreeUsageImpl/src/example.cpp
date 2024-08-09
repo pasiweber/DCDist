@@ -2,7 +2,7 @@
 #include <vector>
 #include <cmath>
 #include <kcentroids.hpp>
-#include <kcentroids2.hpp>
+#include <kcentroids_efficient.hpp>
 #include <dc_hdbscan.hpp>
 #include <dc_dist.hpp>
 #include <key_structs.hpp>

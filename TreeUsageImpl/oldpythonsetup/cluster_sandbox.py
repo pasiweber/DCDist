@@ -163,7 +163,7 @@ if __name__ == '__main__':
     kmedian.fit(points)
     kmedian_labels = kmedian.labels_
     kmedian_centers = kmedian.center_indexes
-    kmedian_hierarchy = kmedian.define_cluster_hierarchy_nary(points)
+    kmedian_hierarchy = kmedian.define_cluster_hierarchy_nary(points) #This creates the kmedian tree for real
 
     #Elbow method on K-median
     nk = len(points)

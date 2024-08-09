@@ -7,7 +7,7 @@
 //mlpack stuff
 #include <armadillo>
 
-
+#include <kcentroids_efficient.hpp>
 #include <dc_hdbscan.hpp>
 
 namespace py = pybind11;
@@ -70,21 +70,26 @@ std::vector<std::vector<int>> get_c_cluster_solutions(py::array_t<double> array,
     double* data = array_data.first;
     int dim = array_data.second.second;
     unsigned long long n = array_data.second.first;
-    // std::cout << "dim: " << dim << ", n: " << n << std::endl;
 
-    // for(int i = 0; i < n*dim; i++){
-    //     std::cout << " " << data[i];
-    // }
 
     Node* dc_tree = construct_dc_tree(data, n, dim, minPts);
-
     std::vector<std::vector<int>> result_labels;
-    result_labels.push_back({0,1,2});
-    result_labels.push_back({9,8,7});
 
     for(const auto& item : modes){
         std::string mode = item.cast<std::string>();
-        std::cout << "mode: " << mode << std::endl;
+
+        if(mode == "hdbscan"){
+            Dc_hdbscan hdb(minPts, mcs);
+            hdb.fit(dc_tree);
+            result_labels.push_back(hdb.labels_);
+        } else if(mode == "kmedian"){
+            KCentroidsTree<KMedian> kmedian(*dc_tree);
+            result_labels.push_back(kmedian.get_k_solution(k));
+
+        } else if(mode == "kmeans"){
+            KCentroidsTree<KMeans> kmeans(*dc_tree);
+            result_labels.push_back(kmeans.get_k_solution(k));
+        }
     }
 
 

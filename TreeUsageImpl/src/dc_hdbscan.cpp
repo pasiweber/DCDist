@@ -27,8 +27,8 @@ void Dc_hdbscan::fit(double *data, unsigned long long n, int dim, int minPts){
 }
 
 void Dc_hdbscan::fit(Node *tree){
-    std::cout << "Tree already provided..." << std::endl;
-    printTree(*tree);
+    //std::cout << "Tree already provided..." << std::endl;
+    //printTree(*tree);
 
     compute_clustering(tree);
 }

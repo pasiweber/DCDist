@@ -3650,6 +3650,8 @@ CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp
   /usr/include/c++/11/bits/mask_array.h \
   /usr/include/c++/11/bits/indirect_array.h \
   /usr/include/c++/11/variant \
+  ../src/kcentroids_efficient.hpp \
+  ../src/lp_objective.hpp \
   ../src/dc_hdbscan.hpp \
   ../src/kcentroids.hpp
 
@@ -5635,7 +5637,7 @@ CMakeFiles/MyProject.dir/src/example.cpp.o: ../src/example.cpp \
   /usr/include/c++/11/bits/erase_if.h \
   /usr/include/c++/11/pstl/execution_defs.h \
   ../src/key_structs.hpp \
-  ../src/kcentroids2.hpp \
+  ../src/kcentroids_efficient.hpp \
   ../src/dc_dist.hpp \
   /usr/local/include/mlpack/core.hpp \
   /usr/local/include/mlpack/prereqs.hpp \
@@ -9373,10 +9375,6 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 
 ../src/graph.cpp:
 
-../src/lp_objective.hpp:
-
-../src/kcentroids2.hpp:
-
 ../src/example.cpp:
 
 ../src/dc_hdbscan.cpp:
@@ -9384,6 +9382,10 @@ CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp \
 ../src/kcentroids.hpp:
 
 ../src/dc_hdbscan.hpp:
+
+../src/lp_objective.hpp:
+
+../src/kcentroids_efficient.hpp:
 
 /usr/include/c++/11/variant:
 

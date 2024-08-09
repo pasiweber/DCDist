@@ -1,5 +1,5 @@
-#ifndef K_CENTROIDS2_HPP
-#define K_CENTROIDS2_HPP
+#ifndef K_CENTROIDS_EFFICIENT_HPP
+#define K_CENTROIDS_EFFICIENT_HPP
 
 #include <vector>
 #include <limits>
@@ -72,6 +72,14 @@ class KCentroidsTree
 
     
     private:
+
+
+        static bool compareByCostt(const Annotation* anno1, const Annotation* anno2){ //Needs to be static to be passed to the sort comparator
+            return anno1->cost_decrease > anno2->cost_decrease;
+        }       
+
+
+
         /*
         Creates the hierarchy tree in O(n) time and space, and annotates each node with the k instance it was created at, i.e. the k that made the split that created the node.
 
@@ -89,80 +97,85 @@ class KCentroidsTree
         We then need the second pass to instead leaves corresponding to centers that had their set of nodes split up. We need to do this in the second pass,
          as we do not know in advance what the lowest node corresponding to that center will be.
         */
-        Node* create_hierarchy(Node& root){
-            std::vector<Annotation*> annotations = annotate_tree(root);
-            std::sort(annotations.begin(), annotations.end(), compareByCost);
+        // Node* create_hierarchy(Node& root){
+        //     std::vector<Annotation*> annotations = annotate_tree(root);
+        //     std::sort(annotations.begin(), annotations.end(), compareByCostt);
 
-            //Create the tree here using the pointers in the annotations.
-            Node* root_pointer = new Node{nullptr, 0.0, annotations[0]->center};
-            root_pointer->k = 1; //Annotation for getting k solutions quickly
-            annotations[0]->tree_node = root_pointer; //Unroll first iteration of loop to avoid an if/else in loop.
+        //     //Create the tree here using the pointers in the annotations.
+        //     Node* root_pointer = new Node{nullptr, 0.0, annotations[0]->center};
+        //     root_pointer->k = 1; //Annotation for getting k solutions quickly
+        //     annotations[0]->tree_node = root_pointer; //Unroll first iteration of loop to avoid an if/else in loop.
 
-            Annotation* curr_anno; 
-            Annotation* parent_anno;
-            Node* parent_node;
-            std::vector<Annotation*> leaves_to_add;
+        //     Annotation* curr_anno; 
+        //     Annotation* parent_anno;
+        //     Node* parent_node;
+        //     std::vector<Annotation*> leaves_to_add;
 
-            //First loop/pass adding the main structure of the tree
-            for(int i = 1; i < annotations.size(); i++){
-                curr_anno = annotations[i];
-                Node* new_node = new Node{nullptr, 0.0, curr_anno->center};
-                new_node->k = i+1;//Annotation for getting k solutions quickly
-                //Fix the linkage
-                parent_anno = curr_anno->parent;
-                parent_node = parent_anno->tree_node;
-                double cost = parent_node->cost;
-                if(parent_anno->has_leaf){ //This parent center will not have a corresponding leaf as we will now be adding stuff below it
-                    parent_anno->has_leaf = false; //We will now be adding things below this annotation/node -> this will not become a leaf in this pass
-                    leaves_to_add.push_back(parent_anno); //TODO: We need to update the k that should be inserted for this leaf somehow
-                }
+        //     //First loop/pass adding the main structure of the tree
+        //     for(int i = 1; i < annotations.size(); i++){
+        //         curr_anno = annotations[i];
+        //         Node* new_node = new Node{nullptr, 0.0, curr_anno->center};
+        //         new_node->k = i+1;//Annotation for getting k solutions quickly
+        //         //Fix the linkage
+        //         parent_anno = curr_anno->parent;
+        //         parent_node = parent_anno->tree_node;
+        //         double cost = parent_node->cost;
+        //         if(parent_anno->has_leaf){ //This parent center will not have a corresponding leaf as we will now be adding stuff below it
+        //             parent_anno->has_leaf = false; //We will now be adding things below this annotation/node -> this will not become a leaf in this pass
+        //             leaves_to_add.push_back(parent_anno); //TODO: We need to update the k that should be inserted for this leaf somehow
+        //         }
 
-                if(cost !=0 && cost != curr_anno->cost_decrease){ //If cost is not 0 and not the current annos cost decrease we need to make a new internal node for the parent. 
-                    //Add new node, replace in annotation
-                    Node* new_parent = new Node{parent_node, curr_anno->cost_decrease, parent_node->id};
-                    int new_k = parent_anno->k;
-                    new_parent->k = new_k; //Annotation for getting k solutions quickly
-                    new_parent->is_orig_cluster = true; //Used to distinguish nodes when getting clusterings out for each k
-                    parent_anno->k = i+1; //Annotation for getting k solutions quickly
+        //         if(cost !=0 && cost != curr_anno->cost_decrease){ //If cost is not 0 and not the current annos cost decrease we need to make a new internal node for the parent. 
+        //             //Add new node, replace in annotation
+        //             Node* new_parent = new Node{parent_node, curr_anno->cost_decrease, parent_node->id};
+        //             int new_k = parent_anno->k;
+        //             new_parent->k = new_k; //Annotation for getting k solutions quickly
+        //             new_parent->is_orig_cluster = true; //Used to distinguish nodes when getting clusterings out for each k
+        //             parent_anno->k = i+1; //Annotation for getting k solutions quickly
 
-                    new_parent->children.push_back(new_node);
-                    new_node->parent = new_parent;
-                    parent_anno->tree_node = new_parent;
-                    parent_node->children.push_back(new_parent); //Link new parent to old parent
-                } else{
-                    //Link to current node and update cost in parent(might just rewrite the same value but who cares (not me))
-                    parent_node->cost = curr_anno->cost_decrease;
-                    parent_node->children.push_back(new_node);
-                    new_node->parent = parent_node;
-                    if(cost == 0){
-                        parent_anno->k = i+1; //Annotation for getting k solutions quickly (when we eventually do the parent split into a new node, this is then the k used there)
-                    }
-                }
+        //             new_parent->children.push_back(new_node);
+        //             new_node->parent = new_parent;
+        //             parent_anno->tree_node = new_parent;
+        //             parent_node->children.push_back(new_parent); //Link new parent to old parent
+        //         } else{
+        //             //Link to current node and update cost in parent(might just rewrite the same value but who cares (not me))
+        //             parent_node->cost = curr_anno->cost_decrease;
+        //             parent_node->children.push_back(new_node);
+        //             new_node->parent = parent_node;
+        //             if(cost == 0){
+        //                 parent_anno->k = i+1; //Annotation for getting k solutions quickly (when we eventually do the parent split into a new node, this is then the k used there)
+        //             }
+        //         }
 
-                curr_anno->tree_node = new_node;
+        //         curr_anno->tree_node = new_node;
+        //     }
+        //     //Second loop/pass adding final leaves to the tree - it is a pass over the annotations, NOT the tree itself.
+        //     for(int i = 0; i < leaves_to_add.size(); i++){ 
+        //         curr_anno = leaves_to_add[i];
+        //         if(!(curr_anno->has_leaf)){ //TODO: Remove this if statement - not needed I think
+        //             Node* node = curr_anno->tree_node;
+        //             Node* new_leaf = new Node{node, 0.0, curr_anno->center};
+        //             new_leaf->k = curr_anno->k;
+        //             new_leaf->is_orig_cluster = true; //Used to distinguish nodes when getting clusterings out for each k
+        //             node->children.push_back(new_leaf);
+        //         }
+        //     }
+        //     assign_sizes(root_pointer); //Add number of leaves in subtree to each node
+        //     delete_annotations(annotations); //Free the annotations from memory
+
+        //     return root_pointer;
+        // }
+
+        void delete_annotations(std::vector<Annotation*> &annotations){
+            for(Annotation* anno : annotations){
+                delete anno;
             }
-            //Second loop/pass adding final leaves to the tree - it is a pass over the annotations, NOT the tree itself.
-            for(int i = 0; i < leaves_to_add.size(); i++){ 
-                curr_anno = leaves_to_add[i];
-                if(!(curr_anno->has_leaf)){ //TODO: Remove this if statement - not needed I think
-                    Node* node = curr_anno->tree_node;
-                    Node* new_leaf = new Node{node, 0.0, curr_anno->center};
-                    new_leaf->k = curr_anno->k;
-                    new_leaf->is_orig_cluster = true; //Used to distinguish nodes when getting clusterings out for each k
-                    node->children.push_back(new_leaf);
-                }
-            }
-            assign_sizes(root_pointer); //Add number of leaves in subtree to each node
-            delete_annotations(annotations); //Free the annotations from memory
-
-            return root_pointer;
-        }
-
-
+            return;
+}
 
         Node* create_hierarchy_new(Node& root){
             std::vector<Annotation*> annotations = annotate_tree(root);
-            std::sort(annotations.begin(), annotations.end(), compareByCost);
+            std::sort(annotations.begin(), annotations.end(), compareByCostt);
 
             Node* root_pointer = new Node{nullptr, -1.0, annotations[0]->center, 1}; //parent, cost, id, k
             annotations[0]->tree_node = root_pointer; //Unroll first iteration of loop to avoid an if/else in loop.
@@ -207,6 +220,7 @@ class KCentroidsTree
                 }
             }
             delete_annotations(annotations); //Free the annotations from memory
+            //printTree(*root_pointer);
             return root_pointer;
         }
 
@@ -219,6 +233,13 @@ class KCentroidsTree
             arr.resize(root.size);
             annotate_tree_inner(root, arr);
             return arr;
+        }
+
+        bool is_a_root(const Node &tree){
+            if(tree.parent == nullptr){
+                return true;
+            }
+            return false;
         }
 
         /*
@@ -325,16 +346,14 @@ class KCentroidsTree
             } else {
                 Node *solution_holder = new Node{nullptr, 0.0};
                 solution_holder->k = -1; //This has a default k value that should never be part of a solution
-                printTree2(*(this->tree));
-                get_k_solution_helper(k, curr_solution, solution_holder);
+                get_k_solution_helper(k, curr_solution, solution_holder); //Constructs the solution
 
                 std::vector<int> res(n);
-                extract_labels(res, solution_holder);
+                extract_labels(res, solution_holder); //Extract labels from solution into res
                 
                 this->curr_k_solution = solution_holder;
                 this->curr_k = k;
-                std::cout << "Final result:" << std::endl;
-                printLabels(res);
+
                 return res;
             }
         }

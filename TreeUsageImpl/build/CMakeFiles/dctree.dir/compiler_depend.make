@@ -1893,6 +1893,8 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
   /usr/include/c++/11/bits/mask_array.h \
   /usr/include/c++/11/bits/indirect_array.h \
   /usr/include/c++/11/variant \
+  ../src/kcentroids_efficient.hpp \
+  ../src/lp_objective.hpp \
   ../src/dc_hdbscan.hpp \
   ../src/kcentroids.hpp
 
@@ -1900,6 +1902,10 @@ CMakeFiles/dctree.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp \
 ../src/kcentroids.hpp:
 
 ../src/dc_hdbscan.hpp:
+
+../src/lp_objective.hpp:
+
+../src/kcentroids_efficient.hpp:
 
 /usr/include/c++/11/variant:
 
