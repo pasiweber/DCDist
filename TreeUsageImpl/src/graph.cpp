@@ -177,7 +177,7 @@ std::vector<MSTEdge> calc_mst(unsigned long long V, double *data, int minCluster
     std::vector<MSTEdge> result(mstEdges, mstEdges + V-1); 
     std::sort(result.begin(), result.end(), compareByCost); //TODO: Reverse the order.
     
-    //free(mstEdges); // Remember to free the allocated memory
+    free(mstEdges); // Remember to free the allocated memory
     return result;
 }
 

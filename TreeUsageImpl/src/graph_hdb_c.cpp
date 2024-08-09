@@ -3,7 +3,11 @@
 #include <stdlib.h>
 #include <omp.h>
 #include <string.h>
+#include <iostream>
 #include<graph_hdb_c.hpp>
+#include <mlpack/methods/neighbor_search/neighbor_search.hpp>
+#include <mlpack/core/tree/binary_space_tree.hpp>
+#include <vector>
 // gcc -shared -o hdb.so hdb_c.c -O3 -march=native -lm -fopenmp -fPIC
 /*
 This code computes the core distances using quickselect, 
@@ -100,6 +104,37 @@ double quickSelect(double *const arr, const unsigned long long low, const unsign
     return -1.0;
 }
 
+
+void calc_core_dist2(double *data_c, unsigned long long n, int k, int dim, double *core_dist){
+    size_t rows = n;
+    size_t cols = dim;
+    arma::mat data(cols, rows);
+    for(size_t i = 0; i < rows; i++){
+        for(size_t j = 0; j < cols; j++){
+            data(j,i) = data_c[i*cols + j];
+        }
+    }
+    mlpack::NeighborSearch<mlpack::NearestNeighborSort, mlpack::EuclideanDistance, arma::mat, mlpack::KDTree> *searcher;
+
+    searcher = new mlpack::NeighborSearch<mlpack::NearestNeighborSort, mlpack::EuclideanDistance, arma::mat, mlpack::KDTree>(data); 
+
+    arma::Mat<size_t> neighbors;
+    arma::mat distances;
+
+    searcher->Search(k-1, neighbors, distances); //This does not include point itself in k, which is why we do k-1
+
+    for(size_t i = 0; i < distances.n_cols; i++)
+    {
+        arma::vec col = distances.col(i);
+        core_dist[i] = col(k-2);
+    }
+    
+}
+
+
+
+
+
 void calc_core_dist(unsigned long long n, int k, double *core_dist, double *distance_matrix)
 {
 
@@ -117,10 +152,9 @@ double* calc_mutual_reachability_dist(double *data, unsigned long long n, int di
     double *distance_matrix = (double *)malloc(n * n * sizeof(double));
     double *core_dist = (double *)malloc(n * sizeof(double)); //TODO: Change this to be a vector and use mlpack KNN
     double *mutual_reach_dist = (double *)malloc(n * n * sizeof(double));
-
     calc_distance_matrix(data, n, dim, distance_matrix);
-    calc_core_dist(n, k, core_dist, distance_matrix);
-
+    //calc_core_dist(n, k, core_dist, distance_matrix);
+    calc_core_dist2(data, n, k, dim, core_dist);
     #pragma omp parallel for // schedule(static, 2)
     for (unsigned long long i = 0; i < n; i++)
     {

@@ -3,6 +3,7 @@ from distance_metric import get_dc_dist_matrix, get_reach_dists
 from sklearn.decomposition import KernelPCA
 import networkx as nx
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
 import numba as numba
 from datetime import datetime
@@ -10,8 +11,7 @@ from matplotlib.widgets import Button, RadioButtons, CheckButtons
 from density_tree import DensityTree
 from density_tree_nary import NaryDensityTree
 
-
-
+matplotlib.use('TkAgg') #I installed python3-tk for this - needed to display via WSL 2
 
 def plot_embedding(embed_points, embed_labels, titles, centers = None, main_title=None, dot_scale = 1, annotations=False, save=False, save_name=None):
     '''

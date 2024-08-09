@@ -31,7 +31,6 @@ void HCF::compute_clustering(Node *tree){
     Skeleton structure of the general HCF structure. 
 
     Maintain an array of metadata in templated structs/classes with specific fields to the specific objective function. 
-
     
 */
 double HCF::bottom_up_cluster(Node *tree){

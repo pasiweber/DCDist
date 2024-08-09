@@ -125,8 +125,6 @@ std::vector<int> py_hdbscan(py::array_t<double> array, size_t minPts, size_t mcs
     if (buf_info.ndim != 2) {
         throw std::runtime_error("Input array must be 2-dimensional");
     }
-    
-
     // Get the shape of the array
     size_t rows = buf_info.shape[0];
     size_t cols = buf_info.shape[1];
@@ -134,12 +132,7 @@ std::vector<int> py_hdbscan(py::array_t<double> array, size_t minPts, size_t mcs
     double* data = new double[size];
 
     std::memcpy(data, buf_info.ptr, size * sizeof(double));
-    // std::cout << "The data: " << std::endl;
-    // for(int i = 0; i < size; i++){
-    //   std::cout << data[i] << " ";
-    // }
-    // std::cout << std::endl;
-    //double *data, unsigned long long n, int dim, int k
+
     int dim = cols;
     unsigned long long n = rows;
     std::cout << "dim: " << cols << ", n: " << n << std::endl;
