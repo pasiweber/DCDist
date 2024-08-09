@@ -110,7 +110,7 @@ int Dc_hdbscan::split_size(Node *tree, int mcs){
         }
     } else{ //We might just remove this else branch if we decide to not include mcs=1
         for(Node *child : tree->children){
-            if(child->size == 1 && this->cdists[tree->id] == tree->cost){
+            if(child->size == 1 && this->cdists[child->id] == tree->cost){ //If its a leaf and has the same cdist as pdist then it does not contribute
                 continue;
             }
             size++;

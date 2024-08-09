@@ -31,7 +31,6 @@ link_directories(${Python3_LIBRARY_DIRS})
 
 include_directories(src)
 add_executable(MyProject src/example.cpp
-                src/kcentroids.cpp
                 src/dc_hdbscan.cpp
                 src/dc_dist.cpp
                 src/dc_dist_bindings.cpp

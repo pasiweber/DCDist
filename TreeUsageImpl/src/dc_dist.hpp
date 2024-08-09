@@ -73,4 +73,24 @@ std::vector<double> parallel_cdists(arma::mat &data, size_t k);
 std::vector<double> parallel_cdists2(arma::mat &data, size_t k);
 std::vector<double> parallel_cdists20(arma::mat &data, size_t k);
 
+
+// void print_annotations(std::vector<Annotation*> annotations){
+//         std::cout << "Annotations:" << std::endl;
+//         std::cout << "[";
+//         for(Annotation* anno : annotations){
+//             if(anno->parent == nullptr){
+//                 std::cout << "(" << anno->cost_decrease << ", " << anno->center <<"), "; 
+//             } else{
+//                 std::cout << "(" << anno->cost_decrease << ", " << anno->center << ", " << anno->parent->center <<"), "; 
+
+//             }
+//         }
+//         std::cout << "]" << std::endl;
+
+// }
+
+
+
+
+
 #endif

@@ -14,7 +14,7 @@ from benchmark import create_dataset
 
 k = 3
 dim = 2 #124 is max dimension.......
-n = 20
+n = 100
 dataset = "blobs"
 points, _ = create_dataset(num_points=n, datatype=dataset, num_features=dim)
 
@@ -42,36 +42,47 @@ sklearn_hdb_labels = sklearn_hdbscan.labels_
 
 t2 = time.time()
 print("2")
-# hdbscan_nary = HDBSCANnary(min_pts=k, min_cluster_size=k, allow_single_cluster=False)
-# hdbscan_nary.fit(points)
-# hdb_labels = hdbscan_nary.labels_
+
 
 real_k = 5
-res = dctree.compute_clustering(points, k, k, real_k, ["kmedian", "kmeans", "hdbscan"])
-print("fast kmedian labels:", res)
+res = dctree.compute_clustering(points, k, k, real_k, ["hdbscan"])
+#print("fast kmedian labels:", res)
 t3 = time.time()
 print("3")
 
-kmedian = DCKCentroids_nary(k=real_k, min_pts=k, loss="kmedian", noise_mode="none") #This implicitly creates the dc-tree first
-kmedian.fit(points)
-kmedian_labels = kmedian.labels_
-print("slow kmedian labels:", kmedian_labels)
 t4 = time.time()
 print("4")
 
 t5 = time.time()
+#From here it is the old slow python methods
 
+
+
+# kmedian = DCKCentroids_nary(k=real_k, min_pts=k, loss="kmedian", noise_mode="none") #This implicitly creates the dc-tree first
+# kmedian.fit(points)
+# kmedian_labels = kmedian.labels_
+# print("slow kmedian labels:", kmedian_labels)
 # kcentroid_hierarchy = kmedian.define_cluster_hierarchy_nary(points)
 # plot_tree_v2(kcentroid_hierarchy)
 
-# plot_embedding(
-#         points,
-#         [hdb_labels, np.array(labels), sklearn_hdb_labels],
-#         ["python slow", "c++ new", "sklearn"],
-#         centers=None,
-#         dot_scale=2, #6 used for small dataset, 2 used for 400 points
-#         annotations=False
-#     )
+t6 = time.time()
+
+hdbscan_nary = HDBSCANnary(min_pts=k, min_cluster_size=k, allow_single_cluster=False)
+hdbscan_nary.fit(points)
+hdb_labels = hdbscan_nary.labels_
+
+
+t7 = time.time()
+
+
+plot_embedding(
+        points,
+        [hdb_labels, np.array(res[0]), sklearn_hdb_labels],
+        ["python slow", "c++ new", "sklearn"],
+        centers=None,
+        dot_scale=2, #6 used for small dataset, 2 used for 400 points
+        annotations=False
+    )
 
 
 print("sklearn:", t2-t1)

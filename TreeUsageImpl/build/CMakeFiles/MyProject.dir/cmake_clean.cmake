@@ -11,8 +11,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/MyProject.dir/src/graph.cpp.o.d"
   "CMakeFiles/MyProject.dir/src/graph_hdb_c.cpp.o"
   "CMakeFiles/MyProject.dir/src/graph_hdb_c.cpp.o.d"
-  "CMakeFiles/MyProject.dir/src/kcentroids.cpp.o"
-  "CMakeFiles/MyProject.dir/src/kcentroids.cpp.o.d"
   "MyProject"
   "MyProject.pdb"
 )

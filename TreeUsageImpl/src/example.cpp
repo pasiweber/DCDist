@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
-#include <kcentroids.hpp>
 #include <kcentroids_efficient.hpp>
 #include <dc_hdbscan.hpp>
 #include <dc_dist.hpp>
@@ -134,7 +133,7 @@ void test_mst(){
     std::cout << std::endl;
 
     Node* root = constructHierarchy(edges); //TODO: Get tree sizes annotated
-    assign_sizes(root);
+    assign_node_sizes(root);
 
     printTree(*root);
     Dc_hdbscan tree(k, k);
@@ -161,14 +160,9 @@ double kmeans(double x){
 void test_k_centroids(){
     Node* root = generateTree12();
     std::cout << "Generated dc-tree Tree:\n";
-    std::vector<Annotation*> res = annotate_tree(*root, kmeans);
     //printTree(*root);
 
 
-
-    Node* rootv2 = create_hierarchy(*root, kmeans);
-    std::cout << "kmeans tree:" << std::endl;
-    printTree(*rootv2);
 
     // Create an instance of KCentroidsTree
     KCentroidsTree<KMeans> tree(*root);
@@ -186,26 +180,11 @@ void test_k_centroids(){
     //std::vector<int> labels2 = kcentroids(*root, kmeans, 7);
     std::vector<int> res_new2 = tree.inc_k_solution();
     printTree(*rootv3);
-    std::sort(res.begin(), res.end(), compareByCost);
 
     //print_annotations(res);
 
 }
 
-//How do I handle providing a tree in an elegant way?
-void test_hdbscan(){
-    Node* root = generateTree12();
-    assign_sizes(root);
-    printTree(*root);
-    int mpts = 3; //TODO: Check whether the algorithm is robust to this parameter when we are able to construct the dc-tree
-    int mcs = 2; //For now we only allow mcs>=2 since we do not have any cdists.
-
-    Dc_hdbscan tree(mpts, mcs);
-    tree.fit(root);
-    std::vector<int> labels = tree.labels_;
-    printLabels(labels);
-
-}
 
 
 

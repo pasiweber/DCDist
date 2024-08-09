@@ -2,8 +2,7 @@
 #define DC_HDBSCAN_HPP
 
 #include <vector>
-#include <kcentroids.hpp>
-
+#include <key_structs.hpp>
 /*
     Efficient focused implementation of HDBSCAN over the dc-tree.
     Handles all parameter values (when tested) of min_cluster_size and min_pts. 

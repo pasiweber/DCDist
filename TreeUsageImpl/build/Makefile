@@ -359,30 +359,6 @@ src/graph_hdb_c.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dcdist.dir/build.make CMakeFiles/dcdist.dir/src/graph_hdb_c.cpp.s
 .PHONY : src/graph_hdb_c.cpp.s
 
-src/kcentroids.o: src/kcentroids.cpp.o
-.PHONY : src/kcentroids.o
-
-# target to build an object file
-src/kcentroids.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/kcentroids.cpp.o
-.PHONY : src/kcentroids.cpp.o
-
-src/kcentroids.i: src/kcentroids.cpp.i
-.PHONY : src/kcentroids.i
-
-# target to preprocess a source file
-src/kcentroids.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/kcentroids.cpp.i
-.PHONY : src/kcentroids.cpp.i
-
-src/kcentroids.s: src/kcentroids.cpp.s
-.PHONY : src/kcentroids.s
-
-# target to generate assembly for a file
-src/kcentroids.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyProject.dir/build.make CMakeFiles/MyProject.dir/src/kcentroids.cpp.s
-.PHONY : src/kcentroids.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -416,9 +392,6 @@ help:
 	@echo "... src/graph_hdb_c.o"
 	@echo "... src/graph_hdb_c.i"
 	@echo "... src/graph_hdb_c.s"
-	@echo "... src/kcentroids.o"
-	@echo "... src/kcentroids.i"
-	@echo "... src/kcentroids.s"
 .PHONY : help
 
 

@@ -83,24 +83,10 @@ CMakeFiles/MyProject.dir/src/example.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MyProject.dir/src/example.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/example.cpp -o CMakeFiles/MyProject.dir/src/example.cpp.s
 
-CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: CMakeFiles/MyProject.dir/flags.make
-CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: ../src/kcentroids.cpp
-CMakeFiles/MyProject.dir/src/kcentroids.cpp.o: CMakeFiles/MyProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/MyProject.dir/src/kcentroids.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyProject.dir/src/kcentroids.cpp.o -MF CMakeFiles/MyProject.dir/src/kcentroids.cpp.o.d -o CMakeFiles/MyProject.dir/src/kcentroids.cpp.o -c /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/kcentroids.cpp
-
-CMakeFiles/MyProject.dir/src/kcentroids.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MyProject.dir/src/kcentroids.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/kcentroids.cpp > CMakeFiles/MyProject.dir/src/kcentroids.cpp.i
-
-CMakeFiles/MyProject.dir/src/kcentroids.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MyProject.dir/src/kcentroids.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/kcentroids.cpp -o CMakeFiles/MyProject.dir/src/kcentroids.cpp.s
-
 CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o: CMakeFiles/MyProject.dir/flags.make
 CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o: ../src/dc_hdbscan.cpp
 CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o: CMakeFiles/MyProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o -MF CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o.d -o CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o -c /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/dc_hdbscan.cpp
 
 CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.i: cmake_force
@@ -114,7 +100,7 @@ CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.s: cmake_force
 CMakeFiles/MyProject.dir/src/dc_dist.cpp.o: CMakeFiles/MyProject.dir/flags.make
 CMakeFiles/MyProject.dir/src/dc_dist.cpp.o: ../src/dc_dist.cpp
 CMakeFiles/MyProject.dir/src/dc_dist.cpp.o: CMakeFiles/MyProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/MyProject.dir/src/dc_dist.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/MyProject.dir/src/dc_dist.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyProject.dir/src/dc_dist.cpp.o -MF CMakeFiles/MyProject.dir/src/dc_dist.cpp.o.d -o CMakeFiles/MyProject.dir/src/dc_dist.cpp.o -c /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/dc_dist.cpp
 
 CMakeFiles/MyProject.dir/src/dc_dist.cpp.i: cmake_force
@@ -128,7 +114,7 @@ CMakeFiles/MyProject.dir/src/dc_dist.cpp.s: cmake_force
 CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o: CMakeFiles/MyProject.dir/flags.make
 CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o: ../src/dc_dist_bindings.cpp
 CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o: CMakeFiles/MyProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o -MF CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o.d -o CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o -c /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/dc_dist_bindings.cpp
 
 CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.i: cmake_force
@@ -142,7 +128,7 @@ CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.s: cmake_force
 CMakeFiles/MyProject.dir/src/graph.cpp.o: CMakeFiles/MyProject.dir/flags.make
 CMakeFiles/MyProject.dir/src/graph.cpp.o: ../src/graph.cpp
 CMakeFiles/MyProject.dir/src/graph.cpp.o: CMakeFiles/MyProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/MyProject.dir/src/graph.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MyProject.dir/src/graph.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyProject.dir/src/graph.cpp.o -MF CMakeFiles/MyProject.dir/src/graph.cpp.o.d -o CMakeFiles/MyProject.dir/src/graph.cpp.o -c /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/graph.cpp
 
 CMakeFiles/MyProject.dir/src/graph.cpp.i: cmake_force
@@ -156,7 +142,7 @@ CMakeFiles/MyProject.dir/src/graph.cpp.s: cmake_force
 CMakeFiles/MyProject.dir/src/graph_hdb_c.cpp.o: CMakeFiles/MyProject.dir/flags.make
 CMakeFiles/MyProject.dir/src/graph_hdb_c.cpp.o: ../src/graph_hdb_c.cpp
 CMakeFiles/MyProject.dir/src/graph_hdb_c.cpp.o: CMakeFiles/MyProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/MyProject.dir/src/graph_hdb_c.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/MyProject.dir/src/graph_hdb_c.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyProject.dir/src/graph_hdb_c.cpp.o -MF CMakeFiles/MyProject.dir/src/graph_hdb_c.cpp.o.d -o CMakeFiles/MyProject.dir/src/graph_hdb_c.cpp.o -c /mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/src/graph_hdb_c.cpp
 
 CMakeFiles/MyProject.dir/src/graph_hdb_c.cpp.i: cmake_force
@@ -170,7 +156,6 @@ CMakeFiles/MyProject.dir/src/graph_hdb_c.cpp.s: cmake_force
 # Object files for target MyProject
 MyProject_OBJECTS = \
 "CMakeFiles/MyProject.dir/src/example.cpp.o" \
-"CMakeFiles/MyProject.dir/src/kcentroids.cpp.o" \
 "CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o" \
 "CMakeFiles/MyProject.dir/src/dc_dist.cpp.o" \
 "CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o" \
@@ -181,7 +166,6 @@ MyProject_OBJECTS = \
 MyProject_EXTERNAL_OBJECTS =
 
 MyProject: CMakeFiles/MyProject.dir/src/example.cpp.o
-MyProject: CMakeFiles/MyProject.dir/src/kcentroids.cpp.o
 MyProject: CMakeFiles/MyProject.dir/src/dc_hdbscan.cpp.o
 MyProject: CMakeFiles/MyProject.dir/src/dc_dist.cpp.o
 MyProject: CMakeFiles/MyProject.dir/src/dc_dist_bindings.cpp.o
@@ -190,7 +174,7 @@ MyProject: CMakeFiles/MyProject.dir/src/graph_hdb_c.cpp.o
 MyProject: CMakeFiles/MyProject.dir/build.make
 MyProject: /usr/lib/x86_64-linux-gnu/libpython3.10.so
 MyProject: CMakeFiles/MyProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable MyProject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/rsmj9/Documents/Datalogi/Thesis/NewCodebase/DCDist/TreeUsageImpl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable MyProject"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MyProject.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

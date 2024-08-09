@@ -15,6 +15,7 @@
     1. Implement dec_k_solution
     2. Maintain the labels as a field in the class as well.
     3. Optimize the actual code even more for efficiency
+    4. Accommodate the elbow method by outputting the list of annotations. This should be very simple since we already have the "pruned" list of annotations without duplicate centers.
 */
 template <typename CostFunction = KMedian> 
 class KCentroidsTree
@@ -73,109 +74,33 @@ class KCentroidsTree
     
     private:
 
-
-        static bool compareByCostt(const Annotation* anno1, const Annotation* anno2){ //Needs to be static to be passed to the sort comparator
+        /*
+            Simple comparator function for sorting. This ordering with ">" ensures decreasing order, largest value first.
+            "static" is required for std::sort
+        */
+        static bool compareByCost(const Annotation* anno1, const Annotation* anno2){ 
             return anno1->cost_decrease > anno2->cost_decrease;
         }       
 
-
-
         /*
-        Creates the hierarchy tree in O(n) time and space, and annotates each node with the k instance it was created at, i.e. the k that made the split that created the node.
-
-        It works on the basis of a list of annotations. The annotations is the set of maximal annotations for each center - the annotations that are the ones that inevitably would be the ones chosen to create the tree with no matter what.
-        Generally, an annotation has the following: [cost_decrease, center, parent_pointer, tree_node, has_leaf, k]
-        parent_pointer: An annotation corresponds to a center, and the parent is then the cluster of that center that it will take nodes from.
-        tree_node is the current lowest node in the tree as it is constructed that this annotation's center corresponds to.
-
-        The algorithm then works the following:
-        First pass:
-        For each new annotation, we create a node x. If the parent center's current cluster node in the tree
-         already has a cost annotated higher than that of this annotation, create new node for that center, and add x to that instead.
-        This corresponds to decreasing the size of a center's cluster, and giving it a new node. We then set has_leaf to false.
-
-        We then need the second pass to instead leaves corresponding to centers that had their set of nodes split up. We need to do this in the second pass,
-         as we do not know in advance what the lowest node corresponding to that center will be.
+            Simple cleanup function for annotations when not required anymore
         */
-        // Node* create_hierarchy(Node& root){
-        //     std::vector<Annotation*> annotations = annotate_tree(root);
-        //     std::sort(annotations.begin(), annotations.end(), compareByCostt);
-
-        //     //Create the tree here using the pointers in the annotations.
-        //     Node* root_pointer = new Node{nullptr, 0.0, annotations[0]->center};
-        //     root_pointer->k = 1; //Annotation for getting k solutions quickly
-        //     annotations[0]->tree_node = root_pointer; //Unroll first iteration of loop to avoid an if/else in loop.
-
-        //     Annotation* curr_anno; 
-        //     Annotation* parent_anno;
-        //     Node* parent_node;
-        //     std::vector<Annotation*> leaves_to_add;
-
-        //     //First loop/pass adding the main structure of the tree
-        //     for(int i = 1; i < annotations.size(); i++){
-        //         curr_anno = annotations[i];
-        //         Node* new_node = new Node{nullptr, 0.0, curr_anno->center};
-        //         new_node->k = i+1;//Annotation for getting k solutions quickly
-        //         //Fix the linkage
-        //         parent_anno = curr_anno->parent;
-        //         parent_node = parent_anno->tree_node;
-        //         double cost = parent_node->cost;
-        //         if(parent_anno->has_leaf){ //This parent center will not have a corresponding leaf as we will now be adding stuff below it
-        //             parent_anno->has_leaf = false; //We will now be adding things below this annotation/node -> this will not become a leaf in this pass
-        //             leaves_to_add.push_back(parent_anno); //TODO: We need to update the k that should be inserted for this leaf somehow
-        //         }
-
-        //         if(cost !=0 && cost != curr_anno->cost_decrease){ //If cost is not 0 and not the current annos cost decrease we need to make a new internal node for the parent. 
-        //             //Add new node, replace in annotation
-        //             Node* new_parent = new Node{parent_node, curr_anno->cost_decrease, parent_node->id};
-        //             int new_k = parent_anno->k;
-        //             new_parent->k = new_k; //Annotation for getting k solutions quickly
-        //             new_parent->is_orig_cluster = true; //Used to distinguish nodes when getting clusterings out for each k
-        //             parent_anno->k = i+1; //Annotation for getting k solutions quickly
-
-        //             new_parent->children.push_back(new_node);
-        //             new_node->parent = new_parent;
-        //             parent_anno->tree_node = new_parent;
-        //             parent_node->children.push_back(new_parent); //Link new parent to old parent
-        //         } else{
-        //             //Link to current node and update cost in parent(might just rewrite the same value but who cares (not me))
-        //             parent_node->cost = curr_anno->cost_decrease;
-        //             parent_node->children.push_back(new_node);
-        //             new_node->parent = parent_node;
-        //             if(cost == 0){
-        //                 parent_anno->k = i+1; //Annotation for getting k solutions quickly (when we eventually do the parent split into a new node, this is then the k used there)
-        //             }
-        //         }
-
-        //         curr_anno->tree_node = new_node;
-        //     }
-        //     //Second loop/pass adding final leaves to the tree - it is a pass over the annotations, NOT the tree itself.
-        //     for(int i = 0; i < leaves_to_add.size(); i++){ 
-        //         curr_anno = leaves_to_add[i];
-        //         if(!(curr_anno->has_leaf)){ //TODO: Remove this if statement - not needed I think
-        //             Node* node = curr_anno->tree_node;
-        //             Node* new_leaf = new Node{node, 0.0, curr_anno->center};
-        //             new_leaf->k = curr_anno->k;
-        //             new_leaf->is_orig_cluster = true; //Used to distinguish nodes when getting clusterings out for each k
-        //             node->children.push_back(new_leaf);
-        //         }
-        //     }
-        //     assign_sizes(root_pointer); //Add number of leaves in subtree to each node
-        //     delete_annotations(annotations); //Free the annotations from memory
-
-        //     return root_pointer;
-        // }
-
         void delete_annotations(std::vector<Annotation*> &annotations){
             for(Annotation* anno : annotations){
                 delete anno;
             }
             return;
-}
+        }
 
+        /*
+            Main workhorse function that creates the tree itself from the annotations.
+            It also annotates each node in the tree with the k value that created it. 
+            This ensures it is easy to get out k solutions efficiently afterwards.
+            Internal nodes end up having id of the center / cluster that its leaves will be part of.
+        */
         Node* create_hierarchy_new(Node& root){
             std::vector<Annotation*> annotations = annotate_tree(root);
-            std::sort(annotations.begin(), annotations.end(), compareByCostt);
+            std::sort(annotations.begin(), annotations.end(), compareByCost);
 
             Node* root_pointer = new Node{nullptr, -1.0, annotations[0]->center, 1}; //parent, cost, id, k
             annotations[0]->tree_node = root_pointer; //Unroll first iteration of loop to avoid an if/else in loop.
@@ -234,6 +159,7 @@ class KCentroidsTree
             annotate_tree_inner(root, arr);
             return arr;
         }
+
 
         bool is_a_root(const Node &tree){
             if(tree.parent == nullptr){
@@ -414,8 +340,10 @@ class KCentroidsTree
             }
         }
 
-
-
+        /*
+            This function takes the solution container (which is a "pseudo" node) and loops through its children of real solution nodes
+            to output the cluster labels. 
+        */
         void extract_labels(std::vector<int> &res, Node *solution){
             int label = 0;
             for(Node *child : solution->children){
@@ -438,7 +366,9 @@ class KCentroidsTree
             }
         }
 
-
+        /*
+            Simple print function to print the output if desired
+        */
         void printLabels(std::vector<int> labels){
             std::cout << "Labels:" << std::endl;
             std::cout << "[";
@@ -449,7 +379,6 @@ class KCentroidsTree
             std::cout << "]" << std::endl;
 
         }
-
 };
 
 
